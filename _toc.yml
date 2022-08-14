@@ -1,0 +1,37 @@
+format: jb-book
+root: index
+parts:
+  - caption: 퀀트와 프로그래밍 기초 배워보기     
+    numbered: true 
+    chapters:
+    - file: quant_intro.ipynb
+    - file: python.ipynb
+    - file: eda.ipynb
+    - file: plot.ipynb
+    - file: sql.ipynb  
+    - file: sql_in_python.ipynb  
+    
+  - caption: 크롤링을 이용한 데이터 수집
+    numbered: true    
+    chapters:
+    - file: web.ipynb
+    - file: crawl_basic.ipynb
+    - file: selenium.ipynb
+    - file: data_korea.ipynb
+    - file: data_global.ipynb
+    - file: data_ref.ipynb  
+    
+  - caption: 포트폴리오 구성, 백테스트 및 매매하기
+    numbered: true 
+    chapters:
+    - file: factor.ipynb
+    - file: portfolio.ipynb
+    - file: technical.ipynb
+    - file: backtest.ipynb
+    - file: api_trading.ipynb    
+    
+  - caption: 부록
+    numbered: false
+    chapters:
+    - file: install_python
+    - file: install_sql

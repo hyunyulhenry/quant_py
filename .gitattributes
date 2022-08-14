@@ -1,0 +1,5 @@
+data/kor_fs.pkl filter=lfs diff=lfs merge=lfs -text
+data/kor_price.pkl filter=lfs diff=lfs merge=lfs -text
+data/kor_sector.pkl filter=lfs diff=lfs merge=lfs -text
+data/kor_ticker.pkl filter=lfs diff=lfs merge=lfs -text
+data/kor_value.pkl filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,12 @@
+.ipynb_checkpoints/
+book/
+image/
+docs_cache/
+code/
+api_key.txt
+bookbuild.*
+stock_db.sql
+목차.xlsx
+git.*
+git_upload.*
+save_data.*

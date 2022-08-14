@@ -1,0 +1,2374 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>14. 포트폴리오 구성 전략 &#8212; 파이썬을 이용한 퀀트 투자 포트폴리오 만들기</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "hyunyulhenry/quant_py");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="15. 트레이딩을 위한 기술적 지표" href="technical.html" />
+    <link rel="prev" title="13. 퀀트 전략을 이용한 종목선정" href="factor.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">파이썬을 이용한 퀀트 투자 포트폴리오 만들기</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  퀀트와 프로그래밍 기초 배워보기
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="quant_intro.html">
+   1. 퀀트에 대해 알아보기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python.html">
+   2. 파이썬 기초 배워보기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="eda.html">
+   3. 데이터 분석 배워보기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plot.html">
+   4. 데이터 시각화 배워보기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sql.html">
+   5. SQL 기초 배워보기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sql_in_python.html">
+   6. 파이썬에서 SQL 연결하기
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  크롤링을 이용한 데이터 수집
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="web.html">
+   7. 크롤링을 위한 웹 기본지식
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="crawl_basic.html">
+   8. 정적 크롤링 실습하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="selenium.html">
+   9. 동적 크롤링과 정규 표현식
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_korea.html">
+   10. 국내 주식 데이터 수집
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_global.html">
+   11. 전 세계 주식 데이터 수집하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_ref.html">
+   12. 투자 참고용 데이터 수집
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  포트폴리오 구성, 백테스트 및 매매하기
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="factor.html">
+   13. 퀀트 전략을 이용한 종목선정
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   14. 포트폴리오 구성 전략
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="technical.html">
+   15. 트레이딩을 위한 기술적 지표
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="backtest.html">
+   16. 백테스팅 시뮬레이션
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="api_trading.html">
+   17. 증권사 API 연결과 매매하기
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  부록
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="install_python.html">
+   파이썬 다운로드 및 설치하기
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="install_sql.html">
+   SQL 다운로드 및 설치하기
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/portfolio.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/hyunyulhenry/quant_py"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/hyunyulhenry/quant_py/issues/new?title=Issue%20on%20page%20%2Fportfolio.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_py/main?urlpath=tree/portfolio.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   14.1. 수익률 계산 및 상관관계 확인하기
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   14.2. 최대샤프지수 포트폴리오
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   14.3. 최소분산 포트폴리오
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     14.3.1. 최소 및 최대 투자비중 제약조건
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     14.3.2. 각 종목 별 제약조건
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     14.3.3. 자산군 별 비중
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   14.4. 위험균형 포트폴리오
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     14.4.1. 위험예산 포트폴리오
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>포트폴리오 구성 전략</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   14.1. 수익률 계산 및 상관관계 확인하기
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   14.2. 최대샤프지수 포트폴리오
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   14.3. 최소분산 포트폴리오
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     14.3.1. 최소 및 최대 투자비중 제약조건
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     14.3.2. 각 종목 별 제약조건
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     14.3.3. 자산군 별 비중
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   14.4. 위험균형 포트폴리오
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     14.4.1. 위험예산 포트폴리오
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1><span class="section-number">14. </span>포트폴리오 구성 전략<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>어떠한 종목에 투자할 지 선택하는 것도 즁요하지만, 비중을 어떻게 배분하느냐에 따라 성과가 달라지므로 포트폴리오 구성 전략 역시 중요하다. 물론 가장 간편한 형태인 동일비중, 즉 모든 종목에 동일한 비중으로 투자를 할 수도 있다. 그러나 최적의 포트폴리오를 구성한다면 훨씬 안정적인 성과를 거둘 수 있으며, 파이썬에서는 riskfolio-lib 패키지를 이용하면 매우 간단하게 최적 포트폴리오를 구성할 수도 있다.</p>
+<p>이번 장에서는 일반적으로 많이 사용되는 최대샤프지수 포트폴리오, 최소분산 포트폴리오, 위험균형 포트폴리오를 구현해보도록 하겠다. 먼저 포트폴리오 구성을 위해 글로벌 자산을 대표하는 ETF 데이터를 다운로드 한 후 DB에 저장한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">web</span>
+<span class="kn">import</span> <span class="nn">pymysql</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+
+<span class="n">tickers</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;SPY&#39;</span><span class="p">,</span>  <span class="c1"># 미국 주식</span>
+    <span class="s1">&#39;IEV&#39;</span><span class="p">,</span>  <span class="c1"># 유럽 주식 </span>
+    <span class="s1">&#39;EWJ&#39;</span><span class="p">,</span>  <span class="c1"># 일본 주식</span>
+    <span class="s1">&#39;EEM&#39;</span><span class="p">,</span>  <span class="c1"># 이머징 주식</span>
+    <span class="s1">&#39;TLT&#39;</span><span class="p">,</span>  <span class="c1"># 미국 장기채</span>
+    <span class="s1">&#39;IEF&#39;</span><span class="p">,</span>  <span class="c1"># 미국 중기채</span>
+    <span class="s1">&#39;IYR&#39;</span><span class="p">,</span>  <span class="c1"># 미국 리츠</span>
+    <span class="s1">&#39;RWX&#39;</span><span class="p">,</span>  <span class="c1"># 글로벌 리츠</span>
+    <span class="s1">&#39;GLD&#39;</span><span class="p">,</span>  <span class="c1"># 금</span>
+    <span class="s1">&#39;DBC&#39;</span>  <span class="c1"># 상품</span>
+<span class="p">]</span>
+
+<span class="n">all_data</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">ticker</span> <span class="ow">in</span> <span class="n">tickers</span><span class="p">:</span>
+    <span class="n">all_data</span><span class="p">[</span><span class="n">ticker</span><span class="p">]</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;yahoo&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s1">&#39;1993-01-22&#39;</span><span class="p">)</span>
+
+<span class="n">prices</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span><span class="n">tic</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span>
+     <span class="k">for</span> <span class="n">tic</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">all_data</span><span class="o">.</span><span class="n">items</span><span class="p">()})</span>
+
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;mysql+pymysql://root:1234@127.0.0.1:3306/stock_db&#39;</span><span class="p">)</span>
+<span class="n">prices</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;sample_etf&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">dispose</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>글로벌 대표 자산 ETF의 티커를 입력한다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DataReader()</span></code> 함수를 이용해 야후 파이낸스에서 데이터를 받으며, 기간은 1993년 1월 22일부터 한다.</p></li>
+<li><p>수정주가에 해당하는 부분만 선택하여 데이터프레임으로 만든다.</p></li>
+<li><p>DB의 sample_etf 테이블에 해당 데이터를 저장한다.</p></li>
+</ol>
+<div class="section" id="id2">
+<h2><span class="section-number">14.1. </span>수익률 계산 및 상관관계 확인하기<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>먼저 DB에서 ETF 데이터를 불러온 후 수익률을 계산한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">price</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;select * from sample_etf;&#39;</span><span class="p">,</span> <span class="n">con</span> <span class="o">=</span> <span class="n">engine</span><span class="p">)</span>
+<span class="n">rets</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">dispose</span><span class="p">()</span>
+
+<span class="n">rets</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SPY</th>
+      <th>IEV</th>
+      <th>EWJ</th>
+      <th>EEM</th>
+      <th>TLT</th>
+      <th>IEF</th>
+      <th>IYR</th>
+      <th>RWX</th>
+      <th>GLD</th>
+      <th>DBC</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-07-29</th>
+      <td>0.0146</td>
+      <td>0.0152</td>
+      <td>0.0093</td>
+      <td>-0.0047</td>
+      <td>-0.0027</td>
+      <td>0.0004</td>
+      <td>0.0058</td>
+      <td>0.0149</td>
+      <td>0.0028</td>
+      <td>0.0046</td>
+    </tr>
+    <tr>
+      <th>2022-08-01</th>
+      <td>-0.0030</td>
+      <td>-0.0013</td>
+      <td>0.0128</td>
+      <td>-0.0085</td>
+      <td>0.0241</td>
+      <td>0.0058</td>
+      <td>-0.0084</td>
+      <td>0.0007</td>
+      <td>0.0057</td>
+      <td>-0.0203</td>
+    </tr>
+    <tr>
+      <th>2022-08-02</th>
+      <td>-0.0066</td>
+      <td>-0.0148</td>
+      <td>-0.0190</td>
+      <td>-0.0048</td>
+      <td>-0.0212</td>
+      <td>-0.0138</td>
+      <td>-0.0129</td>
+      <td>-0.0173</td>
+      <td>-0.0059</td>
+      <td>-0.0051</td>
+    </tr>
+    <tr>
+      <th>2022-08-03</th>
+      <td>0.0157</td>
+      <td>0.0084</td>
+      <td>-0.0022</td>
+      <td>0.0079</td>
+      <td>0.0157</td>
+      <td>0.0041</td>
+      <td>0.0032</td>
+      <td>0.0054</td>
+      <td>0.0024</td>
+      <td>-0.0086</td>
+    </tr>
+    <tr>
+      <th>2022-08-04</th>
+      <td>-0.0007</td>
+      <td>0.0077</td>
+      <td>-0.0004</td>
+      <td>0.0070</td>
+      <td>-0.0003</td>
+      <td>0.0051</td>
+      <td>-0.0005</td>
+      <td>0.0040</td>
+      <td>0.0165</td>
+      <td>-0.0107</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ol class="simple">
+<li><p>ETF 데이터를 불러온다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pct_change()</span></code> 함수를 통해 수익률을 계산하며, <code class="docutils literal notranslate"><span class="pre">dropna()</span></code> 함수를 통해 결측치를 제거한다.</p></li>
+</ol>
+<p>이번에는 각 ETF의 수익률 간 상관관계를 살펴보도록 하자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">rets</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">annot</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">annot_kws</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;size&quot;</span> <span class="p">:</span> <span class="mi">16</span><span class="p">},</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/portfolio_5_0.png" src="_images/portfolio_5_0.png" />
+</div>
+</div>
+<p>같은 자산군 내에서는 강한 상관관계를 보이며, 주식과 채권 간에는 매우 낮은 상관관계를 보인다. 또한 주식과 리츠 간에도 꽤 높은 상관관계를 보인다.</p>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">14.2. </span>최대샤프지수 포트폴리오<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>최대샤프지수 포트폴리오(Maximum Sharpe Ratio Portfolio)란 샤프지수가 최대가 되도록 하는 포트폴리오를 구성하는 것이다. 샤프지수는 <span class="math notranslate nohighlight">\(\frac{R_p-R_f}{\sigma_p}\)</span>, 즉 포트폴리오의 수익을 변동성으로 나눈 값이며, 위험 대비 수익률이라고도 볼 수 있다. 따라서 샤프지수가 최대가 되는 포트폴리오는 위험은 낮으면서 수익은 높은 지점이다. riskfolio-lib 패키지의 함수를 이용해 해당 포트폴리오를 구성하기 위한 자산별 투자비중을 구해보도록 하자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">riskfolio</span> <span class="k">as</span> <span class="nn">rp</span>
+
+<span class="c1"># 포트폴리오 객체 생성</span>
+<span class="n">port</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">Portfolio</span><span class="p">(</span><span class="n">returns</span><span class="o">=</span><span class="n">rets</span><span class="p">)</span>
+
+<span class="c1"># 입력값 계산</span>
+<span class="n">method_mu</span> <span class="o">=</span> <span class="s1">&#39;hist&#39;</span>  <span class="c1"># 역사적 데이터를 바탕으로 기대 수익률 추정</span>
+<span class="n">method_cov</span> <span class="o">=</span> <span class="s1">&#39;hist&#39;</span>  <span class="c1"># 역사적 데이터를 바탕으로 분산-공분산 행렬 추정</span>
+
+<span class="c1"># 객체에 수익률 및 분산-공분산 입력</span>
+<span class="n">port</span><span class="o">.</span><span class="n">assets_stats</span><span class="p">(</span><span class="n">method_mu</span><span class="o">=</span><span class="n">method_mu</span><span class="p">,</span> <span class="n">method_cov</span><span class="o">=</span><span class="n">method_cov</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;Classic&#39;</span>  <span class="c1"># 모델 입력. Classic(역사적 데이터), BL(블랙-리터만), FM(팩터 모형)</span>
+<span class="n">rm</span> <span class="o">=</span> <span class="s1">&#39;MV&#39;</span>  <span class="c1"># 위험 측정 방법. MV는 표준편차를 의미</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="s1">&#39;Sharpe&#39;</span>  <span class="c1"># 목적함수. MinRisk(최소분산), MaxRet(최대수익률), Utility(효용) or Sharpe(샤프지수)</span>
+<span class="n">hist</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># 역사적 데이터 사용</span>
+<span class="n">rf</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># 무위험 수익률</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># 위험 회피 계수, obj가 &#39;Utility&#39; 일 때만 사용</span>
+
+<span class="c1"># 최적화</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">port</span><span class="o">.</span><span class="n">optimization</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">rm</span><span class="o">=</span><span class="n">rm</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="n">obj</span><span class="p">,</span> <span class="n">rf</span><span class="o">=</span><span class="n">rf</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="n">l</span><span class="p">,</span> <span class="n">hist</span><span class="o">=</span><span class="n">hist</span><span class="p">)</span>
+
+<span class="nb">round</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SPY</th>
+      <th>IEV</th>
+      <th>EWJ</th>
+      <th>EEM</th>
+      <th>TLT</th>
+      <th>IEF</th>
+      <th>IYR</th>
+      <th>RWX</th>
+      <th>GLD</th>
+      <th>DBC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>weights</th>
+      <td>0.2274</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.7018</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0708</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Portfolio()</span></code> 함수를 통해 포트폴리오 객체를 생성하며, <code class="docutils literal notranslate"><span class="pre">returns</span></code>에는 수익률 데이터를 입력한다.</p></li>
+<li><p>‘mu(수익률)’과 ‘cov(분산-공분산 행렬)’을 구한 후 <code class="docutils literal notranslate"><span class="pre">assets_stats()</span></code> 함수에 이를 입력한다.</p></li>
+<li><p>구하고자 하는 목적에 맞게 각종 파라미터를 입력한다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">optimization()</span></code> 함수를 통해 최대샤프지수를 만족하는 포트폴리오의 해를 구한다.</p></li>
+</ol>
+<p>이처럼 패키지를 사용할 경우 최적의 포트폴리오에 대한 수학적 지식이 부족하거나 복잡한 계산을 하지 않고도, 얼마든지 이를 만족하는 해를 구할 수 있다. 이번에는 효율적 투자선을 구성해보도록 하자. 효율적 투자선이란 각 포트폴리오의 기대수익률과 위험 수준을 바탕으로, 구성할 수 있는 모든 포트폴리오를 나타낸 것이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">points</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># 효율적 투자선을 구성하는 샘플 갯수</span>
+<span class="n">frontier</span> <span class="o">=</span> <span class="n">port</span><span class="o">.</span><span class="n">efficient_frontier</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+                                   <span class="n">rm</span><span class="o">=</span><span class="n">rm</span><span class="p">,</span>
+                                   <span class="n">points</span><span class="o">=</span><span class="n">points</span><span class="p">,</span>
+                                   <span class="n">rf</span><span class="o">=</span><span class="n">rf</span><span class="p">,</span>
+                                   <span class="n">hist</span><span class="o">=</span><span class="n">hist</span><span class="p">)</span>
+
+<span class="n">frontier</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SPY</th>
+      <th>IEV</th>
+      <th>EWJ</th>
+      <th>EEM</th>
+      <th>TLT</th>
+      <th>IEF</th>
+      <th>IYR</th>
+      <th>RWX</th>
+      <th>GLD</th>
+      <th>DBC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.1348</td>
+      <td>0.0</td>
+      <td>0.0051</td>
+      <td>0.0</td>
+      <td>0.0000</td>
+      <td>0.7911</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0000</td>
+      <td>0.069</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.2158</td>
+      <td>0.0</td>
+      <td>0.0000</td>
+      <td>0.0</td>
+      <td>0.0000</td>
+      <td>0.7238</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0604</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.2463</td>
+      <td>0.0</td>
+      <td>0.0000</td>
+      <td>0.0</td>
+      <td>0.0000</td>
+      <td>0.6661</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0876</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.2658</td>
+      <td>0.0</td>
+      <td>0.0000</td>
+      <td>0.0</td>
+      <td>0.0260</td>
+      <td>0.6069</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.1013</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.2821</td>
+      <td>0.0</td>
+      <td>0.0000</td>
+      <td>0.0</td>
+      <td>0.0674</td>
+      <td>0.5405</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.1100</td>
+      <td>0.000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ol class="simple">
+<li><p>몇 개의 점으로 효율적 투자선을 구성할 지 정한다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">efficient_frontier()</span></code> 함수를 이용해 효율적 투자선을 이루는 포트폴리오들의 비중을 계산한다.</p></li>
+</ol>
+<p>결과에 나오는 비중들을 통해 효율적 투자선을 구성할 수 있다. 이번엔 그림으로 나타내보도록 하자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Max Risk Adjusted Return Portfolio&#39;</span> 
+<span class="n">mu</span> <span class="o">=</span> <span class="n">port</span><span class="o">.</span><span class="n">mu</span>  <span class="c1"># 기대 수익률</span>
+<span class="n">cov</span> <span class="o">=</span> <span class="n">port</span><span class="o">.</span><span class="n">cov</span>  <span class="c1"># 분산-공분산 행렬</span>
+<span class="n">returns</span> <span class="o">=</span> <span class="n">port</span><span class="o">.</span><span class="n">returns</span>  <span class="c1"># 자산 별 수익률</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">plot_frontier</span><span class="p">(</span><span class="n">w_frontier</span><span class="o">=</span><span class="n">frontier</span><span class="p">,</span>
+                      <span class="n">mu</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span>
+                      <span class="n">cov</span><span class="o">=</span><span class="n">cov</span><span class="p">,</span>
+                      <span class="n">returns</span><span class="o">=</span><span class="n">returns</span><span class="p">,</span>
+                      <span class="n">rm</span><span class="o">=</span><span class="n">rm</span><span class="p">,</span>
+                      <span class="n">rf</span><span class="o">=</span><span class="n">rf</span><span class="p">,</span>
+                      <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+                      <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span>
+                      <span class="n">w</span><span class="o">=</span><span class="n">w</span><span class="p">,</span>
+                      <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+                      <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span>
+                      <span class="n">s</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+                      <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span>
+                      <span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+                      <span class="n">width</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                      <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/portfolio_11_0.png" src="_images/portfolio_11_0.png" />
+</div>
+</div>
+<ol class="simple">
+<li><p>라벨, 기대 수익률, 분산-공분산 행렬, 자산별 수익률 값을 입력한다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plot_frontier()</span></code> 함수를 통해 효율적 투자선을 시각화한다. 각종 파라미터를 수정하여 그래프를 꾸밀수도 있다.</p></li>
+</ol>
+<p>각 점의 색은 샤프지수를 의미하며, 붉은색 별은 샤프지수가 최대가 되는 점을 의미한다.</p>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">14.3. </span>최소분산 포트폴리오<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>효율적 투자선과 무위험 수익률의 접점에 해당하는 최대샤프지수 포트폴리오는 이론적으로 많이 사용되는 포트폴리오 구성 방법이지만, 실무에서는 잘 사용되지 않는다. 그 이유는 크게 다음가 같다.</p>
+<ol class="simple">
+<li><p>변동성 및 상관관계는 시간이 지나도 어느정도 유지되는 경향이 있다.</p></li>
+<li><p>기대 수익률을 추정하는 것은 매우 어렵다. 이론에서는 과거 수익률을 미래 수익률의 예측치로 사용하지만 실제 투자에서 사용하기는 무리가 있는 가정이다.</p></li>
+<li><p>위 결과를 살펴보면 10개 자산 중 일부 자산으로만 포트폴리오가 구성된다. 즉 상관관계가 높은 자산이 있으면 하나에만 투자하는 결과를 낳는다. 그러나 현실에서는 상관관계가 높은 자산에도 투자해야 하는 경우가 많다.</p></li>
+</ol>
+<p>따라서 실무에서는 1번과 2번의 이유로 인해 기대 수익률에 대한 추정이 필요하지 않은 ‘최소분산 포트폴리오’를 사용하는 경우가 많으며, 3번의 이유로 인해 각종 제약조건을 추가하기도 한다. ‘최소분산 포트폴리오(Minimum Variance Portfolio)’는 변동성이 최소인 포트폴리오며, 이 역시 패키지를 이용하면 손쉽게 계산할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">riskfolio</span> <span class="k">as</span> <span class="nn">rp</span>
+
+<span class="n">port</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">Portfolio</span><span class="p">(</span><span class="n">returns</span><span class="o">=</span><span class="n">rets</span><span class="p">)</span>
+<span class="n">method_mu</span> <span class="o">=</span> <span class="s1">&#39;hist&#39;</span>
+<span class="n">method_cov</span> <span class="o">=</span> <span class="s1">&#39;hist&#39;</span>
+<span class="n">port</span><span class="o">.</span><span class="n">assets_stats</span><span class="p">(</span><span class="n">method_mu</span><span class="o">=</span><span class="n">method_mu</span><span class="p">,</span> <span class="n">method_cov</span><span class="o">=</span><span class="n">method_cov</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;Classic&#39;</span>
+<span class="n">rm</span> <span class="o">=</span> <span class="s1">&#39;MV&#39;</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="s1">&#39;MinRisk&#39;</span>  <span class="c1"># 목적함수. MinRisk(최소분산), MaxRet(최대수익률), Utility(효용) or Sharpe(샤프지수)</span>
+<span class="n">hist</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">rf</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="n">port</span><span class="o">.</span><span class="n">optimization</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">rm</span><span class="o">=</span><span class="n">rm</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="n">obj</span><span class="p">,</span> <span class="n">rf</span><span class="o">=</span><span class="n">rf</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="n">l</span><span class="p">,</span> <span class="n">hist</span><span class="o">=</span><span class="n">hist</span><span class="p">)</span>
+
+<span class="nb">round</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SPY</th>
+      <th>IEV</th>
+      <th>EWJ</th>
+      <th>EEM</th>
+      <th>TLT</th>
+      <th>IEF</th>
+      <th>IYR</th>
+      <th>RWX</th>
+      <th>GLD</th>
+      <th>DBC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>weights</th>
+      <td>0.1348</td>
+      <td>0.0</td>
+      <td>0.0051</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.7911</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.069</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>최대샤프지수 포트폴리오를 계산하는 코드에서 obj 부분만 최소분산에 해당하는 ‘MinRisk’로 변경하였다. 즉 포트폴리오의 변동성을 최소화 하기 위해서는 각 자산 별로 해당 비중만큼 투자하면 된다. 이번에는 한눈에 확인하기 쉽게 시각화를 해보도록 하자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">plot_bar</span><span class="p">(</span><span class="n">w</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Portfolio&#39;</span><span class="p">,</span>  <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/portfolio_15_0.png" src="_images/portfolio_15_0.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">plot_bar()</span></code> 함수를 이용하면 비중을 막대그래프로 나타낼 수 있다. 그림을 살펴보면 채권 ETF가 대부분의 비중을 구성하므로, 이를 이용해 그대로 투자하기는 문제가 있다. 반면 일부 자산은 투자비중이 0%, 즉 전혀 투자하지 않기도 한다. 이처럼 변동성이 가장 낮은 종목에 대부분의 비중이 투자되는 구석해(Corner Solution) 문제를 해결하기 각종 제약조건을 추가해 줄 필요가 있다.</p>
+<div class="section" id="id5">
+<h3><span class="section-number">14.3.1. </span>최소 및 최대 투자비중 제약조건<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>모든 자산에 최소 투자비중 5%, 최대 투자비중 20%의 제약조건을 설정하도록 하겠다. 먼저 아래와 같이 유니버스에 해당하는 ETF명과 해당 ETF의 자산군을 데이터프레임 형태로 만든다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asset_classes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Asset&#39;</span><span class="p">:</span>
+    <span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span> <span class="s1">&#39;IEV&#39;</span><span class="p">,</span> <span class="s1">&#39;EWJ&#39;</span><span class="p">,</span> <span class="s1">&#39;EEM&#39;</span><span class="p">,</span> <span class="s1">&#39;TLT&#39;</span><span class="p">,</span> <span class="s1">&#39;IEF&#39;</span><span class="p">,</span> <span class="s1">&#39;IYR&#39;</span><span class="p">,</span> <span class="s1">&#39;RWX&#39;</span><span class="p">,</span> <span class="s1">&#39;GLD&#39;</span><span class="p">,</span> <span class="s1">&#39;DBC&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Class&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;stock&#39;</span><span class="p">,</span> <span class="s1">&#39;stock&#39;</span><span class="p">,</span> <span class="s1">&#39;stock&#39;</span><span class="p">,</span> <span class="s1">&#39;stock&#39;</span><span class="p">,</span> <span class="s1">&#39;bond&#39;</span><span class="p">,</span> <span class="s1">&#39;bond&#39;</span><span class="p">,</span> <span class="s1">&#39;alternative&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;alternative&#39;</span><span class="p">,</span> <span class="s1">&#39;alternative&#39;</span><span class="p">,</span> <span class="s1">&#39;alternative&#39;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">asset_classes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">asset_classes</span><span class="p">)</span>
+<span class="n">asset_classes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Asset</th>
+      <th>Class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>SPY</td>
+      <td>stock</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>IEV</td>
+      <td>stock</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>EWJ</td>
+      <td>stock</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>EEM</td>
+      <td>stock</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>TLT</td>
+      <td>bond</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>IEF</td>
+      <td>bond</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>IYR</td>
+      <td>alternative</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>RWX</td>
+      <td>alternative</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>GLD</td>
+      <td>alternative</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>DBC</td>
+      <td>alternative</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>이번에는 제약조건에 해당하는 데이터프레임을 만든다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">constraints</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Disabled&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+               <span class="s1">&#39;Type&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;All Assets&#39;</span><span class="p">,</span> <span class="s1">&#39;All Assets&#39;</span><span class="p">],</span>
+               <span class="s1">&#39;Set&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">],</span>
+               <span class="s1">&#39;Position&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">],</span>
+               <span class="s1">&#39;Sign&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;=&#39;</span><span class="p">],</span>
+               <span class="s1">&#39;Weight&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span>
+               <span class="s1">&#39;Type Relative&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">],</span>
+               <span class="s1">&#39;Relative Set&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">],</span>
+               <span class="s1">&#39;Relative&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">],</span>
+               <span class="s1">&#39;Factor&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">]}</span>
+
+<span class="n">constraints</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">constraints</span><span class="p">)</span>
+<span class="n">constraints</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Disabled</th>
+      <th>Type</th>
+      <th>Set</th>
+      <th>Position</th>
+      <th>Sign</th>
+      <th>Weight</th>
+      <th>Type Relative</th>
+      <th>Relative Set</th>
+      <th>Relative</th>
+      <th>Factor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>False</td>
+      <td>All Assets</td>
+      <td></td>
+      <td></td>
+      <td>&gt;=</td>
+      <td>0.05</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>False</td>
+      <td>All Assets</td>
+      <td></td>
+      <td></td>
+      <td>&lt;=</td>
+      <td>0.20</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ol class="simple">
+<li><p>Disabled: 제약조건의 사용 여부이며, 제약조건 갯수만큼 False를 입력한다.</p></li>
+<li><p>Type: ‘All Assets’은 모든 자산(종목)에 적용되는 조건을 의미한다. 각 자산에 조건을 적용할 때는 Assets, 하부 항목에 조건을 적용할 때는 Classes를 입력한다.</p></li>
+<li><p>Set: 위에서 입력한 유니버스 중 제약조건에 해당하는 열을 의미하며, All Assets의 경우 빈칸으로 둔다.</p></li>
+<li><p>Position: 유니버스 중 제약조건에 해당하는 값을 의미하며, All Assets의 경우 빈칸으로 둔다.</p></li>
+<li><p>Sign: 제약조건의 부호를 의미한다.</p></li>
+<li><p>Weight: 제약조건의 값을 의미한다.</p></li>
+<li><p>Type Relative, Relative Set, Relative, Factor: 상대적 제약조건에 해당하며, 빈칸으로 둔다.</p></li>
+</ol>
+<p>총 7가지 제약식에 맞게 입력한 후 데이터프레임 형태로 변경한다. 즉, 개별 투자비중이 5% 이상, 20% 이하인 조건이 만들어졌다. 이제 해당 제약조건을 만족하는 최적의 해를 구해보도록 하자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">assets_constraints</span><span class="p">(</span><span class="n">constraints</span><span class="p">,</span> <span class="n">asset_classes</span><span class="p">)</span>
+
+<span class="n">port</span><span class="o">.</span><span class="n">ainequality</span> <span class="o">=</span> <span class="n">A</span>
+<span class="n">port</span><span class="o">.</span><span class="n">binequality</span> <span class="o">=</span> <span class="n">B</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="n">port</span><span class="o">.</span><span class="n">optimization</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">rm</span><span class="o">=</span><span class="n">rm</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="n">obj</span><span class="p">,</span> <span class="n">rf</span><span class="o">=</span><span class="n">rf</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="n">l</span><span class="p">,</span> <span class="n">hist</span><span class="o">=</span><span class="n">hist</span><span class="p">)</span>
+
+<span class="n">w</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SPY</th>
+      <th>IEV</th>
+      <th>EWJ</th>
+      <th>EEM</th>
+      <th>TLT</th>
+      <th>IEF</th>
+      <th>IYR</th>
+      <th>RWX</th>
+      <th>GLD</th>
+      <th>DBC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>weights</th>
+      <td>0.05</td>
+      <td>0.05</td>
+      <td>0.05</td>
+      <td>0.05</td>
+      <td>0.2</td>
+      <td>0.2</td>
+      <td>0.05</td>
+      <td>0.05</td>
+      <td>0.2</td>
+      <td>0.1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">assets_constraints()</span></code> 함수를 통해 제약조건을 행렬 형태로 변경한다. (제약조건은 <span class="math notranslate nohighlight">\(Aw \ge B\)</span> 형태로 입력된다.)</p></li>
+<li><p>ainequality와 binequality, 즉 제약조건 부분에 위에서 구한 행렬을 입력한다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">optimization()</span></code> 함수를 통해 최소분산 포트폴리오를 만족하는 해를 구한다.</p></li>
+</ol>
+<p>결과를 살펴보면 각 자산에 적어도 5%가 투자되었으며, 최대 비중이 20%를 넘지 않는다. 이로써 구석해 문제가 다소 해결되었다. 비중을 그래프로 나타내보도록 하자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">plot_bar</span><span class="p">(</span><span class="n">w</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Portfolio&#39;</span><span class="p">,</span>  <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/portfolio_23_0.png" src="_images/portfolio_23_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3><span class="section-number">14.3.2. </span>각 종목 별 제약조건<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>위에서 추가한 제약조건만으로도 충분히 훌륭한 포트폴리오가 구성되지만, 투자 규모가 커지면 추가적인 제약조건들을 고려해야 할 경우가 생긴다. 벤치마크 비중과의 괴리로 인한 추적오차(Tracking Error)를 고려해야 할 수도 있고, 투자 대상별 거래량을 고려한 제약조건을 추가해야 할 때도 있다.</p>
+<p>기존 제약조건에는 모든 자산에 동일한 최소 및 최대 투자비중 제약조건을 다루었지만, 자산별로 제약조건을 각각 다르게 설정해야할 때도 있다. 이번에는 <a class="reference internal" href="#min-const"><span class="std std-numref">Table 14.1</span></a>과 같이 자산 별로 최소 및 최대 투자비중이 다른 제약조건을 만족하는 포트폴리오를 구성해보도록 하겠다.</p>
+<table class="colwidths-auto table" id="min-const">
+<caption><span class="caption-number">Table 14.1 </span><span class="caption-text">각 자산 별 최소 및 최대 제약조건</span><a class="headerlink" href="#min-const" title="Permalink to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>제약</p></th>
+<th class="head"><p>SPY</p></th>
+<th class="head"><p>IEV</p></th>
+<th class="head"><p>EWJ</p></th>
+<th class="head"><p>EEM</p></th>
+<th class="head"><p>TLT</p></th>
+<th class="head"><p>IEF</p></th>
+<th class="head"><p>IYR</p></th>
+<th class="head"><p>RWX</p></th>
+<th class="head"><p>GLD</p></th>
+<th class="head"><p>DBC</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>최소</p></td>
+<td><p>0.10</p></td>
+<td><p>0.10</p></td>
+<td><p>0.05</p></td>
+<td><p>0.05</p></td>
+<td><p>0.10</p></td>
+<td><p>0.10</p></td>
+<td><p>0.05</p></td>
+<td><p>0.05</p></td>
+<td><p>0.03</p></td>
+<td><p>0.03</p></td>
+</tr>
+<tr class="row-odd"><td><p>최대</p></td>
+<td><p>0.25</p></td>
+<td><p>0.25</p></td>
+<td><p>0.20</p></td>
+<td><p>0.20</p></td>
+<td><p>0.20</p></td>
+<td><p>0.20</p></td>
+<td><p>0.10</p></td>
+<td><p>0.10</p></td>
+<td><p>0.08</p></td>
+<td><p>0.08</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">constraints</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Disabled&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;Type&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;Assets&#39;</span><span class="p">,</span> <span class="s1">&#39;Assets&#39;</span><span class="p">,</span> <span class="s1">&#39;Assets&#39;</span><span class="p">,</span> <span class="s1">&#39;Assets&#39;</span><span class="p">,</span> <span class="s1">&#39;Assets&#39;</span><span class="p">,</span> <span class="s1">&#39;Assets&#39;</span><span class="p">,</span> <span class="s1">&#39;Assets&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Assets&#39;</span><span class="p">,</span> <span class="s1">&#39;Assets&#39;</span><span class="p">,</span> <span class="s1">&#39;Assets&#39;</span><span class="p">,</span> <span class="s1">&#39;Assets&#39;</span><span class="p">,</span> <span class="s1">&#39;Assets&#39;</span><span class="p">,</span> <span class="s1">&#39;Assets&#39;</span><span class="p">,</span> <span class="s1">&#39;Assets&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Assets&#39;</span><span class="p">,</span> <span class="s1">&#39;Assets&#39;</span><span class="p">,</span> <span class="s1">&#39;Assets&#39;</span><span class="p">,</span> <span class="s1">&#39;Assets&#39;</span><span class="p">,</span> <span class="s1">&#39;Assets&#39;</span><span class="p">,</span> <span class="s1">&#39;Assets&#39;</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;Set&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;Asset&#39;</span><span class="p">,</span> <span class="s1">&#39;Asset&#39;</span><span class="p">,</span> <span class="s1">&#39;Asset&#39;</span><span class="p">,</span> <span class="s1">&#39;Asset&#39;</span><span class="p">,</span> <span class="s1">&#39;Asset&#39;</span><span class="p">,</span> <span class="s1">&#39;Asset&#39;</span><span class="p">,</span> <span class="s1">&#39;Asset&#39;</span><span class="p">,</span> <span class="s1">&#39;Asset&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Asset&#39;</span><span class="p">,</span> <span class="s1">&#39;Asset&#39;</span><span class="p">,</span> <span class="s1">&#39;Asset&#39;</span><span class="p">,</span> <span class="s1">&#39;Asset&#39;</span><span class="p">,</span> <span class="s1">&#39;Asset&#39;</span><span class="p">,</span> <span class="s1">&#39;Asset&#39;</span><span class="p">,</span> <span class="s1">&#39;Asset&#39;</span><span class="p">,</span> <span class="s1">&#39;Asset&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Asset&#39;</span><span class="p">,</span> <span class="s1">&#39;Asset&#39;</span><span class="p">,</span> <span class="s1">&#39;Asset&#39;</span><span class="p">,</span> <span class="s1">&#39;Asset&#39;</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;Position&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;SPY&#39;</span><span class="p">,</span> <span class="s1">&#39;IEV&#39;</span><span class="p">,</span> <span class="s1">&#39;EWJ&#39;</span><span class="p">,</span> <span class="s1">&#39;EEM&#39;</span><span class="p">,</span> <span class="s1">&#39;TLT&#39;</span><span class="p">,</span> <span class="s1">&#39;IEF&#39;</span><span class="p">,</span> <span class="s1">&#39;IYR&#39;</span><span class="p">,</span> <span class="s1">&#39;RWX&#39;</span><span class="p">,</span> <span class="s1">&#39;GLD&#39;</span><span class="p">,</span> <span class="s1">&#39;DBC&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;SPY&#39;</span><span class="p">,</span> <span class="s1">&#39;IEV&#39;</span><span class="p">,</span> <span class="s1">&#39;EWJ&#39;</span><span class="p">,</span> <span class="s1">&#39;EEM&#39;</span><span class="p">,</span> <span class="s1">&#39;TLT&#39;</span><span class="p">,</span> <span class="s1">&#39;IEF&#39;</span><span class="p">,</span> <span class="s1">&#39;IYR&#39;</span><span class="p">,</span> <span class="s1">&#39;RWX&#39;</span><span class="p">,</span> <span class="s1">&#39;GLD&#39;</span><span class="p">,</span> <span class="s1">&#39;DBC&#39;</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;Sign&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;=&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;&lt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;=&#39;</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;Weight&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span>
+        <span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.08</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;Type Relative&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;Relative Set&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;Relative&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;Factor&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">constraints</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">constraints</span><span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">constraints</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Disabled</th>
+      <th>Type</th>
+      <th>Set</th>
+      <th>Position</th>
+      <th>Sign</th>
+      <th>Weight</th>
+      <th>Type Relative</th>
+      <th>Relative Set</th>
+      <th>Relative</th>
+      <th>Factor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>False</td>
+      <td>Assets</td>
+      <td>Asset</td>
+      <td>SPY</td>
+      <td>&gt;=</td>
+      <td>0.10</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>False</td>
+      <td>Assets</td>
+      <td>Asset</td>
+      <td>IEV</td>
+      <td>&gt;=</td>
+      <td>0.10</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>False</td>
+      <td>Assets</td>
+      <td>Asset</td>
+      <td>EWJ</td>
+      <td>&gt;=</td>
+      <td>0.05</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>False</td>
+      <td>Assets</td>
+      <td>Asset</td>
+      <td>EEM</td>
+      <td>&gt;=</td>
+      <td>0.05</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>False</td>
+      <td>Assets</td>
+      <td>Asset</td>
+      <td>TLT</td>
+      <td>&gt;=</td>
+      <td>0.10</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>False</td>
+      <td>Assets</td>
+      <td>Asset</td>
+      <td>IEF</td>
+      <td>&gt;=</td>
+      <td>0.10</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>False</td>
+      <td>Assets</td>
+      <td>Asset</td>
+      <td>IYR</td>
+      <td>&gt;=</td>
+      <td>0.05</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>False</td>
+      <td>Assets</td>
+      <td>Asset</td>
+      <td>RWX</td>
+      <td>&gt;=</td>
+      <td>0.05</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>False</td>
+      <td>Assets</td>
+      <td>Asset</td>
+      <td>GLD</td>
+      <td>&gt;=</td>
+      <td>0.03</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>False</td>
+      <td>Assets</td>
+      <td>Asset</td>
+      <td>DBC</td>
+      <td>&gt;=</td>
+      <td>0.03</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>False</td>
+      <td>Assets</td>
+      <td>Asset</td>
+      <td>SPY</td>
+      <td>&lt;=</td>
+      <td>0.25</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>False</td>
+      <td>Assets</td>
+      <td>Asset</td>
+      <td>IEV</td>
+      <td>&lt;=</td>
+      <td>0.25</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>False</td>
+      <td>Assets</td>
+      <td>Asset</td>
+      <td>EWJ</td>
+      <td>&lt;=</td>
+      <td>0.20</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>False</td>
+      <td>Assets</td>
+      <td>Asset</td>
+      <td>EEM</td>
+      <td>&lt;=</td>
+      <td>0.20</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>False</td>
+      <td>Assets</td>
+      <td>Asset</td>
+      <td>TLT</td>
+      <td>&lt;=</td>
+      <td>0.20</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>False</td>
+      <td>Assets</td>
+      <td>Asset</td>
+      <td>IEF</td>
+      <td>&lt;=</td>
+      <td>0.20</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>False</td>
+      <td>Assets</td>
+      <td>Asset</td>
+      <td>IYR</td>
+      <td>&lt;=</td>
+      <td>0.10</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>False</td>
+      <td>Assets</td>
+      <td>Asset</td>
+      <td>RWX</td>
+      <td>&lt;=</td>
+      <td>0.10</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>False</td>
+      <td>Assets</td>
+      <td>Asset</td>
+      <td>GLD</td>
+      <td>&lt;=</td>
+      <td>0.08</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>False</td>
+      <td>Assets</td>
+      <td>Asset</td>
+      <td>DBC</td>
+      <td>&lt;=</td>
+      <td>0.08</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ol class="simple">
+<li><p>Disabled: 제약조건이 총 20개이므로 False를 20번 입력한다.</p></li>
+<li><p>Type: 제약조건을 각 자산에 적용하므로 Assets를 입력한다.</p></li>
+<li><p>Set: 유니버스 중 티커에 해당하는 Asset을 입력한다.</p></li>
+<li><p>Position: 유니버스 중 티커명을 입력한다.</p></li>
+<li><p>Sign: 제약조건의 부호를 의미한다.</p></li>
+<li><p>Weight: 제약조건의 값을 의미한다.</p></li>
+<li><p>Type Relative, Relative Set, Relative, Factor: 상대적 제약조건에 해당하며, 빈칸으로 둔다.</p></li>
+</ol>
+<p>각 종목(티커) 별 최소 및 최대 투자비중을 각기 다르게 입력했다. 이를 만족하는 포트폴리오를 계산해보도록 한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">assets_constraints</span><span class="p">(</span><span class="n">constraints</span><span class="p">,</span> <span class="n">asset_classes</span><span class="p">)</span>
+
+<span class="n">port</span><span class="o">.</span><span class="n">ainequality</span> <span class="o">=</span> <span class="n">A</span>
+<span class="n">port</span><span class="o">.</span><span class="n">binequality</span> <span class="o">=</span> <span class="n">B</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="n">port</span><span class="o">.</span><span class="n">optimization</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">rm</span><span class="o">=</span><span class="n">rm</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="n">obj</span><span class="p">,</span> <span class="n">rf</span><span class="o">=</span><span class="n">rf</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="n">l</span><span class="p">,</span> <span class="n">hist</span><span class="o">=</span><span class="n">hist</span><span class="p">)</span>
+
+<span class="n">w</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SPY</th>
+      <th>IEV</th>
+      <th>EWJ</th>
+      <th>EEM</th>
+      <th>TLT</th>
+      <th>IEF</th>
+      <th>IYR</th>
+      <th>RWX</th>
+      <th>GLD</th>
+      <th>DBC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>weights</th>
+      <td>0.1</td>
+      <td>0.1</td>
+      <td>0.09</td>
+      <td>0.05</td>
+      <td>0.2</td>
+      <td>0.2</td>
+      <td>0.05</td>
+      <td>0.05</td>
+      <td>0.08</td>
+      <td>0.08</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>결과를 살펴보면 <a class="reference internal" href="#min-const"><span class="std std-numref">Table 14.1</span></a>에서 설정한 최소 및 최대 투자비중의 범위 내에 해가 위치함을 확인할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">plot_bar</span><span class="p">(</span><span class="n">w</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Portfolio&#39;</span><span class="p">,</span>  <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/portfolio_29_0.png" src="_images/portfolio_29_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3><span class="section-number">14.3.3. </span>자산군 별 비중<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>마지막으로 개별 자산이 아닌 자산군 별로 제약조건을 다르게 주도록 한다. 즉 <a class="reference internal" href="#min-const-2"><span class="std std-numref">Table 14.2</span></a>와 같이 주식 ETF에 투자하는 비중은 최소 40%, 최대 70%이어야 한다. 또한 자산군 내에서 한 종목에 투자 비중이 쏠리는 것을 방지하기 위해 개별 자산의 투자 비중은 최소 3%, 최대 20%로 한다.</p>
+<table class="colwidths-auto table" id="min-const-2">
+<caption><span class="caption-number">Table 14.2 </span><span class="caption-text">각 자산 별 최소 및 최대 제약조건</span><a class="headerlink" href="#min-const-2" title="Permalink to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>제약</p></th>
+<th class="head"><p>개별</p></th>
+<th class="head"><p>주식</p></th>
+<th class="head"><p>채권</p></th>
+<th class="head"><p>대체자산</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>최소</p></td>
+<td><p>0.03</p></td>
+<td><p>0.4</p></td>
+<td><p>0.3</p></td>
+<td><p>0.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>최대</p></td>
+<td><p>0.20</p></td>
+<td><p>0.7</p></td>
+<td><p>0.5</p></td>
+<td><p>0.2</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">constraints</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Disabled&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+    <span class="s1">&#39;Type&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;All Assets&#39;</span><span class="p">,</span> <span class="s1">&#39;All Assets&#39;</span><span class="p">,</span> <span class="s1">&#39;Classes&#39;</span><span class="p">,</span> <span class="s1">&#39;Classes&#39;</span><span class="p">,</span> <span class="s1">&#39;Classes&#39;</span><span class="p">,</span> <span class="s1">&#39;Classes&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Classes&#39;</span><span class="p">,</span> <span class="s1">&#39;Classes&#39;</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;Set&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;Class&#39;</span><span class="p">,</span> <span class="s1">&#39;Class&#39;</span><span class="p">,</span> <span class="s1">&#39;Class&#39;</span><span class="p">,</span> <span class="s1">&#39;Class&#39;</span><span class="p">,</span> <span class="s1">&#39;Class&#39;</span><span class="p">,</span> <span class="s1">&#39;Class&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Position&#39;</span><span class="p">:</span>
+    <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;stock&#39;</span><span class="p">,</span> <span class="s1">&#39;bond&#39;</span><span class="p">,</span> <span class="s1">&#39;alternative&#39;</span><span class="p">,</span> <span class="s1">&#39;stock&#39;</span><span class="p">,</span> <span class="s1">&#39;bond&#39;</span><span class="p">,</span> <span class="s1">&#39;alternative&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Sign&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;=&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;=&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Weight&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.40</span><span class="p">,</span> <span class="mf">0.30</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.70</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">],</span>
+    <span class="s1">&#39;Type Relative&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Relative Set&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Relative&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Factor&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">constraints</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">constraints</span><span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">constraints</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Disabled</th>
+      <th>Type</th>
+      <th>Set</th>
+      <th>Position</th>
+      <th>Sign</th>
+      <th>Weight</th>
+      <th>Type Relative</th>
+      <th>Relative Set</th>
+      <th>Relative</th>
+      <th>Factor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>False</td>
+      <td>All Assets</td>
+      <td></td>
+      <td></td>
+      <td>&gt;=</td>
+      <td>0.03</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>False</td>
+      <td>All Assets</td>
+      <td></td>
+      <td></td>
+      <td>&lt;=</td>
+      <td>0.20</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>False</td>
+      <td>Classes</td>
+      <td>Class</td>
+      <td>stock</td>
+      <td>&gt;=</td>
+      <td>0.40</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>False</td>
+      <td>Classes</td>
+      <td>Class</td>
+      <td>bond</td>
+      <td>&gt;=</td>
+      <td>0.30</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>False</td>
+      <td>Classes</td>
+      <td>Class</td>
+      <td>alternative</td>
+      <td>&gt;=</td>
+      <td>0.10</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>False</td>
+      <td>Classes</td>
+      <td>Class</td>
+      <td>stock</td>
+      <td>&lt;=</td>
+      <td>0.70</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>False</td>
+      <td>Classes</td>
+      <td>Class</td>
+      <td>bond</td>
+      <td>&lt;=</td>
+      <td>0.50</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>False</td>
+      <td>Classes</td>
+      <td>Class</td>
+      <td>alternative</td>
+      <td>&lt;=</td>
+      <td>0.20</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ol class="simple">
+<li><p>Disabled: 개별 자산의 제약 조건 2개, 자산군 별 제약 조건이 6개 이므로 False를 8개 입력한다.</p></li>
+<li><p>Type: 모든 자산(종목)에 적용되는 조건은 ‘All Assets’을, 자산군에 적용되는 조건은 ‘Classes’를 입력한다.</p></li>
+<li><p>Set: 모든 자산(종목)에 적용되는 조건에는 공백을, 자산군에 적용되는 조건은 열 이름인 ‘Class’를 입력한다.</p></li>
+<li><p>Position: 공백 및 자산군을 입력한다.</p></li>
+<li><p>Sign: 제약조건의 부호를 의미한다.</p></li>
+<li><p>Weight: 제약조건의 값을 의미한다.</p></li>
+<li><p>Type Relative, Relative Set, Relative, Factor: 상대적 제약조건에 해당하며, 빈칸으로 둔다.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">assets_constraints</span><span class="p">(</span><span class="n">constraints</span><span class="p">,</span> <span class="n">asset_classes</span><span class="p">)</span>
+
+<span class="n">port</span><span class="o">.</span><span class="n">ainequality</span> <span class="o">=</span> <span class="n">A</span>
+<span class="n">port</span><span class="o">.</span><span class="n">binequality</span> <span class="o">=</span> <span class="n">B</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="n">port</span><span class="o">.</span><span class="n">optimization</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">rm</span><span class="o">=</span><span class="n">rm</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="n">obj</span><span class="p">,</span> <span class="n">rf</span><span class="o">=</span><span class="n">rf</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="n">l</span><span class="p">,</span> <span class="n">hist</span><span class="o">=</span><span class="n">hist</span><span class="p">)</span>
+
+<span class="n">w</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SPY</th>
+      <th>IEV</th>
+      <th>EWJ</th>
+      <th>EEM</th>
+      <th>TLT</th>
+      <th>IEF</th>
+      <th>IYR</th>
+      <th>RWX</th>
+      <th>GLD</th>
+      <th>DBC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>weights</th>
+      <td>0.2</td>
+      <td>0.03</td>
+      <td>0.14</td>
+      <td>0.03</td>
+      <td>0.2</td>
+      <td>0.2</td>
+      <td>0.03</td>
+      <td>0.03</td>
+      <td>0.11</td>
+      <td>0.03</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>위 제약조건을 만족하는 해를 구하였다. 자산군 별 제약조건이 제대로 적용되었는지 확인해보도록 하자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w_concat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">asset_classes</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Asset&#39;</span><span class="p">),</span> <span class="n">w</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">w_concat</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Class&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;weights&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>weights</th>
+    </tr>
+    <tr>
+      <th>Class</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>stock</th>
+      <td>0.4</td>
+    </tr>
+    <tr>
+      <th>bond</th>
+      <td>0.4</td>
+    </tr>
+    <tr>
+      <th>alternative</th>
+      <td>0.2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>자산군 별 그룹을 묶어 비중을 더해보면 <a class="reference internal" href="#min-const-2"><span class="std std-numref">Table 14.2</span></a>에서 설정한 최소 및 최대 투자비중의 범위 내에 해가 위치함을 확인할 수 있다. 이처럼 패키지 내의 함수를 이용하면 복잡한 제약조건도 매우 손쉽게 적용할 수 있다.</p>
+</div>
+</div>
+<div class="section" id="id8">
+<h2><span class="section-number">14.4. </span>위험균형 포트폴리오<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>포트폴리오를 구성하는 자산들과 전체 위험의 관계를 이해하기 위해서는, 먼저 한계 위험기여도(MRC: Marginal Risk Contribution)와 위험기여도(RC: Risk Contribution)에 대해 알아야 한다. 한계 위험기여도는 특정 자산의 비중을 한 단위 증가시켰을 때 전체 포트폴리오 위험의 증가를 나타내는 단위로서, 수학의 편미분과 같은 개념이다. <span class="math notranslate nohighlight">\(i\)</span>번째 자산의 한계 위험기여도는 아래와 같이 나타낼 수 있다.</p>
+<div class="math notranslate nohighlight">
+\[MRC_i = \frac{\partial\sigma_p}{\partial w_i} \]</div>
+<p><span class="math notranslate nohighlight">\(\sqrt {f'(x)} = \frac{f'(x)}{2\sqrt{f(x)}}\)</span>인 사실을 이용하면, 한계 위험기여도는 다음과 같이 풀 수 있다. 결과적으로 분자는 분산-공분산 행렬과 각 자산의 비중의 곱, 분모는 포트폴리오의 표준편차 형태로 나타난다.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation} 
+\begin{split}
+\frac{\partial\sigma_p}{\partial w} &amp; = \frac{\partial(\sqrt{w'\Omega w})}{\partial w} \\
+&amp; =\frac{\partial(w'\Omega w)}{\partial w} \times \frac{1}{2\sqrt{w'\Omega w}} \\
+&amp; =\frac{2\Omega w}{2\sqrt{w'\Omega w}} \\
+&amp; =\frac{\Omega w}{\sqrt{w'\Omega w}}
+\end{split}
+\end{equation} 
+\end{split}\]</div>
+<p>위험기여도는 특정 자산이 포트폴리오 내에서 차지하는 위험의 비중이다. 한계 위험기여도가 큰 자산도 포트폴리오 내에서 비중이 작다면, 포트폴리오 내에서 차지하는 위험의 비중은 작을 것이다. 반면에, 한계 위험기여도가 작은 자산일지라도 비중이 압도적으로 많다면, 포트폴리오 내에서 차지하는 위험의 비중은 클 것이다. 결과적으로 <span class="math notranslate nohighlight">\(i\)</span>번째 자산의 위험기여도는, <span class="math notranslate nohighlight">\(i\)</span>번째 자산의 한계 위험기여도와 포트폴리오 내 비중의 곱으로 이루어진다.</p>
+<div class="math notranslate nohighlight">
+\[RC_i = \frac{\partial\sigma_p}{\partial w_i} \times w_i\]</div>
+<p>특정 자산이 포트폴리오의 위험을 대부분 차지하는 문제를 막고, 모든 자산이 동일한 위험기여도를 가지는 포트폴리오가 위험균형 포트폴리오(Risk Parity Portfolio) 혹은 동일 위험기여도 포트폴리오(Equal Risk Contribution Portfolio)다. 이를 수식으로 쓰면 다음과 같습니다.</p>
+<div class="math notranslate nohighlight">
+\[RC_1 = RC_2 = \dots = RC_n\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{\partial\sigma_p}{\partial w_1} \times w_1 = \frac{\partial\sigma_p}{\partial w_2} \times w_2
+= \dots = \frac{\partial\sigma_p}{\partial w_n} \times w_n = \frac{1}{n}\]</div>
+<p>다행인 점은 위험균형 포트폴리오를 구하기 위해 위의 수식을 알 필요가 없다는 점이다. riskfolio-lib 패키지의 함수를 이용하면 이 역시 손쉽게 계산할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">riskfolio</span> <span class="k">as</span> <span class="nn">rp</span>
+
+<span class="n">port</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">Portfolio</span><span class="p">(</span><span class="n">returns</span><span class="o">=</span><span class="n">rets</span><span class="p">)</span>
+<span class="n">method_mu</span> <span class="o">=</span> <span class="s1">&#39;hist&#39;</span>
+<span class="n">method_cov</span> <span class="o">=</span> <span class="s1">&#39;hist&#39;</span>
+<span class="n">port</span><span class="o">.</span><span class="n">assets_stats</span><span class="p">(</span><span class="n">method_mu</span><span class="o">=</span><span class="n">method_mu</span><span class="p">,</span> <span class="n">method_cov</span><span class="o">=</span><span class="n">method_cov</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;Classic&#39;</span>
+<span class="n">rm</span> <span class="o">=</span> <span class="s1">&#39;MV&#39;</span>
+<span class="n">hist</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">rf</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># 위험기여도 제약조건</span>
+
+<span class="n">w_rp</span> <span class="o">=</span> <span class="n">port</span><span class="o">.</span><span class="n">rp_optimization</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">rm</span><span class="o">=</span><span class="n">rm</span><span class="p">,</span> <span class="n">rf</span><span class="o">=</span><span class="n">rf</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">,</span> <span class="n">hist</span><span class="o">=</span><span class="n">hist</span><span class="p">)</span>
+
+<span class="n">w_rp</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SPY</th>
+      <th>IEV</th>
+      <th>EWJ</th>
+      <th>EEM</th>
+      <th>TLT</th>
+      <th>IEF</th>
+      <th>IYR</th>
+      <th>RWX</th>
+      <th>GLD</th>
+      <th>DBC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>weights</th>
+      <td>0.060684</td>
+      <td>0.048189</td>
+      <td>0.058278</td>
+      <td>0.038824</td>
+      <td>0.171977</td>
+      <td>0.359779</td>
+      <td>0.041175</td>
+      <td>0.052708</td>
+      <td>0.090155</td>
+      <td>0.078231</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>최대샤프지수 및 최소분산 포트폴리오와 거의 비슷하게 값을 입력하며, <code class="docutils literal notranslate"><span class="pre">obj</span></code> 대신 위험기여도 제약조건에 해당하는 <code class="docutils literal notranslate"><span class="pre">b</span></code> 인자를 입력한다. <code class="docutils literal notranslate"><span class="pre">rp_optimization()</span></code> 함수를 이용하면 위험균형 포트폴리오를 만족하는 해가 계산된다. 해당 비중으로 포트폴리오를 구성하면 모든 자산이 동일한 위험기여도를 가지는지 확인해보도록 하자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">plot_risk_con</span><span class="p">(</span><span class="n">w_rp</span><span class="p">,</span>
+                      <span class="n">cov</span><span class="o">=</span><span class="n">port</span><span class="o">.</span><span class="n">cov</span><span class="p">,</span>
+                      <span class="n">returns</span><span class="o">=</span><span class="n">port</span><span class="o">.</span><span class="n">returns</span><span class="p">,</span>
+                      <span class="n">rm</span><span class="o">=</span><span class="n">rm</span><span class="p">,</span>
+                      <span class="n">rf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                      <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+                      <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span>
+                      <span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+                      <span class="n">width</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                      <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/portfolio_39_0.png" src="_images/portfolio_39_0.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">plot_risk_con()</span></code> 함수를 이용하면 투자 비중에 따른 자산들의 위험기여도를 알 수 있으며, 모든 자산이 동일한 위험기여도를 가진다는 것이 확인된다.</p>
+<div class="section" id="id9">
+<h3><span class="section-number">14.4.1. </span>위험예산 포트폴리오<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>모든 자산의 위험기여도가 동일한 값이 아닌, 자산별로 다른 위험기여도를 가지는 포트폴리오를 구성해야 할 경우도 있다. 이러한 포트폴리오를 위험예산 포트폴리오(Risk Budget Portfolio)라고 한다. 위험균형 포트폴리오는 각 자산의 위험예산이 <span class="math notranslate nohighlight">\(\frac{1}{n}\)</span>로 동일한 특수 형태이다.</p>
+<p>먼저 각 자산 별 위험예산을 <a class="reference internal" href="#risk-contri"><span class="std std-numref">Table 14.3</span></a>과 같이 정한다. 즉, 1~4번 자산(주식)은 각각 15%씩, 5~6번 자산(채권)은 각각 10%씩, 7~10번 자산(대체자산)은 각각 5%씩 위험예산을 부여한다.</p>
+<table class="colwidths-auto table" id="risk-contri">
+<caption><span class="caption-number">Table 14.3 </span><span class="caption-text">위험예산 포트폴리오 예시</span><a class="headerlink" href="#risk-contri" title="Permalink to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>제약</p></th>
+<th class="head"><p>SPY</p></th>
+<th class="head"><p>IEV</p></th>
+<th class="head"><p>EWJ</p></th>
+<th class="head"><p>EEM</p></th>
+<th class="head"><p>TLT</p></th>
+<th class="head"><p>IEF</p></th>
+<th class="head"><p>IYR</p></th>
+<th class="head"><p>RWX</p></th>
+<th class="head"><p>GLD</p></th>
+<th class="head"><p>DBC</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>예산</p></td>
+<td><p>0.15</p></td>
+<td><p>0.15</p></td>
+<td><p>0.15</p></td>
+<td><p>0.15</p></td>
+<td><p>0.10</p></td>
+<td><p>0.10</p></td>
+<td><p>0.05</p></td>
+<td><p>0.05</p></td>
+<td><p>0.05</p></td>
+<td><p>0.05</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">]</span>
+<span class="n">w_rp</span> <span class="o">=</span> <span class="n">port</span><span class="o">.</span><span class="n">rp_optimization</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">rm</span><span class="o">=</span><span class="n">rm</span><span class="p">,</span> <span class="n">rf</span><span class="o">=</span><span class="n">rf</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">,</span> <span class="n">hist</span><span class="o">=</span><span class="n">hist</span><span class="p">)</span>
+
+<span class="n">w_rp</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SPY</th>
+      <th>IEV</th>
+      <th>EWJ</th>
+      <th>EEM</th>
+      <th>TLT</th>
+      <th>IEF</th>
+      <th>IYR</th>
+      <th>RWX</th>
+      <th>GLD</th>
+      <th>DBC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>weights</th>
+      <td>0.085431</td>
+      <td>0.068835</td>
+      <td>0.080791</td>
+      <td>0.05544</td>
+      <td>0.179636</td>
+      <td>0.380988</td>
+      <td>0.020609</td>
+      <td>0.026179</td>
+      <td>0.056458</td>
+      <td>0.045634</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>위험균형 포트폴리오를 구하는 코드에서, 위험기여도에 해당하는 b 부분만 변경한다. 즉, 해당 부분에 위험예산을 입력한다. 해당 비중으로 포트폴리오를 구성하면 우리가 원한 위험예산 포트폴리오를 만족하는 확인해보도록 한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">rp</span><span class="o">.</span><span class="n">plot_risk_con</span><span class="p">(</span><span class="n">w_rp</span><span class="p">,</span>
+                      <span class="n">cov</span><span class="o">=</span><span class="n">port</span><span class="o">.</span><span class="n">cov</span><span class="p">,</span>
+                      <span class="n">returns</span><span class="o">=</span><span class="n">port</span><span class="o">.</span><span class="n">returns</span><span class="p">,</span>
+                      <span class="n">rm</span><span class="o">=</span><span class="n">rm</span><span class="p">,</span>
+                      <span class="n">rf</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                      <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+                      <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span>
+                      <span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+                      <span class="n">width</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                      <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/portfolio_43_0.png" src="_images/portfolio_43_0.png" />
+</div>
+</div>
+<p>각 자산의 위험기여도가 <a class="reference internal" href="#risk-contri"><span class="std std-numref">Table 14.3</span></a>에서 설정한 목표치와 동일함이 확인된다.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>이 외에도 Riskfolio 패키지의 자세한 사용법은 공식 홈페이지를 참조하기 바란다.</p>
+<p><a class="reference external" href="https://riskfolio-lib.readthedocs.io/en/latest/index.html">https://riskfolio-lib.readthedocs.io/en/latest/index.html</a></p>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="factor.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">13. </span>퀀트 전략을 이용한 종목선정</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="technical.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>트레이딩을 위한 기술적 지표</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By 이현열<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
