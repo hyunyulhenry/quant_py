@@ -1712,7 +1712,7 @@ plt.show()
 data_bind_final = data_bind[['종목코드', 'z_quality', 'z_value', 'z_momentum'
                              ]].set_index('종목코드').apply(zscore,
                                                         nan_policy='omit')
-data_bind_final.columns = ['quality', 'value', 'momenmum']
+data_bind_final.columns = ['quality', 'value', 'momentum']
 
 plt.rc('axes', unicode_minus=False)
 fig, axes = plt.subplots(3, 1, figsize=(10, 6), sharex=True, sharey=True)

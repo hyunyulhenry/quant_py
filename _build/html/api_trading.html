@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>17. 증권사 API 연결과 매매하기 &#8212; 파이썬을 이용한 퀀트 투자 포트폴리오 만들기</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -39,10 +37,12 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script kind="utterances">
 
     var commentsRunWhenDOMLoaded = cb => {
@@ -78,7 +78,7 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -96,7 +96,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -105,9 +119,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -125,14 +140,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="index.html">
-   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   퀀트와 프로그래밍 기초 배워보기
  </span>
@@ -257,107 +273,164 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/api_trading.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/hyunyulhenry/quant_py"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/hyunyulhenry/quant_py/issues/new?title=Issue%20on%20page%20%2Fapi_trading.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_py/main?urlpath=tree/api_trading.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/hyunyulhenry/quant_py/main?urlpath=tree/api_trading.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/api_trading.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
    17.1. 모의투자 및 API 서비스 신청하기
@@ -453,12 +526,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>증권사 API 연결과 매매하기</h1>
@@ -570,15 +642,16 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="api">
-<h1><span class="section-number">17. </span>증권사 API 연결과 매매하기<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="api">
+<h1><span class="section-number">17. </span>증권사 API 연결과 매매하기<a class="headerlink" href="#api" title="Permalink to this headline">#</a></h1>
 <p>조건에 맞는 포트폴리오를 계산했으면, 실제로 매매하는 일이 남았다. 종목이 몇개 되지않고 리밸런싱 주기가 길다면(예: 월간 혹은 분기별), 매번 HTS를 통해 직접 매매하는 것도 나쁘지는 않다. 그러나 증권사에서 제공하는 API를 이용할 경우 리밸런싱 작업 역시 자동으로 할 수 있다.</p>
 <p>기존 국내 증권사들이 제공하던 API는 HTS에 로그인을 한 후 COM 방식을 연결해야 하는 매우 불편한 방식이었다. 반면 2022년 한국투자증권에서 Rest API와 웹소켓 방식을 제공함에 따라 HTS에 로그인을 하지 않고 API Key만을 이용한 트레이딩이 가능해졌다. 또한 국내 뿐만 아니라 해외주식에 대한 조회/주문 기능도 제공하고 있다.</p>
 <table class="colwidths-auto table" id="api-compare">
-<caption><span class="caption-number">Table 17.1 </span><span class="caption-text">증권사 API 비교</span><a class="headerlink" href="#api-compare" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 17.1 </span><span class="caption-text">증권사 API 비교</span><a class="headerlink" href="#api-compare" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>항목</p></th>
 <th class="head"><p>오픈 API</p></th>
@@ -605,57 +678,77 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 <p>API를 신청하기 위해서는 계좌가 있어야 한다. 한국투자증권 계좌는 앱을 통해 비대면으로도 개설이 가능하다. 또한 API 서비스가 제대로 작동하고 있는지 HTS를 통해 확인해볼 필요가 있으므로, 이 역시 미리 다운로드 받는다. 먼저 한국투자증권 홈페이지에 접속하여 [이용안내 → 온라인 이용안내 → 온라인 거래시스템]를 선택한다.</p>
-<div class="figure align-default" id="hts-down">
+<figure class="align-default" id="hts-down">
 <img alt="_images/hts_down.png" src="_images/hts_down.png" />
-<p class="caption"><span class="caption-number">Fig. 17.1 </span><span class="caption-text">온라인 거래시스템</span><a class="headerlink" href="#hts-down" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17.1 </span><span class="caption-text">온라인 거래시스템</span><a class="headerlink" href="#hts-down" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>여러 PC 전용 프로그램(HTS) 중 가장 일반적인 ‘eFriend Plus’를 다운로드 받는다.</p>
-<div class="figure align-default" id="efriend">
+<figure class="align-default" id="efriend">
 <img alt="_images/efriend.png" src="_images/efriend.png" />
-<p class="caption"><span class="caption-number">Fig. 17.2 </span><span class="caption-text">HTS 다운로드</span><a class="headerlink" href="#efriend" title="Permalink to this image">¶</a></p>
-</div>
-<div class="section" id="id1">
-<h2><span class="section-number">17.1. </span>모의투자 및 API 서비스 신청하기<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<figcaption>
+<p><span class="caption-number">Fig. 17.2 </span><span class="caption-text">HTS 다운로드</span><a class="headerlink" href="#efriend" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="id1">
+<h2><span class="section-number">17.1. </span>모의투자 및 API 서비스 신청하기<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <p>모의투자 계좌에서 API 서비스를 테스트해보기 위해 모의계좌를 신청한다. 한국투자증권 홈페이지에 접속하여 로그인을 한 후 [트레이딩 → 모의투자 → 주식/선물옵션 모의투자 → 모의투자안내]를 선택하여 계좌를 개설한다.</p>
-<div class="figure align-default" id="mock">
+<figure class="align-default" id="mock">
 <img alt="_images/mock.png" src="_images/mock.png" />
-<p class="caption"><span class="caption-number">Fig. 17.3 </span><span class="caption-text">모의투자 신청하기</span><a class="headerlink" href="#mock" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17.3 </span><span class="caption-text">모의투자 신청하기</span><a class="headerlink" href="#mock" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>[신청/재도전] 탭을 클릭한 후 리그구분에서 국내주식, 금액은 최대인 5억원을 선택한다. 그 후 이메일 및 휴대폰 번호를 입력하고 하단의 [신청]을 클릭한다.</p>
-<div class="figure align-default" id="start">
+<figure class="align-default" id="start">
 <img alt="_images/start.png" src="_images/start.png" />
-<p class="caption"><span class="caption-number">Fig. 17.4 </span><span class="caption-text">모의투자 정보 입력</span><a class="headerlink" href="#start" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17.4 </span><span class="caption-text">모의투자 정보 입력</span><a class="headerlink" href="#start" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>신청을 완료하면 다음과 같은 화면이 뜬다. 모의계좌번호는 API 신청시 필요하므로 기억해두거나 적어두기 바란다.</p>
-<div class="figure align-default" id="start2">
+<figure class="align-default" id="start2">
 <img alt="_images/start2.png" src="_images/start2.png" />
-<p class="caption"><span class="caption-number">Fig. 17.5 </span><span class="caption-text">모의투자 신청 결과</span><a class="headerlink" href="#start2" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17.5 </span><span class="caption-text">모의투자 신청 결과</span><a class="headerlink" href="#start2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>이제 API 서비스를 신청하도록 한다. 한국투자증권 홈페이지에서 [트레이딩 → Open API → KIS Developers → KIS Developers 서비스 신청하기]를 선택한다.</p>
-<div class="figure align-default" id="developer">
+<figure class="align-default" id="developer">
 <img alt="_images/developer.png" src="_images/developer.png" />
-<p class="caption"><span class="caption-number">Fig. 17.6 </span><span class="caption-text">API 서비스 신청하기 (1)</span><a class="headerlink" href="#developer" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17.6 </span><span class="caption-text">API 서비스 신청하기 (1)</span><a class="headerlink" href="#developer" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>먼저 휴대폰 번호 인증을 한다.</p>
-<div class="figure align-default" id="api-1">
+<figure class="align-default" id="api-1">
 <img alt="_images/api_1.png" src="_images/api_1.png" />
-<p class="caption"><span class="caption-number">Fig. 17.7 </span><span class="caption-text">API 서비스 신청하기 (2)</span><a class="headerlink" href="#api-1" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17.7 </span><span class="caption-text">API 서비스 신청하기 (2)</span><a class="headerlink" href="#api-1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>다음으로 유의사항확인 화면에서 동의를 누른 후 다음을 클릭한다.</p>
-<div class="figure align-default" id="api-2">
+<figure class="align-default" id="api-2">
 <img alt="_images/api_2.png" src="_images/api_2.png" />
-<p class="caption"><span class="caption-number">Fig. 17.8 </span><span class="caption-text">API 서비스 신청하기 (3)</span><a class="headerlink" href="#api-2" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17.8 </span><span class="caption-text">API 서비스 신청하기 (3)</span><a class="headerlink" href="#api-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>신청정보 화면에서 [종합계좌]와 [모의계좌] 모두 선택한다. 이후 [다음] 버튼을 클릭하면 인증화면으로 넘어간다.</p>
-<div class="figure align-default" id="id2">
+<figure class="align-default" id="id2">
 <img alt="_images/api_3.png" src="_images/api_3.png" />
-<p class="caption"><span class="caption-number">Fig. 17.9 </span><span class="caption-text">API 서비스 신청하기 (4)</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17.9 </span><span class="caption-text">API 서비스 신청하기 (4)</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>인증을 마치면 종합계좌와 모의계좌에 각각 APP Key와 APP Secret이 생성된다. 해당 key를 통해 계좌 내에서 매매가 가능하므로 유출되지 않도록 조심한다.</p>
-<div class="figure align-default" id="id3">
+<figure class="align-default" id="id3">
 <img alt="_images/api_4.png" src="_images/api_4.png" />
-<p class="caption"><span class="caption-number">Fig. 17.10 </span><span class="caption-text">API 서비스 신청하기 (5)</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17.10 </span><span class="caption-text">API 서비스 신청하기 (5)</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>발급받은 API Key를 keyring 패키지를 이용해 저장한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -674,25 +767,31 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p>‘User Name’에는 본인의 이름, ‘APP Key’와 ‘APP Secret’에는 각각 발급받은 API Key를 입력한다.</p>
 <p>HTS에서 [eFriend 모의투자] 탭을 선택해 모의투자 계좌에 로그인하면, 잔고에 신청한 금액인 5억이 있는것을 확인할 수 있다.</p>
-<div class="figure align-default" id="hts">
+<figure class="align-default" id="hts">
 <img alt="_images/hts.png" src="_images/hts.png" />
-<p class="caption"><span class="caption-number">Fig. 17.11 </span><span class="caption-text">모의투자 계좌 로그인</span><a class="headerlink" href="#hts" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-default" id="mock-1">
+<figcaption>
+<p><span class="caption-number">Fig. 17.11 </span><span class="caption-text">모의투자 계좌 로그인</span><a class="headerlink" href="#hts" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="mock-1">
 <img alt="_images/mock_1.png" src="_images/mock_1.png" />
-<p class="caption"><span class="caption-number">Fig. 17.12 </span><span class="caption-text">모의투자 계좌잔고</span><a class="headerlink" href="#mock-1" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="id4">
-<h2><span class="section-number">17.2. </span>접근토큰 및 해쉬키 발급받기<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<figcaption>
+<p><span class="caption-number">Fig. 17.12 </span><span class="caption-text">모의투자 계좌잔고</span><a class="headerlink" href="#mock-1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id4">
+<h2><span class="section-number">17.2. </span>접근토큰 및 해쉬키 발급받기<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
 <p>API를 이용해 조회 및 주문을 하기 위해서는 접근토큰과 해쉬키가 추가적으로 필요하다.</p>
-<div class="section" id="id5">
-<h3><span class="section-number">17.2.1. </span>접근토큰 발급받기<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<section id="id5">
+<h3><span class="section-number">17.2.1. </span>접근토큰 발급받기<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
 <p>앞서 발급받은 App Key와 App Secret을 이용해 접근토큰을 받을 수 있으며, 접근토큰을 통해 계좌에 접근할 수 있다. 접근토큰을 발급받는 법은 KIS Developers의 ‘API 문서’ 페이지에 상세히 나와있다.</p>
-<div class="figure align-default" id="token">
+<figure class="align-default" id="token">
 <img alt="_images/token.png" src="_images/token.png" />
-<p class="caption"><span class="caption-number">Fig. 17.13 </span><span class="caption-text">접근토큰 발급받기</span><a class="headerlink" href="#token" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17.13 </span><span class="caption-text">접근토큰 발급받기</span><a class="headerlink" href="#token" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>기본정보 및 LAYOUT의 항목에 맞춰 코드를 작성해보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -745,9 +844,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">POST()</span></code> 함수를 통해 URL에 headers와 body를 보내며, <code class="docutils literal notranslate"><span class="pre">dumps()</span></code> 함수를 통해 딕셔너리를 JSON 문자열로 변환하여 전송한다. 그 후 결과물에서 ‘access_token’에 해당하는 부분을 찾아 저장한다.</p>
-</div>
-<div class="section" id="id6">
-<h3><span class="section-number">17.2.2. </span>해쉬키 발급받기<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id6">
+<h3><span class="section-number">17.2.2. </span>해쉬키 발급받기<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
 <p>조회가 아닌 주문이나 정정, 취소 등을 할 때는 추가적으로 해쉬키가 필요하다. 해쉬키(Hashkey)는 보안을 위한 요소로 사용자가 보낸 요청 값을 중간에 탈취하여 변조하지 못하도록 하는데 사용된다. 해쉬키는 요청하는 데이터마다 변하므로, 아래와 같이 함수로 만드는 것이 편리하다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -774,10 +873,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>해쉬키에 해당하는 부분만 선택한 후 반환한다.</p></li>
 </ol>
 <p>해쉬키의 구체적인 사용법은 주문 부분에서 자세히 살펴보도록 한다.</p>
-</div>
-</div>
-<div class="section" id="id7">
-<h2><span class="section-number">17.3. </span>주식 현재가 시세 조회하기<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="id7">
+<h2><span class="section-number">17.3. </span>주식 현재가 시세 조회하기<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
 <p>발급받은 Key와 토큰을 통해 본격적으로 API를 사용해보도록 하자. 먼저 삼성전자의 현재가를 조회해보겠다. 메뉴얼의 기본정보 및 LAYOUT에 따라 코드를 작성한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -800,7 +899,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;61500&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;62200&#39;
 </pre></div>
 </div>
 </div>
@@ -812,17 +911,19 @@ const thebe_selector_output = ".output, .cell_output"
 </ol>
 <p>작성된 내용을 바탕으로 <code class="docutils literal notranslate"><span class="pre">get()</span></code> 요청을 하여 결과를 받아온다. 종목과 관련된 수많은 정보를 받을 수 있으며 이에 대한 자세한 설명은 홈페이지에서 확인할 수 있다. 이 중 ‘주식 현재가’에 해당하는 ‘stck_prpr’ 부분을 통해 현재가를 확인할 수 있다.</p>
 <p>이 외에도 홈페이지의 API 문서를 참조한 후 ‘headers’와 ‘params’ 부분만 수정하면 여러 정보에 대한 조회도 가능하다.</p>
-</div>
-<div class="section" id="id8">
-<h2><span class="section-number">17.4. </span>주식 주문하기<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id8">
+<h2><span class="section-number">17.4. </span>주식 주문하기<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h2>
 <p>이번에는 주식 주문을 넣는 방법들에 대해 알아본 후, API를 이용해 주문하는 법에 대해 알아보겠다.</p>
-<div class="section" id="id9">
-<h3><span class="section-number">17.4.1. </span>주식 주문 방법<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<section id="id9">
+<h3><span class="section-number">17.4.1. </span>주식 주문 방법<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
 <p>A라는 주식을 사고 싶어도 파는 사람이 없다면 체결을 할 수가 없거나, 현재 가격보다 훨씬 비싼 가격을 제시해야 체결을 할 수 있다. 이처럼 좋은 주식을 선택하는 것 못지않게 실제로 어떻게 체결을 시키는지는 성과에 큰 영향을 미친다. 너무 급하게 체결을 시키기 위해서는 불리한 가격에 거래를 해야 하지만, 너무 유리한 가격에만 거래를 하려다가는 체결이 되지 않을수도 있다. 따라서 주식을 주문하는 방법에 대해 알고, 상황에 맞는 방법을 선택할 필요가 있다. 먼저 <a class="reference internal" href="#bidask"><span class="std std-numref">Fig. 17.14</span></a> 과 같이 시장에서 매수-매도 호가가 형성되어 있는 경우를 생각해보자. 현재 가격은 61,400원 이며, 팔고자 하는 사람들은 이보다 비싼 가격에, 사고자 하는 사람들은 이보다 싼 가격에 거래하기를 원한다.</p>
-<div class="figure align-default" id="bidask">
+<figure class="align-default" id="bidask">
 <img alt="_images/bidask.png" src="_images/bidask.png" />
-<p class="caption"><span class="caption-number">Fig. 17.14 </span><span class="caption-text">매수-매도 호가</span><a class="headerlink" href="#bidask" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17.14 </span><span class="caption-text">매수-매도 호가</span><a class="headerlink" href="#bidask" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p><strong>지정가 주문</strong></p>
 <p>가장 많이 사용되는 ‘지정가 주문’은 투자자가 종목을 얼마에 몇 주 사거나 팔겠다고 명확하게 명시하여 주문을 내는 방법이다. 만일 61,400원에 100,000주 매수주문을 내면, 기존 매도호가에 있는 70,180주를 매수하며 나머지 29,820주는 다시 누군가가 61,400원에 팔 때까지 매수 물량에 쌓인다. 반면 현재 가격보다 낮은 61,300원에 주문을 낼 경우 주가가 하락하지 않는 경우에는 체결이 되지 않을 수도 있다.</p>
 <p><strong>시장가 주문</strong></p>
@@ -834,9 +935,9 @@ const thebe_selector_output = ".output, .cell_output"
 <p><strong>최우선 지정가</strong></p>
 <p>이 역시 지정가 주문과 비슷하게 종목과 수량을 지정하며, 매수 주문의 경우 해당 주문 접수 시점에 가장 높은 매수 가격을, 매도 주문은 가장 낮은 매도 가격을 지정한다. 즉 바로 사거나 팔기 직전의 가격으로 모든 주문이 나간다. 만일 최우선 지정가로 100,000주 매수 주문을 내면 매수 1호가인 61,300원에 주문이 쌓인다. 이는 최유리 지정가보다 조금이라도 더 유리한 가격으로 체결을 시킬 수 있지만, 나에게 유리한 방향으로 호가가 움직이지 않으면 체결이 되지 않을 수도 있다.</p>
 <p>이 외에도 시간외 단일가, IOC 지정가, FOK 지정가 등의 복잡한 주문 형태도 있다.</p>
-</div>
-<div class="section" id="id10">
-<h3><span class="section-number">17.4.2. </span>매수 주문<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id10">
+<h3><span class="section-number">17.4.2. </span>매수 주문<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h3>
 <p>API를 이용해 실제로 주문을 내보도록 하며, 모의투자의 경우 신용 주문이 되지 않아 현금 주문에 대해 테스트해보겠다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -868,9 +969,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="figure align-default" id="result-1">
+<figure class="align-default" id="result-1">
 <img alt="_images/result_1.png" src="_images/result_1.png" />
-</div>
+</figure>
 <ol class="simple">
 <li><p>URL을 만든다.</p></li>
 <li><p>data 부분에 LAYOUT에서 Body에 해당하는 값을 입력한다. ‘ORD_DVSN’는 주문 방법이며 ‘01’은 시장가 주문에 해당하는 코드다. ‘ORD_UNPR’는 주문 단가로써 시장가 주문의 경우에는 0을 입력한다(주문 방법별 코드는 <a class="reference internal" href="#order-code"><span class="std std-numref">Table 17.2</span></a>를 참조하기 바람).</p></li>
@@ -878,7 +979,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p><code class="docutils literal notranslate"><span class="pre">post()</span></code> 함수를 통해 요청을 하면 주문이 전송된다.</p></li>
 </ol>
 <table class="colwidths-auto table" id="order-code">
-<caption><span class="caption-number">Table 17.2 </span><span class="caption-text">주문 방법 별 코드</span><a class="headerlink" href="#order-code" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 17.2 </span><span class="caption-text">주문 방법 별 코드</span><a class="headerlink" href="#order-code" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>코드</p></th>
 <th class="head"><p>방법</p></th>
@@ -939,7 +1040,7 @@ const thebe_selector_output = ".output, .cell_output"
 </tbody>
 </table>
 <table class="colwidths-auto table" id="order-key">
-<caption><span class="caption-number">Table 17.3 </span><span class="caption-text">현금 매수/매도 별 td_id</span><a class="headerlink" href="#order-key" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 17.3 </span><span class="caption-text">현금 매수/매도 별 td_id</span><a class="headerlink" href="#order-key" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>실전/모의 구분</p></th>
 <th class="head"><p>매수/매도</p></th>
@@ -966,13 +1067,15 @@ const thebe_selector_output = ".output, .cell_output"
 </tbody>
 </table>
 <p>HTS를 확인해보면 삼성전자 10주가 매수되어 있다.</p>
-<div class="figure align-default" id="mock-buy">
+<figure class="align-default" id="mock-buy">
 <img alt="_images/mock_buy.png" src="_images/mock_buy.png" />
-<p class="caption"><span class="caption-number">Fig. 17.15 </span><span class="caption-text">매수주문 체결</span><a class="headerlink" href="#mock-buy" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="id11">
-<h3><span class="section-number">17.4.3. </span>정정 주문<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<figcaption>
+<p><span class="caption-number">Fig. 17.15 </span><span class="caption-text">매수주문 체결</span><a class="headerlink" href="#mock-buy" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id11">
+<h3><span class="section-number">17.4.3. </span>정정 주문<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h3>
 <p>먼저 거래가 체결되지 않을 만한 낮은 가격에 지정가 매수 주문을 내보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1004,14 +1107,16 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="figure align-default" id="result-2">
+<figure class="align-default" id="result-2">
 <img alt="_images/result_2.png" src="_images/result_2.png" />
-</div>
+</figure>
 <p>주문방법(ORD_DVSN) 코드에 ‘지정가 주문’에 해당하는 ‘00’을 입력하며, 주문 단가(ORD_UNPR)에는 거래가 되지 않을 만한 낮은 가격을 입력한다. 결과를 확인해보면 체결이 되지 않은 채 남아있다.</p>
-<div class="figure align-default" id="mock-2">
+<figure class="align-default" id="mock-2">
 <img alt="_images/mock_2.png" src="_images/mock_2.png" />
-<p class="caption"><span class="caption-number">Fig. 17.16 </span><span class="caption-text">미체결 주문</span><a class="headerlink" href="#mock-2" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17.16 </span><span class="caption-text">미체결 주문</span><a class="headerlink" href="#mock-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>미체결된 주문을 정정하기 위해서는 ‘한국거래소전송주문조직번호’와 ‘주문번호’ 정보를 알아야 하며, 이는 위의 결과에서 구할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1058,9 +1163,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="figure align-default" id="result-4">
+<figure class="align-default" id="result-4">
 <img alt="_images/result_4.png" src="_images/result_4.png" />
-</div>
+</figure>
 <ol class="simple">
 <li><p>URL을 만든다.</p></li>
 <li><p>data 부분에는 Body에 해당하는 값을 입력한다. 정정 주문에 필요한 값이 추가된다.</p></li>
@@ -1068,13 +1173,15 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p><code class="docutils literal notranslate"><span class="pre">post()</span></code> 함수를 통해 요청을 하면 정정주문이 전송된다.</p></li>
 </ol>
 <p>HTS를 확인해보면 미체결 주문이 정정되어 체결된 것을 확인할 수 있다.</p>
-<div class="figure align-default" id="mock-3">
+<figure class="align-default" id="mock-3">
 <img alt="_images/mock_3.png" src="_images/mock_3.png" />
-<p class="caption"><span class="caption-number">Fig. 17.17 </span><span class="caption-text">정정주문 체결</span><a class="headerlink" href="#mock-3" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="id12">
-<h3><span class="section-number">17.4.4. </span>매도 주문<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<figcaption>
+<p><span class="caption-number">Fig. 17.17 </span><span class="caption-text">정정주문 체결</span><a class="headerlink" href="#mock-3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id12">
+<h3><span class="section-number">17.4.4. </span>매도 주문<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h3>
 <p>매도 주문의 경우 매수 주문과 거의 동일하며, ‘tr_id’ 부분만 변경해주면 된다. 삼성전자 10주를 시장가로 매도해보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1106,14 +1213,16 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>‘tr_id’만 모의투자의 현금 매도에 해당하는 ‘VTTC0801U’로 변경하였으며, 나머지는 현금 매수와 동일하다.</p>
-<div class="figure align-default" id="mock-4">
+<figure class="align-default" id="mock-4">
 <img alt="_images/mock_4.png" src="_images/mock_4.png" />
-<p class="caption"><span class="caption-number">Fig. 17.18 </span><span class="caption-text">매도주문 체결</span><a class="headerlink" href="#mock-4" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-</div>
-<div class="section" id="id13">
-<h2><span class="section-number">17.5. </span>주식 잔고조회<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<figcaption>
+<p><span class="caption-number">Fig. 17.18 </span><span class="caption-text">매도주문 체결</span><a class="headerlink" href="#mock-4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="id13">
+<h2><span class="section-number">17.5. </span>주식 잔고조회<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h2>
 <p>주식 및 계좌잔고를 조회해보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1160,9 +1269,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="figure align-default" id="result-5">
+<figure class="align-default" id="result-5">
 <img alt="_images/result_5.png" src="_images/result_5.png" />
-</div>
+</figure>
 <p>티커 및 종목명, 보유수량, 매입평균가격 등이 상세하게 적혀있다. 이를 데이터프레임 형태로 변경하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1174,9 +1283,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="figure align-default" id="mock-5">
+<figure class="align-default" id="mock-5">
 <img alt="_images/mock_5.png" src="_images/mock_5.png" />
-</div>
+</figure>
 <p><code class="docutils literal notranslate"><span class="pre">from_records()</span></code> 함수를 이용하면 JSON 형태를 데이터프레임 형태로 변경할 수 있다. 모의투자에서 잔고조회 API는 한번에 20종목까지 조회가 가능하며, 이후의 값은 연속조회를 통해 확인할 수 있다. 이에 대해서는 나중에 다시 살펴보도록 하자.</p>
 <p>이번에는 계좌잔고를 확인해도록 하자.</p>
 <div class="cell docutils container">
@@ -1186,13 +1295,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="figure align-default" id="result-6">
+<figure class="align-default" id="result-6">
 <img alt="_images/result_6.png" src="_images/result_6.png" />
-</div>
+</figure>
 <p>예수금총금액, 전일/금일 매수금액, 전일/금일 매도금액 등 잔고에 대한 정보가 들어있다.</p>
-</div>
-<div class="section" id="id14">
-<h2><span class="section-number">17.6. </span>스케줄링<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id14">
+<h2><span class="section-number">17.6. </span>스케줄링<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h2>
 <p>포트폴리오를 교체하는 리밸런싱 작업은 몇 시간 혹은 몇 일에 걸쳐 나누어 해야, 시장에 충격을 주지 않으면서 내가 원하는 만큼 매매를 할 수 있다. 이를 위해서는 정해진 시간에 정해진 수량을 매수 혹은 매도하도록 계획을 짠 뒤 실행하는 ‘스케줄링’에 대해 알 필요가 있다. 스케줄링이란 정해진 시간에 파이썬 스크립트를 자동으로 실행하게 해주며, 일반적으로 ‘schedule’ 패키지를 이용한다. 먼저 간단한 예제를 살펴보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1215,7 +1324,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Every 3 seconds do job() (last run: [never], next run: 2022-08-05 18:18:12)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Every 3 seconds do job() (last run: [never], next run: 2022-11-14 12:17:40)
 </pre></div>
 </div>
 </div>
@@ -1228,7 +1337,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Every 3 seconds do job() (last run: [never], next run: 2022-08-05 18:18:12)]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Every 3 seconds do job() (last run: [never], next run: 2022-11-14 12:17:40)]
 </pre></div>
 </div>
 </div>
@@ -1249,8 +1358,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p><code class="docutils literal notranslate"><span class="pre">schedule.clear_job(job)</span></code>: 특정 스케줄 삭제</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">schedule.clear()</span></code> 모든 스케줄 삭제</p></li>
 </ul>
-<div class="section" id="id15">
-<h3><span class="section-number">17.6.1. </span>시간 지정하기<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<section id="id15">
+<h3><span class="section-number">17.6.1. </span>시간 지정하기<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h3>
 <p>이번에는 작업이 실행될 시간과 종료할 시간을 직접 지정해보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1268,9 +1377,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DatetimeIndex([&#39;2022-08-05 18:19:10.340281&#39;, &#39;2022-08-05 18:19:15.340281&#39;,
-               &#39;2022-08-05 18:19:20.340281&#39;, &#39;2022-08-05 18:19:25.340281&#39;,
-               &#39;2022-08-05 18:19:30.340281&#39;],
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DatetimeIndex([&#39;2022-11-14 12:18:38.169537&#39;, &#39;2022-11-14 12:18:43.169537&#39;,
+               &#39;2022-11-14 12:18:48.169537&#39;, &#39;2022-11-14 12:18:53.169537&#39;,
+               &#39;2022-11-14 12:18:58.169537&#39;],
               dtype=&#39;datetime64[ns]&#39;, freq=None)
 </pre></div>
 </div>
@@ -1292,7 +1401,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;18:19:10&#39;, &#39;18:19:15&#39;, &#39;18:19:20&#39;, &#39;18:19:25&#39;, &#39;18:19:30&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;12:18:38&#39;, &#39;12:18:43&#39;, &#39;12:18:48&#39;, &#39;12:18:53&#39;, &#39;12:18:58&#39;]
 </pre></div>
 </div>
 </div>
@@ -1305,11 +1414,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Every 1 day at 18:19:10 do job() (last run: [never], next run: 2022-08-05 18:19:10),
- Every 1 day at 18:19:15 do job() (last run: [never], next run: 2022-08-05 18:19:15),
- Every 1 day at 18:19:20 do job() (last run: [never], next run: 2022-08-05 18:19:20),
- Every 1 day at 18:19:25 do job() (last run: [never], next run: 2022-08-05 18:19:25),
- Every 1 day at 18:19:30 do job() (last run: [never], next run: 2022-08-05 18:19:30)]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Every 1 day at 12:18:38 do job() (last run: [never], next run: 2022-11-14 12:18:38),
+ Every 1 day at 12:18:43 do job() (last run: [never], next run: 2022-11-14 12:18:43),
+ Every 1 day at 12:18:48 do job() (last run: [never], next run: 2022-11-14 12:18:48),
+ Every 1 day at 12:18:53 do job() (last run: [never], next run: 2022-11-14 12:18:53),
+ Every 1 day at 12:18:58 do job() (last run: [never], next run: 2022-11-14 12:18:58)]
 </pre></div>
 </div>
 </div>
@@ -1327,15 +1436,15 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18:19:10
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12:18:38
 =====================
-18:19:15
+12:18:43
 =====================
-18:19:20
+12:18:48
 =====================
-18:19:25
+12:18:53
 =====================
-18:19:30
+12:18:58
 =====================
 End
 </pre></div>
@@ -1350,15 +1459,15 @@ End
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">schedule</span><span class="o">.</span><span class="n">readthedocs</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">en</span><span class="o">/</span><span class="n">stable</span><span class="o">/</span><span class="n">examples</span><span class="o">.</span><span class="n">html</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="id16">
-<h2><span class="section-number">17.7. </span>포트폴리오 리밸런싱<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="id16">
+<h2><span class="section-number">17.7. </span>포트폴리오 리밸런싱<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h2>
 <p>앞서 배웠던 내용들을 응용해, 포트폴리오를 구성한 뒤 이를 매수하거나 다른 포트폴리오로 리밸런싱하는 작업을 해보도록 하자. 거래하는 종목이나 금액이 얼마 되지 않을때는 지정가 주문 혹은 시장가 주문으로도 체결이 가능하다. 그러나 종목수가 많고 금액이 커진다면 이러한 방법으로는 체결이 힘들다. 큰 금액을 한 번에 시장가로 주문하면 불리한 가격에 체결될 수 있고, 지정가로 주문하면 체결이 안될 가능성이 크기 때문이다. 그렇다고 하루 종일 수십 종목에 대해 계속해서 정정 주문을 내는 것도 현실적으로 불가능하다.</p>
 <p>따라서 전문투자자들은 리밸런싱 작업을 할 때 종종 시분할 매매(TWAP, Time Weighted Average Price)를 사용한다. 국내에서는 흔히 CD(Careful Discretion) 주문이라고도 한다. 즉 1,000 주를 매수해야 하면 주문 시간을 여러개로 나누어 조금씩 매수를 하는 것이다. 물량이 너무 많을 경우 몇 일에 걸쳐 나누어 주문을 체결을 하기도 한다. 이를 통해 한 번에 주문을 냄으로 인해 발생할 수 있는 시장충격을 최소화할 수 있으며, 미체결될 확률도 줄일 수 있다.</p>
 <p>본 책에서는 시간을 나누어 1주 단위로 최유리지정가 주문으로 내는 방법에 대해 실습해보도록 하겠다. 주문이 계속해서 1주 단위로 나가므로 대부분 체결이 가능하며, 시장에 미치는 영향도 거의 없다. 또한 매매시간은 9시 10분부터 3시까지 하도록 한다. 9시부터 초반 10분간은 기관투자자들의 프로그램매매로 인해 가격 변동성이 크고 물량도 잘 없어, 불리한 가격에 체결될 확률이 높기 때문이다. 또한 3시에는 주문을 마감해야 남은 시간동안 미체결 물량 및 T+2 예수금 상황 등을 고려해 정리 작업을 할 수 있다.</p>
-<div class="section" id="id17">
-<h3><span class="section-number">17.7.1. </span>포트폴리오 매수<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<section id="id17">
+<h3><span class="section-number">17.7.1. </span>포트폴리오 매수<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h3>
 <p>먼저 모의계좌에서 국내 대형주 10개로 구성된 포트폴리오를 시분할로 매수해보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1563,6 +1672,9 @@ End
     <span class="p">]</span>
 <span class="p">})</span>
 
+<span class="c1"># 보유 종목과 aum 불러오기</span>
+<span class="n">ap</span><span class="p">,</span> <span class="n">account</span> <span class="o">=</span> <span class="n">check_account</span><span class="p">()</span>
+
 <span class="c1"># 주당 투자 금액</span>
 <span class="n">invest_per_stock</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">account</span><span class="p">[</span><span class="s1">&#39;tot_evlu_amt&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="mf">0.98</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">mp</span><span class="p">)</span>
 
@@ -1582,7 +1694,7 @@ End
 </div>
 </div>
 <ol class="simple">
-<li><p>먼저 국내 대형주 10종목(모델 포트폴리오)의 티커를 데이터프레임(mp) 형태로 만든다.</p></li>
+<li><p>먼저 국내 대형주 10종목(모델 포트폴리오)의 티커를 데이터프레임(mp) 형태로 만든 후, 보유 종목과 aum을 불러온다.</p></li>
 <li><p>주당 투자 금액을 계산한다. 계좌잔고에서 총평가금액 항목을 가져온 후 <code class="docutils literal notranslate"><span class="pre">int()</span></code> 함수를 통해 숫자형태로 변경한다. 만일 총평가금액을 100% 투자할 경우, 리밸런싱 과정에서 주가의 등락에 의해 주문금액이 보유금액을 초과하는 일이 벌어질 수도 있으므로 1~5% 정도의 현금은 보유하는 것이 좋다. 즉 총평가금액의 98%만 투자에 이용하며, 이를 모델 포트폴리오의 종목수로 나누어 종목당 투자 금액을 계산한다.</p></li>
 <li><p>투자하고자 하는 포트폴리오(mp)와 현재 포트폴리오(ap)를 <code class="docutils literal notranslate"><span class="pre">merge()</span></code> 함수를 통해 합치며, 모든 종목이 들어가야 하므로 <code class="docutils literal notranslate"><span class="pre">outer</span></code> 방식으로 합친다.</p></li>
 <li><p>mp 중 현재 보유하고 있지 않은 종목은 NA로 표시되므로, 이를 0으로 바꾼다. 그 후 ‘보유수량’열의 값을 <code class="docutils literal notranslate"><span class="pre">to_numeric()</span></code> 함수를 이용해 숫자형태로 변경한다.</p></li>
@@ -1598,9 +1710,9 @@ End
 </div>
 </div>
 </div>
-<div class="figure align-default" id="mock-6">
+<figure class="align-default" id="mock-6">
 <img alt="_images/mock_6.png" src="_images/mock_6.png" />
-</div>
+</figure>
 <ul class="simple">
 <li><p>종목코드: 투자하고자 하는 종목 및 보유 종목의 티커</p></li>
 <li><p>보유수량: 각 종목의 현재 보유수량</p></li>
@@ -1664,42 +1776,53 @@ End
 <li><p>만일 현재시간이 3시(endDt) 이후 일 경우에는 스케줄을 모두 지우고 <code class="docutils literal notranslate"><span class="pre">break</span></code>를 통해 작업을 정지한다.</p></li>
 </ol>
 <p>매매가 실행되는 동안 파이썬 프로그램은 계속 켜두어야 하며, HTS를 확인해보면 한 주씩 주문이 나가는 것을 확인할 수 있다.</p>
-<div class="figure align-default" id="mock-7">
+<figure class="align-default" id="mock-7">
 <img alt="_images/mock_7.png" src="_images/mock_7.png" />
-<p class="caption"><span class="caption-number">Fig. 17.19 </span><span class="caption-text">포트폴리오 매수 진행</span><a class="headerlink" href="#mock-7" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17.19 </span><span class="caption-text">포트폴리오 매수 진행</span><a class="headerlink" href="#mock-7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>3시가 지난 후 계좌를 확인해보면, 포트폴리오 매수가 제대로 진행되었다.</p>
-<div class="figure align-default" id="mock-8">
+<figure class="align-default" id="mock-8">
 <img alt="_images/mock_8.png" src="_images/mock_8.png" />
-<p class="caption"><span class="caption-number">Fig. 17.20 </span><span class="caption-text">포트폴리오 매수 결과</span><a class="headerlink" href="#mock-8" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="id18">
-<h3><span class="section-number">17.7.2. </span>포트폴리오 리밸런싱<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<figcaption>
+<p><span class="caption-number">Fig. 17.20 </span><span class="caption-text">포트폴리오 매수 결과</span><a class="headerlink" href="#mock-8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id18">
+<h3><span class="section-number">17.7.2. </span>포트폴리오 리밸런싱<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h3>
 <p>이번에는 매수와 매도를 동시에 하는 리밸런싱 작업을 해보도록 하겠다. 모델 포트폴리오는 ‘멀티팩터 포트폴리오’ 구성을 통해 나온 결과를 사용하겠으며, 나머지 코드는 위와 동일하다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 모델 포트폴리오</span>
 <span class="n">mp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;C:/Users/leebi/Dropbox/My Book/quant_py/model.xlsx&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">ap</span><span class="p">,</span> <span class="n">account</span> <span class="o">=</span> <span class="n">check_account</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>모델 포트폴리오를 토대로 매매수량을 계산해보도록 하자.</p>
-<div class="figure align-default" id="rebal-1">
+<figure class="align-default" id="rebal-1">
 <img alt="_images/rebal_1.png" src="_images/rebal_1.png" />
-<p class="caption"><span class="caption-number">Fig. 17.21 </span><span class="caption-text">리밸런싱 매매수량 계산</span><a class="headerlink" href="#rebal-1" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17.21 </span><span class="caption-text">리밸런싱 매매수량 계산</span><a class="headerlink" href="#rebal-1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>새롭게 투자해야 할 종목은 보유수량이 0이며, 총평가금액을 이용해 목표수량과 투자수량이 계산된다. 반면 제외되는 종목은 목표수량이 0이며, 투자수량 만큼 매도를 한다. 이를 토대로 시분할 주문을 스케줄에 입력한다. 9시 10분이 되면 스케줄에 따라 매수와 매도가 동시에 일어나며 리밸런싱 작업이 진행된다.</p>
-<div class="figure align-default" id="rebal-2">
+<figure class="align-default" id="rebal-2">
 <img alt="_images/rebal_2.png" src="_images/rebal_2.png" />
-<p class="caption"><span class="caption-number">Fig. 17.22 </span><span class="caption-text">리밸런싱 진행</span><a class="headerlink" href="#rebal-2" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17.22 </span><span class="caption-text">리밸런싱 진행</span><a class="headerlink" href="#rebal-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>이번에도 3시가 지난 후 계좌를 확인해보면, 포트폴리오 리밸런싱 작업이 진행되어 기존 종목은 모두 매도되고 모델 포트폴리오에 해당하는 종목은 매수가 되었다.</p>
-<div class="figure align-default" id="rebal-3">
+<figure class="align-default" id="rebal-3">
 <img alt="_images/rebal_3.png" src="_images/rebal_3.png" />
-<p class="caption"><span class="caption-number">Fig. 17.23 </span><span class="caption-text">리밸런싱 결과</span><a class="headerlink" href="#rebal-3" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17.23 </span><span class="caption-text">리밸런싱 결과</span><a class="headerlink" href="#rebal-3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>마지막으로 목표수량과 실제수량이 차이가 없는지 확인해보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1715,9 +1838,9 @@ End
 </div>
 </div>
 </div>
-<div class="figure align-default" id="rebal-4">
+<figure class="align-default" id="rebal-4">
 <img alt="_images/rebal_4.png" src="_images/rebal_4.png" />
-</div>
+</figure>
 <ol class="simple">
 <li><p>계좌정보를 확인하는 <code class="docutils literal notranslate"><span class="pre">check_account()</span></code> 함수를 통해 보유종목과 계좌잔고를 불러온다.</p></li>
 <li><p>보유종목 데이터프레임의 열 이름을 바꾼다.</p></li>
@@ -1726,11 +1849,11 @@ End
 <li><p>‘목표수량’과 ‘매매후수량’의 차이를 구한다.</p></li>
 </ol>
 <p>목표와 실제 간의 차이가 거의 없는 것을 확인할 수 있다.</p>
-</div>
-<div class="section" id="id19">
-<h3><span class="section-number">17.7.3. </span>실제계좌 매매하기<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id19">
+<h3><span class="section-number">17.7.3. </span>실제계좌 매매하기<a class="headerlink" href="#id19" title="Permalink to this headline">#</a></h3>
 <p>모의계좌에서 충분히 테스트가 끝났다면 실제계좌에서도 포트폴리오 매매를 진행해보도록 하자. 전체적인 방법은 모의계좌와 동일하며, URL 및 파라미터가 약간씩 바뀐다. 실제계좌에서도 처음에는 소액으로 거래를 해본 후 이상이 없다고 판단하면 점차 금액을 늘려나갈 것을 추천한다.</p>
-<p>먼저 대형주 5주 및 ‘멀티팩터 포트폴리오’ 구성을 통해 나온 5종목을 매수해보도록 하자.</p>
+<p>먼저 대형주 5주 및 ‘멀티팩터 포트폴리오’ 구성을 통해 나온 종목들 중 5종목을 매수해보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
@@ -1780,10 +1903,12 @@ End
 </div>
 </div>
 <p>접근토큰을 발급받기 위한 URL를 모의투자용 주소에서 실전투자용 주소로 변경하며, 나머지는 동일하다. 실전투자에서는 접근토큰을 발급받으면 안내 메세지가 온다.</p>
-<div class="figure align-default" id="key">
+<figure class="align-default" id="key">
 <a class="reference internal image-reference" href="_images/key.png"><img alt="_images/key.png" src="_images/key.png" style="width: 400.5px; height: 265.8px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 17.24 </span><span class="caption-text">접근토큰 발급 메세지</span><a class="headerlink" href="#key" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17.24 </span><span class="caption-text">접근토큰 발급 메세지</span><a class="headerlink" href="#key" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 현재가 구하기</span>
@@ -1897,10 +2022,7 @@ End
 <p>현재가 구하기, 주문, 계좌 잔고 조회를 위한 함수를 만들어준다. 계좌번호에 해당하는 ‘CANO’에는 실제 종합계좌번호를 입력해주며, ‘tr_id’와 같은 파라미터 역시 개발가이드를 참고해 실전투자용 값을 입력한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 보유 종목과 aum 불러오기</span>
-<span class="n">ap</span><span class="p">,</span> <span class="n">account</span> <span class="o">=</span> <span class="n">check_account</span><span class="p">()</span>    
-
-<span class="c1"># 모델 포트폴리오</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 모델 포트폴리오</span>
 <span class="n">mp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;종목코드&#39;</span><span class="p">:</span> <span class="p">[</span>
     <span class="s1">&#39;005930&#39;</span><span class="p">,</span> <span class="c1"># 삼성전자    </span>
     <span class="s1">&#39;000660&#39;</span><span class="p">,</span> <span class="c1"># SK하이닉스        </span>
@@ -1913,6 +2035,9 @@ End
     <span class="s1">&#39;009160&#39;</span><span class="p">,</span> <span class="c1"># SIMPAC</span>
     <span class="s1">&#39;009970&#39;</span> <span class="c1"># 영원무역홀딩스</span>
     <span class="p">]})</span>
+
+<span class="c1"># 보유 종목과 aum 불러오기</span>
+<span class="n">ap</span><span class="p">,</span> <span class="n">account</span> <span class="o">=</span> <span class="n">check_account</span><span class="p">()</span>    
 
 <span class="c1"># 주당 투자 금액</span>
 <span class="n">invest_per_stock</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">account</span><span class="p">[</span><span class="s1">&#39;tot_evlu_amt&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="mf">0.98</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">mp</span><span class="p">)</span>
@@ -1934,9 +2059,9 @@ End
 </div>
 </div>
 </div>
-<div class="figure align-default" id="real-1">
+<figure class="align-default" id="real-1">
 <img alt="_images/real_1.png" src="_images/real_1.png" />
-</div>
+</figure>
 <p>대형주와 팩터 포트폴리오 중 일부 종목을 합쳐, 모델 포트폴리오로 구성한후 투자수량을 계산한다. 5억원 이었던 모의투자에 비해 투자금액이 훨씬 작으므로, 종목별 투자수량도 매우 작다. 만일 특정 종목의 주가가 너무 비쌀 경우 목표수량이 0주가 되는 경우도 발생할 수 있다.</p>
 <p>이제 모의투자에서와 동일하게 스케줄링을 입력한 후 매매를 실행한다.</p>
 <div class="cell docutils container">
@@ -1976,10 +2101,12 @@ End
 </div>
 </div>
 <p>9시 10분부터 3시까지 스케줄에 따라 매매가 진행된다.</p>
-<div class="figure align-default" id="real-2">
+<figure class="align-default" id="real-2">
 <img alt="_images/real_2.png" src="_images/real_2.png" />
-<p class="caption"><span class="caption-number">Fig. 17.25 </span><span class="caption-text">실계좌 포트폴리오 매수 진행</span><a class="headerlink" href="#real-2" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17.25 </span><span class="caption-text">실계좌 포트폴리오 매수 진행</span><a class="headerlink" href="#real-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>거래가 마감된 후 계좌를 살펴보면 각 종목당 목표주수에 맞게 체결이 되었다. 그러나 300만원으로 10개 종목에 투자하므로 종목당 30만원이 투자되어야 하지만, 일부 종목은 매입금액이 20만원 밖에 되지 않는다. 현대차를 예로 살펴보면, 해당 종목에 30만원이 투자되어야 하며 종목당 가격이 20만원이기에 이론적인 목표주수는 1.5주다. 그러나 주식은 한주 단위로 거래가 가능하므로 한주만 매수할 수 밖에 없다. 이처럼 투자금액이 작으면 이론적으로 생각했던 투자비중과 실제 투자비중이 상당히 차이가 날 수도 있다. 이러한 문제는 투자금액을 늘리면 해결이 가능하며, 또한 향후 소수점 거래가 활성화되면 자연스럽게 해결될 수 있을 것이다.</p>
 <p>이번에는 ‘멀티팩터 포트폴리오’로 리밸런싱을 진행해보자. 모의투자때와 동일하게 엑셀파일을 불러온 후 수량을 계산한다. 계산되는 종목은 크게 3가지로 구분할 수 있다.</p>
 <ol class="simple">
@@ -1987,20 +2114,26 @@ End
 <li><p>모델 포트폴리오 종목 중 현재 보유하고 있지 않은 종목으로써, 목표수량에 맞게 매수를 한다.</p></li>
 <li><p>현재 보유종목 중 모델 포트폴리오에 없는 종목으로써, 전량매도를 한다.</p></li>
 </ol>
-<div class="figure align-default" id="real-3-b">
+<figure class="align-default" id="real-3-b">
 <img alt="_images/real_3_b.png" src="_images/real_3_b.png" />
-<p class="caption"><span class="caption-number">Fig. 17.26 </span><span class="caption-text">실계좌 리밸런싱 매매수량 계산</span><a class="headerlink" href="#real-3-b" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17.26 </span><span class="caption-text">실계좌 리밸런싱 매매수량 계산</span><a class="headerlink" href="#real-3-b" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>이제 목표에 맞게 리밸런싱을 진행한다.</p>
-<div class="figure align-default" id="real-4">
+<figure class="align-default" id="real-4">
 <img alt="_images/real_4.png" src="_images/real_4.png" />
-<p class="caption"><span class="caption-number">Fig. 17.27 </span><span class="caption-text">실계좌 리밸런싱 결과</span><a class="headerlink" href="#real-4" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17.27 </span><span class="caption-text">실계좌 리밸런싱 결과</span><a class="headerlink" href="#real-4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>스케줄에 따라 매수와 매도가 번갈아 이루어지며 실계좌에서도 리밸런싱이 원할하게 이루어지는 것을 확인할 수 있다. 마지막으로 목표수량과 실제수량의 차이를 확인해보자.</p>
-<div class="figure align-default" id="real-5">
+<figure class="align-default" id="real-5">
 <img alt="_images/real_5.png" src="_images/real_5.png" />
-<p class="caption"><span class="caption-number">Fig. 17.28 </span><span class="caption-text">목표수량과 실제수량의 차이</span><a class="headerlink" href="#real-5" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17.28 </span><span class="caption-text">목표수량과 실제수량의 차이</span><a class="headerlink" href="#real-5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>일부 종목은 목표수량 대비 1~3주가 덜 매수된 것을 확인할 수 있다. 이는 3시 직전 혹은 3시에 매수 주문을 하면 주문가능금액이 부족해 발생하는 문제이다. 즉, 이론적으로는 매도로 인해 늘어난 주문가능금액을 매수에 사용하여 완벽하게 리밸런싱이 가능하지만, 마지막 매도가 3시에 이루어진 후 주문가능금액이 늘어나니 매도 직전 혹은 매도와 동시에 발생하는 매수주문은 주문가능금액이 부족하여 주문이 들어가지 않는 것이다. 실제로 목표 현금액은 총평가금액의 2% 였던 반면,  <a class="reference internal" href="#real-4"><span class="std std-numref">Fig. 17.27</span></a>을 보면 D+2 정산액은 총평가금액의 약 10% 가까이 된다. 이는 매수는 이루어지지 않고, 매도만 이루어졌기 때문이다. 이를 해결할 수 있는 방법은 여러가지가 있다.</p>
 <ol class="simple">
 <li><p>매수되지 않은 수량을 3시 이후에 매수하는 알고리즘을 추가한다.</p></li>
@@ -2008,9 +2141,9 @@ End
 <li><p>투자목표를 총평가금액의 98%가 아닌 95% 정도로 하여 현금 버퍼를 충분히 확보한다.</p></li>
 </ol>
 <p>이 중 본인에게 맞는 조건을 추가한다면, 좀 더 완벽한 리밸런싱 작업을 수행할 수 있다.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2034,9 +2167,11 @@ End
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="backtest.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -2052,24 +2187,28 @@ End
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By 이현열<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By 이현열<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

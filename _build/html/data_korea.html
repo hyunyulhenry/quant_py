@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>10. 국내 주식 데이터 수집 &#8212; 파이썬을 이용한 퀀트 투자 포트폴리오 만들기</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -39,10 +37,12 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script kind="utterances">
 
     var commentsRunWhenDOMLoaded = cb => {
@@ -78,7 +78,7 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -96,7 +96,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -105,9 +119,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -125,14 +140,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="index.html">
-   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   퀀트와 프로그래밍 기초 배워보기
  </span>
@@ -257,107 +273,164 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/data_korea.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/hyunyulhenry/quant_py"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/hyunyulhenry/quant_py/issues/new?title=Issue%20on%20page%20%2Fdata_korea.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_py/main?urlpath=tree/data_korea.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/hyunyulhenry/quant_py/main?urlpath=tree/data_korea.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/data_korea.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
    10.1. 최근 영업일 기준 데이터 받기
@@ -438,12 +511,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>국내 주식 데이터 수집</h1>
@@ -540,23 +612,26 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1><span class="section-number">10. </span>국내 주식 데이터 수집<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">10. </span>국내 주식 데이터 수집<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 <p>이번 장에서는 극내 주식 데이터 중 주식티커와 섹터별 구성종목 및 퀀트 투자를 위한 핵심 데이터인 수정주가, 재무제표, 가치지표를 크롤링하는 방법을 알아보겠다.</p>
-<div class="section" id="id2">
-<h2><span class="section-number">10.1. </span>최근 영업일 기준 데이터 받기<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<section id="id2">
+<h2><span class="section-number">10.1. </span>최근 영업일 기준 데이터 받기<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>POST 방식으로 금융 데이터를 제공하는 일부 사이트에서는 쿼리 항목에 특정 날짜를 입력하면(예:20221230) 해당일의 데이터를 다운로드 할 수 있으며, 최근 영업일 날짜를 입력하면 가장 최근의 데이터를 받을 수 있다. 따라서 최근 영업일에 해당하는 항목을 매번 수기로 입력하기 보다는 자동으로 반영되게 할 필요가 있다.</p>
 <p>네이버 금융의 [국내증시 → 증시자금동향]에는 이전 2영업일에 해당하는 날짜가 있으며, 자동으로 날짜가 업데이트된다. 따라서 해당 부분을 크롤링 한후 날짜에 해당하는 쿼리 항목에 사용하면 된다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">finance</span><span class="o">.</span><span class="n">naver</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">sise</span><span class="o">/</span><span class="n">sise_deposit</span><span class="o">.</span><span class="n">nhn</span>
 </pre></div>
 </div>
-<div class="figure align-default" id="recent-date">
+<figure class="align-default" id="recent-date">
 <img alt="_images/recent_date.png" src="_images/recent_date.png" />
-<p class="caption"><span class="caption-number">Fig. 10.1 </span><span class="caption-text">최근 영업일 부분</span><a class="headerlink" href="#recent-date" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 10.1 </span><span class="caption-text">최근 영업일 부분</span><a class="headerlink" href="#recent-date" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>개발자도구 화면을 이용해 해당 데이터가 있는 부분을 확인해보면 [클래스가 subtop_sise_graph2인 div 태그 → 클래스가 subtop_chart_note인 ul 태그 → li 태그 → 클래스가 tah인 span 태그]에 위치해 있다는 걸 알 수 있다. 이를 이용해 해당 데이터를 크롤링한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -608,9 +683,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p><code class="docutils literal notranslate"><span class="pre">join()</span></code> 함수를 통해 숫자를 합쳐준다.</p></li>
 </ol>
 <p>이를 통해 우리가 원하는 <strong>yyyymmdd</strong> 형태의 날짜가 만들어졌다. 해당 데이터를 최근 영업일이 필요한 곳에 사용하면 된다.</p>
-</div>
-<div class="section" id="id3">
-<h2><span class="section-number">10.2. </span>한국거래소의 업종분류 현황 및 개별지표 크롤링<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id3">
+<h2><span class="section-number">10.2. </span>한국거래소의 업종분류 현황 및 개별지표 크롤링<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
 <p>주식 관련 데이터를 구하기 위해 가장 먼저 해야하는 일은 어떠한 종목들이 상장되어 있는가에 대한 정보를 구하는 것이다. 한국거래소에서 제공하는 업종분류 현황과 개별종목 지표 데이터를 이용하면 매우 간단하게 해당 정보를 수집할 수 있다.</p>
 <ul class="simple">
 <li><p>KRX 정보데이터시스템 <a class="reference external" href="http://data.krx.co.kr/">http://data.krx.co.kr/</a> 에서 [기본통계 → 주식 → 세부안내] 부분</p></li>
@@ -618,28 +693,34 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>[12021] 개별종목: <a class="reference external" href="http://data.krx.co.kr/contents/MDC/MDI/mdiLoader/index.cmd?menuId=MDC0201020502">http://data.krx.co.kr/contents/MDC/MDI/mdiLoader/index.cmd?menuId=MDC0201020502</a></p></li>
 </ul>
 <p>해당 데이터들을 크롤링이 아닌 [Excel] 버튼을 클릭해 엑셀 파일로 받을 수도 있다. 그러나 매번 엑셀 파일을 다운로드하고 이를 불러오는 작업은 상당히 비효율적이며, 크롤링을 이용한다면 해당 데이터를 파이썬에서 바로 불러올 수 있다.</p>
-<div class="section" id="id4">
-<h3><span class="section-number">10.2.1. </span>업종분류 현황 크롤링<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<section id="id4">
+<h3><span class="section-number">10.2.1. </span>업종분류 현황 크롤링<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
 <p>먼저 업종분류 현황에 해당하는 페이지에 접속하여 F12를 눌러 개발자도구 화면을 열고 [다운로드] 버튼을 클릭한 후 [CSV]를 누른다. 개발자도구 화면의 [Network] 탭에는 <a class="reference internal" href="#krx-1"><span class="std std-numref">Fig. 10.2</span></a>와 같이 <strong>generate.cmd</strong>와 <strong>download.cmd</strong> 두 가지 항목이 생긴다.</p>
-<div class="figure align-default" id="krx-1">
+<figure class="align-default" id="krx-1">
 <img alt="_images/krx_1.png" src="_images/krx_1.png" />
-<p class="caption"><span class="caption-number">Fig. 10.2 </span><span class="caption-text">CSV 다운로드 시 개발자도구 화면</span><a class="headerlink" href="#krx-1" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 10.2 </span><span class="caption-text">CSV 다운로드 시 개발자도구 화면</span><a class="headerlink" href="#krx-1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>거래소에서 엑셀 혹은 CSV 데이터를 받는 과정은 다음과 같다.</p>
 <ol class="simple">
 <li><p><a class="reference external" href="http://data.krx.co.kr/comm/fileDn/download_excel/download.cmd">http://data.krx.co.kr/comm/fileDn/download_excel/download.cmd</a> 에 원하는 항목을 쿼리로 발송하면 해당 쿼리에 해당하는 OTP(generate.cmd)를 받는다.</p></li>
 <li><p>부여받은 OTP를 <a class="reference external" href="http://data.krx.co.kr/">http://data.krx.co.kr/</a> 에 제출하면 이에 해당하는 데이터(download.cmd)를 다운로드한다.</p></li>
 </ol>
 <p>먼저 1번 단계를 살펴보자. [Headers] 탭의 ‘General’ 항목 중 ‘Request URL’ 부분이 원하는 항목을 제출할 주소다. [Payload] 탭의 Form Data에는 우리가 원하는 항목들이 적혀 있다. 이를 통해 POST 방식으로 데이터를 요청하면 OTP를 받음을 알 수 있다.</p>
-<div class="figure align-default" id="krx-otp">
+<figure class="align-default" id="krx-otp">
 <img alt="_images/krx_otp.png" src="_images/krx_otp.png" />
-<p class="caption"><span class="caption-number">Fig. 10.3 </span><span class="caption-text">OTP 생성 부분</span><a class="headerlink" href="#krx-otp" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 10.3 </span><span class="caption-text">OTP 생성 부분</span><a class="headerlink" href="#krx-otp" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>다음으로 2번 단계를 살펴보자. ‘General’ 항목의 ‘Request URL’은 OTP를 제출할 주소다. ‘Form Data’의 OTP는 1번 단계를 통해 부여받은 OTP에 해당한다. 이 역시 POST 방식으로 데이터를 요청하며 이를 통해 CSV 파일을 받아온다.</p>
-<div class="figure align-default" id="krx-otp-2">
+<figure class="align-default" id="krx-otp-2">
 <img alt="_images/krx_otp_2.png" src="_images/krx_otp_2.png" />
-<p class="caption"><span class="caption-number">Fig. 10.4 </span><span class="caption-text">OTP 제출 부분</span><a class="headerlink" href="#krx-otp-2" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 10.4 </span><span class="caption-text">OTP 제출 부분</span><a class="headerlink" href="#krx-otp-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>위 과정 중 OTP를 받아오는 과정을 코드로 나타내면 다음과 같다</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -676,10 +757,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>헤더 부분에 리퍼러(Referer)를 추가한다. 리퍼러란 링크를 통해서 각각의 웹사이트로 방문할 때 남는 흔적이다. 거래소 데이터를 다운로드하는 과정을 살펴보면 첫 번째 URL에서 OTP를 부여받고, 이를 다시 두번째 URL에 제출했다. 그런데 이러한 과정의 흔적이 없이 OTP를 바로 두번째 URL에 제출하면 서버는 이를 로봇으로 인식해 데이터를 주지 않는다. 따라서 헤더 부분에 우리가 거쳐온 과정을 흔적으로 남겨야 데이터를 받을 수 있다. 이러한 리퍼러 주소는 개발자도구 화면에서도 확인할 수 있다(<a class="reference internal" href="#referer"><span class="std std-numref">Fig. 10.5</span></a>).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">post()</span></code> 함수를 통해 해당 URL에 쿼리를 전송하면 이에 해당하는 데이터를 받으며, 이 중 텍스트에 해당하는 내용만 불러온다.</p></li>
 </ol>
-<div class="figure align-default" id="referer">
+<figure class="align-default" id="referer">
 <img alt="_images/referer.png" src="_images/referer.png" />
-<p class="caption"><span class="caption-number">Fig. 10.5 </span><span class="caption-text">리퍼러 주소의 확인</span><a class="headerlink" href="#referer" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 10.5 </span><span class="caption-text">리퍼러 주소의 확인</span><a class="headerlink" href="#referer" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>위의 과정을 거쳐 생성된 OTP를 제출하면, 우리가 원하는 데이터를 다운로드할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1005,14 +1088,16 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>종목명에 공백에 있는 경우가 있으므로 <code class="docutils literal notranslate"><span class="pre">strip()</span></code> 메서드를 이용해 이를 제거해준다.</p></li>
 <li><p>데이터의 기준일에 해당하는 [기준일] 열을 추가한다.</p></li>
 </ol>
-</div>
-<div class="section" id="id5">
-<h3><span class="section-number">10.2.2. </span>개별종목 지표 크롤링<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id5">
+<h3><span class="section-number">10.2.2. </span>개별종목 지표 크롤링<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
 <p>개별종목 데이터를 크롤링하는 방법은 위와 매우 유사하며, 요청하는 쿼리 값에만 차이가 있다. 개발자도구 화면을 열고 [CSV] 버튼을 클릭해 어떠한 쿼리를 요청하는지 확인해보자.</p>
-<div class="figure align-default" id="krx-2">
+<figure class="align-default" id="krx-2">
 <img alt="_images/krx_2.png" src="_images/krx_2.png" />
-<p class="caption"><span class="caption-number">Fig. 10.6 </span><span class="caption-text">개별지표 OTP 생성 부분</span><a class="headerlink" href="#krx-2" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 10.6 </span><span class="caption-text">개별지표 OTP 생성 부분</span><a class="headerlink" href="#krx-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>OTP를 생성하는 부분인 [generate.cmd]를 확인해보면 [Payload] 탭의  ‘tboxisuCd_finder_stkisu0_6’, ‘isu_Cd’, ‘isu_Cd2’ 등의 항목은 조회 구분의 개별추이 탭에 해당하는 부분이므로 우리가 원하는 전체 데이터를 받을 때는 필요하지 않은 요청값다. 이를 제외한 요청값을 산업별 현황 예제에 적용하면 해당 데이터 역시 손쉽게 다운로드할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1168,9 +1253,9 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="id6">
-<h3><span class="section-number">10.2.3. </span>데이터 정리하기<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id6">
+<h3><span class="section-number">10.2.3. </span>데이터 정리하기<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
 <p>먼저 두 데이터에 공통으로 존재하지 않는 종목, 즉 하나의 데이터에만 존재하는 종목을 살펴보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1576,10 +1661,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="figure align-default" id="ticker-table">
+<figure class="align-default" id="ticker-table">
 <img alt="_images/ticker_table.png" src="_images/ticker_table.png" />
-<p class="caption"><span class="caption-number">Fig. 10.7 </span><span class="caption-text">국내 티커정보 테이블 생성</span><a class="headerlink" href="#ticker-table" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 10.7 </span><span class="caption-text">국내 티커정보 테이블 생성</span><a class="headerlink" href="#ticker-table" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>파이썬에서 아래 코드를 실행하면 다운로드 받은 정보가 kor_ticker 테이블에 upsert 형태로 저장된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1610,23 +1697,27 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="figure align-default" id="sql-ticker">
+<figure class="align-default" id="sql-ticker">
 <img alt="_images/sql_ticker.png" src="_images/sql_ticker.png" />
-<p class="caption"><span class="caption-number">Fig. 10.8 </span><span class="caption-text">국내 티커정보 테이블</span><a class="headerlink" href="#sql-ticker" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-</div>
-<div class="section" id="wics">
-<h2><span class="section-number">10.3. </span>WICS 기준 섹터정보 크롤링<a class="headerlink" href="#wics" title="Permalink to this headline">¶</a></h2>
+<figcaption>
+<p><span class="caption-number">Fig. 10.8 </span><span class="caption-text">국내 티커정보 테이블</span><a class="headerlink" href="#sql-ticker" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="wics">
+<h2><span class="section-number">10.3. </span>WICS 기준 섹터정보 크롤링<a class="headerlink" href="#wics" title="Permalink to this headline">#</a></h2>
 <p>일반적으로 주식의 섹터를 나누는 기준은 MSCI와 S&amp;P가 개발한 <strong>GICS</strong>를 가장 많이 사용한다. 국내 종목의 GICS 기준 정보 역시 한국거래소에서 제공하고 있으나, 이는 독점적 지적재산으로 명시했기에 사용하는데 무리가 있다. 그러나 지수제공업체인 FnGuide Index에서는 GICS와 비슷한 <strong>WICS 산업분류</strong>를 발표하고 있다. WICS를 크롤링하여 필요한 정보를 수집해보도록 하자.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">wiseindex</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Index</span>
 </pre></div>
 </div>
 <p>먼저 웹페이지에 접속해 왼쪽에서 [WISE SECTOR INDEX → WICS → 에너지]를 클릭한다. 그 후 [Components] 탭을 클릭하면 해당 섹터의 구성종목을 확인할 수 있다.</p>
-<div class="figure align-default" id="wise-index">
+<figure class="align-default" id="wise-index">
 <img alt="_images/wise_index.png" src="_images/wise_index.png" />
-<p class="caption"><span class="caption-number">Fig. 10.9 </span><span class="caption-text">WICS 기준 구성종목</span><a class="headerlink" href="#wise-index" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 10.9 </span><span class="caption-text">WICS 기준 구성종목</span><a class="headerlink" href="#wise-index" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>개발자도구 화면(<a class="reference internal" href="#wise-index-2"><span class="std std-numref">Fig. 10.10</span></a>)을 통해 해당 페이지의 데이터전송 과정을 살펴보자. 일자를 선택하면 [Network] 탭의 ‘GetIndexComponets’ 항목에 데이터 전송 과정이 나타난다. Request URL은 데이터를 가져오는 주소이며, 이를 분석하면 다음과 같다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://www.wiseindex.com/Index/GetIndexComponets?ceil_yn=0&amp;dt=20210210&amp;sec_cd=G10
 </pre></div>
@@ -1637,15 +1728,19 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>dt=20220419: 조회일자를 나타낸다.</p></li>
 <li><p>sec_cd=G10: 섹터 코드를 나타낸다.</p></li>
 </ol>
-<div class="figure align-default" id="wise-index-2">
+<figure class="align-default" id="wise-index-2">
 <img alt="_images/wise_index_2.png" src="_images/wise_index_2.png" />
-<p class="caption"><span class="caption-number">Fig. 10.10 </span><span class="caption-text">WICS 페이지 개발자도구 화면</span><a class="headerlink" href="#wise-index-2" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 10.10 </span><span class="caption-text">WICS 페이지 개발자도구 화면</span><a class="headerlink" href="#wise-index-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>이번에는 Request URL에 해당하는 페이지를 열어보자.</p>
-<div class="figure align-default" id="wise-index-3">
+<figure class="align-default" id="wise-index-3">
 <img alt="_images/wise_index_3.png" src="_images/wise_index_3.png" />
-<p class="caption"><span class="caption-number">Fig. 10.11 </span><span class="caption-text">WICS 데이터 페이지</span><a class="headerlink" href="#wise-index-3" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 10.11 </span><span class="caption-text">WICS 데이터 페이지</span><a class="headerlink" href="#wise-index-3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>페이지에 출력된 글자들이 보이지만 매우 특이한 형태로 구성되어 있으며, 이는 JSON 형식의 데이터다. 기존에 우리가 살펴보았던 대부분의 웹페이지는 HTML 형식으로 표현되었다. HTML 형식은 문법이 복잡하고 표현 규칙이 엄격해 데이터의 용량이 커지는 단점이 있다. 반면 JSON 형식은 문법이 단순하고 데이터의 용량이 작아 빠른 속도로 데이터를 교환할 수 있다. 파이썬에서는 json 패키지를 사용해 매우 손쉽게 JSON 형식의 데이터를 크롤링할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1952,38 +2047,46 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>파이썬에서 위 코드를 실행하면 다운로드 받은 정보가 kor_sector 테이블에 upsert 형태로 저장된다.</p>
-<div class="figure align-default" id="sql-sector">
+<figure class="align-default" id="sql-sector">
 <img alt="_images/sql_sector.png" src="_images/sql_sector.png" />
-<p class="caption"><span class="caption-number">Fig. 10.12 </span><span class="caption-text">섹터 테이블</span><a class="headerlink" href="#sql-sector" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="id7">
-<h2><span class="section-number">10.4. </span>수정주가 크롤링<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<figcaption>
+<p><span class="caption-number">Fig. 10.12 </span><span class="caption-text">섹터 테이블</span><a class="headerlink" href="#sql-sector" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id7">
+<h2><span class="section-number">10.4. </span>수정주가 크롤링<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
 <p>주가 데이터는 투자를 함에 있어 반드시 필요한 데이터이며, 인터넷에서 주가를 수집할 수 있는 방법은 매우 많다. 그러나 일반적인 주가를 구할 수 있는 방법은 많지만, 퀀트 투자를 위한 백테스트나 종목선정을 위해서는 수정주가가 필요하다. 수정주가가 필요한 이유를 알아보기 위해 실제 사례를 살펴보도록 하자. 삼성전자는 2018년 5월 기존의 1주를 50주로 나누는 액면분할을 실시했고, 265만 원이던 주가는 다음날 50분의 1인 5만 3000원으로 거래되었다. 이러한 이벤트를 고려하지 않고 주가만 살펴본다면 마치 -98% 수익률을 기록한 것 같지만, 투자자 입장에서는 1주이던 주식이 50주로 늘어났기 때문에 자산에는 아무런 변화가 없다. 이를 고려하는 방법은 액면분할 전 모든 주가를 50으로 나누어 연속성을 갖게 만드는 것이며, 이를 ‘수정주가’라고 한다. 따라서 백테스트 혹은 퀀트 지표 계산에는 수정주가가 사용되어야 하며, 네이버 금융에서 제공하는 정보를 통해 모든 종목의 수정주가를 손쉽게 구할 수 있다.</p>
-<div class="figure align-default" id="ss">
+<figure class="align-default" id="ss">
 <img alt="_images/ss.png" src="_images/ss.png" />
-<p class="caption"><span class="caption-number">Fig. 10.13 </span><span class="caption-text">액면분할을 반영하지 않은 삼성전자의 주가 그래프</span><a class="headerlink" href="#ss" title="Permalink to this image">¶</a></p>
-</div>
-<div class="section" id="id8">
-<h3><span class="section-number">10.4.1. </span>개별종목 주가 크롤링<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<figcaption>
+<p><span class="caption-number">Fig. 10.13 </span><span class="caption-text">액면분할을 반영하지 않은 삼성전자의 주가 그래프</span><a class="headerlink" href="#ss" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="id8">
+<h3><span class="section-number">10.4.1. </span>개별종목 주가 크롤링<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
 <p>먼저 네이버 금융에서 특정종목(예: 삼성전자)의 [차트]탭을 선택한다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://finance.naver.com/item/fchart.nhn?code=005930
 </pre></div>
 </div>
 <p>해당 차트는 주가 데이터를 받아와 화면에 그래프를 그려주는 형태다. 따라서 데이터가 어디에서 오는지 알기 위해 개발자도구 화면을 이용한다. 화면을 연 상태에서 [일]을 선택하면 나오는 항목 중 가장 상단 항목 [siseJson.naver?symbol=..]의 <strong>Request URL</strong>이 주가 데이터를 요청하는 주소다.</p>
-<div class="figure align-default" id="naver-chart">
+<figure class="align-default" id="naver-chart">
 <img alt="_images/naver_chart.png" src="_images/naver_chart.png" />
-<p class="caption"><span class="caption-number">Fig. 10.14 </span><span class="caption-text">네이버 금융 차트의 통신기록</span><a class="headerlink" href="#naver-chart" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 10.14 </span><span class="caption-text">네이버 금융 차트의 통신기록</span><a class="headerlink" href="#naver-chart" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>URL은 다음과 같다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://api.finance.naver.com/siseJson.naver?symbol=005930&amp;requestType=1&amp;startTime=20200214&amp;endTime=20220422&amp;timeframe=day
 </pre></div>
 </div>
 <p>위 페이지에 접속하면 <a class="reference internal" href="#naver-stock"><span class="std std-numref">Fig. 10.15</span></a>와 같이 날짜별로 시가, 고가, 저가, 종가, 거래량, 외국인소진율이 있으며, 주가는 모두 수정주가 기준이다. URL에서 ‘symbol=’ 뒤에 6자리 티커만 변경하면 해당 종목의 주가 데이터가 있는 페이지로 이동할 수 있으며, 이를 통해 우리가 원하는 모든 종목의 수정주가 데이터를 크롤링할 수 있다. 또한 ‘startTime=’ 에는 시작일자를, ‘endTime=’ 에는 종료일자를 입력하여 원하는 기간 만큼의 데이터를 받을 수도 있다.</p>
-<div class="figure align-default" id="naver-stock">
+<figure class="align-default" id="naver-stock">
 <img alt="_images/naver_stock.png" src="_images/naver_stock.png" />
-<p class="caption"><span class="caption-number">Fig. 10.15 </span><span class="caption-text">주가 데이터 페이지</span><a class="headerlink" href="#naver-stock" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 10.15 </span><span class="caption-text">주가 데이터 페이지</span><a class="headerlink" href="#naver-stock" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>본격적인 주가 데이터 수집을 위해 먼저 DB에서 티커 데이터를 불러오도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2344,9 +2447,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>‘종목코드’열에 티커를 입력한다.</p></li>
 </ol>
 <p>데이터를 확인해보면 우리에게 필요한 형태로 정리되었다.</p>
-</div>
-<div class="section" id="id9">
-<h3><span class="section-number">10.4.2. </span>전 종목 주가 크롤링<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id9">
+<h3><span class="section-number">10.4.2. </span>전 종목 주가 크롤링<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
 <p>위 과정을 응용해 모든 종목의 주가를 크롤링한 후 DB에 저장하는 과정을 살펴보도록 하겠다. 먼저 SQL에서 주가가 저장될 테이블(kor_price)을 만들어준다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2470,28 +2573,32 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>모든 작업이 끝나면 DB와의 연결을 종료한다.</p></li>
 </ol>
 <p>작업이 끝난 후 SQL의 kor_price 테이블을 확인해보면 전 종목 주가가 저장되어 있다. 시간이 지나 위 코드를 다시 실행하면 upsert 형식을 통해 수정된 주가는 update를, 새로 입력된 주가는 insert를 한다.</p>
-<div class="figure align-default" id="sql-price">
+<figure class="align-default" id="sql-price">
 <img alt="_images/sql_price1.png" src="_images/sql_price1.png" />
-<p class="caption"><span class="caption-number">Fig. 10.16 </span><span class="caption-text">주가 테이블</span><a class="headerlink" href="#sql-price" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-</div>
-<div class="section" id="id10">
-<h2><span class="section-number">10.5. </span>재무제표 크롤링<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<figcaption>
+<p><span class="caption-number">Fig. 10.16 </span><span class="caption-text">주가 테이블</span><a class="headerlink" href="#sql-price" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="id10">
+<h2><span class="section-number">10.5. </span>재무제표 크롤링<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h2>
 <p>주가와 더불어 재무제표와 가치지표 역시 투자에 있어 핵심이 되는 데이터다. 해당 데이터는 여러 웹사이트에서 구할 수 있으며, 국내 데이터 제공업체인 FnGuide에서 운영하는 Company Guide 웹사이트에서 손쉽게 구할 수 있다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">comp</span><span class="o">.</span><span class="n">fnguide</span><span class="o">.</span><span class="n">com</span><span class="o">/</span>
 </pre></div>
 </div>
-<div class="section" id="id11">
-<h3><span class="section-number">10.5.1. </span>재무제표 다운로드<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<section id="id11">
+<h3><span class="section-number">10.5.1. </span>재무제표 다운로드<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h3>
 <p>먼저 웹사이트에서 개별종목의 재무제표를 탭을 선택하면 포괄손익계산서, 재무상태표, 현금흐름표 항목이 있으며, 티커에 해당하는 A005930 뒤의 주소는 불필요한 내용이므로, 이를 제거한 주소로 접속한다. A 뒤의 6자리 티커만 변경한다면 해당 종목의 재무제표 페이지로 이동하게 된다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://comp.fnguide.com/SVO2/ASP/SVD_Finance.asp?pGB=1&amp;gicode=A005930
 </pre></div>
 </div>
-<div class="figure align-default" id="comp-guide">
+<figure class="align-default" id="comp-guide">
 <img alt="_images/comp_guide.png" src="_images/comp_guide.png" />
-<p class="caption"><span class="caption-number">Fig. 10.17 </span><span class="caption-text">Company Guide 화면</span><a class="headerlink" href="#comp-guide" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 10.17 </span><span class="caption-text">Company Guide 화면</span><a class="headerlink" href="#comp-guide" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>우리가 원하는 재무제표 항목들은 모두 테이블 형태로 제공되고 있으므로 pandas 패키지의 <code class="docutils literal notranslate"><span class="pre">read_html()</span></code> 함수를 이용해 쉽게 추출할 수 있다. 먼저 삼성전자 종목의 페이지 내용을 불러오자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2553,7 +2660,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ol>
 <p>위의 과정을 거치면 총 6개의 테이블이 들어오게 되며, 그 내용은 <a class="reference internal" href="#fs-table"><span class="std std-numref">Table 10.1</span></a>와 같다.</p>
 <table class="colwidths-auto table" id="fs-table">
-<caption><span class="caption-number">Table 10.1 </span><span class="caption-text">재무제표 테이블 내역</span><a class="headerlink" href="#fs-table" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 10.1 </span><span class="caption-text">재무제표 테이블 내역</span><a class="headerlink" href="#fs-table" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>순서</p></th>
 <th class="head"><p>내용</p></th>
@@ -2686,10 +2793,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p><code class="docutils literal notranslate"><span class="pre">rename()</span></code> 메서드를 통해 첫번째 열 이름(IFRS 혹은 IFRS(연결)을 ‘계정’으로 변경한다.</p></li>
 </ol>
 <p>결산마감 이전에 해당 페이지를 크롤링 할 경우 연간 재무제표 데이터에 분기 재무제표 데이터가 들어오기도 하므로, 연간 재무제표에 해당하는 열 만을 선택해야 한다. 각 종목 별 결산월은 해당 페이지의 상단에서 확인할 수 있다.</p>
-<div class="figure align-default" id="fiscal-end">
+<figure class="align-default" id="fiscal-end">
 <img alt="_images/fiscal_end.png" src="_images/fiscal_end.png" />
-<p class="caption"><span class="caption-number">Fig. 10.18 </span><span class="caption-text">종목 별 결산월</span><a class="headerlink" href="#fiscal-end" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 10.18 </span><span class="caption-text">종목 별 결산월</span><a class="headerlink" href="#fiscal-end" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>이제 해당 데이터를 크롤링 해보도록 하겠다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3090,9 +3199,9 @@ Name: 계정, dtype: int64
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">concat()</span></code> 함수를 통해 두 테이블을 하나로 묶어준다.</p>
-</div>
-<div class="section" id="id12">
-<h3><span class="section-number">10.5.2. </span>전종목 재무제표 크롤링<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id12">
+<h3><span class="section-number">10.5.2. </span>전종목 재무제표 크롤링<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h3>
 <p>위 과정을 응용해 모든 종목의 재무제표를 크롤링한 후 DB에 저장하는 과정을 살펴보도록 하겠다. 먼저 SQL에서 재무제표가 저장될 테이블(kor_fs)을 만들어준다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3249,17 +3358,19 @@ Name: 계정, dtype: int64
 <li><p>모든 작업이 끝나면 DB와의 연결을 종료한다.</p></li>
 </ol>
 <p>작업이 끝난 후 SQL의 kor_fs 테이블을 확인해보면 전 종목의 재무제표가 저장되어 있다. 시간이 지나 위 코드를 다시 실행하면 upsert 형식을 통해 수정된 재무제표는 update를, 새로 입력된 재무제표는 insert를 한다.</p>
-<div class="figure align-default" id="sql-fs">
+<figure class="align-default" id="sql-fs">
 <img alt="_images/sql_fs1.png" src="_images/sql_fs1.png" />
-<p class="caption"><span class="caption-number">Fig. 10.19 </span><span class="caption-text">재무제표 테이블</span><a class="headerlink" href="#sql-fs" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-</div>
-<div class="section" id="id13">
-<h2><span class="section-number">10.6. </span>가치지표 계산<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<figcaption>
+<p><span class="caption-number">Fig. 10.19 </span><span class="caption-text">재무제표 테이블</span><a class="headerlink" href="#sql-fs" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="id13">
+<h2><span class="section-number">10.6. </span>가치지표 계산<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h2>
 <p>위에서 구한 재무제표 데이터를 이용해 가치지표를 계산할 수 있다. 흔히 가치지표로는 ‘PER’, ‘PBR’, ‘PCR’, ‘PSR’, ‘DY’가 사용된다.</p>
 <table class="colwidths-auto table" id="value-table">
-<caption><span class="caption-number">Table 10.2 </span><span class="caption-text">가치지표의 종류</span><a class="headerlink" href="#value-table" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 10.2 </span><span class="caption-text">가치지표의 종류</span><a class="headerlink" href="#value-table" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>지표</p></th>
 <th class="head"><p>설명</p></th>
@@ -3906,8 +4017,8 @@ Name: 계정, dtype: int64
 </div></div></div>
 </div>
 <p>티커 리스트의 각종 데이터 중 주당배당금을 종가로 나누면 현재시점 기준 배당수익률을 쉽게 계산할 수 있다.</p>
-<div class="section" id="id14">
-<h3><span class="section-number">10.6.1. </span>전 종목 가치지표 계산<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<section id="id14">
+<h3><span class="section-number">10.6.1. </span>전 종목 가치지표 계산<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h3>
 <p>위 코드를 응용해 전 종목 가치지표를 계산해보도록 하자. 먼저 SQL에서 가치지표가 저장될 테이블(kor_value)을 만들어준다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4194,13 +4305,15 @@ Name: 계정, dtype: int64
 </div>
 </div>
 <p>배당수익률 역시 kor_value 테이블에 upsert 방식으로 저장한 후, DB와의 연결을 종료한다.</p>
-<div class="figure align-default" id="sql-value">
+<figure class="align-default" id="sql-value">
 <img alt="_images/sql_value.png" src="_images/sql_value.png" />
-<p class="caption"><span class="caption-number">Fig. 10.20 </span><span class="caption-text">가치지표 테이블</span><a class="headerlink" href="#sql-value" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-</div>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 10.20 </span><span class="caption-text">가치지표 테이블</span><a class="headerlink" href="#sql-value" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -4224,9 +4337,11 @@ Name: 계정, dtype: int64
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="selenium.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -4242,24 +4357,28 @@ Name: 계정, dtype: int64
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By 이현열<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By 이현열<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
