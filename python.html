@@ -4,13 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>2. 파이썬 기초 배워보기 &#8212; 파이썬을 이용한 퀀트 투자 포트폴리오 만들기</title>
     
-  <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -20,16 +18,20 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
+    
+      
+
+    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -37,7 +39,6 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -77,15 +78,16 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="3. 데이터 분석 배워보기" href="eda.html" />
@@ -97,21 +99,7 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
-
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -120,10 +108,9 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -141,15 +128,14 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="index.html">
-                    파이썬을 이용한 퀀트 투자 포트폴리오 만들기
-                </a>
-            </li>
-        </ul>
-        <p aria-level="2" class="caption" role="heading">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   퀀트와 프로그래밍 기초 배워보기
  </span>
@@ -274,17 +260,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
-    </div>
-    <div id="rtd-footer-container"></div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
 </div>
 
 
@@ -292,146 +273,78 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="header-article row sticky-top noprint">
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
         
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/hyunyulhenry/quant_py/main?urlpath=tree/python.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/python.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/python.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_py/main?urlpath=tree/python.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
     </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
    2.1. 상수와 변수
@@ -662,11 +575,12 @@ title="Print to PDF"
  </li>
 </ul>
 
-    </nav>
-</div>
+            </nav>
+        </div>
     </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>파이썬 기초 배워보기</h1>
@@ -913,15 +827,14 @@ title="Print to PDF"
                     </div>
                 </div>
             </div>
-            <main id="main-content" role="main">
-                
+            
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">2. </span>파이썬 기초 배워보기<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1><span class="section-number">2. </span>파이썬 기초 배워보기<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>이번 장에서는 변수와 상수, 데이터의 타입, 제어문, 함수 등 기본적인 파이썬 문법과 패키지를 사용하는 방법에 대해 살펴보도록 하겠다.</p>
-<section id="id2">
-<h2><span class="section-number">2.1. </span>상수와 변수<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id2">
+<h2><span class="section-number">2.1. </span>상수와 변수<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>프로그래밍의 가장 기본은 <strong>상수</strong>와 <strong>변수</strong>이다. 먼저 아래의 코드를 실행해보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -981,12 +894,12 @@ title="Print to PDF"
 </div>
 </div>
 <p>var1이라는 변수에 다시 3이라는 숫자를 입력하면 <code class="docutils literal notranslate"><span class="pre">var1</span> <span class="pre">+</span> <span class="pre">var2</span></code>는 3+2가 되므로 5라는 결과가 출력된다. 이처럼 변수에는 계속해서 다른 상수를 입력할 수 있다.</p>
-</section>
-<section id="id3">
-<h2><span class="section-number">2.2. </span>데이터 타입<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">2.2. </span>데이터 타입<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>파이썬에는 다양한 데이터 타입이 존재하며, 이에 대해 하나씩 알아보도록 하자.</p>
-<section id="id4">
-<h3><span class="section-number">2.2.1. </span>숫자형<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<div class="section" id="id4">
+<h3><span class="section-number">2.2.1. </span>숫자형<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>숫자형(Number)은 정수나 실수와 같이 숫자 형태로 이루어진 데이터 타입이다. (8진수나 16진수도 있으나 거의 사용하지 않는다).</p>
 <p>먼저 정수형(Integer)이란 -2, -1, 0, 1, 2처럼 소수점을 사용하지 않고 숫자를 표현한 것이다.</p>
 <div class="cell docutils container">
@@ -1015,8 +928,8 @@ title="Print to PDF"
 </div>
 </div>
 <p>1.0이라는 숫자의 타입을 확인해보면 float, 즉 실수임을 알 수 있다. 일반적으로 1과 1.0은 동일한 숫자라고 생각할 수 있지만, 프로그래밍에서 정수형과 실수형은 엄밀하게는 다른 타입이다.</p>
-<section id="id5">
-<h4><span class="section-number">2.2.1.1. </span>숫자형 연산하기<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h4>
+<div class="section" id="id5">
+<h4><span class="section-number">2.2.1.1. </span>숫자형 연산하기<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <p>숫자형은 다양한 연산이 가능하다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1106,10 +1019,10 @@ title="Print to PDF"
 </div>
 </div>
 <p>연산자 <code class="docutils literal notranslate"><span class="pre">%</span></code>는 나눗셈의 나머지를 반환한다. 7을 3으로 나누면 몫은 2가 되며 나머지는 1이 된다.</p>
-</section>
-</section>
-<section id="id6">
-<h3><span class="section-number">2.2.2. </span>문자열<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+</div>
+</div>
+<div class="section" id="id6">
+<h3><span class="section-number">2.2.2. </span>문자열<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>문자열(String)이란 문자, 단어 등으로 구성된 문자들의 집합을 의미한다. 파이썬에서 문자열을 만드는 방법은 총 4가지가 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1184,8 +1097,8 @@ You need python
 </div>
 </div>
 <p>이번에는 c라는 변수에 ‘Quant’를 입력한 후 3을 곱하면, c가 세 번 반복된다.</p>
-<section id="f-string">
-<h4><span class="section-number">2.2.2.1. </span>f-string 포매팅<a class="headerlink" href="#f-string" title="Permalink to this headline">#</a></h4>
+<div class="section" id="f-string">
+<h4><span class="section-number">2.2.2.1. </span>f-string 포매팅<a class="headerlink" href="#f-string" title="Permalink to this headline">¶</a></h4>
 <p>문자열에서 특정 부분만이 바뀌고 나머지 부분은 일정할 경우, 파이썬에서는 f-string 포매팅을 이용해 매우 쉽게 나타낼 수 있다. (해당 기능은 파이썬 3.6 버전 이상부터 사용이 가능하다.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1203,9 +1116,9 @@ You need python
 </div>
 </div>
 <p>f-string의 형태는 <code class="docutils literal notranslate"><span class="pre">f'문자열</span> <span class="pre">{변수}</span> <span class="pre">문자열'</span></code> 이다. 즉 문자열 맨 앞에 f를 붙이면 f-string 포매팅이 선언되며, 중괄호 안에 변수를 넣으면 해당 부분에 변수의 값이 입력된다.</p>
-</section>
-<section id="id7">
-<h4><span class="section-number">2.2.2.2. </span>문자열 길이 구하기<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="id7">
+<h4><span class="section-number">2.2.2.2. </span>문자열 길이 구하기<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
 <p>문자열의 길이를 구할때는 <code class="docutils literal notranslate"><span class="pre">len()</span></code> 함수가 사용된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1221,9 +1134,9 @@ You need python
 </div>
 </div>
 <p>‘Life is too short’이라는 문장은 빈 칸을 포함하여 총 17 글자로 이루어져 있다.</p>
-</section>
-<section id="id8">
-<h4><span class="section-number">2.2.2.3. </span>문자열 치환하기<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="id8">
+<h4><span class="section-number">2.2.2.3. </span>문자열 치환하기<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
 <p>특정한 문자를 다른 문자로 바꾸는데는 <code class="docutils literal notranslate"><span class="pre">replace()</span></code> 함수가 사용된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1239,9 +1152,9 @@ You need python
 </div>
 </div>
 <p>먼저 var 변수에 ‘퀀트 투자 포트폴리오 만들기’라는 문자열을 입력했다. 그 후 <code class="docutils literal notranslate"><span class="pre">문자열.replace(a,</span> <span class="pre">b)</span></code> 메서드를 사용하면 문자열에서 a라는 문자를 b라는 문자로 바꿀 수 있다. 즉 ‘ ‘는 공백을 의미하여, 이러한 공백을 모두 밑줄(_)로 변경하였다.</p>
-</section>
-<section id="id9">
-<h4><span class="section-number">2.2.2.4. </span>문자열 나누기<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="id9">
+<h4><span class="section-number">2.2.2.4. </span>문자열 나누기<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">split()</span></code> 메서드를 이용하면 문자열을 나눌 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1256,10 +1169,10 @@ You need python
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">split()</span></code> 메서드 내부에 값을 입력하면, 해당 값을 기준으로 문자열을 나눠준다. 위 예제에서는 공백(’ ‘)을 기준으로 각각의 단어를 나누었다.</p>
-</section>
-<section id="id10">
-<h4><span class="section-number">2.2.2.5. </span>문자열 인덱싱과 슬라이싱<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">split()</span></code> 메서드 내부에 값을 입력하면, 해당 값을 기준으로 문자열을 나눠준다. 위 예제에서는 공백(‘ ‘)을 기준으로 각각의 단어를 나누었다.</p>
+</div>
+<div class="section" id="id10">
+<h4><span class="section-number">2.2.2.5. </span>문자열 인덱싱과 슬라이싱<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
 <p>인덱싱(Indexing)이란 문자열 중 특정 위치의 값을 가져오는 것이며, 슬라이싱(Slicing)이란 특정 위치가 아닌 범위에 해당하는 문자열을 가지고 오는 것이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1277,7 +1190,7 @@ You need python
 </div>
 <p>인덱싱과 슬라이싱은 대괄호([ ])를 사용해서 표현한다. <code class="docutils literal notranslate"><span class="pre">var[2]</span></code>란 두번째 문자를 의미하며, 이에 해당하는 ‘a’이 출력되었다. <strong>참고로 파이썬은 숫자를 1이 아닌 0부터 세므로</strong> ‘Quant’에서 Q는 <code class="docutils literal notranslate"><span class="pre">var[0]</span></code>, u는 <code class="docutils literal notranslate"><span class="pre">var[1]</span></code>, a는 <code class="docutils literal notranslate"><span class="pre">var[2]</span></code>에 해당한다.</p>
 <table class="colwidths-auto table" id="char-order">
-<caption><span class="caption-number">Table 2.1 </span><span class="caption-text">문자열의 순서</span><a class="headerlink" href="#char-order" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 2.1 </span><span class="caption-text">문자열의 순서</span><a class="headerlink" href="#char-order" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>단어</p></th>
 <th class="head"><p>Q</p></th>
@@ -1349,10 +1262,10 @@ You need python
 </div>
 </div>
 <p>반대로 마지막에 해당하는 부분을 명시하지 않으면 3부터 마지막까지 문자를 출력한다.</p>
-</section>
-</section>
-<section id="id11">
-<h3><span class="section-number">2.2.3. </span>리스트<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h3>
+</div>
+</div>
+<div class="section" id="id11">
+<h3><span class="section-number">2.2.3. </span>리스트<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <p>파이썬에서는 연속된 데이터를 표현하기 위해 리스트(List) 자료형을 사용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1422,8 +1335,8 @@ You need python
 </div>
 </div>
 <p>혹은 리스트 자체를 하나의 요솟값으로 가질 수도 있다. 즉 리스트 안에는 어떠한 자료형도 들어갈 수 있다.</p>
-<section id="id12">
-<h4><span class="section-number">2.2.3.1. </span>리스트 인덱싱과 슬라이싱<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h4>
+<div class="section" id="id12">
+<h4><span class="section-number">2.2.3.1. </span>리스트 인덱싱과 슬라이싱<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
 <p>리스트도 문자열과 동일한 방법으로 인덱싱과 슬라이싱을 할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1480,9 +1393,9 @@ You need python
 </div>
 </div>
 <p>문자열의 슬라이싱과 동일하게 <code class="docutils literal notranslate"><span class="pre">var[0:2]</span></code>를 입력하면 리스트 a의 0 이상 2 미만에 해당하는 요소들이 출력된다.</p>
-</section>
-<section id="id13">
-<h4><span class="section-number">2.2.3.2. </span>리스트 연산하기<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="id13">
+<h4><span class="section-number">2.2.3.2. </span>리스트 연산하기<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
 <p>리스트도 <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code> 연산을 제한적으로 사용할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1514,9 +1427,9 @@ You need python
 </div>
 </div>
 <p>리스트에 <code class="docutils literal notranslate"><span class="pre">*</span></code> 기호를 사용하면 해당 리스트를 n번 반복한다.</p>
-</section>
-<section id="id14">
-<h4><span class="section-number">2.2.3.3. </span>리스트에 요소 추가하기<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="id14">
+<h4><span class="section-number">2.2.3.3. </span>리스트에 요소 추가하기<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
 <p>다양한 방법을 통해 기존의 리스트에 새로운 데이터를 추가하거나 삽입할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1563,9 +1476,9 @@ You need python
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">extend()</span></code> 메서드 내의 리스트인 [4, 5]가 중첩된 형태가 아니라 기존 데이터인 [1, 2, 3] 뒤에 확장이 되었다.</p>
-</section>
-<section id="id15">
-<h4><span class="section-number">2.2.3.4. </span>리스트의 수정과 삭제<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="id15">
+<h4><span class="section-number">2.2.3.4. </span>리스트의 수정과 삭제<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
 <p>인덱싱과 슬라이싱을 이용하면 리스트의 요소를 수정 혹은 삭제할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1682,9 +1595,9 @@ You need python
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">pop()</span></code> 메서드는 리스트의 맨 마지막 요소를 반환하고 해당 요소는 삭제한다. 위 예에서 가장 마지막 요소인 3이 출력되고, var를 확인해보면 최종적으로 [1, 2]만 남아있다.</p>
-</section>
-<section id="id16">
-<h4><span class="section-number">2.2.3.5. </span>리스트 정렬하기<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="id16">
+<h4><span class="section-number">2.2.3.5. </span>리스트 정렬하기<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
 <p>리스트 내의 데이터들은 <code class="docutils literal notranslate"><span class="pre">sort()</span></code> 메서드를 통해 정렬할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1701,10 +1614,10 @@ You need python
 </div>
 </div>
 <p>1부터 4까지의 순서가 무작위로 존재했지만, <code class="docutils literal notranslate"><span class="pre">sort()</span></code>를 입력하면 오름차순으로 정렬된다.</p>
-</section>
-</section>
-<section id="id17">
-<h3><span class="section-number">2.2.4. </span>튜플<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h3>
+</div>
+</div>
+<div class="section" id="id17">
+<h3><span class="section-number">2.2.4. </span>튜플<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <p>튜플(Tuple) 자료형은 리스트와 매우 흡사하며 약간의 차이점만 있다. 먼저 리스트는 대괄호([ ])를 이용해 생성하지만 튜플은 소괄호(( ))를 이용해 생성한다. 또한 튜플은 값을 수정하거나 삭제할 수 없다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1756,9 +1669,9 @@ You need python
 </div>
 </div>
 </div>
-<figure class="align-default" id="tuple-error">
+<div class="figure align-default" id="tuple-error">
 <img alt="_images/tuple_error.png" src="_images/tuple_error.png" />
-</figure>
+</div>
 <p>만일 <code class="docutils literal notranslate"><span class="pre">del</span></code> 명령어를 이용해 요소값을 삭제하려고 할 경우 오류가 발생한다. 이처럼 튜플은 수정 혹은 삭제가 불가능하다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1774,9 +1687,9 @@ You need python
 </div>
 </div>
 <p>인덱싱이나 슬라이싱의 경우 리스트와 동일하게 사용이 가능하다.</p>
-</section>
-<section id="id18">
-<h3><span class="section-number">2.2.5. </span>딕셔너리<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="id18">
+<h3><span class="section-number">2.2.5. </span>딕셔너리<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <p>딕셔너리(Dictionary)는 대응 관계를 나타내는 자료형으로써, 리스트나 튜플처럼 순서가 존재하지 않으며 대신 Key와 Value가 존재한다. 딕셔너리는 다음과 같은 형태를 가지고 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1814,8 +1727,8 @@ You need python
 </div>
 </div>
 <p>딕셔너리의 값에는 리스트나 튜플 형태도 입력이 가능하다.</p>
-<section id="key-value">
-<h4><span class="section-number">2.2.5.1. </span>Key를 사용해 Value 구하기<a class="headerlink" href="#key-value" title="Permalink to this headline">#</a></h4>
+<div class="section" id="key-value">
+<h4><span class="section-number">2.2.5.1. </span>Key를 사용해 Value 구하기<a class="headerlink" href="#key-value" title="Permalink to this headline">¶</a></h4>
 <p>문자열이나 리스트, 튜플의 경우 인덱싱이나 슬라이싱을 통해 요소값을 구할 수 있었지만, 딕셔너리는 순서가 존재하지 않으므로 이러한 방법을 사용할 수 없다. 딕셔너리는 Key를 사용해 이에 해당되는 Value를 얻을 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1831,9 +1744,9 @@ You need python
 </div>
 </div>
 <p>먼저 var라는 변수에 딕셔너리를 입력한 후, <code class="docutils literal notranslate"><span class="pre">var['key1']</span></code>을 입력하면 딕셔너리 중 Key값이 key1에 해당하는 데이터의 Value를 반환한다. 즉 딕셔너리 변수에서 [ ] 안의 값은 순서를 뜻하는 것이 아니라 Key 값을 의미한다.</p>
-</section>
-<section id="id19">
-<h4><span class="section-number">2.2.5.2. </span>쌍 추가하기 및 삭제하기<a class="headerlink" href="#id19" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="id19">
+<h4><span class="section-number">2.2.5.2. </span>쌍 추가하기 및 삭제하기<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h4>
 <p>기존 딕셔너리에 쌍을 추가하는 방법과 삭제하는 방법에 대해 살펴보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1864,9 +1777,9 @@ You need python
 </div>
 </div>
 <p>리스트와 마찬가지로 딕셔너리에서도 <code class="docutils literal notranslate"><span class="pre">del</span></code> 명령어를 사용하면 해당 Key를 가진 딕셔너리 쌍이 삭제된다.</p>
-</section>
-<section id="id20">
-<h4><span class="section-number">2.2.5.3. </span>Key와 Value 구하기<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="id20">
+<h4><span class="section-number">2.2.5.3. </span>Key와 Value 구하기<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h4>
 <p>이번에는 딕셔너리의 Key와 Value를 한번에 구하는 법에 대해 살펴보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1908,10 +1821,10 @@ You need python
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">var.values()</span></code>는 var라는 딕셔너리에서 Value만을 모아 dict_keys 객체로 반환한다.</p>
-</section>
-</section>
-<section id="id21">
-<h3><span class="section-number">2.2.6. </span>집합<a class="headerlink" href="#id21" title="Permalink to this headline">#</a></h3>
+</div>
+</div>
+<div class="section" id="id21">
+<h3><span class="section-number">2.2.6. </span>집합<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
 <p>집합(Set)은 집합에 관련된 자료형이며, <code class="docutils literal notranslate"><span class="pre">set()</span></code> 키워드를 사용해 만들 수 있다. 집합 자료형의 특징으로는 중복을 허용하지 않는다는 점과, 순서가 없다는 점이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1941,15 +1854,13 @@ You need python
 </div>
 </div>
 <p>반면 <code class="docutils literal notranslate"><span class="pre">set()</span></code> 내에 banana라는 단어를 입력했더니 ‘a’, ‘b’, ‘n’만 입력이 되었다. 이는 집합이 중복을 허용하지 않기 때문에 고유한 값만이 남았으며, 순서도 입력한 것과 다르다.</p>
-<section id="id22">
-<h4><span class="section-number">2.2.6.1. </span>합집합, 교집합, 차집합 구하기<a class="headerlink" href="#id22" title="Permalink to this headline">#</a></h4>
+<div class="section" id="id22">
+<h4><span class="section-number">2.2.6.1. </span>합집합, 교집합, 차집합 구하기<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h4>
 <p>집합 자료형을 통해 합집합, 교집합, 차집합을 구해보도록 하자.</p>
-<figure class="align-default" id="set">
+<div class="figure align-default" id="set">
 <img alt="_images/set.png" src="_images/set.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">집합 연산의 종류</span><a class="headerlink" href="#set" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 2.1 </span><span class="caption-text">집합 연산의 종류</span><a class="headerlink" href="#set" title="Permalink to this image">¶</a></p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
@@ -2000,10 +1911,10 @@ You need python
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">difference()</span></code> 메서드를 사용하면 집합 s1에서 교집합을 제외한 {1, 2}만이 반환된다.</p>
-</section>
-</section>
-<section id="id23">
-<h3><span class="section-number">2.2.7. </span>불리언<a class="headerlink" href="#id23" title="Permalink to this headline">#</a></h3>
+</div>
+</div>
+<div class="section" id="id23">
+<h3><span class="section-number">2.2.7. </span>불리언<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
 <p>불리언(Boolean) 자료형이란 참(True) 혹은 거짓(False)을 나타내는 자료형으로, 이 두가지 값만을 가질 수 있다. 참고로 True와 False는 첫 문자는 항상 대문자로 사용해야 한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2045,8 +1956,8 @@ You need python
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">!=</span></code> 는 양측 값이 다른지를 확인하는 비교연산자이다. 좌측의 1과 우측의 2는 다르므로 역시나 True가 반환된다.</p>
-<section id="id24">
-<h4><span class="section-number">2.2.7.1. </span>자료형의 참과 거짓<a class="headerlink" href="#id24" title="Permalink to this headline">#</a></h4>
+<div class="section" id="id24">
+<h4><span class="section-number">2.2.7.1. </span>자료형의 참과 거짓<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h4>
 <p>자료형 자체에도 참과 거짓이 존재한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2198,7 +2109,7 @@ You need python
 </div>
 <p>반면 데이터가 존재하면 True에 해당한다. 이를 요약하면 다음과 같다.</p>
 <table class="colwidths-auto table" id="data-bool">
-<caption><span class="caption-number">Table 2.2 </span><span class="caption-text">자료형의 참과 거짓</span><a class="headerlink" href="#data-bool" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 2.2 </span><span class="caption-text">자료형의 참과 거짓</span><a class="headerlink" href="#data-bool" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>값</p></th>
 <th class="head"><p>True or False</p></th>
@@ -2237,13 +2148,13 @@ You need python
 </tr>
 </tbody>
 </table>
-</section>
-</section>
-<section id="id25">
-<h3><span class="section-number">2.2.8. </span>날짜와 시간<a class="headerlink" href="#id25" title="Permalink to this headline">#</a></h3>
+</div>
+</div>
+<div class="section" id="id25">
+<h3><span class="section-number">2.2.8. </span>날짜와 시간<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
 <p>날짜와 시간은 파이썬에서 기본으로 제공하는 자료형에는 포함되어 있지 않지만 데이터 분석을 할 때 빈번하게 다루는 자료형이다. 날짜와 시간과 관련된 패키지는 다음과 같다.</p>
-<section id="id26">
-<h4><span class="section-number">2.2.8.1. </span>날짜와 시간 구하기<a class="headerlink" href="#id26" title="Permalink to this headline">#</a></h4>
+<div class="section" id="id26">
+<h4><span class="section-number">2.2.8.1. </span>날짜와 시간 구하기<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">datetime</span></code> 패키지를 이용해 현재 날짜 및 시간 정보를 구할 수 있다(패키지에 대한 자세한 설명은 이번 장의 맨 마지막에서 자세히 다룬다).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2335,9 +2246,9 @@ You need python
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">date()</span></code>는 날짜에 관련된 정보만, <code class="docutils literal notranslate"><span class="pre">time()</span></code>은 시간에 관련된 정보만 반환한다.</p>
-</section>
-<section id="id27">
-<h4><span class="section-number">2.2.8.2. </span>포맷 바꾸기<a class="headerlink" href="#id27" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="id27">
+<h4><span class="section-number">2.2.8.2. </span>포맷 바꾸기<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h4>
 <p>포맷을 바꾸는데는 크게 두가지 메서드가 사용된다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">strftime</span></code>: 시간 정보를 문자열로 바꿈</p></li>
@@ -2371,7 +2282,7 @@ You need python
 </div>
 <p>%Y, %m, %d는 날짜 및 시간을 어떤 형식의 문자열로 만들지 결정하는 형식 문자열이다. 날짜 및 시간을 나타내는 형식은 다음과 같다.</p>
 <table class="colwidths-auto table" id="id28">
-<caption><span class="caption-number">Table 2.3 </span><span class="caption-text">날짜 및 시간 관련 포맷 코드</span><a class="headerlink" href="#id28" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 2.3 </span><span class="caption-text">날짜 및 시간 관련 포맷 코드</span><a class="headerlink" href="#id28" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>그룹</p></th>
 <th class="head"><p>코드</p></th>
@@ -2506,9 +2417,9 @@ You need python
 </div>
 </div>
 <p>첫 번째 인자에 날짜와 시간 정보를 가진 문자열을, 두 번째 인자에 이에 해당하는 형식 문자열을 입력하면 <code class="docutils literal notranslate"><span class="pre">datetime</span></code> 클래스 객체로 변경된다.</p>
-</section>
-<section id="id29">
-<h4><span class="section-number">2.2.8.3. </span>날짜와 시간 연산하기<a class="headerlink" href="#id29" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="id29">
+<h4><span class="section-number">2.2.8.3. </span>날짜와 시간 연산하기<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h4>
 <p>날짜 혹은 시간의 간격을 구할 수도 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2556,9 +2467,9 @@ You need python
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">timedelta</span></code>와 사용법은 같으며, <code class="docutils literal notranslate"><span class="pre">months</span> <span class="pre">=</span> <span class="pre">1</span></code>을 통해 한 달의 기간을 더할 수 있다.</p>
-</section>
-<section id="id30">
-<h4><span class="section-number">2.2.8.4. </span>코드를 일시정지 하기<a class="headerlink" href="#id30" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="id30">
+<h4><span class="section-number">2.2.8.4. </span>코드를 일시정지 하기<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h4>
 <p>time 패키지의 <code class="docutils literal notranslate"><span class="pre">sleep()</span></code> 함수를 사용하면 일정 시간동안 프로세스를 일시정지할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2588,14 +2499,14 @@ You need python
 </div>
 </div>
 <p>위 코드는 0부터 2까지 for문 내에서 i와 현재 시간을 출력하며, <code class="docutils literal notranslate"><span class="pre">time.sleep(2)</span></code>을 통해 루프당 2초의 일시정지를 준다. 출력된 결과를 살펴보면 한 번의 루프가 끝난 후 약 2초 후에 다음 루프가 실행된 것을 확인할 수 있다.</p>
-</section>
-</section>
-</section>
-<section id="id31">
-<h2><span class="section-number">2.3. </span>제어문<a class="headerlink" href="#id31" title="Permalink to this headline">#</a></h2>
+</div>
+</div>
+</div>
+<div class="section" id="id31">
+<h2><span class="section-number">2.3. </span>제어문<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h2>
 <p>파이썬 프로그래밍은 위에서부터 아래 방향으로 작성된 내용을 순서대로 실행한다. 반면 이러한 흐름을 제어하여 실행 순서를 바꾸거나 여러 번 반복하도록 하는 것이 제어문이다. 파이썬의 제어문에는 크게 if문, while문, for문이 있다.</p>
-<section id="if">
-<h3><span class="section-number">2.3.1. </span>if 문<a class="headerlink" href="#if" title="Permalink to this headline">#</a></h3>
+<div class="section" id="if">
+<h3><span class="section-number">2.3.1. </span>if 문<a class="headerlink" href="#if" title="Permalink to this headline">¶</a></h3>
 <p>if문, 혹은 조건문이란 입력된 조건을 판단하여 해당 조건에 맞는 상황을 실행한다. if문의 기본적인 구조는 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2731,9 +2642,9 @@ You need python
 </div>
 </div>
 <p>x가 0 이상일 경우에는 ‘0 이상’을 출력하며, 그렇지 않을 경우엔 ‘음수’를 출력한다. 이처럼 조건부 표현식은 한 줄로 작성할 수 있어 훨씬 가독성이 좋다.</p>
-</section>
-<section id="while">
-<h3><span class="section-number">2.3.2. </span>while문<a class="headerlink" href="#while" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="while">
+<h3><span class="section-number">2.3.2. </span>while문<a class="headerlink" href="#while" title="Permalink to this headline">¶</a></h3>
 <p>while문, 혹은 반복문은 특정 조건을 만족하는 동안 반복해서 코드를 실행한다. while문의 기본적인 구조는 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2833,9 +2744,9 @@ You need python
 <li><p>if문을 통해 잔액이 0 미만일 경우 <code class="docutils literal notranslate"><span class="pre">break</span></code>를 통해 while문을 멈춘다.</p></li>
 </ol>
 <p>결과를 살펴보면 잔액이 100원씩 줄어들다가 0원이 된 순간, if문의 조건이 True이므로 break를 통해 while문이 멈추게 된다.</p>
-</section>
-<section id="for">
-<h3><span class="section-number">2.3.3. </span>for문<a class="headerlink" href="#for" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="for">
+<h3><span class="section-number">2.3.3. </span>for문<a class="headerlink" href="#for" title="Permalink to this headline">¶</a></h3>
 <p>for문은 while문과 동일한 반복문이지만, 무한히 반복되는 것이 아닌 특정 횟수만큼만 반복되는 특징이 있다. for문의 기본적인 구조는 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2990,9 +2901,9 @@ You need python
 </div>
 </div>
 <p>리스트 내포를 사용할 경우 기존의 for문에 비해 훨씬 간단하게 표현할 수 있다.</p>
-</section>
-<section id="id32">
-<h3><span class="section-number">2.3.4. </span>오류에 대한 예외처리<a class="headerlink" href="#id32" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="id32">
+<h3><span class="section-number">2.3.4. </span>오류에 대한 예외처리<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
 <p>for문을 실행하던 중 오류가 발생하면 작업이 끊겨 루프를 처음부터 다시 실행해야 한다. 대상이 얼마되지 않는다면 큰 문제가 되지 않겠지만, 수십분 혹은 몇시간이 걸리는 작업을 하던 중 오류가 발생해 작업을 처음부터 다시 해야하는 것은 매우 비효율적이다. <code class="docutils literal notranslate"><span class="pre">try-except</span></code>문을 이용하면 예외처리, 즉 오류가 발생할 경우 이를 무시하고 넘어갈 수 있다.</p>
 <p>try-except문의 구조는 다음과 같다.</p>
 <div class="cell docutils container">
@@ -3031,9 +2942,9 @@ You need python
 </div>
 </div>
 </div>
-<figure class="align-default" id="loop-error">
+<div class="figure align-default" id="loop-error">
 <img alt="_images/loop_error.png" src="_images/loop_error.png" />
-</figure>
+</div>
 <p>for문을 통해 순서대로 값들의 제곱을 출력하는 명령어를 실행하면 ‘문자 4’는 제곱을 할 수 없어 오류가 발생한다. try-except문을 사용하면 이처럼 오류가 발생하는 루프를 무시하고 다음 루프로 넘어갈 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3056,9 +2967,9 @@ Error at: 4
 </div>
 </div>
 <p>expr 부분은 <code class="docutils literal notranslate"><span class="pre">print(i</span> <span class="pre">**</span> <span class="pre">2)</span></code>이며, error-handler-code 부분은 오류가 발생한 i를 출력한다. 해당 코드를 실행하면 문자 4에서 오류가 발생함을 알려준 후 루프가 멈추지 않고 다음으로 진행된다.</p>
-</section>
-<section id="tqdm">
-<h3><span class="section-number">2.3.5. </span><code class="docutils literal notranslate"><span class="pre">tqdm()</span></code> 함수를 이용한 진행 단계 확인하기<a class="headerlink" href="#tqdm" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="tqdm">
+<h3><span class="section-number">2.3.5. </span><code class="docutils literal notranslate"><span class="pre">tqdm()</span></code> 함수를 이용한 진행 단계 확인하기<a class="headerlink" href="#tqdm" title="Permalink to this headline">¶</a></h3>
 <p>for문의 시간이 오래 걸리는 작업의 경우 어느정도 진행되었는지 궁금할 때가 있다. 파이썬에서는 tqdm 패키지를 통해 진행 정도를 손쉽게 확인할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3077,20 +2988,18 @@ Error at: 4
 </div>
 </div>
 <p>tqdm 패키지에서 <code class="docutils literal notranslate"><span class="pre">tqdm()</span></code> 함수를 불러온 뒤, for문의 loop에 해당하는 부분을 <code class="docutils literal notranslate"><span class="pre">tqdm()</span></code> 로 감싸주면, 진행 정도를 확인할 수 있다.</p>
-</section>
-</section>
-<section id="id33">
-<h2><span class="section-number">2.4. </span>함수<a class="headerlink" href="#id33" title="Permalink to this headline">#</a></h2>
+</div>
+</div>
+<div class="section" id="id33">
+<h2><span class="section-number">2.4. </span>함수<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h2>
 <p>중고등학교 수학시간에 우리는 함수라는 개념을 배웠다. <span class="math notranslate nohighlight">\(y=f(x)\)</span>라는 수식이 있을 때 <span class="math notranslate nohighlight">\(x\)</span>라는 값을 <span class="math notranslate nohighlight">\(f()\)</span>라는 함수에 입력하면 <span class="math notranslate nohighlight">\(y\)</span>라는 결과값이 나온다. 예를 들어 다음과 같은 함수가 있다고 생각해보자.</p>
 <div class="math notranslate nohighlight">
 \[y = 2x + 1\]</div>
 <p>만일 <span class="math notranslate nohighlight">\(x\)</span>에 1을 넣으면 결과는 <span class="math notranslate nohighlight">\(2×1 + 1 = 3\)</span> 이며, <span class="math notranslate nohighlight">\(x\)</span>에 2를 넣으면 결과는 <span class="math notranslate nohighlight">\(2×2 + 1 = 5\)</span> 이다.</p>
-<figure class="align-default" id="fun">
+<div class="figure align-default" id="fun">
 <img alt="_images/fun.png" src="_images/fun.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 2.2 </span><span class="caption-text">함수</span><a class="headerlink" href="#fun" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 2.2 </span><span class="caption-text">함수</span><a class="headerlink" href="#fun" title="Permalink to this image">¶</a></p>
+</div>
 <p>프로그래밍에서의 함수도 이와 비슷하다. 어떠한 입력값을 함수에 넣으면 이를 토대로 코드가 돌아가고, 그 결과를 반환한다. 함수를 사용하는 이유는 중복된 코드를 계속해서 작성하지 않기 위해서다. 만일 반복적으로 사용하는 코드가 있다면 이를 매번 적기 보다는 함수로 만들어두고, 필요할 때마다 함수를 사용하는 것이 효과적이다.</p>
 <p>우리는 앞서 <code class="docutils literal notranslate"><span class="pre">print()</span></code>와 같이 수많은 함수를 이미 사용했다. 이처럼 가장 이상적인 방법은 기존에 누군가 작성한 패키지 혹은 함수를 찾아 이용하는 것이지만, 그렇지 못할 경우에도 나만의 함수를 쉽게 만들어 사용할 수 있다. 파이썬에서 함수를 만드는 법은 다음과 같다.</p>
 <div class="cell docutils container">
@@ -3221,8 +3130,8 @@ Error at: 4
 </div>
 <p>이번에는 매개변수 부분에 <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">2</span></code>를 통해 디폴트 값을 설정하였다. 즉 n에 해당하는 부분에 값을 입력하지 않을 경우 n에는 2라는 값이 자동으로 입력된다.</p>
 <p>위 함수에서는 매개변수가 ‘x’, ‘n’ 2개가 필요함에도 불구하고 <code class="docutils literal notranslate"><span class="pre">divide(3)</span></code>은 1.5라는 값이 계산되었다. 즉 x에는 3이라는 값이 입력되었지만, n에는 값이 입력되지 않아 디폴트 값인 2가 들어갔으며, 3/2의 결과인 1.5가 계산된다. 반면 <code class="docutils literal notranslate"><span class="pre">divide(6,</span> <span class="pre">3)</span></code>의 경우 n에 3이라는 값을 입력하였으므로 6/3의 결과인 2가 계산되었다.</p>
-<section id="id34">
-<h3><span class="section-number">2.4.1. </span>람다 함수<a class="headerlink" href="#id34" title="Permalink to this headline">#</a></h3>
+<div class="section" id="id34">
+<h3><span class="section-number">2.4.1. </span>람다 함수<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
 <p>if문이나 for문을 한 줄로 간단하게 나타냈던 것과 같이, 람다(lambda)를 이용하면 간단하게 함수를 만들 수 있다. 람다의 사용법은 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3247,10 +3156,10 @@ Error at: 4
 </div>
 </div>
 <p>위에서 def를 통해 만든 함수 <code class="docutils literal notranslate"><span class="pre">divide()</span></code>와 결과가 동일하다. 또한 람다를 통해 만든 함수는 return 명령어가 없어도 결괏값을 반환한다.</p>
-</section>
-</section>
-<section id="id35">
-<h2><span class="section-number">2.5. </span>패키지 사용하기<a class="headerlink" href="#id35" title="Permalink to this headline">#</a></h2>
+</div>
+</div>
+<div class="section" id="id35">
+<h2><span class="section-number">2.5. </span>패키지 사용하기<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h2>
 <p>패키지(package)는 기능이 비슷한 여러 함수들이 모여있는 꾸러미라고 볼 수 있으며, 파이썬이 사랑받는 이유 중 하나는 오픈 소스 생태계로 인해 다양한 패키지가 있다는 점도 크다. 전 세계의 사람들이 패키지를 만들어 온라인에 공개하고 있으며, 누구든지 이를 쉽게 다운로드 받아 사용할 수 있다. 파이썬 패키지를 공유하는 소프트웨어 저장소 PyPI(<a class="reference external" href="http://pypi.org">pypi.org</a>)에는 39만개가 넘는 패키지가 공개되어 있다(2022년 8월 기준). 즉 복잡하게 코드를 짜지 않아도 기존의 패키지를 잘만 이용하면 매우 쉽게 개발 혹은 데이터 분석을 할 수 있다.</p>
 <p>아나콘다에는 사람들이 자주 쓰는 주요 패키지가 대부분 들어있으므로(2022년 8월 기준 678개), 해당 패키지들의 경우 별도의 설치 과정이 없이 바로 사용할 수 있다. 아나콘다에 들어 있는 패키지 목록은 아래 페이지에서 확인할 수 있다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">docs</span><span class="o">.</span><span class="n">anaconda</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">anaconda</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">py3</span><span class="mf">.9</span><span class="n">_win</span><span class="o">-</span><span class="mi">64</span><span class="o">/</span>
@@ -3258,12 +3167,10 @@ Error at: 4
 </div>
 <p>패키지에 있는 함수를 사용하기 위해서는 <strong>[패키지 설치 → 패키지 불러오기 → 함수 사용]</strong> 의 단계를 거친다. 패키지는 한 번만 설치하면 되지만, 불러오는 작업은 파이썬을 새로 열때마다 반복해야 한다.</p>
 <p>아나콘다에 포함되지 않은 패키지를 사용하기 위해서는 먼저 패키지를 설치해야 한다. 예로써 동적 크롤링에 사용되는 selenium 패키지를 설치해보도록 하자. 패키지를 설치하기 위해서는 아나콘다 프롬프트를 이용하면 된다. 윈도우의 경우 시작 메뉴를 클릭한 후 [Anaconda Prompt]를 검색한 후 실행한다.</p>
-<figure class="align-default" id="prompt">
+<div class="figure align-default" id="prompt">
 <img alt="_images/prompt.png" src="_images/prompt.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 2.3 </span><span class="caption-text">아나콘다 프롬프트 검색 및 실행</span><a class="headerlink" href="#prompt" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 2.3 </span><span class="caption-text">아나콘다 프롬프트 검색 및 실행</span><a class="headerlink" href="#prompt" title="Permalink to this image">¶</a></p>
+</div>
 <p>프롬프트에서 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">패키지명</span></code>을 입력하면 패키지를 설치한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3272,12 +3179,10 @@ Error at: 4
 </div>
 </div>
 </div>
-<figure class="align-default" id="selenium">
+<div class="figure align-default" id="selenium">
 <img alt="_images/selenium.png" src="_images/selenium.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 2.4 </span><span class="caption-text">selenium 패키지 다운로드</span><a class="headerlink" href="#selenium" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 2.4 </span><span class="caption-text">selenium 패키지 다운로드</span><a class="headerlink" href="#selenium" title="Permalink to this image">¶</a></p>
+</div>
 <p>코드를 실행하면 파이썬 패키지 저장소 PyPI(<a class="reference external" href="http://pypi.org">pypi.org</a>)에서 패키지 관련 파일을 다운로드해 하드디스크에 설치하는 과정이 프롬프트에 출력된다. 만일 패키지 설치 중 ‘Proceed (y/n)?’ 라는 메시지가 나오면 ‘y’를 입력하고 엔터를 누르면 된다</p>
 <p>아나콘다에 포함되어있는 패키지 외에 본 책의 이해를 위해 추가적으로 설치해야 하는 패키지는 다음과 같다.</p>
 <ul class="simple">
@@ -3622,8 +3527,8 @@ Error at: 4
 </div></div></div>
 </div>
 <p>이번에는 seaborn 패키지에서 <code class="docutils literal notranslate"><span class="pre">load_dataset()</span></code> 함수만 불러왔다. 이처럼 특정 함수만 불러온 경우, 함수명 앞에 패키지이름을 붙여주지 않아도 함수가 작동한다. 만일 한번에 모든 함수를 불러오고 싶을 때는 <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">패키지이름</span> <span class="pre">import</span> <span class="pre">*</span></code> 를 입력하면 된다.</p>
-<section id="id36">
-<h3><span class="section-number">2.5.1. </span>함수와 메서드의 차이<a class="headerlink" href="#id36" title="Permalink to this headline">#</a></h3>
+<div class="section" id="id36">
+<h3><span class="section-number">2.5.1. </span>함수와 메서드의 차이<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
 <p>파이썬 관련 책을 살펴보면 똑같이 <code class="docutils literal notranslate"><span class="pre">something()</span></code> 형태로 생겼지만 어떤 것은 함수, 어떤 것은 메서드라 불린다. 먼저 함수는 특정 기능을 수행하는 역할을 하며, 각 함수마다 나름의 기능을 가지고 있다. 예를 들어 파이썬의 내장 함수인 <code class="docutils literal notranslate"><span class="pre">sum()</span></code>은 합계를 구한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3715,13 +3620,13 @@ memory usage: 152.0 bytes
 </div>
 </div>
 </div>
-<figure class="align-default" id="list-error">
+<div class="figure align-default" id="list-error">
 <img alt="_images/list_error.png" src="_images/list_error.png" />
-</figure>
+</div>
 <p>위 코드를 실행하면 <strong>AttributeError: ‘list’ object has no attribute ‘info’</strong> 라는 에러가 뜬다. list 객체는 <code class="docutils literal notranslate"><span class="pre">info()</span></code> 매서드를 보유하고 있지 않아 에러가 발생하는 것이다. 즉 함수는 <code class="docutils literal notranslate"><span class="pre">sum()</span></code>, <code class="docutils literal notranslate"><span class="pre">pd.DataFrame()</span></code>과 같이 독립적으로 사용되는 반면, 메서드는 a라는 특정 객체가 존재할 때 <code class="docutils literal notranslate"><span class="pre">a.head()</span></code>, <code class="docutils literal notranslate"><span class="pre">a.info()</span></code>와 같은 형태로 사용된다.</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -3745,11 +3650,9 @@ memory usage: 152.0 bytes
 
               </div>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="quant_intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -3765,28 +3668,24 @@ memory usage: 152.0 bytes
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            </footer>
+            
         </div>
     </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By 이현열<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+    <footer class="footer">
+  <p>
     
-</div>
+      By 이현열<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
 
 
       </div>
     </div>
   
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
   </body>
 </html>

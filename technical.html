@@ -4,13 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>15. 트레이딩을 위한 기술적 지표 &#8212; 파이썬을 이용한 퀀트 투자 포트폴리오 만들기</title>
     
-  <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -20,16 +18,20 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
+    
+      
+
+    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -37,7 +39,6 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -77,15 +78,16 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="16. 백테스팅 시뮬레이션" href="backtest.html" />
@@ -97,21 +99,7 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
-
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -120,10 +108,9 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -141,15 +128,14 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="index.html">
-                    파이썬을 이용한 퀀트 투자 포트폴리오 만들기
-                </a>
-            </li>
-        </ul>
-        <p aria-level="2" class="caption" role="heading">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   퀀트와 프로그래밍 기초 배워보기
  </span>
@@ -274,17 +260,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
-    </div>
-    <div id="rtd-footer-container"></div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
 </div>
 
 
@@ -292,146 +273,78 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="header-article row sticky-top noprint">
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
         
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/hyunyulhenry/quant_py/main?urlpath=tree/technical.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/technical.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/technical.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_py/main?urlpath=tree/technical.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
     </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ta-lib">
    15.1. TA-Lib 패키지 설치하기
@@ -454,11 +367,12 @@ title="Print to PDF"
  </li>
 </ul>
 
-    </nav>
-</div>
+            </nav>
+        </div>
     </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>트레이딩을 위한 기술적 지표</h1>
@@ -497,38 +411,33 @@ title="Print to PDF"
                     </div>
                 </div>
             </div>
-            <main id="main-content" role="main">
-                
+            
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">15. </span>트레이딩을 위한 기술적 지표<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1><span class="section-number">15. </span>트레이딩을 위한 기술적 지표<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>이번 장에서는 트레이딩 전략에 대해 알아보도록 하자. 앞서 종목을 선정하는데 사용되었던 분석이 ‘기본적 분석’이라면, 트레이딩은 과거 주가의 움직임이나 패턴을 통해 주식이 오를지 혹은 내릴지를 판단하는 ‘기술적 분석’에 의존하는 경우가 많으며, 이러한 판단을 위해 사용되는 것이 기술적 지표다. 기술적 지표는 추세의 방향이나 강도, 혹은 가격의 움직임의 속도와 정도를 측정한다. 이러한 기술적 지표를 이용한 트레이딩 전략은 크게 ‘추세추종전략’과 ‘평균회귀전략’으로 나눌 수 있다.</p>
 <ol class="simple">
 <li><p>추세추종 전략: 주가가 동일한 방향으로 지속될 것이라는데 베팅하며, 이동평균 등의 지표가 사용된다.</p></li>
 <li><p>평균회귀 전략: 주가가 평균으로 다시 회귀하는데 베팅하며, RSI, 볼린저밴드 등의 지표가 사용된다.</p></li>
 </ol>
 <p>이번 장에서는 대표적으로 유명한 지표들을 계산하는 방법에 대해 알아보도록 한다.</p>
-<section id="ta-lib">
-<h2><span class="section-number">15.1. </span>TA-Lib 패키지 설치하기<a class="headerlink" href="#ta-lib" title="Permalink to this headline">#</a></h2>
+<div class="section" id="ta-lib">
+<h2><span class="section-number">15.1. </span>TA-Lib 패키지 설치하기<a class="headerlink" href="#ta-lib" title="Permalink to this headline">¶</a></h2>
 <p>각각의 기술적 지표를 계산하는 수식이 존재하기에 이를 이용해 계산할 수도 있지만, 패키지를 이용하면 매우 손쉽게 계산할 수 있다. 그 중에서도 기술적 지표 계산에 사용되는 대표적인 패키지는 ‘TA-Lib’ 이다. 해당 패키지를 통해 150개 이상의 지표를 계산할 수 있으며, C로 작성되어 있기에 그 속도 또한 매우 빠르다.</p>
 <p>먼저 TA-Lib은 다른 패키지들처럼 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> 명령어를 통해 손쉽게 설치할 수는 없다. 다행히 캘리포니아 대학교 어바인 캠퍼스에서 컴파일러가 없이도 파이썬 라이브러리를 설치할 수 있도록 미리 컴파일된 파이썬 패키지를 제공한다. 먼저 본인의 파이썬 버젼 및 윈도우 환경을 확인해야 한다. 아나콘다 프롬프트에서 파이썬에 접속하면 해당 내역이 출력되며, 파이썬 3.8.5 버젼에 윈도우는 64 비트 환경임이 확인된다(독자들의 버젼은 책과 다를 수 있다). 맥이나 리눅스에서 해당 패키지를 설치하는 방법은 메모에 첨부된 사이트를 참조하기 바란다.</p>
-<figure class="align-default" id="python-version">
+<div class="figure align-default" id="python-version">
 <img alt="_images/python_version.png" src="_images/python_version.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 15.1 </span><span class="caption-text">파이썬 및 윈도우 환경 확인</span><a class="headerlink" href="#python-version" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 15.1 </span><span class="caption-text">파이썬 및 윈도우 환경 확인</span><a class="headerlink" href="#python-version" title="Permalink to this image">¶</a></p>
+</div>
 <p>그 후 아래의 사이트에서 본인의 버젼에 맞는 파일을 다운로드 한다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">lfd</span><span class="o">.</span><span class="n">uci</span><span class="o">.</span><span class="n">edu</span><span class="o">/~</span><span class="n">gohlke</span><span class="o">/</span><span class="n">pythonlibs</span><span class="o">/</span><span class="c1">#ta-lib</span>
 </pre></div>
 </div>
-<figure class="align-default" id="id2">
+<div class="figure align-default" id="id2">
 <img alt="_images/ta_lib.png" src="_images/ta_lib.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 15.2 </span><span class="caption-text">컴파일 패키지 다운로드</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 15.2 </span><span class="caption-text">컴파일 패키지 다운로드</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
 <p>마지막으로 <a class="reference internal" href="#install-talib"><span class="std std-numref">Fig. 15.3</span></a>와 같이 프롬프트에서 <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">주소</span></code>를 통해 다운로드 받은 파일이 있는 폴더로 디렉토리를 변경한 후, <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">파일명.whl</span></code>을 통해 파일을 설치한다. (폴더 내에 다운로드 받은 파일이 있어야 한다.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -539,12 +448,10 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<figure class="align-default" id="install-talib">
+<div class="figure align-default" id="install-talib">
 <img alt="_images/install_talib.png" src="_images/install_talib.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 15.3 </span><span class="caption-text">TA-Lib 패키지 설치</span><a class="headerlink" href="#install-talib" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 15.3 </span><span class="caption-text">TA-Lib 패키지 설치</span><a class="headerlink" href="#install-talib" title="Permalink to this image">¶</a></p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
@@ -556,17 +463,15 @@ title="Print to PDF"
 </ul>
 <p><a href="https://blog.quantinsti.com/install-ta-lib-python/" target="_blank">https://blog.quantinsti.com/install-ta-lib-python/</a></p>
 </div>
-</section>
-<section id="id3">
-<h2><span class="section-number">15.2. </span>이동평균<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">15.2. </span>이동평균<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>트렌드 지표 중 가장 대표적인 이동평균을 계산하는 법에 대해 알아보겠다. 이동평균은 정해진 기간동안 주식의 평균 가격이다. 예를 들어 10일간의 이동평균은 최근 10일간 가격의 평균을 의미한다. 이 기간이 길수록 장기간의 추세를 나타내며, 짧을수록 단기간의 추세를 나타낸다. 이동평균은 현재의 추세나 추세 역전, 혹은 저항 수준을 확인할 때 사용된다. 흔히 이동평균이 상승하는 상황에서 주가가 그보다 위에 있다면 상승 신호로 여겨진다. 반대로 이동평균이 하락하는 상황에서 주가가 그보다 아래에 있다면 하락 신호로 여겨진다.</p>
 <p>골든크로스와 데드크로스라는 말을 많이 들어보았을 것이다. 골든크로스란 단기 이동평균선이 중장기 이동평균선을 아래에서 위로 뚫고 올라가는 현상으로써 강세신호를 나타내며, 반대로 데드크로스는 단기 이동평균선이 중장기 이동평균선을 위에서 아래로 뚫고 내려가는 현상으로써 약세신호를 나타낸다.</p>
-<figure class="align-default" id="cross">
+<div class="figure align-default" id="cross">
 <img alt="_images/cross.png" src="_images/cross.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 15.4 </span><span class="caption-text">골든크로스와 데드크로스</span><a class="headerlink" href="#cross" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 15.4 </span><span class="caption-text">골든크로스와 데드크로스</span><a class="headerlink" href="#cross" title="Permalink to this image">¶</a></p>
+</div>
 <p>이동평균을 계산하는 방법은 가격 데이터에 가중치를 얼마나 두냐에 따라 여러가지 방법이 존재하지만, 크게 단순 이동평균과 지수 이동평균이 사용된다.</p>
 <ul class="simple">
 <li><p>단순 이동평균(SMA, Simple Moving Average): 이동평균을 계산할 때 사용되는 가장 일반적인 방법으로써, 단순히 주어진 기간 동안의 종가의 평균을 구한다.</p></li>
@@ -628,9 +533,9 @@ title="Print to PDF"
 </div>
 </div>
 <p>지수 이동평균 역시 <code class="docutils literal notranslate"><span class="pre">EMA()</span></code> 함수를 통해 쉽게 계산할 수 있다. 60일 이동평균을 출력해보면, 지수 이동평균이 최근 데이터에 더 많은 가중치를 부여하기에, 단순 이동평균보다 주가의 움직임에 따라 더욱 민감하게 반응하는 것을 알 수 있다.</p>
-</section>
-<section id="rsi">
-<h2><span class="section-number">15.3. </span>상대강도지수(RSI)<a class="headerlink" href="#rsi" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="rsi">
+<h2><span class="section-number">15.3. </span>상대강도지수(RSI)<a class="headerlink" href="#rsi" title="Permalink to this headline">¶</a></h2>
 <p>이번에는 상대강도지수(RSI)에 대해 알아보겠다. RSI는 일정기간 동안 주가의 상승폭과 하락폭의 크기를 비교해 상승과 하락의 상대적인 강도를 나타낸 지표로써, 다음과 같이 계산된다.</p>
 <ol class="simple">
 <li><p>U(Up): 가격이 상승한 날의 상승폭</p></li>
@@ -639,12 +544,10 @@ title="Print to PDF"
 <li><p>RS(Relative Strenth): AU/AD를 통해 상대강도를 구함</p></li>
 </ol>
 <p>RS 값이 크다는 것은 일정기간 동안 상승한 폭이 하락한 폭보다 크다는 것을 의미하며, RSI는 0에서 100 범위 내에서 움직인다. 일반적으로 RSI가 70 이상일 경우 과매수 구간으로써 매도할 때로, 30 이하일 경우 과매도 구간으로써 매수해야 할 때로 여겨진다. 즉 지나친 상승 뒤에는 하락할 것을, 지나친 하락 뒤에는 상승할 것을 기대한다.</p>
-<figure class="align-default" id="id4">
+<div class="figure align-default" id="id4">
 <img alt="_images/rsi.png" src="_images/rsi.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 15.5 </span><span class="caption-text">RSI 지표</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 15.5 </span><span class="caption-text">RSI 지표</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
 <p>S&amp;P 500 지수의 RSI를 계산해보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -685,28 +588,24 @@ title="Print to PDF"
 <li><p>하단에는 RSI 및 과매수와 과매도를 의미하는 70과 30 부분에 수평선을 그려준다.</p></li>
 <li><p>두 그림 간 빈칸을 0으로 설정한다.</p></li>
 </ol>
-</section>
-<section id="id5">
-<h2><span class="section-number">15.4. </span>볼린저밴드<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="id5">
+<h2><span class="section-number">15.4. </span>볼린저밴드<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>볼린저밴드는 이동평균선을 중심으로 일정 표준편차를 상한선과 하한선으로 설정한 밴드다.</p>
 <ul class="simple">
 <li><p>중심 밴드: n 기간 동안의 이동평균</p></li>
 <li><p>상단 밴드: 중심 밴드 기준 k 표준편차 위</p></li>
 <li><p>하단 밴드: 중심 밴드 기준 k 표준편차 아래</p></li>
 </ul>
-<figure class="align-default" id="bb">
+<div class="figure align-default" id="bb">
 <img alt="_images/bb.png" src="_images/bb.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 15.6 </span><span class="caption-text">볼린저밴드</span><a class="headerlink" href="#bb" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 15.6 </span><span class="caption-text">볼린저밴드</span><a class="headerlink" href="#bb" title="Permalink to this image">¶</a></p>
+</div>
 <p>이는 주가의 움직임이 정규분포를 따른다는 가정에 기초한다. 정규분포에서는 데이터가 1 표준편차 내에 있을 확률이 약 68%, 2 표준편차 내에 있을 확률이 약 95%, 3 표준편차 내에 있을 확률이 약 99%다. 만일 주가가 정규분포를 따른다면, 주가의 움직임은 상한선과 하한선으로 구성된 밴드 내에서만 움직일 확률이 높다. 따라서 주가가 상한선 위에 있다는 것은 과매수 상태이므로 하락할 가능성이, 하단선 아래에 있다는 것은 과매도 상태이므로 상승할 가능성이 높다.</p>
-<figure class="align-default" id="norm">
+<div class="figure align-default" id="norm">
 <img alt="_images/norm.png" src="_images/norm.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 15.7 </span><span class="caption-text">정규분포에 따른 확률</span><a class="headerlink" href="#norm" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 15.7 </span><span class="caption-text">정규분포에 따른 확률</span><a class="headerlink" href="#norm" title="Permalink to this image">¶</a></p>
+</div>
 <p>S&amp;P 500 지수의 볼린저밴드를 계산해보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -740,8 +639,8 @@ title="Print to PDF"
 <li><p>그래프로 나타내며, 각각의 색을 지정한다.</p></li>
 </ol>
 <p>주가가 크게 움직이지 않는 한 2 표준편차로 계산된 밴드 내에서 주가가 움직이는 것이 확인된다.</p>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -765,11 +664,9 @@ title="Print to PDF"
 
               </div>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="portfolio.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -785,28 +682,24 @@ title="Print to PDF"
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            </footer>
+            
         </div>
     </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By 이현열<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+    <footer class="footer">
+  <p>
     
-</div>
+      By 이현열<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
 
 
       </div>
     </div>
   
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
   </body>
 </html>

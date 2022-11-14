@@ -4,13 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>8. 정적 크롤링 실습하기 &#8212; 파이썬을 이용한 퀀트 투자 포트폴리오 만들기</title>
     
-  <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -20,16 +18,20 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
+    
+      
+
+    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -37,7 +39,6 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -77,12 +78,13 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -95,21 +97,7 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
-
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -118,10 +106,9 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -139,15 +126,14 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="index.html">
-                    파이썬을 이용한 퀀트 투자 포트폴리오 만들기
-                </a>
-            </li>
-        </ul>
-        <p aria-level="2" class="caption" role="heading">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   퀀트와 프로그래밍 기초 배워보기
  </span>
@@ -272,17 +258,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
-    </div>
-    <div id="rtd-footer-container"></div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
 </div>
 
 
@@ -290,146 +271,78 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="header-article row sticky-top noprint">
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
         
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/hyunyulhenry/quant_py/main?urlpath=tree/crawl_basic.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/crawl_basic.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/crawl_basic.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_py/main?urlpath=tree/crawl_basic.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
     </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#get-post">
    8.1. GET과 POST 방식 이해하기
@@ -505,11 +418,12 @@ title="Print to PDF"
  </li>
 </ul>
 
-    </nav>
-</div>
+            </nav>
+        </div>
     </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>정적 크롤링 실습하기</h1>
@@ -601,12 +515,11 @@ title="Print to PDF"
                     </div>
                 </div>
             </div>
-            <main id="main-content" role="main">
-                
+            
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">8. </span>정적 크롤링 실습하기<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1><span class="section-number">8. </span>정적 크롤링 실습하기<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>각종 금융 웹사이트에는 주가, 재무정보 등 우리가 원하는 대부분의 주식 정보가 제공되고 있으며, 크롤링을 통해 이러한 데이터를 수집할 수 있다. 크롤링 혹은 스크래핑이란 웹사이트에서 원하는 정보를 수집하는 기술이다. 이번 장에서는 크롤링에 대한 간단한 설명과 예제를 살펴보겠다.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -614,74 +527,60 @@ title="Print to PDF"
 <p>또한 신문기사나 책, 논문, 사진 등 저작권이 있는 자료를 통해 부당이득을 얻는다는 등의 행위를 할 경우 법적 제재를 받을 수 있다.</p>
 <p>이 책에서 설명하는 크롤링을 통해, 상업적 가치가 있는 데이터에 접근을 시도하여 발생할 수 있는 어떠한 상황에 대해서도 책임을 질 수 없다는 점을 명심하기 바란다.</p>
 </div>
-<section id="get-post">
-<h2><span class="section-number">8.1. </span>GET과 POST 방식 이해하기<a class="headerlink" href="#get-post" title="Permalink to this headline">#</a></h2>
+<div class="section" id="get-post">
+<h2><span class="section-number">8.1. </span>GET과 POST 방식 이해하기<a class="headerlink" href="#get-post" title="Permalink to this headline">¶</a></h2>
 <p>우리가 인터넷에 접속해 서버에 파일을 요청(Request)하면, 서버는 이에 해당하는 파일을 우리에게 보내준다(Response). 크롬과 같은 웹 브라우저는 이러한 과정을 사람이 수행하기 편하고 시각적으로 보기 편하도록 만들어진 것이며, 인터넷 주소는 서버의 주소를 기억하기 쉽게 만든 것이다. 우리가 서버에 데이터를 요청하는 형태는 다양하지만 크롤링에서는 주로 GET과 POST 방식을 사용한다.</p>
-<figure class="align-default" id="flow">
+<div class="figure align-default" id="flow">
 <img alt="_images/flow.png" src="_images/flow.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 8.1 </span><span class="caption-text">클라이언트와 서버 간의 요청/응답 과정</span><a class="headerlink" href="#flow" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<section id="get">
-<h3><span class="section-number">8.1.1. </span>GET 방식<a class="headerlink" href="#get" title="Permalink to this headline">#</a></h3>
+<p class="caption"><span class="caption-number">Fig. 8.1 </span><span class="caption-text">클라이언트와 서버 간의 요청/응답 과정</span><a class="headerlink" href="#flow" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="get">
+<h3><span class="section-number">8.1.1. </span>GET 방식<a class="headerlink" href="#get" title="Permalink to this headline">¶</a></h3>
 <p>GET 방식은 인터넷 주소를 기준으로 이에 해당하는 데이터나 파일을 요청하는 것이다. 주로 클라이언트가 요청하는 쿼리를 앰퍼샌드(&amp;) 혹은 물음표(?) 형식으로 결합해 서버에 전달한다.</p>
 <p>네이버 홈페이지에 접속한 후 [퀀트]를 검색하면, 주소 끝부분에 [&amp;query=퀀트]가 추가되며 이에 해당하는 페이지의 내용을 보여준다. 즉, 해당 페이지는 GET 방식을 사용하고 있으며 입력 종류는 query, 입력값은 퀀트임을 알 수 있다.</p>
-<figure class="align-default" id="naver-search-1">
+<div class="figure align-default" id="naver-search-1">
 <img alt="_images/naver_search_1.png" src="_images/naver_search_1.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 8.2 </span><span class="caption-text">네이버 검색 결과</span><a class="headerlink" href="#naver-search-1" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 8.2 </span><span class="caption-text">네이버 검색 결과</span><a class="headerlink" href="#naver-search-1" title="Permalink to this image">¶</a></p>
+</div>
 <p>[헤지펀드]를 다시 검색하면, 주소 끝부분이 [&amp;query=헤지펀드&amp;oquery=퀀트…]로 변경된다. 현재 입력값은 헤지펀드, 기존 입력값은 퀀트이며 이러한 과정을 통해 연관검색어가 생성됨도 유추해볼 수 있다.</p>
-<figure class="align-default" id="naver-search-2">
+<div class="figure align-default" id="naver-search-2">
 <img alt="_images/naver_search_2.png" src="_images/naver_search_2.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 8.3 </span><span class="caption-text">네이버 재검색 결과</span><a class="headerlink" href="#naver-search-2" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="post">
-<h3><span class="section-number">8.1.2. </span>POST 방식<a class="headerlink" href="#post" title="Permalink to this headline">#</a></h3>
+<p class="caption"><span class="caption-number">Fig. 8.3 </span><span class="caption-text">네이버 재검색 결과</span><a class="headerlink" href="#naver-search-2" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="post">
+<h3><span class="section-number">8.1.2. </span>POST 방식<a class="headerlink" href="#post" title="Permalink to this headline">¶</a></h3>
 <p>POST 방식은 사용자가 필요한 값을 추가해서 요청하는 방법이다. GET 방식과 달리 클라이언트가 요청하는 쿼리를 body에 넣어서 전송하므로 요청 내역을 직접 볼 수 없다. 동행복권 홈페이지에 접속해 [당첨결과] 메뉴를 확인해보자.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.dhlottery.co.kr/gameResult.do?method=byWin">https://www.dhlottery.co.kr/gameResult.do?method=byWin</a></p></li>
 </ul>
-<figure class="align-default" id="lotto">
+<div class="figure align-default" id="lotto">
 <img alt="_images/lotto.png" src="_images/lotto.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 8.4 </span><span class="caption-text">회차별 당첨번호</span><a class="headerlink" href="#lotto" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 8.4 </span><span class="caption-text">회차별 당첨번호</span><a class="headerlink" href="#lotto" title="Permalink to this image">¶</a></p>
+</div>
 <p>이번엔 회차 바로가기를 변경한 후 [조회]를 클릭한다. 페이지의 내용은 선택일 기준으로 변경되었지만, 주소는 변경되지 않고 그대로 남아 있다. GET 방식에서는 입력 항목에 따라 웹페이지 주소가 변경되었지만, POST 방식을 사용해 서버에 데이터를 요청하는 해당 웹사이트는 그렇지 않은 것을 알 수 있다.</p>
 <p>POST 방식의 데이터 요청 과정을 살펴보려면 개발자도구를 이용해야 하며, 크롬에서는 [F12]키를 눌러 개발자도구 화면을 열 수 있다. 개발자도구 화면을 연 상태에서 다시 한번 [조회]를 클릭해보자. [Network] 탭을 클릭하면, [조회]을 클릭함과 동시에 브라우저와 서버 간의 통신 과정을 살펴볼 수 있다. 이 중 상단의 <a class="reference external" href="http://gameResult.do?method=byWin">gameResult.do?method=byWin</a> 이라는 항목이 POST 형태임을 알 수 있다.</p>
-<figure class="align-default" id="lotto-post">
+<div class="figure align-default" id="lotto-post">
 <img alt="_images/lotto_post.png" src="_images/lotto_post.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 8.5 </span><span class="caption-text">크롬 개발자도구의 Network 화면</span><a class="headerlink" href="#lotto-post" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 8.5 </span><span class="caption-text">크롬 개발자도구의 Network 화면</span><a class="headerlink" href="#lotto-post" title="Permalink to this image">¶</a></p>
+</div>
 <p>해당 메뉴를 클릭하면 통신 과정을 좀 더 자세히 알 수 있다. [Payload] 탭의 [Form Data]에는 서버에 데이터를 요청하는 내역이 있다. drwNo와 dwrNoList에는 선택한 회차의 숫자가 들어가있다.</p>
-<figure class="align-default" id="lotto-query">
+<div class="figure align-default" id="lotto-query">
 <img alt="_images/lotto_query.png" src="_images/lotto_query.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 8.6 </span><span class="caption-text">POST 방식의 서버 요청 내역</span><a class="headerlink" href="#lotto-query" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 8.6 </span><span class="caption-text">POST 방식의 서버 요청 내역</span><a class="headerlink" href="#lotto-query" title="Permalink to this image">¶</a></p>
+</div>
 <p>이처럼 POST 방식은 요청하는 데이터에 대한 쿼리가 GET 방식처럼 URL을 통해 전송되는 것이 아닌 body를 통해 전송되므로, 이에 대한 정보는 웹 브라우저를 통해 확인할 수 없으며, 개발자도구 화면을 통해 확인해야 한다.</p>
-</section>
-</section>
-<section id="id2">
-<h2><span class="section-number">8.2. </span>크롤링 예제<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">8.2. </span>크롤링 예제<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>일반적으로 크롤링은 <a class="reference internal" href="#flowchart"><span class="std std-numref">Fig. 8.7</span></a>의 과정을 따른다. 먼저, request 패키지의 <code class="docutils literal notranslate"><span class="pre">get()</span></code> 혹은 <code class="docutils literal notranslate"><span class="pre">post()</span></code> 함수를 이용해 데이터를 요청한 후 HTML을 정보를 가져오며, bs4 패키지의 함수들을 이용해 원하는 데이터를 찾는 과정으로 이루어진다. 기본적인 크롤링을 시작으로 GET 방식과 POST 방식으로 데이터를 받는 예제를 학습해 보겠다.</p>
-<figure class="align-default" id="flowchart">
+<div class="figure align-default" id="flowchart">
 <img alt="_images/flowchart.png" src="_images/flowchart.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 8.7 </span><span class="caption-text">일반적인 크롤링 과정</span><a class="headerlink" href="#flowchart" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<section id="id3">
-<h3><span class="section-number">8.2.1. </span>명언 크롤링하기<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<p class="caption"><span class="caption-number">Fig. 8.7 </span><span class="caption-text">일반적인 크롤링 과정</span><a class="headerlink" href="#flowchart" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="id3">
+<h3><span class="section-number">8.2.1. </span>명언 크롤링하기<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>크롤링의 간단한 예제로 ‘Quotes to Scrape’ 사이트에 있는 명언을 수집하겠다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">quotes</span><span class="o">.</span><span class="n">toscrape</span><span class="o">.</span><span class="n">com</span><span class="o">/</span>
 </pre></div>
@@ -693,12 +592,10 @@ title="Print to PDF"
 <li><p>말한 사람은 [span 태그 하단의 class가 author인 small 태그]</p></li>
 <li><p>말한 사람에 대한 정보인 about의 링크: [a 태그 href 속성]의 속성값</p></li>
 </ul>
-<figure class="align-default" id="quote">
+<div class="figure align-default" id="quote">
 <img alt="_images/quote.png" src="_images/quote.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 8.8 </span><span class="caption-text">Quotes to Scrape의 명언부분 HTML</span><a class="headerlink" href="#quote" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 8.8 </span><span class="caption-text">Quotes to Scrape의 명언부분 HTML</span><a class="headerlink" href="#quote" title="Permalink to this image">¶</a></p>
+</div>
 <p>이제 위의 내용을 하나씩 크롤링 해보도록 하자. 먼저 해당 페이지의 내용을 불러온다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -785,8 +682,8 @@ title="Print to PDF"
 </tbody>
 </table>
 </div>
-<section id="find">
-<h4><span class="section-number">8.2.1.1. </span><code class="docutils literal notranslate"><span class="pre">find()</span></code> 함수를 이용한 크롤링<a class="headerlink" href="#find" title="Permalink to this headline">#</a></h4>
+<div class="section" id="find">
+<h4><span class="section-number">8.2.1.1. </span><code class="docutils literal notranslate"><span class="pre">find()</span></code> 함수를 이용한 크롤링<a class="headerlink" href="#find" title="Permalink to this headline">¶</a></h4>
 <p>먼저 BeautifulSoup 모듈의 <code class="docutils literal notranslate"><span class="pre">find()</span></code> 함수를 통해 크롤링 하는법을 알아보자. 우리는 개발자도구 화면에서 명언에 해당하는 부분이 [class가 quote인 div 태그 → class가 text인 span 태그]에 위치하고 있음을 살펴보았다. 이를 활용해 명언만을 추출하는 방법은 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -871,9 +768,9 @@ title="Print to PDF"
 <p class="admonition-title">Note</p>
 <p><code class="docutils literal notranslate"><span class="pre">find_all()</span></code> 함수가 아닌 <code class="docutils literal notranslate"><span class="pre">find()</span></code> 함수를 사용하면 해당 태그의 첫번째 내용만을 가져온다.</p>
 </div>
-</section>
-<section id="select">
-<h4><span class="section-number">8.2.1.2. </span><code class="docutils literal notranslate"><span class="pre">select()</span></code> 함수를 이용한 크롤링<a class="headerlink" href="#select" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="select">
+<h4><span class="section-number">8.2.1.2. </span><code class="docutils literal notranslate"><span class="pre">select()</span></code> 함수를 이용한 크롤링<a class="headerlink" href="#select" title="Permalink to this headline">¶</a></h4>
 <p>위 예제에서는 간단하게 원하는 데이터를 찾았지만, 데이터가 존재하는 곳의 태그를 여러번 찾아 내려가야 할 경우 <code class="docutils literal notranslate"><span class="pre">find_all()</span></code> 함수를 이용하는 방법은 매우 번거롭다. <code class="docutils literal notranslate"><span class="pre">select()</span></code> 함수의 경우 좀더 쉬운 방법으로 원하는 데이터가 존재하는 태그를 입력할 수 있다. 위의 동일한 내용을 <code class="docutils literal notranslate"><span class="pre">select()</span></code> 함수를 이용해 크롤링해보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1008,16 +905,14 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</section>
-<section id="id4">
-<h4><span class="section-number">8.2.1.3. </span>모든 페이지 데이터 크롤링하기<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="id4">
+<h4><span class="section-number">8.2.1.3. </span>모든 페이지 데이터 크롤링하기<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <p>화면 하단의 [Next→] 부분을 클릭하면 URL이 <a class="reference external" href="https://quotes.toscrape.com/page/2/">https://quotes.toscrape.com/page/2/</a> 로 바뀌며 다음 페이지의 내용이 나타난다. 이처럼 웹페이지 하단에서 다음 페이지 혹은 이전 페이지로 넘어가게 해주는 것을 흔히 페이지네이션이라고 한다.</p>
-<figure class="align-default" id="pagination">
+<div class="figure align-default" id="pagination">
 <img alt="_images/pagination.png" src="_images/pagination.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 8.9 </span><span class="caption-text">페이지네이션</span><a class="headerlink" href="#pagination" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 8.9 </span><span class="caption-text">페이지네이션</span><a class="headerlink" href="#pagination" title="Permalink to this image">¶</a></p>
+</div>
 <p>URL의 ‘page/’ 뒤에 위치하는 숫자를 for문을 이용해 바꿔준다면, 모든 페이지의 데이터를 크롤링할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1170,21 +1065,19 @@ title="Print to PDF"
 <p>100 rows × 3 columns</p>
 </div></div></div>
 </div>
-</section>
-</section>
-<section id="id5">
-<h3><span class="section-number">8.2.2. </span>금융 속보 크롤링<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+</div>
+</div>
+<div class="section" id="id5">
+<h3><span class="section-number">8.2.2. </span>금융 속보 크롤링<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>이번에는 금융 속보의 제목을 추출해보겠다. 먼저 네이버 금융에 접속한 후 [뉴스 → 실시간 속보]를 선택하며, URL은 다음과 같다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://finance.naver.com/news/news_list.nhn?mode=LSS2D&amp;section_id=101&amp;section_id2=258
 </pre></div>
 </div>
 <p>이 중 뉴스의 제목에 해당하는 텍스트만 추출해보도록 하자. 개발자도구 화면을 통헤 제목에 해당하는 부분은 [dl 태그 → class가 articleSubject 인 dd 태그 → a 태그 중 title 속성]에 위치하고 있음을 확인할 수 있다.</p>
-<figure class="align-default" id="naver-news">
+<div class="figure align-default" id="naver-news">
 <img alt="_images/naver_news.png" src="_images/naver_news.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 8.10 </span><span class="caption-text">실시간 속보의 제목 부분 HTML</span><a class="headerlink" href="#naver-news" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 8.10 </span><span class="caption-text">실시간 속보의 제목 부분 HTML</span><a class="headerlink" href="#naver-news" title="Permalink to this image">¶</a></p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">rq</span>
@@ -1244,19 +1137,17 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</section>
-<section id="id6">
-<h3><span class="section-number">8.2.3. </span>테이블 크롤링하기<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="id6">
+<h3><span class="section-number">8.2.3. </span>테이블 크롤링하기<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>우리가 크롤링하고자 하는 데이터가 테이블 형태로 제공될 경우, 위와 같이 복잡한 과정을 거칠 필요 없이 매우 간단하게 테이블에 해당하는 내용만 가져올 수 있다. 먼저 아래 사이트에는 각 국가별 GDP가 테이블 형태로 제공되고 있다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">en</span><span class="o">.</span><span class="n">wikipedia</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">wiki</span><span class="o">/</span><span class="n">List_of_countries_by_stock_market_capitalization</span>
 </pre></div>
 </div>
-<figure class="align-default" id="cap">
+<div class="figure align-default" id="cap">
 <img alt="_images/cap.png" src="_images/cap.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 8.11 </span><span class="caption-text">국가별 시가총액 데이터</span><a class="headerlink" href="#cap" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 8.11 </span><span class="caption-text">국가별 시가총액 데이터</span><a class="headerlink" href="#cap" title="Permalink to this image">¶</a></p>
+</div>
 <p>해당 내역을 크롤링하는 법은 매우 간단하다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1351,24 +1242,20 @@ title="Print to PDF"
 <li><p>pandas 패키지의 <code class="docutils literal notranslate"><span class="pre">read_html()</span></code> 함수에 URL을 입력하면, 해당 페이지에 존재하는 테이블을 가져온 후 데이터프레임 형태로 불러온다.</p></li>
 </ol>
 <p>이처럼 테이블 형태로 존재하는 데이터는 HTML 정보를 불러온 후 태그와 속성을 찾을필요 없이 <code class="docutils literal notranslate"><span class="pre">read_html()</span></code> 함수를 이용해 매우 손쉽게 불러올 수 있다.</p>
-</section>
-<section id="id7">
-<h3><span class="section-number">8.2.4. </span>기업공시채널에서 오늘의 공시 불러오기<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="id7">
+<h3><span class="section-number">8.2.4. </span>기업공시채널에서 오늘의 공시 불러오기<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>한국거래소 상장공시시스템(<a class="reference external" href="http://kind.krx.co.kr">kind.krx.co.kr</a>)에 접속한 후 [오늘의 공시 → 전체 → 더보기]를 선택해 전체 공시내용을 확인할 수 있다.</p>
-<figure class="align-default" id="kind">
+<div class="figure align-default" id="kind">
 <img alt="_images/kind.png" src="_images/kind.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 8.12 </span><span class="caption-text">오늘의공시 확인하기</span><a class="headerlink" href="#kind" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 8.12 </span><span class="caption-text">오늘의공시 확인하기</span><a class="headerlink" href="#kind" title="Permalink to this image">¶</a></p>
+</div>
 <p>해당 페이지에서 날짜를 변경한 후 [검색]을 누르면, 페이지의 내용은 해당일의 공시로 변경되지만 URL은 변경되지 않는다. 이처럼 POST 방식은 요청하는 데이터에 대한 쿼리가 body의 형태를 통해 전송되므로, 개발자도구 화면을 통해 해당 쿼리에 대한 내용을 확인해야 한다.</p>
 <p>개발자도구 화면을 연 상태에서 조회일자를 원하는 날짜로 선택, [검색]을 클릭한 후 [Network] 탭의 <a class="reference external" href="http://todaydisclosure.do">todaydisclosure.do</a> 항목에서 [Headers]탭의 [General] 부분에는 데이터를 요청하는 서버 주소가, [Payload] 탭의 [Form Data]를 통해 서버에 데이터를 요청하는 내역을 확인할 수 있다. 여러 항목 중 selDate 부분이 우리가 선택한 일자로 설정되어 있다.</p>
-<figure class="align-default" id="kind-post">
+<div class="figure align-default" id="kind-post">
 <img alt="_images/kind_post.png" src="_images/kind_post.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 8.13 </span><span class="caption-text">POST 방식의 데이터 요청</span><a class="headerlink" href="#kind-post" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 8.13 </span><span class="caption-text">POST 방식의 데이터 요청</span><a class="headerlink" href="#kind-post" title="Permalink to this image">¶</a></p>
+</div>
 <p>POST 방식으로 쿼리를 요청하는 방법을 코드로 나타내면 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1397,9 +1284,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<figure class="align-default" id="html">
+<div class="figure align-default" id="html">
 <img alt="_images/html.png" src="_images/html.png" />
-</figure>
+</div>
 <ol class="simple">
 <li><p>URL과 쿼리를 입력한다. 쿼리는 딕셔너리 형태로 입력하며, Form Data와 동일하게 입력해준다. 쿼리 중 marketType과 같이 값이 없는 항목은 입력하지 않아도 된다.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">POST()</span></code> 함수를 통해 해당 URL에 원하는 쿼리를 요청한다.</p></li>
@@ -1491,9 +1378,9 @@ title="Print to PDF"
 <li><p><code class="docutils literal notranslate"><span class="pre">read_html()</span></code> 함수를 통해 테이블을 읽어온다.</p></li>
 </ol>
 <p>데이터를 확인하면 화면과 동일한 내용이 들어가있다. POST 형식의 경우 쿼리 내용을 바꾸어 원하는 데이터를 받을 수 있다. 만일 다른 날짜의 공시를 확인하고자 한다면 위의 코드에서 ‘selDate’만 해당일로 변경해주면 된다.</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1517,11 +1404,9 @@ title="Print to PDF"
 
               </div>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="web.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1537,28 +1422,24 @@ title="Print to PDF"
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            </footer>
+            
         </div>
     </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By 이현열<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+    <footer class="footer">
+  <p>
     
-</div>
+      By 이현열<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
 
 
       </div>
     </div>
   
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
   </body>
 </html>
