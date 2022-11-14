@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>3. 데이터 분석 배워보기 &#8212; 파이썬을 이용한 퀀트 투자 포트폴리오 만들기</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -39,6 +37,7 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -78,15 +77,15 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="4. 데이터 시각화 배워보기" href="plot.html" />
@@ -98,7 +97,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -107,9 +120,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -127,14 +141,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="index.html">
-   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   퀀트와 프로그래밍 기초 배워보기
  </span>
@@ -259,107 +274,209 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/eda.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/hyunyulhenry/quant_py"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/hyunyulhenry/quant_py/issues/new?title=Issue%20on%20page%20%2Feda.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_py/main?urlpath=tree/eda.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/hyunyulhenry/quant_py/main?urlpath=tree/eda.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/hyunyulhenry/quant_py"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/hyunyulhenry/quant_py/issues/new?title=Issue%20on%20page%20%2Feda.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/eda.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
    3.1. 시리즈
@@ -590,12 +707,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>데이터 분석 배워보기</h1>
@@ -842,22 +958,25 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1><span class="section-number">3. </span>데이터 분석 배워보기<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">3. </span>데이터 분석 배워보기<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 <p>데이터 분석이란 데이터를 불러와 수정, 가공한 후 분석을 통해 통찰력을 얻고 답을 찾아나가는 과정이다.</p>
 <p>우리가 실제 다루는 대부분의 데이터는 행과 열로 이루어진 테이블 형태이다. pandas 패키지는 1차원 배열인 시리즈(Series) 및 행과 열로 이루어진 2차원 배열인 데이터프레임(DataFrame)을 통해 데이터 분석 업무를 쉽게 처리할 수 있게 해준다. 이번 장에서는 pandas 패키지를 이용한 데이터 분석 방법에 대해 살펴보도록 하자.</p>
-<div class="section" id="id2">
-<h2><span class="section-number">3.1. </span>시리즈<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<section id="id2">
+<h2><span class="section-number">3.1. </span>시리즈<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>시리즈란 데이터가 순차적으로 나열된 1차원 배열이며, 구조는 <a class="reference internal" href="#series"><span class="std std-numref">Fig. 3.1</span></a>와 같다. 인덱스(Index)와 값(Value)은 일대일 대응 관계이며, 이는 키(key)와 값(value)이 ‘{key:value}’ 형태로 구성된 딕셔너리와 비슷하다.</p>
-<div class="figure align-default" id="series">
+<figure class="align-default" id="series">
 <img alt="_images/series.png" src="_images/series.png" />
-<p class="caption"><span class="caption-number">Fig. 3.1 </span><span class="caption-text">시리즈 구조</span><a class="headerlink" href="#series" title="Permalink to this image">¶</a></p>
-</div>
-<div class="section" id="id3">
-<h3><span class="section-number">3.1.1. </span>시리즈 만들기<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<figcaption>
+<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">시리즈 구조</span><a class="headerlink" href="#series" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="id3">
+<h3><span class="section-number">3.1.1. </span>시리즈 만들기<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <p>시리즈는 <code class="docutils literal notranslate"><span class="pre">Series()</span></code> 함수를 통해 만들 수 있다. 먼저 딕셔너리를 이용해 시리즈를 만드는 법을 살펴보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -955,9 +1074,9 @@ dtype: object
 </div>
 </div>
 <p>리스트를 통해 시리즈를 만든 후, index 옵션에 인덱스 이름을 직접 입력하여 인덱스를 생성할 수도 있다.</p>
-</div>
-<div class="section" id="id4">
-<h3><span class="section-number">3.1.2. </span>원소 선택하기<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id4">
+<h3><span class="section-number">3.1.2. </span>원소 선택하기<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
 <p>시리즈도 리스트 혹은 튜플과 같이 인덱싱이나 슬라이싱를 사용해 원하는 원소를 선택할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1058,9 +1177,9 @@ dtype: object
 </div>
 </div>
 <p>리스트와 동일하게 슬라이싱 기능 역시 사용이 가능하다. <code class="docutils literal notranslate"><span class="pre">0:3</span></code>은 위치 인덱스가 0 이상 3 미만을 뜻하며 이에 해당하는 값이 선택된다.</p>
-</div>
-<div class="section" id="id5">
-<h3><span class="section-number">3.1.3. </span>시리즈 연산하기<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id5">
+<h3><span class="section-number">3.1.3. </span>시리즈 연산하기<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
 <p>시리즈는 사칙 연산이 가능하다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1097,17 +1216,19 @@ dtype: int64
 </div>
 </div>
 <p>시리즈에 숫자를 연산하면 모든 원소에 연산이 적용된다. 즉 시리즈에 2을 곱하면 모든 원소에 2가 곱해져 1*2, 2*2, 3*3의 결과인 2,4,6이 계산된다.</p>
-</div>
-</div>
-<div class="section" id="id6">
-<h2><span class="section-number">3.2. </span>데이터프레임<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="id6">
+<h2><span class="section-number">3.2. </span>데이터프레임<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
 <p>시리즈가 1차원 배열이였다면, 데이터프레임은 2차원 배열이다. 이는 흔히 엑셀에서 사용하는 행과 열로 이루어진 테이블 형태이다. 데이터프레임의 각 열은 시리즈 객체이며, 이러한 시리즈가 모여 데이터프레임을 구성한다.</p>
-<div class="figure align-default" id="dataframe">
+<figure class="align-default" id="dataframe">
 <img alt="_images/dataframe.png" src="_images/dataframe.png" />
-<p class="caption"><span class="caption-number">Fig. 3.2 </span><span class="caption-text">데이터프레임 구조</span><a class="headerlink" href="#dataframe" title="Permalink to this image">¶</a></p>
-</div>
-<div class="section" id="id7">
-<h3><span class="section-number">3.2.1. </span>데이터프레임 만들기와 수정하기<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<figcaption>
+<p><span class="caption-number">Fig. 3.2 </span><span class="caption-text">데이터프레임 구조</span><a class="headerlink" href="#dataframe" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="id7">
+<h3><span class="section-number">3.2.1. </span>데이터프레임 만들기와 수정하기<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
 <p>데이터프레임은 <code class="docutils literal notranslate"><span class="pre">DataFrame()</span></code> 함수를 통해 만들 수 있으며, 시리즈를 만드는 방법과 유사하다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1459,9 +1580,9 @@ dtype: int64
 <li><p>행 삭제: <code class="docutils literal notranslate"><span class="pre">DataFrame.drop(행</span> <span class="pre">인덱스,</span> <span class="pre">axis=0,</span> <span class="pre">inplace=True)</span></code></p></li>
 <li><p>열 삭제: <code class="docutils literal notranslate"><span class="pre">DataFrame.drop(열</span> <span class="pre">이름,</span> <span class="pre">axis=1,</span> <span class="pre">inplace=True)</span></code></p></li>
 </ul>
-</div>
-<div class="section" id="id8">
-<h3><span class="section-number">3.2.2. </span>열과 행 선택하기<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id8">
+<h3><span class="section-number">3.2.2. </span>열과 행 선택하기<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
 <p>먼저 데이터프레임에서 열을 선택하는 법에 대해 알아보도록 하자. 열을 하나만 선택할 때는 대괄호([ ])안에 열 이름을 따옴표와 함께 입력거나, 도트(.) 다음에 열 이름을 입력하면 된다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">DataFrame['열</span> <span class="pre">이름']</span></code></p></li>
@@ -1949,7 +2070,7 @@ Name: index1, dtype: int64
 </div>
 <p>행 인덱스 ‘index1’의 위치 인덱스는 0, ‘index3’의 위치 인덱스는 2임에도 불구하고 <code class="docutils literal notranslate"><span class="pre">loc</span></code>과 <code class="docutils literal notranslate"><span class="pre">iloc</span></code>의 결과가 다르다. 이는 <code class="docutils literal notranslate"><span class="pre">loc</span></code>의 경우 범위의 끝을 포함하는 반면, <code class="docutils literal notranslate"><span class="pre">iloc</span></code>의 경우 범위의 끝을 제외하기 때문이다. 이를 정리하면 다음과 같다.</p>
 <table class="colwidths-auto table" id="indexor">
-<caption><span class="caption-number">Table 3.1 </span><span class="caption-text">인덱서의 비교</span><a class="headerlink" href="#indexor" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 3.1 </span><span class="caption-text">인덱서의 비교</span><a class="headerlink" href="#indexor" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>구분</p></th>
 <th class="head"><p><code class="docutils literal notranslate"><span class="pre">loc</span></code></p></th>
@@ -2187,13 +2308,13 @@ Name: index1, dtype: int64
 </div></div></div>
 </div>
 <p>슬라이싱 기법으로도 원소를 선택할 수 있으며, <code class="docutils literal notranslate"><span class="pre">loc</span></code> 인덱서의 경우 범위의 끝이 포함되지만 <code class="docutils literal notranslate"><span class="pre">iloc</span></code> 인덱서는 범위의 끝이 포함되지 않는다.</p>
-</div>
-</div>
-<div class="section" id="id9">
-<h2><span class="section-number">3.3. </span>데이터 불러오기 및 저장하기<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="id9">
+<h2><span class="section-number">3.3. </span>데이터 불러오기 및 저장하기<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h2>
 <p>데이터 분석에서 가장 첫 단계는 외부에 저장된 데이터를 프로그램으로 불러오는 일이다. 데이터가 없다면 분석도 할 수 없기 때문이다. pandas의 함수를 사용하면 다양한 형태의 파일을 불러와 데이터프레임으로 변환할 수 있으며, 반대로 가공한 데이터프레임을 다양한 유형의 파일로 저장할 수도 있다.</p>
 <table class="colwidths-auto table" id="read-data">
-<caption><span class="caption-number">Table 3.2 </span><span class="caption-text">판다스의 데이터 입출력 함수</span><a class="headerlink" href="#read-data" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 3.2 </span><span class="caption-text">판다스의 데이터 입출력 함수</span><a class="headerlink" href="#read-data" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>파일 포맷</p></th>
 <th class="head"><p>불러오기</p></th>
@@ -2346,9 +2467,9 @@ Name: index1, dtype: int64
 </div>
 </div>
 </div>
-<div class="figure align-default" id="save-csv">
+<figure class="align-default" id="save-csv">
 <img alt="_images/save_csv.png" src="_images/save_csv.png" />
-</div>
+</figure>
 <p><code class="docutils literal notranslate"><span class="pre">DataFrame.to_csv('파일이름.csv')</span></code>을 입력하면 해당 경로에 CSV 파일이 저장된다.</p>
 <p>이번에는 엑셀 파일을 불러오는 법을 살펴보도록 하자.</p>
 <div class="cell docutils container">
@@ -2464,13 +2585,13 @@ Name: index1, dtype: int64
 </div>
 </div>
 </div>
-<div class="figure align-default" id="save-excel">
+<figure class="align-default" id="save-excel">
 <img alt="_images/save_excel.png" src="_images/save_excel.png" />
-</div>
+</figure>
 <p><code class="docutils literal notranslate"><span class="pre">DataFrame.to_excel('파일이름.xlsx')</span></code>을 입력하면 해당 경로에 엑셀 파일이 저장된다.</p>
-</div>
-<div class="section" id="id10">
-<h2><span class="section-number">3.4. </span>데이터 요약 정보 및 통계값 살펴보기<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id10">
+<h2><span class="section-number">3.4. </span>데이터 요약 정보 및 통계값 살펴보기<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h2>
 <p>데이터를 불러왔다면 대략적인 정보를 확인하여 제대로된 데이터가 들어왔는지, 데이터는 어떠한 특성을 가지고 있는지 살펴보아야 제대로 된 데이터 분석을 할 수 있다. 먼저 데이터의 맨 위와 아래 중 일부를 확인하여 데이터를 개략적으로 살펴보는데는 <code class="docutils literal notranslate"><span class="pre">head()</span></code>와 <code class="docutils literal notranslate"><span class="pre">tail()</span></code> 메서드가 사용된다.</p>
 <ul class="simple">
 <li><p>맨 위 살펴보기: <code class="docutils literal notranslate"><span class="pre">DataFrae.head(n)</span></code></p></li>
@@ -2756,7 +2877,7 @@ Name: index1, dtype: int64
 </div>
 <p>맨 위와 아래의 5개 행을 통해 데이터를 간략하게 볼 수 있다. 각 열의 데이터가 의미하는 바는 다음과 같다.</p>
 <table class="colwidths-auto table" id="titanic-dataset">
-<caption><span class="caption-number">Table 3.3 </span><span class="caption-text">타이타닉 데이터셋</span><a class="headerlink" href="#titanic-dataset" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 3.3 </span><span class="caption-text">타이타닉 데이터셋</span><a class="headerlink" href="#titanic-dataset" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>열 이름</p></th>
 <th class="head"><p>의미</p></th>
@@ -3015,9 +3136,9 @@ dtype: float64
 </div>
 <p>fare 열의 중위수는 14로써 산술평균인 32보다 훨씬 낮다. 이처럼 데이터가 극단치가 있는 경우 산술평균과 함께 중위수를 확인할 필요가 있다.</p>
 <p>pandas 패키지에는 이 외에도 통계값을 계산할 수 있는 다양한 메서드가 존재한다.</p>
-</div>
-<div class="section" id="id11">
-<h2><span class="section-number">3.5. </span>결측치 처리하기<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id11">
+<h2><span class="section-number">3.5. </span>결측치 처리하기<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h2>
 <p>타이타닉 데이터셋을 살펴보면 NaN이라는 데이터가 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3334,8 +3455,8 @@ memory usage: 80.7+ KB
 </div></div></div>
 </div>
 <p>앞서 1, 3, 5행의 deck 열은 결측치였으며, <code class="docutils literal notranslate"><span class="pre">isnull()</span></code> 메서드를 적용하면 해당 부분이 True로 나타난다.</p>
-<div class="section" id="id12">
-<h3><span class="section-number">3.5.1. </span>결측치 삭제하기<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<section id="id12">
+<h3><span class="section-number">3.5.1. </span>결측치 삭제하기<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h3>
 <p>결측치를 다루는 가장 간단한 방법은 결측치가 있는 행 또는 열을 삭제하는 것이며, <code class="docutils literal notranslate"><span class="pre">dropna()</span></code> 메서드를 사용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4266,9 +4387,9 @@ memory usage: 80.7+ KB
 </div></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">thresh</span> <span class="pre">=</span> <span class="pre">300</span></code>는 결측치가 300개 이상 갖는 열을 삭제한다는 의미며, deck 열만 이 조건에 부합하여 삭제되었다.</p>
-</div>
-<div class="section" id="id13">
-<h3><span class="section-number">3.5.2. </span>결측치 대체하기<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id13">
+<h3><span class="section-number">3.5.2. </span>결측치 대체하기<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h3>
 <p>결측치가 있는 경우 데이터를 삭제해버리면 데이터의 양이 줄어들거나 편향되어 제대로 된 분석을 할 수 없을수도 있다. 따라서 데이터에 결측이 있을 경우 다른 값으로 대체하는 방법을 쓰기도 한다. 먼저 가장 간단한 방법은 특정 값으로 변경하는 것이며, 대표적으로 결측치를 평균으로 변경한다. 예를 들어 ‘age’ 열의 결측치는 나머지 승객의 평균나이로 대체해보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4590,10 +4711,10 @@ Name: age, dtype: float64
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">fillna()</span></code> 메서드에 <code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">=</span> <span class="pre">'ffill'</span></code>을 입력하면 결측치가 있는 경우 위의 행 중 결측치가 나타나기 전의 값으로 바꿔주며 ‘deck_ffill’ 열을 통해 이를 확인할 수 있다. 1행의 경우 처음부터 결측치이므로 참조할 값이 없어 그대로 결측치로 남아있다.</p>
 <p>반면 <code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">=</span> <span class="pre">'bfill'</span></code>을 입력하면 결측치가 있는 아래의 행 중 결측치가 아닌 첫 번째 값으로 바꿔주며, ‘deck_bfill’ 열을 통해 이를 확인할 수 있다.</p>
-</div>
-</div>
-<div class="section" id="id14">
-<h2><span class="section-number">3.6. </span>인덱스 다루기<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="id14">
+<h2><span class="section-number">3.6. </span>인덱스 다루기<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h2>
 <p>데이터프레임의 인덱스를 변경하거나 정렬하고, 재설정하는 법에 대해 살펴보도록 하자. 예제로써 seaborn 패키지의 mpg 데이터셋을 사용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5129,12 +5250,12 @@ Name: age, dtype: float64
 </div></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">reset_index()</span></code> 메서드를 사용하면 인덱스가 다시 [0, 1, 2..]의 위치 인덱스로 변경되며, 기존에 존재하던 인덱스는 ‘name’ 열로 옮겨진다.</p>
-</div>
-<div class="section" id="id15">
-<h2><span class="section-number">3.7. </span>필터링<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id15">
+<h2><span class="section-number">3.7. </span>필터링<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h2>
 <p>필터링이란 시리즈 혹은 데이터프레임의 데이터에서 조건을 만족하는 원소만 추출하는 것으로써, 엑셀의 필터와 비슷한 개념이다. 필터링에는 크게 불리언 인덱싱(boolean indexing)과 <code class="docutils literal notranslate"><span class="pre">isin()</span></code> 메서드가 사용된다.</p>
-<div class="section" id="id16">
-<h3><span class="section-number">3.7.1. </span>불리언 인덱싱<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<section id="id16">
+<h3><span class="section-number">3.7.1. </span>불리언 인덱싱<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h3>
 <p>먼저 불리언 인덱싱에 대해 알아보자. 시리즈 객체에 조건을 입력하면 각 원소에 대해 참 혹은 거짓을 판별하여 True/False로 이루어진 시리즈가 반환된다. 그 후 참에 해당하는 데이터만 선택하면 결과적으로 조건을 만족하는 데이터만 추출할 수 있다. mpg 데이터셋을 다시 불러오도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5615,9 +5736,9 @@ Name: cylinders, dtype: bool
 </div></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">&amp;</span></code> 연산자를 통해 원하는 조건들을 결합하면 두개 조건을 동시에 만족하는 데이터가 선택되었다. 또한 열 이름을 리스트 형태로 입력하면 해당 열만 선택된다.</p>
-</div>
-<div class="section" id="isin">
-<h3><span class="section-number">3.7.2. </span><code class="docutils literal notranslate"><span class="pre">isin()</span></code> 메서드<a class="headerlink" href="#isin" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="isin">
+<h3><span class="section-number">3.7.2. </span><code class="docutils literal notranslate"><span class="pre">isin()</span></code> 메서드<a class="headerlink" href="#isin" title="Permalink to this headline">#</a></h3>
 <p>만일 name이 ‘ford maverick’, ‘ford mustang ii’, ‘chevrolet impala’인 데이터를 선택하려면 어떻게 해야할까? 불리언 인덱싱을 사용하면 다음과 같이 입력해야 한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6098,10 +6219,10 @@ Name: cylinders, dtype: bool
 </div></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">sort_values()</span></code> 메서드는 입력한 열의 값 기준으로 정렬을 해준다. horsepower가 낮은 것부터 오름차순으로 정렬이 되며, 내림차순으로 정렬하고자 하면 <code class="docutils literal notranslate"><span class="pre">ascending=False</span></code>을 입력하면 된다.</p>
-</div>
-</div>
-<div class="section" id="id17">
-<h2><span class="section-number">3.8. </span>새로운 열 만들기<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="id17">
+<h2><span class="section-number">3.8. </span>새로운 열 만들기<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h2>
 <p>기존에 존재하는 데이터를 바탕으로 새로운 열을 만드는 법에 대해 알아보겠다. mpg 데이터셋에서 mpg 열은 연비, wt 열은 무게를 나타내며, 무게 대비 연비(mpg/wt)를 나타내는 ‘ratio’ 열을 만들어보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6405,12 +6526,12 @@ Name: cylinders, dtype: bool
 </div></div></div>
 </div>
 <p>먼저 <code class="docutils literal notranslate"><span class="pre">where()</span></code> 함수 내에 horsepower가 100 보다 작을 경우 ‘100 미만’이라고 입력한다. 그렇지 않을 경우에는 다시 <code class="docutils literal notranslate"><span class="pre">where()</span></code> 함수를 사용하여 horsepower가 100 이상이고 200 미만일 경우에는 ‘100 이상’, horsepower가 200 보다 클 경우에는 ‘200 이상’, 마지막으로 모든 조건을 만족하지 않으면 ‘기타’를 부여한다. 그 후 해당 결과를 ‘horse_power_div’ 열에 추가하면 ‘horsepower’열을 조건으로 하는 새로운 열이 만들어진다.</p>
-</div>
-<div class="section" id="id18">
-<h2><span class="section-number">3.9. </span>데이터프레임 합치기<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id18">
+<h2><span class="section-number">3.9. </span>데이터프레임 합치기<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h2>
 <p>필요한 데이터가 하나의 데이터프레임에 모두 있는 경우는 드물다. 따라서 여러 데이터프레임을 하나로 합치거나 연결해야 할 경우가 많다. pandas에서 데이터프레임을 합치는 함수에는 <code class="docutils literal notranslate"><span class="pre">concat()</span></code>, <code class="docutils literal notranslate"><span class="pre">merge()</span></code>, <code class="docutils literal notranslate"><span class="pre">join()</span></code> 이 있다.</p>
-<div class="section" id="concat">
-<h3><span class="section-number">3.9.1. </span><code class="docutils literal notranslate"><span class="pre">concat()</span></code> 함수<a class="headerlink" href="#concat" title="Permalink to this headline">¶</a></h3>
+<section id="concat">
+<h3><span class="section-number">3.9.1. </span><code class="docutils literal notranslate"><span class="pre">concat()</span></code> 함수<a class="headerlink" href="#concat" title="Permalink to this headline">#</a></h3>
 <p>먼저 행 혹은 열 방향을 데이터프레임을 이어 붙이는 개념인 <code class="docutils literal notranslate"><span class="pre">concat()</span></code> 함수에 대해 살펴보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6450,10 +6571,12 @@ Name: cylinders, dtype: bool
 </div>
 </div>
 </div>
-<div class="figure align-default" id="merging-concat-basic">
+<figure class="align-default" id="merging-concat-basic">
 <img alt="_images/merging_concat_basic.png" src="_images/merging_concat_basic.png" />
-<p class="caption"><span class="caption-number">Fig. 3.3 </span><span class="caption-text">concat - 기본</span><a class="headerlink" href="#merging-concat-basic" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 3.3 </span><span class="caption-text">concat - 기본</span><a class="headerlink" href="#merging-concat-basic" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>데이터프레임 df1, df2, df3는 열 인덱스가 A, B, C, D로 이루어져 있다. 이들을 <code class="docutils literal notranslate"><span class="pre">concat()</span></code> 함수 내에 리스트 형태로 입력하면 행 방향으로 데이터프레임이 합쳐진다. 이번에는 열 이름이 서로 다른 경우를 살펴보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6472,10 +6595,12 @@ Name: cylinders, dtype: bool
 </div>
 </div>
 </div>
-<div class="figure align-default" id="merging-concat-ignore-index">
+<figure class="align-default" id="merging-concat-ignore-index">
 <img alt="_images/merging_concat_ignore_index.png" src="_images/merging_concat_ignore_index.png" />
-<p class="caption"><span class="caption-number">Fig. 3.4 </span><span class="caption-text">concat - 열 이름이 다른 경우</span><a class="headerlink" href="#merging-concat-ignore-index" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 3.4 </span><span class="caption-text">concat - 열 이름이 다른 경우</span><a class="headerlink" href="#merging-concat-ignore-index" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>df1은 열 이름이 A, B, C, D 이지만 df4는 열 이름이 B, D, F로 구성되어 있다. 이 두개의 데이터프레임을 <code class="docutils literal notranslate"><span class="pre">concat()</span></code> 함수로 합치면 열 이름이 합집합을 기준으로 생성되며, 해당하는 열에 데이터가 없는 경우 <code class="docutils literal notranslate"><span class="pre">NaN</span></code>으로 입력된다. df1의 경우 F열이 없으므로 NaN이, df4의 경우 A, C열이 없으므로 NaN으로 채워진다.</p>
 <p>행 인덱스를 초기화 하고 싶을 경우 <code class="docutils literal notranslate"><span class="pre">ignore_index=True</span></code>를 입력한다.</p>
 <div class="cell docutils container">
@@ -6487,10 +6612,12 @@ Name: cylinders, dtype: bool
 </div>
 </div>
 </div>
-<div class="figure align-default" id="merging-concat-ignore-index-row">
+<figure class="align-default" id="merging-concat-ignore-index-row">
 <img alt="_images/merging_concat_ignore_index_row.png" src="_images/merging_concat_ignore_index_row.png" />
-<p class="caption"><span class="caption-number">Fig. 3.5 </span><span class="caption-text">concat - 행 인덱스 초기화</span><a class="headerlink" href="#merging-concat-ignore-index-row" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 3.5 </span><span class="caption-text">concat - 행 인덱스 초기화</span><a class="headerlink" href="#merging-concat-ignore-index-row" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>기존에는 원래 데이터프레임의 행 인덱스가 그대로 유지되었으나, <code class="docutils literal notranslate"><span class="pre">ignore_index=True</span></code>를 입력하면 행 인덱스가 초기화 되어 0에서부터 7까지의 값을 가진다.</p>
 <p>이번에는 행이 아닌 열 기준으로 데이터를 합쳐보도록 하자.</p>
 <div class="cell docutils container">
@@ -6502,10 +6629,12 @@ Name: cylinders, dtype: bool
 </div>
 </div>
 </div>
-<div class="figure align-default" id="merging-concat-axis1">
+<figure class="align-default" id="merging-concat-axis1">
 <img alt="_images/merging_concat_axis1.png" src="_images/merging_concat_axis1.png" />
-<p class="caption"><span class="caption-number">Fig. 3.6 </span><span class="caption-text">concat - 열 방향으로 합치기</span><a class="headerlink" href="#merging-concat-axis1" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 3.6 </span><span class="caption-text">concat - 열 방향으로 합치기</span><a class="headerlink" href="#merging-concat-axis1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p><code class="docutils literal notranslate"><span class="pre">axis=1</span></code> 인자를 입력하면 열 방향으로 데이터가 합쳐지며, 행 인덱스를 기준으로 연결된다. df1은 행 인덱스가 0, 1, 2, 3이며 df4는 행 인덱스가 2, 3, 6, 7이다. 따라서 <code class="docutils literal notranslate"><span class="pre">concat()</span></code> 함수의 결과 행 인덱스는 합집합인 0, 1, 2, 3, 6, 7이 생성되며 해당하는 행에 데이터가 없을 경우 <code class="docutils literal notranslate"><span class="pre">NaN</span></code>으로 입력된다. 만일 합집합이 아닌 교집합을 기준으로 사용하고 싶을 경우 <code class="docutils literal notranslate"><span class="pre">join</span> <span class="pre">=</span> <span class="pre">inner</span></code> 인자를 추가로 입력한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6516,10 +6645,12 @@ Name: cylinders, dtype: bool
 </div>
 </div>
 </div>
-<div class="figure align-default" id="merging-concat-axis1-inner">
+<figure class="align-default" id="merging-concat-axis1-inner">
 <img alt="_images/merging_concat_axis1_inner.png" src="_images/merging_concat_axis1_inner.png" />
-<p class="caption"><span class="caption-number">Fig. 3.7 </span><span class="caption-text">concat - 열 방향으로 합치기 (교집합)</span><a class="headerlink" href="#merging-concat-axis1-inner" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 3.7 </span><span class="caption-text">concat - 열 방향으로 합치기 (교집합)</span><a class="headerlink" href="#merging-concat-axis1-inner" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>두 데이터프레임이 공통으로 존재하는 행 인덱스인 2, 3을 기준으로만 데이터가 합쳐졌다.</p>
 <p>데이터프레임에 시리즈를 합칠수도 있다.</p>
 <div class="cell docutils container">
@@ -6532,14 +6663,16 @@ Name: cylinders, dtype: bool
 </div>
 </div>
 </div>
-<div class="figure align-default" id="merging-concat-mixed-ndim">
+<figure class="align-default" id="merging-concat-mixed-ndim">
 <img alt="_images/merging_concat_mixed_ndim.png" src="_images/merging_concat_mixed_ndim.png" />
-<p class="caption"><span class="caption-number">Fig. 3.8 </span><span class="caption-text">concat - 시리즈 합치기</span><a class="headerlink" href="#merging-concat-mixed-ndim" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 3.8 </span><span class="caption-text">concat - 시리즈 합치기</span><a class="headerlink" href="#merging-concat-mixed-ndim" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>원래 데이터프레임의 각 열은 시리즈로 구성되어 있으므로, 기존의 데이터프레임에 시리즈를 합칠수 있다.</p>
-</div>
-<div class="section" id="merge">
-<h3><span class="section-number">3.9.2. </span><code class="docutils literal notranslate"><span class="pre">merge()</span></code> 함수<a class="headerlink" href="#merge" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="merge">
+<h3><span class="section-number">3.9.2. </span><code class="docutils literal notranslate"><span class="pre">merge()</span></code> 함수<a class="headerlink" href="#merge" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">merge()</span></code> 함수는 기준이 되는 열이나 인덱스, 즉 키(key)를 기준으로 두 데이터프레임을 합친다. 데이터프레임을 병합하는 방법은 크게 inner join, left join, right join, outer join으로 구분된다.</p>
 <ul class="simple">
 <li><p>inner join: <code class="docutils literal notranslate"><span class="pre">pd.merge(left,</span> <span class="pre">right,</span> <span class="pre">on</span> <span class="pre">=</span> <span class="pre">'inner')</span></code> (on = ‘inner’는 생략 가능)</p></li>
@@ -6547,10 +6680,12 @@ Name: cylinders, dtype: bool
 <li><p>right join: <code class="docutils literal notranslate"><span class="pre">pd.merge(left,</span> <span class="pre">right,</span> <span class="pre">on</span> <span class="pre">=</span> <span class="pre">'right')</span></code></p></li>
 <li><p>outer join: <code class="docutils literal notranslate"><span class="pre">pd.merge(left,</span> <span class="pre">right,</span> <span class="pre">on</span> <span class="pre">=</span> <span class="pre">'outer')</span></code></p></li>
 </ul>
-<div class="figure align-default" id="inner-join">
+<figure class="align-default" id="inner-join">
 <a class="reference internal image-reference" href="_images/inner_join.png"><img alt="_images/inner_join.png" src="_images/inner_join.png" style="width: 297.5px; height: 192.5px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3.9 </span><span class="caption-text">inner join</span><a class="headerlink" href="#inner-join" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 3.9 </span><span class="caption-text">inner join</span><a class="headerlink" href="#inner-join" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>inner join은 양쪽 데이터프레임에서 기준이 되는 열의 데이터가 모두 있는 교집합 부분만 반환한다. 예를 살펴보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6574,15 +6709,19 @@ Name: cylinders, dtype: bool
 </div>
 </div>
 </div>
-<div class="figure align-default" id="inner-join-result">
+<figure class="align-default" id="inner-join-result">
 <img alt="_images/inner_join_result.png" src="_images/inner_join_result.png" />
-<p class="caption"><span class="caption-number">Fig. 3.10 </span><span class="caption-text">inner join 결과</span><a class="headerlink" href="#inner-join-result" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 3.10 </span><span class="caption-text">inner join 결과</span><a class="headerlink" href="#inner-join-result" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>합치려는 두 데이터프레임을 <code class="docutils literal notranslate"><span class="pre">merge()</span></code> 함수에 입력하며, 기준이 되는 열을 <code class="docutils literal notranslate"><span class="pre">on</span></code> 뒤에 입력한다. <code class="docutils literal notranslate"><span class="pre">merge()</span></code> 함수는 기본적으로 inner join으로 데이터를 합친다. left 데이터프레임에서 key 열의 값은 K0, K1, K2, K3이며, right 데이터프레임에서 key 열의 값은 K0, K1, K3, K4다. 따라서 key 열의 데이터가 둘의 교집합에 해당하는 K0, K1, K3인 행만 선택되어 열 방향으로 합쳐졌다.</p>
-<div class="figure align-default" id="left-join">
+<figure class="align-default" id="left-join">
 <a class="reference internal image-reference" href="_images/left_join.png"><img alt="_images/left_join.png" src="_images/left_join.png" style="width: 303.0px; height: 191.0px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3.11 </span><span class="caption-text">left join</span><a class="headerlink" href="#left-join" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 3.11 </span><span class="caption-text">left join</span><a class="headerlink" href="#left-join" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>left join은 왼쪽 데이터프레임은 유지가 되며, 오른쪽 데이터프레임이 키를 기준으로 합쳐진다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6593,15 +6732,19 @@ Name: cylinders, dtype: bool
 </div>
 </div>
 </div>
-<div class="figure align-default" id="left-join-result">
+<figure class="align-default" id="left-join-result">
 <img alt="_images/left_join_result.png" src="_images/left_join_result.png" />
-<p class="caption"><span class="caption-number">Fig. 3.12 </span><span class="caption-text">left join 결과</span><a class="headerlink" href="#left-join-result" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 3.12 </span><span class="caption-text">left join 결과</span><a class="headerlink" href="#left-join-result" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>먼저 left 데이터프레임은 형태를 유지하며, right 데이터프레임은 키 값을 기준으로 열 방향으로 합쳐진다. right 데이터프레임의 key 열에는 K2 값이 없으므로 해당 부분은 NaN으로 채워지며, right 데이터프레임에만 존재하는 K4 값에 해당하는 부분은 삭제된다.</p>
-<div class="figure align-default" id="right-join">
+<figure class="align-default" id="right-join">
 <a class="reference internal image-reference" href="_images/right_join.png"><img alt="_images/right_join.png" src="_images/right_join.png" style="width: 289.0px; height: 196.0px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3.13 </span><span class="caption-text">right join</span><a class="headerlink" href="#right-join" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 3.13 </span><span class="caption-text">right join</span><a class="headerlink" href="#right-join" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>right join은 left join과 반대로 오른쪽 데이터프레임이 유지가 되며, 왼쪽 데이터프레임이 키를 기준으로 합쳐진다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6612,15 +6755,19 @@ Name: cylinders, dtype: bool
 </div>
 </div>
 </div>
-<div class="figure align-default" id="right-join-result">
+<figure class="align-default" id="right-join-result">
 <img alt="_images/right_join_result.png" src="_images/right_join_result.png" />
-<p class="caption"><span class="caption-number">Fig. 3.14 </span><span class="caption-text">right join 결과</span><a class="headerlink" href="#right-join-result" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 3.14 </span><span class="caption-text">right join 결과</span><a class="headerlink" href="#right-join-result" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>이번에는 right 데이터프레임에 있는 key 값인 K0, K1, K3, K4을 기준으로 left 데이터프레임이 합쳐졌다.</p>
-<div class="figure align-default" id="outer-join">
+<figure class="align-default" id="outer-join">
 <a class="reference internal image-reference" href="_images/outer_join.png"><img alt="_images/outer_join.png" src="_images/outer_join.png" style="width: 288.0px; height: 186.0px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3.15 </span><span class="caption-text">outer join</span><a class="headerlink" href="#outer-join" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 3.15 </span><span class="caption-text">outer join</span><a class="headerlink" href="#outer-join" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>outer join은 데이터프레임 중 어느 한쪽에만 속하더라도 상관없이 합집합 부분을 반환한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6631,10 +6778,12 @@ Name: cylinders, dtype: bool
 </div>
 </div>
 </div>
-<div class="figure align-default" id="outer-join-result">
+<figure class="align-default" id="outer-join-result">
 <img alt="_images/outer_join_result.png" src="_images/outer_join_result.png" />
-<p class="caption"><span class="caption-number">Fig. 3.16 </span><span class="caption-text">outer join 결과</span><a class="headerlink" href="#outer-join-result" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 3.16 </span><span class="caption-text">outer join 결과</span><a class="headerlink" href="#outer-join-result" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>두 데이터프레임의 key 열에 존재하는 모든 데이터 K0, K1, K2, K3, K4를 기준으로 데이터들이 합쳐진다.</p>
 <p>기준이 되는 열의 이름이 서로 다른 경우는 <code class="docutils literal notranslate"><span class="pre">left_on</span></code>과 <code class="docutils literal notranslate"><span class="pre">right_on</span></code>을 통해 키를 직접 선언한다.</p>
 <div class="cell docutils container">
@@ -6660,10 +6809,12 @@ Name: cylinders, dtype: bool
 </div>
 </div>
 </div>
-<div class="figure align-default" id="left-join-result-diff">
+<figure class="align-default" id="left-join-result-diff">
 <img alt="_images/left_join_result_diff.png" src="_images/left_join_result_diff.png" />
-<p class="caption"><span class="caption-number">Fig. 3.17 </span><span class="caption-text">left join (키가 다른 경우)</span><a class="headerlink" href="#left-join-result-diff" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 3.17 </span><span class="caption-text">left join (키가 다른 경우)</span><a class="headerlink" href="#left-join-result-diff" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p><code class="docutils literal notranslate"><span class="pre">merge(left,</span> <span class="pre">right)</span></code>가 아닌 <code class="docutils literal notranslate"><span class="pre">left.merge(right)</span></code> 형태로 함수를 작성할 수도 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6675,14 +6826,16 @@ Name: cylinders, dtype: bool
 </div>
 </div>
 </div>
-<div class="figure align-default" id="id19">
+<figure class="align-default" id="id19">
 <img alt="_images/left_join_result_diff.png" src="_images/left_join_result_diff.png" />
-<p class="caption"><span class="caption-number">Fig. 3.18 </span><span class="caption-text">left.merge(right) 형태</span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 3.18 </span><span class="caption-text">left.merge(right) 형태</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>해당 방법으로 코드를 작성할 경우 왼쪽 데이터프레임에 오른쪽 데이터프레임을 붙인다는 점이 더욱 직관적으로 표현된다.</p>
-</div>
-<div class="section" id="join">
-<h3><span class="section-number">3.9.3. </span><code class="docutils literal notranslate"><span class="pre">join()</span></code> 메서드<a class="headerlink" href="#join" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="join">
+<h3><span class="section-number">3.9.3. </span><code class="docutils literal notranslate"><span class="pre">join()</span></code> 메서드<a class="headerlink" href="#join" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">join()</span></code> 메서드는 <code class="docutils literal notranslate"><span class="pre">merge()</span></code> 함수를 기반으로 만들어져 사용방법이 거의 비슷하다. 다만, <code class="docutils literal notranslate"><span class="pre">join()</span></code> 메서드는 두 데이터프레임의 행 인덱스를 기준으로 데이터를 결합한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6705,15 +6858,17 @@ Name: cylinders, dtype: bool
 </div>
 </div>
 </div>
-<div class="figure align-default" id="id20">
+<figure class="align-default" id="id20">
 <img alt="_images/join.png" src="_images/join.png" />
-<p class="caption"><span class="caption-number">Fig. 3.19 </span><span class="caption-text">join 함수</span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 3.19 </span><span class="caption-text">join 함수</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p><code class="docutils literal notranslate"><span class="pre">join()</span></code> 메서드는 디폴트로 left join 방법을 사용한다. <code class="docutils literal notranslate"><span class="pre">merge()</span></code> 함수는 키를 기준으로 결합을, <code class="docutils literal notranslate"><span class="pre">join()</span></code> 메서드는 행 인덱스를 기준으로 결합을 한다는 점을 제외하고 나머지 사용법은 거의 비슷하다.</p>
-</div>
-</div>
-<div class="section" id="id21">
-<h2><span class="section-number">3.10. </span>데이터 재구조화<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="id21">
+<h2><span class="section-number">3.10. </span>데이터 재구조화<a class="headerlink" href="#id21" title="Permalink to this headline">#</a></h2>
 <p>데이터프레임의 행과 열 구조를 변형하거나, 특정 요인에 따라 집계를 하는 방법에 대해 알아보겠다. pandas에서 데이터 재구조화에 사용되는 함수는 <code class="docutils literal notranslate"><span class="pre">melt()</span></code>, <code class="docutils literal notranslate"><span class="pre">pivot_table()</span></code>, <code class="docutils literal notranslate"><span class="pre">stack()</span></code>, <code class="docutils literal notranslate"><span class="pre">unstack()</span></code> 등이 있다. 예제로써 seaborn 패키지의 팽귄 데이터를 사용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6817,8 +6972,8 @@ Name: cylinders, dtype: bool
 <li><p>body_mass_g: 몸무게에 해당한다.</p></li>
 <li><p>sex: 성별에 해당한다.</p></li>
 </ul>
-<div class="section" id="melt">
-<h3><span class="section-number">3.10.1. </span><code class="docutils literal notranslate"><span class="pre">melt()</span></code><a class="headerlink" href="#melt" title="Permalink to this headline">¶</a></h3>
+<section id="melt">
+<h3><span class="section-number">3.10.1. </span><code class="docutils literal notranslate"><span class="pre">melt()</span></code><a class="headerlink" href="#melt" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">melt()</span></code> 함수는 ID 변수를 기준으로 원본 데이터프레임의 열 이름들을 variable 열에, 각 열에 있던 데이터는 value 열에 넣어 아래로 긴 형태로 만들어준다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6927,9 +7082,9 @@ Name: cylinders, dtype: bool
 </div></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">id_vars</span></code>에 입력한 열은 식별자 변수에 해당하므로 원래의 열이 그대로 유지된다. 반면 그 외의 열 이름인 bill_length_mm,	bill_depth_mm, flipper_length_mm, body_mass_g, sex가 variable 열에 입력되며, 각 열의 데이터가 value 열에 매칭된다.</p>
-</div>
-<div class="section" id="pivot-table">
-<h3><span class="section-number">3.10.2. </span><code class="docutils literal notranslate"><span class="pre">pivot_table()</span></code><a class="headerlink" href="#pivot-table" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="pivot-table">
+<h3><span class="section-number">3.10.2. </span><code class="docutils literal notranslate"><span class="pre">pivot_table()</span></code><a class="headerlink" href="#pivot-table" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">pivot_table()</span></code> 함수는 엑셀의 피벗 테이블과 비슷하며 총 4개 입력값이 필요하다.</p>
 <ul class="simple">
 <li><p>index: 행 인덱스</p></li>
@@ -7182,9 +7337,9 @@ Name: cylinders, dtype: bool
 </div></div></div>
 </div>
 <p>행으로는 species와 sex, 열로는 island, 데이터 값에는 bill_length_mm와 flipper_length_mm을 입력했으며, 집계 함수로 입력한 평균 및 갯수가 계산되었다. 이처럼 복수의 조건을 입력하고 싶을 경우는 리스트 형태로 입력하면 된다.</p>
-</div>
-<div class="section" id="stack-unstack">
-<h3><span class="section-number">3.10.3. </span><code class="docutils literal notranslate"><span class="pre">stack()</span></code>과 <code class="docutils literal notranslate"><span class="pre">unstack()</span></code><a class="headerlink" href="#stack-unstack" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="stack-unstack">
+<h3><span class="section-number">3.10.3. </span><code class="docutils literal notranslate"><span class="pre">stack()</span></code>과 <code class="docutils literal notranslate"><span class="pre">unstack()</span></code><a class="headerlink" href="#stack-unstack" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">stack()</span></code> 메서드와 <code class="docutils literal notranslate"><span class="pre">unstack()</span></code> 메서드는 열 인덱스를 행 인덱스로 바꾸거나 반대로 행 인덱스를 열 인덱스로 변경한다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">stack()</span></code>: 열 인덱스를 행 인덱스로 변환</p></li>
@@ -7479,13 +7634,13 @@ dtype: float64
 </div></div></div>
 </div>
 <p>행 인덱스인 Female, Male이 열 인덱스로 변경되었다.</p>
-</div>
-</div>
-<div class="section" id="id22">
-<h2><span class="section-number">3.11. </span>데이터프레임에 함수 적용하기<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="id22">
+<h2><span class="section-number">3.11. </span>데이터프레임에 함수 적용하기<a class="headerlink" href="#id22" title="Permalink to this headline">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">apply()</span></code> 메서드를 사용하면 시리즈나 데이터프레임의 개별 원소에 함수를 적용할 수 있다. 이는 사용자가 직접 만든 함수(lambda 함수 포함)를 적용할 수 있어 기본함수로 처리하기 어려운 복잡한 연산도 가능하며, for문을 사용해 각 데이터에 함수를 적용하는 것 보다 더 빠르게 연산이 가능하다.</p>
-<div class="section" id="id23">
-<h3><span class="section-number">3.11.1. </span>시리즈에 함수 적용하기<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<section id="id23">
+<h3><span class="section-number">3.11.1. </span>시리즈에 함수 적용하기<a class="headerlink" href="#id23" title="Permalink to this headline">#</a></h3>
 <p>시리즈 객체에 <code class="docutils literal notranslate"><span class="pre">apply()</span></code> 메서드를 적용하면 모든 원소를 함수에 적용하여 결과값을 반환한다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">series.apply(함수)</span></code></p></li>
@@ -7557,9 +7712,9 @@ Name: bill_length_mm, dtype: float64
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">mm_to_cm()</span></code> 함수는 숫자를 입력하면 10으로 나눈 결과를 반환한다. 위와 동일하게 <code class="docutils literal notranslate"><span class="pre">apply()</span></code> 메서드 내부에 해당 함수를 입력하면 시리즈의 모든 원소가 10으로 나누어진다.</p>
-</div>
-<div class="section" id="id24">
-<h3><span class="section-number">3.11.2. </span>데이터프레임에 함수 적용하기<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id24">
+<h3><span class="section-number">3.11.2. </span>데이터프레임에 함수 적용하기<a class="headerlink" href="#id24" title="Permalink to this headline">#</a></h3>
 <p>데이터프레임에 <code class="docutils literal notranslate"><span class="pre">apply()</span></code> 메서드를 적용하면 모든 열 혹은 행을 하나씩 분리하여 함수에 각 원소가 전달된 후 값이 반환된다. 각 열 혹은 행에 함수를 적용하는 법은 다음과 같다.</p>
 <ul class="simple">
 <li><p>각 열에 적용: <code class="docutils literal notranslate"><span class="pre">DataFrame.apply(함수)</span></code> 혹은 <code class="docutils literal notranslate"><span class="pre">DataFrame.apply(함수,</span> <span class="pre">axis</span> <span class="pre">=</span> <span class="pre">0)</span></code></p></li>
@@ -7711,20 +7866,22 @@ dtype: int64
 <li><p><code class="docutils literal notranslate"><span class="pre">apply()</span></code> 메서드를 통해 각 열에 해당 함수를 적용한다.</p></li>
 </ol>
 <p>모든 열에서 결측치가 2개씩 있는 것이 확인된다.</p>
-</div>
-</div>
-<div class="section" id="id25">
-<h2><span class="section-number">3.12. </span>그룹 연산하기<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="id25">
+<h2><span class="section-number">3.12. </span>그룹 연산하기<a class="headerlink" href="#id25" title="Permalink to this headline">#</a></h2>
 <p>데이터를 특정 기준에 따라 그룹으로 나눈 후 처리하는 작업을 그룹 연산이라고 한다. 그룹 연산은 일반적으로 3단계 과정으로 이루어진다.</p>
 <ul class="simple">
 <li><p>분할(split): 데이터를 특정 기준에 따라 분할</p></li>
 <li><p>적용(apply): 데이터를 집계, 변환, 필터링하는 메서드 적용</p></li>
 <li><p>결합(combine): 적용의 결과를 하나로 결합</p></li>
 </ul>
-<div class="figure align-default" id="group">
+<figure class="align-default" id="group">
 <img alt="_images/group.png" src="_images/group.png" />
-<p class="caption"><span class="caption-number">Fig. 3.20 </span><span class="caption-text">그룹 연산의 개념</span><a class="headerlink" href="#group" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 3.20 </span><span class="caption-text">그룹 연산의 개념</span><a class="headerlink" href="#group" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p><a class="reference internal" href="sql.html#group"><span class="std std-numref">Fig. 5.23</span></a>은 그룹 연산의 개념을 그림으로 나타낸 것이다. 먼저 데이터프레임에서 ‘Col 1’이 A, B, C인 데이터 별로 그룹을 나눈 후, 각 그룹에서 ‘Col 2’의 합을 구한다. 마지막으로 계산된 결과를 하나로 합친다. 펭귄 데이터셋을 통해 그룹 연산을 배워보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -7818,8 +7975,8 @@ dtype: int64
 </table>
 </div></div></div>
 </div>
-<div class="section" id="id26">
-<h3><span class="section-number">3.12.1. </span>그룹 나누기<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<section id="id26">
+<h3><span class="section-number">3.12.1. </span>그룹 나누기<a class="headerlink" href="#id26" title="Permalink to this headline">#</a></h3>
 <p>먼저 ‘species’에 따라 데이터의 그룹을 나눠주도록 하며, <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> 메서드를 사용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -8106,9 +8263,9 @@ dtype: int64
 </div></div></div>
 </div>
 <p>그러나 for문을 이용해 그룹객체의 이름과 데이터를 확인해보면 species인 Adelie, Chinstrap, Gentoo에 따라 데이터가 분할되어 있다.</p>
-</div>
-<div class="section" id="id27">
-<h3><span class="section-number">3.12.2. </span>그룹 별 연산하기<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id27">
+<h3><span class="section-number">3.12.2. </span>그룹 별 연산하기<a class="headerlink" href="#id27" title="Permalink to this headline">#</a></h3>
 <p>원하는 조건에 따라 그룹을 나누었다면, 그룹 별 연산을 해보자. 먼저 그룹 별 평균을 구해보도록 한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -8176,7 +8333,7 @@ dtype: int64
 </div>
 <p>그룹 객체에 <code class="docutils literal notranslate"><span class="pre">mean()</span></code> 메서드를 적용하면 각 그룹 별 평균이 계산된다. 이 외에도 <code class="docutils literal notranslate"><span class="pre">groupby()</span></code>와 함께 pandas에 내장되어 있는 다양한 집계 메서드를 사용할 수 있다.</p>
 <table class="colwidths-auto table" id="method">
-<caption><span class="caption-number">Table 3.4 </span><span class="caption-text">판다스 내 집계 메서드</span><a class="headerlink" href="#method" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 3.4 </span><span class="caption-text">판다스 내 집계 메서드</span><a class="headerlink" href="#method" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>메서드</p></th>
 <th class="head"><p>기능</p></th>
@@ -8787,10 +8944,10 @@ Name: bill_length_mm, dtype: float64
 </div></div></div>
 </div>
 <p>species 별로 그룹은 나눈 후 <code class="docutils literal notranslate"><span class="pre">filter()</span></code> 메서드 내에 조건식을 입력한다. lambda 함수를 통해 조건을 정의하며, ‘bill_length_mm’ 열의 평균이 40 이상인 조건을 입력한다. 결과를 살펴보면 Adelie 종은 평균이 40 미만이므로 제외되고, Chinstrap와 Gentoo 종의 데이터만 반환된다.</p>
-</div>
-</div>
-<div class="section" id="id28">
-<h2><span class="section-number">3.13. </span>시계열 데이터 다루기<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="id28">
+<h2><span class="section-number">3.13. </span>시계열 데이터 다루기<a class="headerlink" href="#id28" title="Permalink to this headline">#</a></h2>
 <p>시계열 데이터(time series data)란 시간을 기준으로 측정된 자료를 말하며, 주가나 재무제표 등 투자에 쓰이는 대부분의 데이터가 시계열 데이터라고도 볼 수 있으므로 이를 다루는 법에 알 필요가 있다. 앞서 datetime 패키지에서 제공하는 datetime 객체를 통해 날짜와 시간을 다룰수 있었다. pandas에서는 문자열을 datetime 객체로 손쉽게 변환할 수 있으므로 이에 대해 알아보겠다. 먼저 택시 승하차 정보가 담긴 taxis 데이터셋을 불러오도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -9823,8 +9980,8 @@ Length: 6433, dtype: timedelta64[ns]
 </div></div></div>
 </div>
 <p>인덱서에 슬라이스 형태를 입력하면 이에 해당하는 기간의 데이터만 선택된다.</p>
-<div class="section" id="id29">
-<h3><span class="section-number">3.13.1. </span>시계열 데이터 만들기<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
+<section id="id29">
+<h3><span class="section-number">3.13.1. </span>시계열 데이터 만들기<a class="headerlink" href="#id29" title="Permalink to this headline">#</a></h3>
 <p>앞서 <code class="docutils literal notranslate"><span class="pre">range()</span></code> 함수를 통해 숫자(정수) 리스트를 만들었듯이, pandas의 <code class="docutils literal notranslate"><span class="pre">date_range()</span></code> 함수를 통해 여러 개의 날짜가 들어있는 배열 형태의 시계열 데이터를 만들 수 있다. 예제로 2021년 1월부터 2021년 12월까지 한 달 간격으로 시계열 데이터를 만들어보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -9845,7 +10002,7 @@ Length: 6433, dtype: timedelta64[ns]
 </div>
 <p>start는 시작일, end는 종료일, freq는 간격을 뜻한다. <code class="docutils literal notranslate"><span class="pre">date_range</span></code> 함수의 <code class="docutils literal notranslate"><span class="pre">freq</span></code>에는 매우 다양한 종류가 있다.</p>
 <table class="colwidths-auto table" id="freq">
-<caption><span class="caption-number">Table 3.5 </span><span class="caption-text">freq 옵션 종류</span><a class="headerlink" href="#freq" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 3.5 </span><span class="caption-text">freq 옵션 종류</span><a class="headerlink" href="#freq" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>옵션</p></th>
 <th class="head"><p>설명</p></th>
@@ -9957,9 +10114,9 @@ Length: 6433, dtype: timedelta64[ns]
 </div>
 </div>
 <p>WOM는 week of month를, 2THU는 둘째주 목요일을 뜻한다. 즉 WOM-2FRI는 매월 둘째주 목요일에 해당하는 날짜가 시계열 데이터로 만들어진다.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -9983,9 +10140,11 @@ Length: 6433, dtype: timedelta64[ns]
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="python.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -10001,24 +10160,28 @@ Length: 6433, dtype: timedelta64[ns]
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By 이현열<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By 이현열<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

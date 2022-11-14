@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>6. 파이썬에서 SQL 연결하기 &#8212; 파이썬을 이용한 퀀트 투자 포트폴리오 만들기</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -39,6 +37,7 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -78,7 +77,7 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -96,7 +95,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -105,9 +118,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -125,14 +139,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="index.html">
-   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   퀀트와 프로그래밍 기초 배워보기
  </span>
@@ -257,107 +272,209 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/sql_in_python.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/hyunyulhenry/quant_py"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/hyunyulhenry/quant_py/issues/new?title=Issue%20on%20page%20%2Fsql_in_python.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_py/main?urlpath=tree/sql_in_python.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/hyunyulhenry/quant_py/main?urlpath=tree/sql_in_python.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/hyunyulhenry/quant_py"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/hyunyulhenry/quant_py/issues/new?title=Issue%20on%20page%20%2Fsql_in_python.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/sql_in_python.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#sql-db">
    6.1. 파이썬에서 SQL DB에 접속하기
@@ -387,12 +504,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>파이썬에서 SQL 연결하기</h1>
@@ -438,14 +554,15 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="sql">
-<h1><span class="section-number">6. </span>파이썬에서 SQL 연결하기<a class="headerlink" href="#sql" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="sql">
+<h1><span class="section-number">6. </span>파이썬에서 SQL 연결하기<a class="headerlink" href="#sql" title="Permalink to this headline">#</a></h1>
 <p>SQL을 통해 데이터베이스에서 필요한 데이터를 불러와 CSV 파일로 저장한 후 이를 다시 파이썬으로 불러오는 과정은 다소 비효율적이다. 파이썬에서는 SQL에 직접 연결이 가능하기에 이를 통해 훨씬 효율적으로 작업을 할 수 있다. 즉, 파이썬에서 SQL DB에 접속하여 데이터를 가공 후 불러오고, 이를 토대로 결과물을 얻거나 가공한 데이터를 다시 SQL DB에 저장하는 것이 가능하다.</p>
-<div class="section" id="sql-db">
-<h2><span class="section-number">6.1. </span>파이썬에서 SQL DB에 접속하기<a class="headerlink" href="#sql-db" title="Permalink to this headline">¶</a></h2>
+<section id="sql-db">
+<h2><span class="section-number">6.1. </span>파이썬에서 SQL DB에 접속하기<a class="headerlink" href="#sql-db" title="Permalink to this headline">#</a></h2>
 <p>pymysql 패키지를 이용하면 파이썬에서 SQL DB에 접속 및 작업이 가능하다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -536,14 +653,16 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>위와 과정은 거의 동일하며, 9번 id에 스테이플러에 관한 내용을 입력하는 쿼리를 작성한다. 삽입, 갱신, 삭제 등의 DML(Data Manipulation Language) 문장을 실행하는 경우, <code class="docutils literal notranslate"><span class="pre">commit()</span></code> 메서드를 사용하여 데이터의 확정 갱신하는 작업을 추가해준다. 실제로 MySQL에서 데이터를 확인해보면 테이블 내에 스테이플러에 대한 내용이 업데이트 되었다.</p>
-<div class="figure align-default" id="insert">
+<figure class="align-default" id="insert">
 <img alt="_images/insert.png" src="_images/insert.png" />
-<p class="caption"><span class="caption-number">Fig. 6.1 </span><span class="caption-text">테이블 내 데이터 업데이트</span><a class="headerlink" href="#insert" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 6.1 </span><span class="caption-text">테이블 내 데이터 업데이트</span><a class="headerlink" href="#insert" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>이처럼 파이썬을 이용해 SQL 데이터베이스의 데이터를 불러오기 혹은 쓰기 작업이 가능하다.</p>
-</div>
-<div class="section" id="pandas">
-<h2><span class="section-number">6.2. </span>pandas를 이용한 데이터 읽기 및 쓰기<a class="headerlink" href="#pandas" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="pandas">
+<h2><span class="section-number">6.2. </span>pandas를 이용한 데이터 읽기 및 쓰기<a class="headerlink" href="#pandas" title="Permalink to this headline">#</a></h2>
 <p>위 방법을 이용해 데이터를 불러오면 아쉬운 점이 있다. 먼저 열 이름이 보이지 않는다. 둘째, 데이터분석 작업을 하기 편한 데이터프레임 형태가 아니다. pandas 패키지에는 SQL 데이터베이스의 데이터를 불러오거나 저장할 수 있는 함수가 있으므로, 이에 대해 살펴보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -741,13 +860,15 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p><code class="docutils literal notranslate"><span class="pre">engine.dispose()</span></code>를 통해 연결을 종료한다.</p></li>
 </ol>
 <p>MySQL에서 확인해보면, shop 데이터베이스 내에 iris라는 테이블이 생성되었다. 이처럼 <code class="docutils literal notranslate"><span class="pre">to_sql()</span></code> 함수를 사용하면 파이썬에서 데이터프레임을 작업한 후 곧바로 데이터베이스에 저장할 수 있다.</p>
-<div class="figure align-default" id="iris">
+<figure class="align-default" id="iris">
 <img alt="_images/iris.png" src="_images/iris.png" />
-<p class="caption"><span class="caption-number">Fig. 6.2 </span><span class="caption-text">iris 테이블</span><a class="headerlink" href="#iris" title="Permalink to this image">¶</a></p>
-</div>
-</div>
-<div class="section" id="upsert">
-<h2><span class="section-number">6.3. </span>upsert 기능 구현하기<a class="headerlink" href="#upsert" title="Permalink to this headline">¶</a></h2>
+<figcaption>
+<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">iris 테이블</span><a class="headerlink" href="#iris" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="upsert">
+<h2><span class="section-number">6.3. </span>upsert 기능 구현하기<a class="headerlink" href="#upsert" title="Permalink to this headline">#</a></h2>
 <p>퀀트 투자에 사용할 시계열 데이터는 크게 두가지 특성을 가지고 있다.</p>
 <ol class="simple">
 <li><p>insert: 시간이 지남에 따라 데이터가 추가된다.</p></li>
@@ -833,10 +954,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="figure align-default" id="exam-price">
+<figure class="align-default" id="exam-price">
 <img alt="_images/exam_price.png" src="_images/exam_price.png" />
-<p class="caption"><span class="caption-number">Fig. 6.3 </span><span class="caption-text">exam 데이터베이스 내 price 테이블</span><a class="headerlink" href="#exam-price" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 6.3 </span><span class="caption-text">exam 데이터베이스 내 price 테이블</span><a class="headerlink" href="#exam-price" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p><code class="docutils literal notranslate"><span class="pre">to_sql()</span></code> 함수의 인자로 if_exists = ‘append’를 입력하면, 테이블이 존재할 경우 기존 테이블에 데이터를 추가한다. 이제 하루가 지나 시계열이 추가되었다고 가정하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -914,10 +1037,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="figure align-default" id="exam-update">
+<figure class="align-default" id="exam-update">
 <img alt="_images/exam_update.png" src="_images/exam_update.png" />
-<p class="caption"><span class="caption-number">Fig. 6.4 </span><span class="caption-text">price 테이블에 새로운 데이터 추가</span><a class="headerlink" href="#exam-update" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 6.4 </span><span class="caption-text">price 테이블에 새로운 데이터 추가</span><a class="headerlink" href="#exam-update" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>단순히 데이터를 추가하면 2021-01-02와 2021-01-03에 해당하는 데이터가 중복으로 들어가는 문제가 발생한다. <code class="docutils literal notranslate"><span class="pre">to_sql()</span></code> 함수 내에 if_exists = ‘replace’로 입력할 경우 새로운 데이터로 덮어쓰게 되어 이러한 문제가 해결되지만, 이는 이전 데이터(예: 2021년 이전)도 모두 삭제되는 문제가 발생한다. 따라서 기존에 값이 있는 2021-01-02와 2021-01-03 데이터는 그대로 두고, 새롭게 추가되는 2021-01-04 데이터만 추가할 필요가 있다.</p>
 <p>MySQL에서 upsert를 구현하는 쿼리는 다음과 같다.</p>
 <div class="cell docutils container">
@@ -933,8 +1058,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>즉 [table]의 [arg1, arg2, arg3] 열에 [&#64;arg1, &#64;arg2, &#64;arg3] 데이터를 추가하며, 만약 키 값(arg1)에 데이터(&#64;arg1)가 이미 존재한다면 &#64;arg2와 &#64;arg3로 데이터를 업데이트 한다.</p>
-<div class="section" id="mysql-upsert">
-<h3><span class="section-number">6.3.1. </span>MySQL에서 upsert 기능 구현하기<a class="headerlink" href="#mysql-upsert" title="Permalink to this headline">¶</a></h3>
+<section id="mysql-upsert">
+<h3><span class="section-number">6.3.1. </span>MySQL에서 upsert 기능 구현하기<a class="headerlink" href="#mysql-upsert" title="Permalink to this headline">#</a></h3>
 <p>먼저 쉬운 이해를 위해 SQL에서 해당 기능이 어떻게 구현되는지 확인해보도록 하자. MySQL Workbench에서 다음의 쿼리를 입력하여 price_2 테이블을 만든다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -963,10 +1088,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="figure align-default" id="price-2">
+<figure class="align-default" id="price-2">
 <img alt="_images/price_2.png" src="_images/price_2.png" />
-<p class="caption"><span class="caption-number">Fig. 6.5 </span><span class="caption-text">테이블 생성 및 데이터 입력</span><a class="headerlink" href="#price-2" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 6.5 </span><span class="caption-text">테이블 생성 및 데이터 입력</span><a class="headerlink" href="#price-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>000001 종목은 1월 2일과 3일 모두 데이터가 입력되었지만, 000002 종목은 1월 2일 데이터만 입력되었다. upsert 기능을 이용해 데이터를 추가해보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -983,10 +1110,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="figure align-default" id="price-2-insert">
+<figure class="align-default" id="price-2-insert">
 <img alt="_images/price_2_insert.png" src="_images/price_2_insert.png" />
-<p class="caption"><span class="caption-number">Fig. 6.6 </span><span class="caption-text">데이터 업데이트</span><a class="headerlink" href="#price-2-insert" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 6.6 </span><span class="caption-text">데이터 업데이트</span><a class="headerlink" href="#price-2-insert" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>앞의 [insert into … values] 부분은 일반적인 데이터를 입력하는 쿼리와 형태가 같으며, 그 후 new라는 별명을 붙여준 후 [on duplicate key update] 구문을 추가해준다. 즉 데이터를 입력하되, 키 값(날짜, 티커)을 기준으로 이미 데이터가 존재할 경우에는 입력이 아닌 업데이트를 해준다. 000001 종목의 1월 2~3일, 000002 종목의 1월 2일 데이터는 이미 존재하며 데이터가 바뀌지 않아 값이 그대로 유지된다. 반면 000002 종목의 1월 3일 데이터는 기존에 없던 값이기에 새롭게 추가된다.</p>
 <p>이번에는 입력과 업데이트를 동시에 진행해보겠다.</p>
 <div class="cell docutils container">
@@ -1002,18 +1131,20 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="figure align-default" id="price-2-upsert">
+<figure class="align-default" id="price-2-upsert">
 <img alt="_images/price_2_upsert.png" src="_images/price_2_upsert.png" />
-<p class="caption"><span class="caption-number">Fig. 6.7 </span><span class="caption-text">upsert 기능 구현</span><a class="headerlink" href="#price-2-upsert" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 6.7 </span><span class="caption-text">upsert 기능 구현</span><a class="headerlink" href="#price-2-upsert" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ol class="simple">
 <li><p>000001 종목의 1월 2일 데이터는 이미 테이블에 존재하기에 입력한 1300 / 1100으로 데이터를 업데이트한다.</p></li>
 <li><p>000001 종목의 1월 4일 데이터는 테이블에 없는 값이기에 새로 입력한다.</p></li>
 </ol>
 <p>이처럼 upsert 기능을 이용하면 시계열 데이터의 추가 및 수정을 한번에 할 수 있다.</p>
-</div>
-<div class="section" id="id1">
-<h3><span class="section-number">6.3.2. </span>파이썬에서 upsert 기능 구현하기<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id1">
+<h3><span class="section-number">6.3.2. </span>파이썬에서 upsert 기능 구현하기<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <p>이번에는 upsert 기능을 파이썬에서 구현해보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1069,10 +1200,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>접속을 종료한다.</p></li>
 </ol>
 <p>실제로 데이터를 확인해보면 1월 4일 000001 종목의 데이터는 수정이 되었으며, 000002 종목의 데이터는 새로 입력되었다.</p>
-<div class="figure align-default" id="price-2-upsert-python">
+<figure class="align-default" id="price-2-upsert-python">
 <img alt="_images/price_2_upsert_python.png" src="_images/price_2_upsert_python.png" />
-<p class="caption"><span class="caption-number">Fig. 6.8 </span><span class="caption-text">파이썬에서 upsert 기능 구현</span><a class="headerlink" href="#price-2-upsert-python" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 6.8 </span><span class="caption-text">파이썬에서 upsert 기능 구현</span><a class="headerlink" href="#price-2-upsert-python" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>마지막으로 예제로 사용했던 데이터베이스(exam)는 삭제해준다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1095,9 +1228,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1121,9 +1254,11 @@ const thebe_selector_output = ".output, .cell_output"
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="sql.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1139,24 +1274,28 @@ const thebe_selector_output = ".output, .cell_output"
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By 이현열<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By 이현열<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
