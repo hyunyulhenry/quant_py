@@ -2457,7 +2457,7 @@ end
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="n">goods_name</span><span class="p">,</span> <span class="n">sell_price</span><span class="p">,</span>
-	<span class="k">case</span> <span class="n">when</span> <span class="n">sell_price</span> <span class="o">&gt;=</span>  <span class="mi">6000</span> <span class="n">then</span> <span class="s1">&#39;고가&#39;</span>    
+	<span class="n">case</span> <span class="n">when</span> <span class="n">sell_price</span> <span class="o">&gt;=</span>  <span class="mi">6000</span> <span class="n">then</span> <span class="s1">&#39;고가&#39;</span>    
 		 <span class="n">when</span> <span class="n">sell_price</span> <span class="o">&gt;=</span> <span class="mi">3000</span> <span class="ow">and</span> <span class="n">sell_price</span> <span class="o">&lt;</span> <span class="mi">6000</span> <span class="n">then</span> <span class="s1">&#39;중가&#39;</span>
          <span class="n">when</span> <span class="n">sell_price</span> <span class="o">&lt;</span> <span class="mi">3000</span> <span class="n">then</span> <span class="s1">&#39;저가&#39;</span>
 		 <span class="k">else</span> <span class="n">null</span>

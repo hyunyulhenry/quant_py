@@ -79,8 +79,8 @@ commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -7815,7 +7815,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x0000028EBF5D3130&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x00000277BE8465E0&gt;
 </pre></div>
 </div>
 </div>
@@ -8335,6 +8335,10 @@ Name: bill_length_mm, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\doomoolmori\AppData\Local\Temp\ipykernel_27908\2566232041.py:1: FutureWarning: [&#39;sex&#39;] did not aggregate successfully. If any error is raised this will raise in a future version of pandas. Drop these columns/ops to avoid this warning.
+  df.groupby([&#39;species&#39;]).agg([&#39;max&#39;, &#39;min&#39;])
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -8570,9 +8574,9 @@ Name: bill_length_mm, Length: 344, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>species
-Adelie       32.1
+Adelie        NaN
 Chinstrap    40.9
-Gentoo       40.9
+Gentoo        NaN
 Name: bill_length_mm, dtype: float64
 </pre></div>
 </div>
@@ -8922,23 +8926,23 @@ Name: bill_length_mm, dtype: float64
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 RangeIndex: 6433 entries, 0 to 6432
 Data columns (total 14 columns):
- #   Column           Non-Null Count  Dtype  
----  ------           --------------  -----  
- 0   pickup           6433 non-null   object 
- 1   dropoff          6433 non-null   object 
- 2   passengers       6433 non-null   int64  
- 3   distance         6433 non-null   float64
- 4   fare             6433 non-null   float64
- 5   tip              6433 non-null   float64
- 6   tolls            6433 non-null   float64
- 7   total            6433 non-null   float64
- 8   color            6433 non-null   object 
- 9   payment          6389 non-null   object 
- 10  pickup_zone      6407 non-null   object 
- 11  dropoff_zone     6388 non-null   object 
- 12  pickup_borough   6407 non-null   object 
- 13  dropoff_borough  6388 non-null   object 
-dtypes: float64(5), int64(1), object(8)
+ #   Column           Non-Null Count  Dtype         
+---  ------           --------------  -----         
+ 0   pickup           6433 non-null   datetime64[ns]
+ 1   dropoff          6433 non-null   datetime64[ns]
+ 2   passengers       6433 non-null   int64         
+ 3   distance         6433 non-null   float64       
+ 4   fare             6433 non-null   float64       
+ 5   tip              6433 non-null   float64       
+ 6   tolls            6433 non-null   float64       
+ 7   total            6433 non-null   float64       
+ 8   color            6433 non-null   object        
+ 9   payment          6389 non-null   object        
+ 10  pickup_zone      6407 non-null   object        
+ 11  dropoff_zone     6388 non-null   object        
+ 12  pickup_borough   6407 non-null   object        
+ 13  dropoff_borough  6388 non-null   object        
+dtypes: datetime64[ns](2), float64(5), int64(1), object(6)
 memory usage: 703.7+ KB
 </pre></div>
 </div>
