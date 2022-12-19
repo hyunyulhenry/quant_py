@@ -1,18 +1,14 @@
 # 파이썬을 이용한 퀀트 투자 포트폴리오 만들기
----
-
 이 곳은 **파이썬을 이용한 퀀트 투자 포트폴리오 만들기**의 코드 저장소 및 질문을 위한 공간입니다.
 
 책은 2023년 1월에 발간 예정입니다.
 
 # 강의 영상
----
 👇 책의 강의영상은 **'헨리의 퀀트대학'** 유튜브에서 무료로 들으실 수 있습니다. 
 
 [![](https://github.com/hyunyulhenry/quant_py/blob/main/image/search.png?raw=true)](https://www.youtube.com/channel/UCHfiWvw33aSBktAlWICfPKQ?sub_confirmation=1)
 
 # 책의 구성
----
 #### Part 1 퀀트와 프로그래밍 기초 배워 보기
 1. 퀀트에 대해 알아보기
 2.  파이썬 기초 배워 보기
@@ -38,6 +34,5 @@
 
 
 # 연락처
----
 - https://blog.naver.com/leebisu
 - leebisu@gmail.com
