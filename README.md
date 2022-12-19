@@ -4,7 +4,7 @@
 책은 2023년 1월에 발간 예정입니다.
 
 # 강의 영상
-👇 책의 강의영상은 **'헨리의 퀀트대학'** 유튜브에서 무료로 들으실 수 있습니다. 
+👇 책의 강의영상은 **'헨리의 퀀트대학'** 유튜브에서 무료로 보실 수 있습니다. 
 
 [![](https://github.com/hyunyulhenry/quant_py/blob/main/image/search.png?raw=true)](https://www.youtube.com/channel/UCHfiWvw33aSBktAlWICfPKQ?sub_confirmation=1)
 
