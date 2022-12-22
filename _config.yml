@@ -13,7 +13,6 @@ execute:
 
 html:
   comments:
-    hypothesis: true
     utterances:
       repo: "hyunyulhenry/quant_py"
 

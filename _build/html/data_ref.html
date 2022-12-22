@@ -4,13 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>12. 투자 참고용 데이터 수집 &#8212; 파이썬을 이용한 퀀트 투자 포트폴리오 만들기</title>
     
-  <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -20,16 +18,20 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
+    
+      
+
+    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -37,12 +39,10 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script kind="utterances">
 
     var commentsRunWhenDOMLoaded = cb => {
@@ -78,15 +78,16 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="13. 퀀트 전략을 이용한 종목선정" href="factor.html" />
@@ -98,21 +99,7 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
-
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -121,10 +108,9 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -142,15 +128,14 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="index.html">
-                    파이썬을 이용한 퀀트 투자 포트폴리오 만들기
-                </a>
-            </li>
-        </ul>
-        <p aria-level="2" class="caption" role="heading">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   퀀트와 프로그래밍 기초 배워보기
  </span>
@@ -275,17 +260,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
-    </div>
-    <div id="rtd-footer-container"></div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
 </div>
 
 
@@ -293,146 +273,78 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="header-article row sticky-top noprint">
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
         
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/hyunyulhenry/quant_py/main?urlpath=tree/data_ref.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/data_ref.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/data_ref.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_py/main?urlpath=tree/data_ref.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
     </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dart-open-api">
    12.1. DART의 Open API를 이용한 데이터 수집하기
@@ -496,11 +408,12 @@ title="Print to PDF"
  </li>
 </ul>
 
-    </nav>
-</div>
+            </nav>
+        </div>
     </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>투자 참고용 데이터 수집</h1>
@@ -580,32 +493,27 @@ title="Print to PDF"
                     </div>
                 </div>
             </div>
-            <main id="main-content" role="main">
-                
+            
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">12. </span>투자 참고용 데이터 수집<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1><span class="section-number">12. </span>투자 참고용 데이터 수집<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>이번 장에서는 주식과 재무제표 같은 금융 데이터 외에 투자에 도움이 될 수 있는 기업의 공시내용 및 각종 투자 지표를 수집하는 방법에 대해 알아보도록 하겠다.</p>
-<section id="dart-open-api">
-<h2><span class="section-number">12.1. </span>DART의 Open API를 이용한 데이터 수집하기<a class="headerlink" href="#dart-open-api" title="Permalink to this headline">#</a></h2>
+<div class="section" id="dart-open-api">
+<h2><span class="section-number">12.1. </span>DART의 Open API를 이용한 데이터 수집하기<a class="headerlink" href="#dart-open-api" title="Permalink to this headline">¶</a></h2>
 <p>DART(Data Analysis, Retrieval and Transfer System)는 금융감독원 전자공시시스템으로써, 상장법인 등이 공시서류를 인터넷으로 제출하고, 투자자 등 이용자는 제출 즉시 인터넷을 통해 조회할 수 있도록 하는 종합적 기업공시 시스템이다. 홈페이지에서도 각종 공시내역을 확인할 수 있지만, 해당 사이트에서 제공하는 API를 이용할 경우 더욱 쉽게 공시 내용을 수집할 수 있다.</p>
-<section id="api-key">
-<h3><span class="section-number">12.1.1. </span>API Key 발급 및 추가하기<a class="headerlink" href="#api-key" title="Permalink to this headline">#</a></h3>
+<div class="section" id="api-key">
+<h3><span class="section-number">12.1.1. </span>API Key 발급 및 추가하기<a class="headerlink" href="#api-key" title="Permalink to this headline">¶</a></h3>
 <p>먼저 <a class="reference external" href="https://opendart.fss.or.kr/">https://opendart.fss.or.kr/</a> 에서 회원가입을 한 후 [인증키 신청/관리] → [인증키 신청]을 통해 API Key를 발급받아야 한다.</p>
-<figure class="align-default" id="dart-api-key">
+<div class="figure align-default" id="dart-api-key">
 <img alt="_images/dart_api_key.png" src="_images/dart_api_key.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 12.1 </span><span class="caption-text">OpenAPI 인증키 신청</span><a class="headerlink" href="#dart-api-key" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 12.1 </span><span class="caption-text">OpenAPI 인증키 신청</span><a class="headerlink" href="#dart-api-key" title="Permalink to this image">¶</a></p>
+</div>
 <p>계정을 생성하고 이메일을 통해 이용자 등록을 한 후 로그인을 한다. 그 후 [오픈API 이용현황]을 살펴보면 <strong>API Key</strong> 부분에 발급받은 Key가 있으며, 금일 몇번의 API를 요청했는지가 일일이용현황에 나온다. 하루 총 10,000번까지 데이터를 요청할 수 있다.</p>
-<figure class="align-default" id="dart-api-status">
+<div class="figure align-default" id="dart-api-status">
 <img alt="_images/dart_api_status.png" src="_images/dart_api_status.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 12.2 </span><span class="caption-text">OpenAPI 이용현황</span><a class="headerlink" href="#dart-api-status" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 12.2 </span><span class="caption-text">OpenAPI 이용현황</span><a class="headerlink" href="#dart-api-status" title="Permalink to this image">¶</a></p>
+</div>
 <p>다음으로 발급받은 API Key를 keyring 패키지를 이용해 저장한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -616,16 +524,14 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</section>
-<section id="id2">
-<h3><span class="section-number">12.1.2. </span>고유번호 다운로드<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="id2">
+<h3><span class="section-number">12.1.2. </span>고유번호 다운로드<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>Open API에서 각 기업의 데이터를 받기 위해서는 종목에 해당하는 고유번호를 알아야한다. 이에 대한 자세한 내용은 홈페이지(<a class="reference external" href="https://opendart.fss.or.kr/">https://opendart.fss.or.kr/</a>)에서 [개발가이드 → 공시정보 → 고유번호] 화면에 설명되어 있다.</p>
-<figure class="align-default" id="dart-guide">
+<div class="figure align-default" id="dart-guide">
 <img alt="_images/dart_guide.png" src="_images/dart_guide.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 12.3 </span><span class="caption-text">OPEN API 개발가이드</span><a class="headerlink" href="#dart-guide" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 12.3 </span><span class="caption-text">OPEN API 개발가이드</span><a class="headerlink" href="#dart-guide" title="Permalink to this image">¶</a></p>
+</div>
 <p>위 페이지의 내용을 코드로 나타내보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -867,31 +773,25 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<figure class="align-default" id="dart">
+<div class="figure align-default" id="dart">
 <img alt="_images/dart.png" src="_images/dart.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 12.4 </span><span class="caption-text">고유번호 테이블</span><a class="headerlink" href="#dart" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="id3">
-<h3><span class="section-number">12.1.3. </span>공시 데이터<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
-<section id="id4">
-<h4><span class="section-number">12.1.3.1. </span>전체 종목의 공시 데이터 수집<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h4>
+<p class="caption"><span class="caption-number">Fig. 12.4 </span><span class="caption-text">고유번호 테이블</span><a class="headerlink" href="#dart" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="id3">
+<h3><span class="section-number">12.1.3. </span>공시 데이터<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h4><span class="section-number">12.1.3.1. </span>전체 종목의 공시 데이터 수집<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <p>먼저 전체 종목의 공시를 수집하도록 하며, 개발가이드는 [개발가이드 → 공시정보 → 공시검색]에 나와있다. 각종 요청인자를 통해 URL을 생성 후 전송하여, 요청에 맞는 데이터를 받을 수 있다. 공시 검색에 해당하는 인자는 <a class="reference internal" href="#dart-api-input"><span class="std std-numref">Fig. 12.5</span></a>와 같다.</p>
-<figure class="align-default" id="dart-api-input">
+<div class="figure align-default" id="dart-api-input">
 <img alt="_images/dart_api_input.png" src="_images/dart_api_input.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 12.5 </span><span class="caption-text">OpenAPI 요청 인자 예시</span><a class="headerlink" href="#dart-api-input" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 12.5 </span><span class="caption-text">OpenAPI 요청 인자 예시</span><a class="headerlink" href="#dart-api-input" title="Permalink to this image">¶</a></p>
+</div>
 <p>페이지 하단에서 인자를 입력 후 [검색]을 누르면 <a class="reference internal" href="#dart-api-exam"><span class="std std-numref">Fig. 12.6</span></a>와 같이 각 인자에 맞게 생성된 URL과 그 결과를 볼 수 있다.</p>
-<figure class="align-default" id="dart-api-exam">
+<div class="figure align-default" id="dart-api-exam">
 <img alt="_images/dart_api_exam.png" src="_images/dart_api_exam.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 12.6 </span><span class="caption-text">OpenAPI 테스트 예시</span><a class="headerlink" href="#dart-api-exam" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 12.6 </span><span class="caption-text">OpenAPI 테스트 예시</span><a class="headerlink" href="#dart-api-exam" title="Permalink to this image">¶</a></p>
+</div>
 <p>이를 참조하여 시작일과 종료일을 토대로 최근 공시 100건에 해당하는 URL을 생성한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1015,9 +915,9 @@ title="Print to PDF"
 <li><p>데이터프레임 형태로 변경한다.</p></li>
 </ol>
 <p>데이터를 확인해보면 우리가 원하는 공시정보, 즉 일주일 전부터 오늘까지 전체 종목에 대한 100건의 공시 정보를 받을 수 있다.</p>
-</section>
-<section id="id5">
-<h4><span class="section-number">12.1.3.2. </span>특정 기업의 공시 데이터 수집<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="id5">
+<h4><span class="section-number">12.1.3.2. </span>특정 기업의 공시 데이터 수집<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <p>이번에는 고유번호를 추가하여 전체 종목이 아닌 원하는 기업의 공시만 받도록 한다. 예시로써 삼성전자의 공시 데이터를 수집하겠으며, 삼성전자의 고유번호는 ‘00126380’ 다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1195,26 +1095,22 @@ title="Print to PDF"
 </div>
 </div>
 <p>dart 홈페이지의 공시에 해당하는 URL과 공시번호를 합쳐준다. 위 URL에 접속하여 해당 공시를 좀 더 자세하게 확인할 수 있다.</p>
-<figure class="align-default" id="dart-web">
+<div class="figure align-default" id="dart-web">
 <img alt="_images/dart_web.png" src="_images/dart_web.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 12.7 </span><span class="caption-text">공시 정보의 확인</span><a class="headerlink" href="#dart-web" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-</section>
-<section id="id6">
-<h3><span class="section-number">12.1.4. </span>사업보고서 주요 정보<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<p class="caption"><span class="caption-number">Fig. 12.7 </span><span class="caption-text">공시 정보의 확인</span><a class="headerlink" href="#dart-web" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3><span class="section-number">12.1.4. </span>사업보고서 주요 정보<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>API를 이용하여 사업보고서의 주요 정보 역시 다운로드 받을 수 있으며, 제공하는 목록은 다음과 같다.</p>
-<figure class="align-default" id="dart-report">
+<div class="figure align-default" id="dart-report">
 <img alt="_images/dart_report.png" src="_images/dart_report.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 12.8 </span><span class="caption-text">사업보고서 주요정보 목록</span><a class="headerlink" href="#dart-report" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 12.8 </span><span class="caption-text">사업보고서 주요정보 목록</span><a class="headerlink" href="#dart-report" title="Permalink to this image">¶</a></p>
+</div>
 <p>이 중 예시로써 [배당에 관한 사항]을 다운로드 받도록 하자. URL 생성에 필요한 요청 인자는 다음과 같다.</p>
 <table class="colwidths-auto table" id="div-input">
-<caption><span class="caption-number">Table 12.1 </span><span class="caption-text">배당에 관한 사항 주요 인자</span><a class="headerlink" href="#div-input" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 12.1 </span><span class="caption-text">배당에 관한 사항 주요 인자</span><a class="headerlink" href="#div-input" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>키</p></th>
 <th class="head"><p>명칭</p></th>
@@ -1354,21 +1250,19 @@ title="Print to PDF"
 </div></div></div>
 </div>
 <p>API 인증키, 고유번호, 사업년도, 보고서 코드에 해당하는 데이터를 입력하여 URL을 생성하고, 앞에서 했던것과 동일한 방식으로 데이터를 불러온다. 데이터를 확인해보면, 사업보고서 중 배당에 관한 사항만이 나타나 있다. 위 URL의 ‘alotMatter’ 부분을 각 사업보고서에 해당하는 값으로 변경해주면 다른 정보 역시 동일한 방법으로 수집이 가능하다.</p>
-</section>
-</section>
-<section id="fred">
-<h2><span class="section-number">12.2. </span>FRED 데이터 다운로드<a class="headerlink" href="#fred" title="Permalink to this headline">#</a></h2>
+</div>
+</div>
+<div class="section" id="fred">
+<h2><span class="section-number">12.2. </span>FRED 데이터 다운로드<a class="headerlink" href="#fred" title="Permalink to this headline">¶</a></h2>
 <p>미국 연방준비은행에서 관리하는 Federal Reserve Economic Data(FRED)는 미국 및 각국의 중요 경제지표 데이터를 살펴볼 때 가장 많이 참조되는 곳 중 하나이다. 509,000여 개의 방대한 데이터를 API 형태로 제공하고 있으며, pandas_datareader 패키지의 <code class="docutils literal notranslate"><span class="pre">DataReader()</span></code> 함수를 이용하면 이곳에서 제공하는 여러 데이터를 쉽게 받을 수 있다.</p>
-<section id="id7">
-<h3><span class="section-number">12.2.1. </span>장단기 금리차<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
+<div class="section" id="id7">
+<h3><span class="section-number">12.2.1. </span>장단기 금리차<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>장기로 돈을 빌리는 것이 단기로 빌리는 것보다 위험하므로 금리 역시 높아야 하는 것이 당연하며, 이러한 장기금리와 단기금리간의 차이를 기간 프리미엄(Term Premium)이라고 한다. 그러나 가끔씩 장기금리가 단기금리보다 낮아지는 현상이 발생하며, 이는 주요 금융시장 및 경제지표 가운데 경기침체에 대한 예측력이 가장 정확한 것으로 알려져 있다. 실제로 미국에서는 1960년 이후 발생한 모든 경기침체에 앞서 장단기 금리가 역전되어 음수가 되었다.</p>
 <p>FRED에서 각 항목별 코드를 찾는 방법은 매우 간단하다. 먼저 FRED 웹사이트(<a class="reference external" href="https://fred.stlouisfed.org/">https://fred.stlouisfed.org/</a>) 에서 원하는 데이터를 검색한다. 만일 ‘10년-2년 장단기 금리차’에 해당하는 코드를 찾고자 한다면 [10-Year Treasury Constant Maturity Minus 2-Year Treasury Constant Maturity]를 검색하여 해당 페이지로 이동한다. 이 중 <a class="reference internal" href="#fred-code"><span class="std std-numref">Fig. 12.9</span></a>에서 네모로 표시한 [T10Y2Y]가 10년 금리와 2년 금리차의 코드에 해당한다. 동일한 방법으로 10년 금리와 3개월 금리 차이에 해당하는 [10-Year Treasury Constant Maturity Minus 3-Month Treasury Constant Maturity]를 검색해보면 해당 코드가 [T10Y3M]임을 알 수 있다.</p>
-<figure class="align-default" id="fred-code">
+<div class="figure align-default" id="fred-code">
 <img alt="_images/fred_code.png" src="_images/fred_code.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 12.9 </span><span class="caption-text">FRED 코드 확인</span><a class="headerlink" href="#fred-code" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 12.9 </span><span class="caption-text">FRED 코드 확인</span><a class="headerlink" href="#fred-code" title="Permalink to this image">¶</a></p>
+</div>
 <p>해당 데이터를 다운로드 받아보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1477,9 +1371,9 @@ title="Print to PDF"
 </div>
 </div>
 <p>2000년 IT 버블, 20008년 금융위기, 2020년 코로나로 인한 하락 직전에는 항상 장단기 금리차가 음수를 기록했다.</p>
-</section>
-<section id="id8">
-<h3><span class="section-number">12.2.2. </span>기대 인플레이션<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="id8">
+<h3><span class="section-number">12.2.2. </span>기대 인플레이션<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>기대 인플레이션이란 현재 정보를 바탕으로 미래에 예상되는 인플레이션이다. 이는 다음과 같이 계산된다.</p>
 <div class="math notranslate nohighlight">
 \[기대\ 인플레이션 = 10년물\ 미국\ 국채금리 - 10년물\ 물가연동국채(TIPS)\ 금리\]</div>
@@ -1562,9 +1456,9 @@ title="Print to PDF"
 <img alt="_images/data_ref_31_0.png" src="_images/data_ref_31_0.png" />
 </div>
 </div>
-</section>
-<section id="fear-greed-index">
-<h3><span class="section-number">12.2.3. </span>Fear &amp; Greed Index<a class="headerlink" href="#fear-greed-index" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="fear-greed-index">
+<h3><span class="section-number">12.2.3. </span>Fear &amp; Greed Index<a class="headerlink" href="#fear-greed-index" title="Permalink to this headline">¶</a></h3>
 <p>CNN에서는 발표하는 Fear &amp; Greed Index(공포와 탐욕 지수)는 투자 심리를 반영하는 대표적인 지수다. 해당 지수는 총 7개 지표를 이용해 계산된다.</p>
 <ol class="simple">
 <li><p>주가의 강도</p></li>
@@ -1576,23 +1470,19 @@ title="Print to PDF"
 <li><p>투기 등급에 대한 수요</p></li>
 </ol>
 <p>위 7개 지표를 합산하여 0점에서 100점 사이의 점수를 구하며, 점수가 낮을 수록 시장이 공포에 휩싸여 있음을, 점수가 높을 수록 시장이 탐욕에 물들어 있음을 나타낸다.</p>
-<figure class="align-default" id="fear-greed">
+<div class="figure align-default" id="fear-greed">
 <img alt="_images/fear_greed.png" src="_images/fear_greed.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 12.10 </span><span class="caption-text">Fear &amp; Greed Index</span><a class="headerlink" href="#fear-greed" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 12.10 </span><span class="caption-text">Fear &amp; Greed Index</span><a class="headerlink" href="#fear-greed" title="Permalink to this image">¶</a></p>
+</div>
 <p>해당 지표는 아래 사이트에서 확인할 수 있다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">money</span><span class="o">.</span><span class="n">cnn</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">fear</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="n">greed</span><span class="o">/</span>
 </pre></div>
 </div>
 <p>개발자도구 화면을 통해 현재 점수가 위치하는 곳을 찾아보면, 클래스 이름이 [market-fng-gauge__dial-number-value]이며, 내용이 동적으로 계속 변하기에 정적 크롤링이 아닌 동적 크롤링을 이용해야 한다. 셀레니움을 사용해 해당 지표를 크롤링 해보자.</p>
-<figure class="align-default" id="fear-greed-html">
+<div class="figure align-default" id="fear-greed-html">
 <img alt="_images/fear_greed_html.png" src="_images/fear_greed_html.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 12.11 </span><span class="caption-text">해당 지표의 태그 확인</span><a class="headerlink" href="#fear-greed-html" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 12.11 </span><span class="caption-text">해당 지표의 태그 확인</span><a class="headerlink" href="#fear-greed-html" title="Permalink to this image">¶</a></p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">selenium</span>
@@ -1626,9 +1516,9 @@ title="Print to PDF"
 <li><p>지표가 문자형이므로 정수형으로 변경한다.</p></li>
 </ol>
 <p>해당 지표를 통해 투자 심리를 객관적으로 판단할 수 있다. <strong>‘공포에 사서 탐욕에 팔아라’</strong> 라는 투자 격언이 있듯이, 지표가 지나치게 낮은 공포 구간에서는 오히려 매수를, 지표가 지나치게 높은 탐욕 구간에서는 투자 비중을 줄이는 선택을 할 수 있다.</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1652,11 +1542,9 @@ title="Print to PDF"
 
               </div>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="data_global.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1672,28 +1560,24 @@ title="Print to PDF"
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            </footer>
+            
         </div>
     </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By 이현열<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+    <footer class="footer">
+  <p>
     
-</div>
+      By 이현열<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
 
 
       </div>
     </div>
   
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
   </body>
 </html>

@@ -110,7 +110,7 @@
 
 <body>
 <h2> This is page heading </h2>
-<p> THis is first paragraph text </p>
+<p> This is first paragraph text </p>
 </body>
 </html>
 

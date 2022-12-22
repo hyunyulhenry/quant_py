@@ -4,13 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>파이썬 다운로드 및 설치하기 &#8212; 파이썬을 이용한 퀀트 투자 포트폴리오 만들기</title>
     
-  <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -20,16 +18,20 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
+    
+      
+
+    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -37,12 +39,10 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script kind="utterances">
 
     var commentsRunWhenDOMLoaded = cb => {
@@ -78,12 +78,13 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -96,21 +97,7 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
-
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -119,10 +106,9 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -140,15 +126,14 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="index.html">
-                    파이썬을 이용한 퀀트 투자 포트폴리오 만들기
-                </a>
-            </li>
-        </ul>
-        <p aria-level="2" class="caption" role="heading">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="index.html">
+   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   퀀트와 프로그래밍 기초 배워보기
  </span>
@@ -273,17 +258,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
-    </div>
-    <div id="rtd-footer-container"></div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
 </div>
 
 
@@ -291,146 +271,78 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="header-article row sticky-top noprint">
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
         
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/hyunyulhenry/quant_py/main?urlpath=tree/install_python.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/install_python.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/install_python.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_py/main?urlpath=tree/install_python.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
     </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
    아나콘다 설치하기
@@ -443,11 +355,12 @@ title="Print to PDF"
  </li>
 </ul>
 
-    </nav>
-</div>
+            </nav>
+        </div>
     </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>파이썬 다운로드 및 설치하기</h1>
@@ -476,70 +389,69 @@ title="Print to PDF"
                     </div>
                 </div>
             </div>
-            <main id="main-content" role="main">
-                
+            
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>파이썬 다운로드 및 설치하기<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1>파이썬 다운로드 및 설치하기<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>파이썬 프로그램은 공식 홈페이지(<a class="reference external" href="https://www.python.org/">https://www.python.org/</a>)에서 직접 다운로드하여 설치할 수 있다. 그러나 아나콘다(Anaconda)를 설치하면 파이썬 뿐만 아니라 IDE, 각종 패키지를 함께 설치할 수 있으므로 훨씬 편리하다.</p>
-<section id="id2">
-<h2>아나콘다 설치하기<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id2">
+<h2>아나콘다 설치하기<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>아나콘다를 설치하기 위해서는 먼저 구글에서 [아나콘다 다운로드]를 검색하거나, 홈페이지(<a class="reference external" href="https://www.anaconda.com/products/distribution">https://www.anaconda.com/products/distribution</a>)에 접속한다. 그 후 본인의 운영체제에 맞는 파일을 다운로드 한다.</p>
-<figure class="align-default" id="os">
+<div class="figure align-default" id="os">
 <img alt="_images/os.png" src="_images/os.png" />
-</figure>
+</div>
 <p>[Download] 부분을 클릭한다.</p>
 <hr>
-<figure class="align-default" id="ins1">
+<div class="figure align-default" id="ins1">
 <img alt="_images/ins1.png" src="_images/ins1.png" />
-</figure>
+</div>
 <p>다운로드한 설치 파일을 실행한 후 [Next]를 클릭한다.</p>
 <hr>
-<figure class="align-default" id="ins2">
+<div class="figure align-default" id="ins2">
 <img alt="_images/ins2.png" src="_images/ins2.png" />
-</figure>
+</div>
 <p>[I Agree]를 클릭한다.</p>
 <hr>
-<figure class="align-default" id="ins3">
+<div class="figure align-default" id="ins3">
 <img alt="_images/ins3.png" src="_images/ins3.png" />
-</figure>
+</div>
 <p>[Just Me]를 선택한 후 [Next]를 클릭한다.</p>
 <hr>
-<figure class="align-default" id="ins4">
+<div class="figure align-default" id="ins4">
 <img alt="_images/ins4.png" src="_images/ins4.png" />
-</figure>
+</div>
 <p>저장경로를 선택한 후 [Next]를 클릭한다.</p>
 <hr>
-<figure class="align-default" id="ins5">
+<div class="figure align-default" id="ins5">
 <img alt="_images/ins5.png" src="_images/ins5.png" />
-</figure>
+</div>
 <p>아래의 [Register Anaconda3 as my default Python 3.9]를 체크한 후 [Install]을 클릭한다.</p>
 <hr>
-<figure class="align-default" id="ins6">
+<div class="figure align-default" id="ins6">
 <img alt="_images/ins6.png" src="_images/ins6.png" />
-</figure>
-<figure class="align-default" id="ins7">
+</div>
+<div class="figure align-default" id="ins7">
 <img alt="_images/ins7.png" src="_images/ins7.png" />
-</figure>
+</div>
 <p>설치가 완료되면 [Next]를 클릭한다.</p>
 <hr>
-<figure class="align-default" id="ins8">
+<div class="figure align-default" id="ins8">
 <img alt="_images/ins8.png" src="_images/ins8.png" />
-</figure>
+</div>
 <p>두 부분 모두 체크를 해제한 후 [Finish]를 클릭해 설치를 마감한다.</p>
-</section>
-<section id="id3">
-<h2>스파이더 사용하기<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="id3">
+<h2>스파이더 사용하기<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>아나콘다에는 파이썬을 쉽게 사용할 수 있게 하기 위해 여러 IDE가 함께 설치된다. 그 중 본 책에서는 Spyder를 사용하도록 한다.</p>
-<figure class="align-default" id="spyder1">
+<div class="figure align-default" id="spyder1">
 <img alt="_images/spyder1.png" src="_images/spyder1.png" />
-</figure>
+</div>
 <p>먼저 검색창에서 [spyder]를 검색하여 ‘Spyder (anaconda3)’ 프로그램을 연다.</p>
 <hr>
-<figure class="align-default" id="spyder2">
+<div class="figure align-default" id="spyder2">
 <img alt="_images/spyder2.png" src="_images/spyder2.png" />
-</figure>
+</div>
 <p>스파이더는 크게 3개의 화면으로 구성되어 있다.</p>
 <ol class="simple">
 <li><p>Editor 창: 파이썬 코드를 작성하는 곳으로써, 이곳에서 작성된 스크립트는 F9나 Ctrl+Enter 등을 사용해 명시적으로 실행을 시켜야만 실행이 된다. 보통 이곳에서 코드를 작성한 후 파일로 저장한다.</p></li>
@@ -547,22 +459,22 @@ title="Print to PDF"
 <li><p>IPython 콘솔: 에디터 창에서 입력한 코드를 실행하면 이 부분에 결과가 출력되며, 파이썬 명령을 직접 입력하여 결과를 확인할 수도 있다.</p></li>
 </ol>
 <hr>
-<figure class="align-default" id="spyder3">
+<div class="figure align-default" id="spyder3">
 <img alt="_images/spyder3.png" src="_images/spyder3.png" />
-</figure>
+</div>
 <p>스크립트 창에 코드를 입력해보자. 그 후 실행하고자 하는 부분을 드래그해 F9 키를 누르면 해당 부분이 콘솔창에 입력되면서 <code class="docutils literal notranslate"><span class="pre">print('Hello</span> <span class="pre">World')</span></code>에 해당하는 코드가 실행된다.</p>
 <hr>
-<figure class="align-default" id="spyder4">
+<div class="figure align-default" id="spyder4">
 <img alt="_images/spyder4.png" src="_images/spyder4.png" />
-</figure>
+</div>
 <p>콘솔창에서 바로 코드를 입력할 수도 있다. <code class="docutils literal notranslate"><span class="pre">1+2</span></code>를 입력하면 결과값인 <code class="docutils literal notranslate"><span class="pre">3</span></code>이 출력된다.</p>
 <hr>
-<figure class="align-default" id="spyder5">
+<div class="figure align-default" id="spyder5">
 <img alt="_images/spyder5.png" src="_images/spyder5.png" />
-</figure>
+</div>
 <p>코드를 통해 변수를 입력해보자. <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">1</span></code>을 입력한 후 우측 상단의 ‘Variable Explorer’를 확인해보면 a라는 변수에 1이라는 값이 입력된 것을 확인할 수 있다.</p>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -586,11 +498,9 @@ title="Print to PDF"
 
               </div>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="api_trading.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -606,28 +516,24 @@ title="Print to PDF"
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            </footer>
+            
         </div>
     </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By 이현열<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+    <footer class="footer">
+  <p>
     
-</div>
+      By 이현열<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
 
 
       </div>
     </div>
   
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
   </body>
 </html>

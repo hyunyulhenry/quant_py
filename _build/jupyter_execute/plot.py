@@ -98,7 +98,7 @@ plt.show()
 # 
 # 펭귄의 몸무게 분포를 히스토그램 형태로 표현할 수 있다. 이번에는 선 그래프를 나타내보도록 하자.
 
-# In[4]:
+# In[6]:
 
 
 import pandas as pd
@@ -111,7 +111,7 @@ df_unrate.head()
 
 # 먼저 `read_csv()` 함수를 통해 세인트루이스 연방준비위원회에서 제공하는 미국 실업자 데이터를 받아온다.
 
-# In[5]:
+# In[7]:
 
 
 df_unrate['DATE'] = pd.to_datetime(df_unrate['DATE'])
@@ -137,7 +137,7 @@ plt.show()
 # 
 # 먼저 stateless 방법을 사용해 그래프를 나타내보도록 하자.
 
-# In[6]:
+# In[8]:
 
 
 fig, axes = plt.subplots(2, 1, figsize=(10, 6))
@@ -173,7 +173,7 @@ plt.show()
 # 
 # 하나의 그림(figure) 내에 두개의 그래프(axes)가 동시에 출력되었다. 즉 stateless 방법은 figure 내에 원하는 만큼 axes 객체를 나눈 후, axes를 지정하여 그래프를 표현하였다. 이번에는 stateful 방법을 사용해 그래프를 나타내보도록 하자.
 
-# In[7]:
+# In[9]:
 
 
 plt.figure(figsize=(10, 6))
@@ -234,7 +234,7 @@ plt.show()
 # 
 # 먼저 예제로 사용할 다이아몬드 데이터셋을 불러오도록 하자.
 
-# In[8]:
+# In[10]:
 
 
 import seaborn as sns
@@ -258,7 +258,7 @@ df.head()
 # 
 # 먼저 carat과 price의 관계를 살펴보자.
 
-# In[9]:
+# In[11]:
 
 
 plt.rc('font', family='Malgun Gothic')
@@ -268,7 +268,7 @@ plt.show()
 
 # 데이터프레임에 `plot()` 메서드를 입력하고, 그 후 산점도에 해당하는 `scatter()`를 추가로 입력한다. $x$축과 $y$축 정보를 입력하고 figure 사이즈 및 제목을 입력하면 이에 해당하는 그래프가 출력된다. 이번에는 추가로 cut 별로 색을 다르게 표현해보도록 하자.
 
-# In[10]:
+# In[12]:
 
 
 df.plot.scatter(x='carat', y='price', c='cut', cmap='Set2', figsize=(10, 6))
@@ -279,7 +279,7 @@ plt.show()
 # 
 # 이번에는 price 열의 데이터를 히스토그램으로 표현해보도록 하자.
 
-# In[11]:
+# In[13]:
 
 
 df['price'].plot.hist(figsize=(10, 6), bins=20)
@@ -290,7 +290,7 @@ plt.show()
 # 
 # 이번에는 데이터 분석과 시각화를 동시에 진행해보도록 하자. color에 따른 carat의 평균을 막대 그래프로 나타내보도록 하겠다.
 
-# In[12]:
+# In[14]:
 
 
 df.groupby('color')['carat'].mean().plot.bar(figsize=(10, 6))
@@ -306,7 +306,7 @@ plt.show()
 # 
 # seaborn 패키지는 matplotlib 패키지 보다 좀 더 화려하고 복잡한 그래프를 표현할 수 있다. 이번에는 예제로써 타이타닉 데이터셋을 이용한다.
 
-# In[13]:
+# In[17]:
 
 
 import seaborn as sns
@@ -317,7 +317,7 @@ df.head()
 
 # 먼저 나이와 운임의 관계를 살펴보도록 하자.
 
-# In[14]:
+# In[18]:
 
 
 sns.scatterplot(data=df, x='age', y='fare')
@@ -326,7 +326,7 @@ plt.show()
 
 # `scatterplot()` 함수를 통해 산점도를 그릴 수 있다. data에는 사용하고자 하는 데이터를, x와 y에는 각각의 축 정보를 입력한다. 이번에는 각 그룹 별로 점의 색과 모양을 다르게 표현해보도록 하자.
 
-# In[15]:
+# In[19]:
 
 
 sns.scatterplot(data=df, x='age', y='fare', hue='class', style='class')
@@ -337,7 +337,7 @@ plt.show()
 # 
 # matplotlib이나 pandas로 표현하기 어려운 히트맵과 같은 복잡한 그림도 seaborn 패키지를 이용하면 매우 쉽게 나타낼 수 있다. 먼저 각 클래스와 성별에 따른 생존율을 계산해보도록 하자.
 
-# In[16]:
+# In[20]:
 
 
 df_pivot = df.pivot_table(index='class',
@@ -349,7 +349,7 @@ df_pivot
 
 # `pivot_table()` 함수를 통해 행 인덱스는 class, 열 인덱스는 sex, 값은 survived, 집계 함수는 평균을 사용한다. 'survived' 열 에서 1은 생존, 0은 사망을 의미하므로, 평균은 생존율을 의미한다. 위 결과를 히트맵으로 나타내보자.
 
-# In[17]:
+# In[21]:
 
 
 sns.heatmap(df_pivot, annot=True, cmap='coolwarm')
@@ -376,7 +376,7 @@ plt.show()
 # 
 # 먼저 figure-level의 예제로 class 별 나이의 분포를 나타내보자.
 
-# In[18]:
+# In[22]:
 
 
 sns.displot(data=df, x='age', hue='class', kind='hist', alpha=0.3)
@@ -387,7 +387,7 @@ plt.show()
 # 
 # 이번에는 하나의 그래프에 모든 데이터를 표현하는 것이 아닌 class 별로 각각 개별 그래프로 표현해보도록 하자.
 
-# In[19]:
+# In[23]:
 
 
 sns.displot(data=df, x='age', col='class', kind='hist')
@@ -396,7 +396,7 @@ plt.show()
 
 # col 인자에 특정 열을 입력하면 해당 열을 기준으로 그래프가 열 방향으로 각각 분할되어 표현되며, 이는 화면을 분할하는 facetgrid 가 적용되었기 때문이다. 세로 뿐만 아니라 가로로도 그래프를 분할할 수 있다.
 
-# In[20]:
+# In[24]:
 
 
 sns.displot(data=df, x='age', col='class', row='sex', kind='hist')
@@ -423,7 +423,7 @@ sns.histplot(data=df, x='age', col='class', row='sex')
 # 
 # 이번에는 axes-level로 그래프를 표현하는 방법에 대해 알아보자. 이는 기존에 살펴본 matplotlib 패키지를 이용하는 방법과 거의 비슷하다.
 
-# In[21]:
+# In[25]:
 
 
 plt.rc('font', family='Malgun Gothic')
@@ -433,7 +433,7 @@ g, axes = plt.subplots(2, 1, figsize=(8, 6))
 sns.histplot(data=df, x='age', hue='class', ax=axes[0])
 sns.barplot(data=df, x='class', y='age', ax=axes[1])
 
-axes[0].set_title('클리스 별 나이 분포도')
+axes[0].set_title('클래스 별 나이 분포도')
 axes[1].set_title('클래스 별 평균 나이')
 
 g.tight_layout()
