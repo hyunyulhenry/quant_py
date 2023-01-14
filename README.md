@@ -15,6 +15,7 @@
 
 # 질문 및 답변
 질문사항은 [Issues]에 남겨주시기 바랍니다.
+https://github.com/hyunyulhenry/quant_py/issues
 
 # 책의 구성
 
