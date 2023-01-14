@@ -13,6 +13,9 @@
 
 [![](https://github.com/hyunyulhenry/quant_py/blob/main/image/search.png?raw=true)](https://www.youtube.com/channel/UCHfiWvw33aSBktAlWICfPKQ?sub_confirmation=1)
 
+# 질문 및 답변
+질문사항은 [Issues]에 남겨주시기 바랍니다.
+
 # 책의 구성
 
 #### 여는 글
