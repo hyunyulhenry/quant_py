@@ -1,4 +1,7 @@
 # 파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+
+![book cover](https://github.com/hyunyulhenry/quant_py/blob/main/image/cover.png?raw=true)
+
 이 곳은 **파이썬을 이용한 퀀트 투자 포트폴리오 만들기**의 코드 저장소 및 질문을 위한 공간입니다.
 
 책은 2023년 1월에 발간 예정입니다.
