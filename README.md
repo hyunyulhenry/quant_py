@@ -4,7 +4,9 @@
 
 이 곳은 **파이썬을 이용한 퀀트 투자 포트폴리오 만들기**의 코드 저장소 및 질문을 위한 공간입니다.
 
-- [구매하기](http://www.yes24.com/Product/Goods/117293655)
+- [예스24](https://bit.ly/quant_yes)
+- [교보](https://bit.ly/quant_kyobo)
+- [알라딘](https://bit.ly/quant_aladin)
 
 파이썬이 아닌 R을 사용하시는 분은, "R을 이용한 퀀트 투자 포트폴리오 만들기"를 참조해 주시기 바랍니다.
 
