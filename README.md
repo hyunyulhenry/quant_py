@@ -18,6 +18,23 @@
 
 [![](https://github.com/hyunyulhenry/quant_py/blob/main/image/search.png?raw=true)](https://www.youtube.com/channel/UCHfiWvw33aSBktAlWICfPKQ?sub_confirmation=1)
 
+# 공지사항 (중요)
+
+2022년 말 야후 파이낸스의 정책이 가격 제공방식이 바뀌었음에도 불구하고, 책에서 사용하는 `pandas_datareader` 패키지가 해당 문제를 완벽하게 수정하지 않고 있습니다.
+
+야후 데이터를 다운로드 받는 다른 패키지인 `yfinance`는 이 문제를 해결하였기 때문에  `pandas_datareader` 패키지가 업데이트 되기까지 `yfinance` 패키지를 override 해주실 것을 권장드립니다. 아래와 같이 세팅해주시면 야후 파이낸스 데이터를 받으실 수 있습니다.
+
+```
+from pandas_datareader import data as pdr
+import yfinance as yf
+yf.pdr_override()
+
+df = pdr.get_data_yahoo("티커")
+```
+
+- yfinance 사용법: https://pypi.org/project/yfinance/
+- pandas_datareader 패키지 깃허브: https://github.com/pydata/pandas-datareader
+
 # 질문 및 답변
 질문사항은 [Issues](https://github.com/hyunyulhenry/quant_py/issues)에 남겨주시기 바랍니다.
 
