@@ -66,6 +66,6 @@ df = pdr.get_data_yahoo("티커")
 16. [백테스팅 시뮬레이션](https://github.com/hyunyulhenry/quant_py/blob/main/backtest.ipynb)
 17. [증권사 API 연결과 매매하기](https://github.com/hyunyulhenry/quant_py/blob/main/api_trading.ipynb)
 
-# 📑 연락처
+# 📬︎ 연락처
 - https://blog.naver.com/leebisu
 - leebisu@gmail.com
