@@ -18,7 +18,7 @@
 
 [![](https://github.com/hyunyulhenry/quant_py/blob/main/image/search.png?raw=true)](https://www.youtube.com/channel/UCHfiWvw33aSBktAlWICfPKQ?sub_confirmation=1)
 
-# 공지사항 (중요)
+# 📢 공지사항 (중요)
 
 2022년 말 야후 파이낸스의 정책이 가격 제공방식이 바뀌었음에도 불구하고, 책에서 사용하는 `pandas_datareader` 패키지가 해당 문제를 완벽하게 수정하지 않고 있습니다.
 
@@ -35,10 +35,10 @@ df = pdr.get_data_yahoo("티커")
 - yfinance 사용법: https://pypi.org/project/yfinance/
 - pandas_datareader 패키지 깃허브: https://github.com/pydata/pandas-datareader
 
-# 질문 및 답변
+# ❓ 질문 및 답변
 질문사항은 [Issues](https://github.com/hyunyulhenry/quant_py/issues)에 남겨주시기 바랍니다.
 
-# 책의 구성
+# 📑 책의 구성
 
 #### 여는 글
 [지은이 소개 및 머리말](https://github.com/hyunyulhenry/quant_py/blob/main/index.ipynb)
@@ -66,6 +66,6 @@ df = pdr.get_data_yahoo("티커")
 16. [백테스팅 시뮬레이션](https://github.com/hyunyulhenry/quant_py/blob/main/backtest.ipynb)
 17. [증권사 API 연결과 매매하기](https://github.com/hyunyulhenry/quant_py/blob/main/api_trading.ipynb)
 
-# 연락처
+# 📑 연락처
 - https://blog.naver.com/leebisu
 - leebisu@gmail.com
