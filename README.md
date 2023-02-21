@@ -18,6 +18,7 @@
 
 [![](https://github.com/hyunyulhenry/quant_py/blob/main/image/search.png?raw=true)](https://www.youtube.com/channel/UCHfiWvw33aSBktAlWICfPKQ?sub_confirmation=1)
 
+::: warning
 # 📢 공지사항 (중요)
 
 2022년 말 야후 파이낸스의 정책이 가격 제공방식이 바뀌었음에도 불구하고, 책에서 사용하는 `pandas_datareader` 패키지가 해당 문제를 완벽하게 수정하지 않고 있습니다.
@@ -45,6 +46,7 @@ pip install riskfolio-lib==3.3.0
 ```
 
 - riskfolio version: https://riskfolio-lib.readthedocs.io/en/latest/changelog.html
+:::
 
 # ❓ 질문 및 답변
 질문사항은 [Issues](https://github.com/hyunyulhenry/quant_py/issues)에 남겨주시기 바랍니다.
