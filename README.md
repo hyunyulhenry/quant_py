@@ -35,6 +35,17 @@ df = pdr.get_data_yahoo("티커")
 - yfinance 사용법: https://pypi.org/project/yfinance/
 - pandas_datareader 패키지 깃허브: https://github.com/pydata/pandas-datareader
 
+---
+
+14장 포트폴리오 구성전략에서 사용하는 `riskfolio-lib` 패키지가 버젼업이 되면서 C++가 충돌하는 문제가 발생합니다.
+혹시 설치에 오류가 있으신 분들은 하위 버젼으로 설치하신 후 실습 하시길 추천드립니다.
+
+```
+pip install riskfolio-lib==3.3.0
+```
+
+- riskfolio version: https://riskfolio-lib.readthedocs.io/en/latest/changelog.html
+
 # ❓ 질문 및 답변
 질문사항은 [Issues](https://github.com/hyunyulhenry/quant_py/issues)에 남겨주시기 바랍니다.
 
