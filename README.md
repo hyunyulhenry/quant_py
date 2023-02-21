@@ -45,9 +45,7 @@ df = pdr.get_data_yahoo("티커")
 pip install riskfolio-lib==3.3.0
 ```
 
-::: warning
 - riskfolio version: https://riskfolio-lib.readthedocs.io/en/latest/changelog.html
-:::
 
 # ❓ 질문 및 답변
 질문사항은 [Issues](https://github.com/hyunyulhenry/quant_py/issues)에 남겨주시기 바랍니다.
