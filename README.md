@@ -13,12 +13,6 @@
 - [구매처](http://www.yes24.com/Product/Goods/97163849)
 - [깃허브](https://github.com/hyunyulhenry/quant_cookbook)
 
-# 강의 영상
-👇 책의 강의영상은 **'헨리의 퀀트대학'** 유튜브에서 무료로 보실 수 있습니다. 
-
-[![](https://github.com/hyunyulhenry/quant_py/blob/main/image/search.png?raw=true)](https://www.youtube.com/channel/UCHfiWvw33aSBktAlWICfPKQ?sub_confirmation=1)
-
-
 # 📢 공지사항 (중요)
 
 2022년 말 야후 파이낸스의 정책이 가격 제공방식이 바뀌어, 책에서 사용하는 `pandas_datareader` 패키지 뿐만 아니라 야후 데이터를 불러오는 관련 패키지들이 모두 정상적으로 작도하지 않습니다. 
@@ -48,6 +42,11 @@ pip install riskfolio-lib==3.3.0
 ```
 
 - riskfolio version: https://riskfolio-lib.readthedocs.io/en/latest/changelog.html
+
+# 강의 영상
+👇 책의 강의영상은 **'헨리의 퀀트대학'** 유튜브에서 무료로 보실 수 있습니다. 
+
+[![](https://github.com/hyunyulhenry/quant_py/blob/main/image/search.png?raw=true)](https://www.youtube.com/channel/UCHfiWvw33aSBktAlWICfPKQ?sub_confirmation=1)
 
 # ❓ 질문 및 답변
 질문사항은 [Issues](https://github.com/hyunyulhenry/quant_py/issues)에 남겨주시기 바랍니다.
