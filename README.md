@@ -8,11 +8,6 @@
 - [교보](https://bit.ly/quant_kyobo)
 - [알라딘](https://bit.ly/quant_aladin)
 
-파이썬이 아닌 R을 사용하시는 분은, "R을 이용한 퀀트 투자 포트폴리오 만들기"를 참조해 주시기 바랍니다.
-
-- [구매처](http://www.yes24.com/Product/Goods/97163849)
-- [깃허브](https://github.com/hyunyulhenry/quant_cookbook)
-
 # 📢 공지사항 (중요)
 
 2022년 말 야후 파이낸스의 정책이 가격 제공방식이 바뀌어, 책에서 사용하는 `pandas_datareader` 패키지 뿐만 아니라 야후 데이터를 불러오는 관련 패키지들이 모두 정상적으로 작도하지 않습니다. 
