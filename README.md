@@ -25,7 +25,7 @@ df = pdr.get_data_yahoo("티커")
 - yfinance 사용법: https://pypi.org/project/yfinance/
 - pandas_datareader 패키지 깃허브: https://github.com/pydata/pandas-datareader
 
-**재무제표**의 경우 yahoo query 패키지가 이 문제를 해결했습니다. 수정된 내용 및 강의 영상은 조만간 업로드 하겠습니다.
+**재무제표**의 경우 `yahoo query` 패키지가 이 문제를 해결했습니다. 수정된 내용 및 강의 영상은 조만간 업로드 하겠습니다.
 
 - https://yahooquery.dpguthrie.com/
 
