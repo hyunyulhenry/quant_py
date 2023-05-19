@@ -1,0 +1,28 @@
+title: 파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+author: 이현열
+logo: logo.png
+
+repository:
+  url: https://github.com/hyunyulhenry/quant_py
+  branch: main
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: 'off'
+
+html:
+  comments:
+    utterances:
+      repo: "hyunyulhenry/quant_py"
+
+# Define the name of the latex output file for PDF builds
+#latex:
+ # latex_documents:
+  #  targetname: book.tex
+
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - references.bib
+
+only_build_toc_files: true

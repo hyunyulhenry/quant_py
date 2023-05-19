@@ -1,0 +1,752 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>15. 트레이딩을 위한 기술적 지표 &#8212; 파이썬을 이용한 퀀트 투자 포트폴리오 만들기</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "hyunyulhenry/quant_py");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'technical';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="16. 백테스팅 시뮬레이션" href="backtest.html" />
+    <link rel="prev" title="14. 포트폴리오 구성 전략" href="portfolio.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">퀀트와 프로그래밍 기초 배워보기</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="quant_intro.html">1. 퀀트에 대해 알아보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">2. 파이썬 기초 배워보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eda.html">3. 데이터 분석 배워보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot.html">4. 데이터 시각화 배워보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql.html">5. SQL 기초 배워보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql_in_python.html">6. 파이썬에서 SQL 연결하기</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">크롤링을 이용한 데이터 수집</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="web.html">7. 크롤링을 위한 웹 기본지식</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crawl_basic.html">8. 정적 크롤링 실습하기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selenium.html">9. 동적 크롤링과 정규 표현식</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_korea.html">10. 국내 주식 데이터 수집</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_global_revision.html">11. 전 세계 주식 데이터 수집하기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_ref.html">12. 투자 참고용 데이터 수집</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">포트폴리오 구성, 백테스트 및 매매하기</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="factor.html">13. 퀀트 전략을 이용한 종목선정</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portfolio.html">14. 포트폴리오 구성 전략</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">15. 트레이딩을 위한 기술적 지표</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backtest.html">16. 백테스팅 시뮬레이션</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_trading.html">17. 증권사 API 연결과 매매하기</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">부록</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="install_python.html">파이썬 다운로드 및 설치하기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install_sql.html">SQL 다운로드 및 설치하기</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/technical.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>트레이딩을 위한 기술적 지표</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-lib">15.1. TA-Lib 패키지 설치하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">15.2. 이동평균</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rsi">15.3. 상대강도지수(RSI)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">15.4. 볼린저밴드</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">15. </span>트레이딩을 위한 기술적 지표<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<p>이번 장에서는 트레이딩 전략에 대해 알아보도록 하자. 앞서 종목을 선정하는데 사용되었던 분석이 ‘기본적 분석’이라면, 트레이딩은 과거 주가의 움직임이나 패턴을 통해 주식이 오를지 혹은 내릴지를 판단하는 ‘기술적 분석’에 의존하는 경우가 많으며, 이러한 판단을 위해 사용되는 것이 기술적 지표다. 기술적 지표는 추세의 방향이나 강도, 혹은 가격의 움직임의 속도와 정도를 측정한다. 이러한 기술적 지표를 이용한 트레이딩 전략은 크게 ‘추세추종전략’과 ‘평균회귀전략’으로 나눌 수 있다.</p>
+<ol class="arabic simple">
+<li><p>추세추종 전략: 주가가 동일한 방향으로 지속될 것이라는데 베팅하며, 이동평균 등의 지표가 사용된다.</p></li>
+<li><p>평균회귀 전략: 주가가 평균으로 다시 회귀하는데 베팅하며, RSI, 볼린저밴드 등의 지표가 사용된다.</p></li>
+</ol>
+<p>이번 장에서는 대표적으로 유명한 지표들을 계산하는 방법에 대해 알아보도록 한다.</p>
+<section id="ta-lib">
+<h2><span class="section-number">15.1. </span>TA-Lib 패키지 설치하기<a class="headerlink" href="#ta-lib" title="Permalink to this heading">#</a></h2>
+<p>각각의 기술적 지표를 계산하는 수식이 존재하기에 이를 이용해 계산할 수도 있지만, 패키지를 이용하면 매우 손쉽게 계산할 수 있다. 그 중에서도 기술적 지표 계산에 사용되는 대표적인 패키지는 ‘TA-Lib’ 이다. 해당 패키지를 통해 150개 이상의 지표를 계산할 수 있으며, C로 작성되어 있기에 그 속도 또한 매우 빠르다.</p>
+<p>먼저 TA-Lib은 다른 패키지들처럼 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> 명령어를 통해 손쉽게 설치할 수는 없다. 다행히 캘리포니아 대학교 어바인 캠퍼스에서 컴파일러가 없이도 파이썬 라이브러리를 설치할 수 있도록 미리 컴파일된 파이썬 패키지를 제공한다. 먼저 본인의 파이썬 버젼 및 윈도우 환경을 확인해야 한다. 아나콘다 프롬프트에서 파이썬에 접속하면 해당 내역이 출력되며, 파이썬 3.8.5 버젼에 윈도우는 64 비트 환경임이 확인된다(독자들의 버젼은 책과 다를 수 있다). 맥이나 리눅스에서 해당 패키지를 설치하는 방법은 메모에 첨부된 사이트를 참조하기 바란다.</p>
+<figure class="align-default" id="python-version">
+<img alt="_images/python_version.png" src="_images/python_version.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 15.1 </span><span class="caption-text">파이썬 및 윈도우 환경 확인</span><a class="headerlink" href="#python-version" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>그 후 아래의 사이트에서 본인의 버젼에 맞는 파일을 다운로드 한다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">lfd</span><span class="o">.</span><span class="n">uci</span><span class="o">.</span><span class="n">edu</span><span class="o">/~</span><span class="n">gohlke</span><span class="o">/</span><span class="n">pythonlibs</span><span class="o">/</span><span class="c1">#ta-lib</span>
+</pre></div>
+</div>
+<figure class="align-default" id="id2">
+<img alt="_images/ta_lib.png" src="_images/ta_lib.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 15.2 </span><span class="caption-text">컴파일 패키지 다운로드</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>마지막으로 <a class="reference internal" href="#install-talib"><span class="std std-numref">Fig. 15.3</span></a>와 같이 프롬프트에서 <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">주소</span></code>를 통해 다운로드 받은 파일이 있는 폴더로 디렉토리를 변경한 후, <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">파일명.whl</span></code>을 통해 파일을 설치한다. (폴더 내에 다운로드 받은 파일이 있어야 한다.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="p">[</span><span class="n">C</span><span class="p">:</span>\<span class="n">파일이</span> <span class="n">있는</span> <span class="n">폴더</span><span class="p">]</span>
+
+<span class="n">pip</span> <span class="n">install</span> <span class="p">[</span><span class="n">다운로드</span> <span class="n">받은</span> <span class="n">파일</span> <span class="n">명</span><span class="o">.</span><span class="n">whl</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<figure class="align-default" id="install-talib">
+<img alt="_images/install_talib.png" src="_images/install_talib.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 15.3 </span><span class="caption-text">TA-Lib 패키지 설치</span><a class="headerlink" href="#install-talib" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>TA-Lib 패키지에서 계산할 수 있는 기술적 지표는 아래 사이트에 자세히 나와있다.</p></li>
+</ul>
+<p><a href="https://ta-lib.org/function.html" target="_blank">https://ta-lib.org/function.html</a></p>
+<ul class="simple">
+<li><p>맥이나 리눅스에서 TA-Lib 패키지를 설치하는 법은 아래 사이트를 참조하기 바란다.</p></li>
+</ul>
+<p><a href="https://blog.quantinsti.com/install-ta-lib-python/" target="_blank">https://blog.quantinsti.com/install-ta-lib-python/</a></p>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">15.2. </span>이동평균<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>트렌드 지표 중 가장 대표적인 이동평균을 계산하는 법에 대해 알아보겠다. 이동평균은 정해진 기간동안 주식의 평균 가격이다. 예를 들어 10일간의 이동평균은 최근 10일간 가격의 평균을 의미한다. 이 기간이 길수록 장기간의 추세를 나타내며, 짧을수록 단기간의 추세를 나타낸다. 이동평균은 현재의 추세나 추세 역전, 혹은 저항 수준을 확인할 때 사용된다. 흔히 이동평균이 상승하는 상황에서 주가가 그보다 위에 있다면 상승 신호로 여겨진다. 반대로 이동평균이 하락하는 상황에서 주가가 그보다 아래에 있다면 하락 신호로 여겨진다.</p>
+<p>골든크로스와 데드크로스라는 말을 많이 들어보았을 것이다. 골든크로스란 단기 이동평균선이 중장기 이동평균선을 아래에서 위로 뚫고 올라가는 현상으로써 강세신호를 나타내며, 반대로 데드크로스는 단기 이동평균선이 중장기 이동평균선을 위에서 아래로 뚫고 내려가는 현상으로써 약세신호를 나타낸다.</p>
+<figure class="align-default" id="cross">
+<img alt="_images/cross.png" src="_images/cross.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 15.4 </span><span class="caption-text">골든크로스와 데드크로스</span><a class="headerlink" href="#cross" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>이동평균을 계산하는 방법은 가격 데이터에 가중치를 얼마나 두냐에 따라 여러가지 방법이 존재하지만, 크게 단순 이동평균과 지수 이동평균이 사용된다.</p>
+<ul class="simple">
+<li><p>단순 이동평균(SMA, Simple Moving Average): 이동평균을 계산할 때 사용되는 가장 일반적인 방법으로써, 단순히 주어진 기간 동안의 종가의 평균을 구한다.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[SMA_n = (P_1 + P_2 + \dots + P_n) / n\]</div>
+<ul class="simple">
+<li><p>지수 이동평균(EMA, Exponential Moving Average): 최근 데이터가 더욱 중요할 수 있으며, 지수 이동평균은 이를 반영하여 각 데이터에 가중치를 다르게 부여한 후 평균을 구한다.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[EMA_n = P_n \times 승수 + 이전\ EMA \times (1-승수)\]</div>
+<div class="math notranslate nohighlight">
+\[승수 = 2/(n+1)\]</div>
+<p>TA-lib 패키지를 이용해 단순 이동평균과 지수 이동평균을 구해보도록 하겠다. 먼저 단순 이동평균을 계산해보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">web</span>
+
+<span class="n">stock_data</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s1">&#39;^GSPC&#39;</span><span class="p">,</span> <span class="s1">&#39;yahoo&#39;</span><span class="p">)</span>
+<span class="n">stock_data</span> <span class="o">=</span> <span class="n">stock_data</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>S&amp;P 500 지수(^GSPC) 데이터를 다운로드 받은 후, 최근 500일 데이터만 선택한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">talib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;SMA_20&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">SMA</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">],</span>
+                                 <span class="n">timeperiod</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>  <span class="c1"># 20일 단순 이동평균</span>
+<span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;SMA_60&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">SMA</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">],</span>
+                                 <span class="n">timeperiod</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>  <span class="c1"># 60일 단순 이동평균</span>
+<span class="n">stock_data</span><span class="p">[[</span><span class="s1">&#39;Close&#39;</span><span class="p">,</span> <span class="s1">&#39;SMA_20&#39;</span><span class="p">,</span> <span class="s1">&#39;SMA_60&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1866ec872ee8b80808344cd0b3bea64a4bea8af549716a886ac045258dc03b2f.png" src="_images/1866ec872ee8b80808344cd0b3bea64a4bea8af549716a886ac045258dc03b2f.png" />
+</div>
+</div>
+<ol class="arabic simple">
+<li><p>패키지의 <code class="docutils literal notranslate"><span class="pre">SMA()</span></code> 함수를 이용하면 손쉽게 단순 이동평균을 계산할 수 있다. 주가에 해당하는 열을 입력한 후, <code class="docutils literal notranslate"><span class="pre">timeperiod</span></code>에는 얼마의 기간에 해당하는 평균을 계산할지를 입력한다.</p></li>
+<li><p>종가, 20일 이동평균, 60일 이동평균에 해당하는 값을 그래프로 나타낸다.</p></li>
+</ol>
+<p>이번에는 지수 이동평균을 계산해보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;EMA_60&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">EMA</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">],</span> <span class="mi">60</span><span class="p">)</span>  <span class="c1"># 60일 지수 이동평균</span>
+<span class="n">stock_data</span><span class="p">[[</span><span class="s1">&#39;Close&#39;</span><span class="p">,</span> <span class="s1">&#39;SMA_60&#39;</span><span class="p">,</span> <span class="s1">&#39;EMA_60&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/63c346f66bb1427e7278a8b766d18bea6bce06f22179d2aa8888c2f282e0c5f5.png" src="_images/63c346f66bb1427e7278a8b766d18bea6bce06f22179d2aa8888c2f282e0c5f5.png" />
+</div>
+</div>
+<p>지수 이동평균 역시 <code class="docutils literal notranslate"><span class="pre">EMA()</span></code> 함수를 통해 쉽게 계산할 수 있다. 60일 이동평균을 출력해보면, 지수 이동평균이 최근 데이터에 더 많은 가중치를 부여하기에, 단순 이동평균보다 주가의 움직임에 따라 더욱 민감하게 반응하는 것을 알 수 있다.</p>
+</section>
+<section id="rsi">
+<h2><span class="section-number">15.3. </span>상대강도지수(RSI)<a class="headerlink" href="#rsi" title="Permalink to this heading">#</a></h2>
+<p>이번에는 상대강도지수(RSI)에 대해 알아보겠다. RSI는 일정기간 동안 주가의 상승폭과 하락폭의 크기를 비교해 상승과 하락의 상대적인 강도를 나타낸 지표로써, 다음과 같이 계산된다.</p>
+<ol class="arabic simple">
+<li><p>U(Up): 가격이 상승한 날의 상승폭</p></li>
+<li><p>D(Down): 가격이 하락한 날의 하락폭</p></li>
+<li><p>AU(Average Up)과 AD(Average Down): U값과 D값의 평균을 각각 구함</p></li>
+<li><p>RS(Relative Strenth): AU/AD를 통해 상대강도를 구함</p></li>
+</ol>
+<p>RS 값이 크다는 것은 일정기간 동안 상승한 폭이 하락한 폭보다 크다는 것을 의미하며, RSI는 0에서 100 범위 내에서 움직인다. 일반적으로 RSI가 70 이상일 경우 과매수 구간으로써 매도할 때로, 30 이하일 경우 과매도 구간으로써 매수해야 할 때로 여겨진다. 즉 지나친 상승 뒤에는 하락할 것을, 지나친 하락 뒤에는 상승할 것을 기대한다.</p>
+<figure class="align-default" id="id4">
+<img alt="_images/rsi.png" src="_images/rsi.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 15.5 </span><span class="caption-text">RSI 지표</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>S&amp;P 500 지수의 RSI를 계산해보도록 하자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">gridspec</span>
+
+<span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;RSI_14&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">RSI</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">],</span> <span class="n">timeperiod</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;RSI_14&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">gs</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">height_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># 주가 나타내기</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">([])</span>
+
+<span class="c1"># RSI 나타내기</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;RSI_14&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/fab9693448cdd29c764469d89a902d79bdb5d27a796212de47d2cd5fdb2305b1.png" src="_images/fab9693448cdd29c764469d89a902d79bdb5d27a796212de47d2cd5fdb2305b1.png" />
+</div>
+</div>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">RSI()</span></code> 함수를 이용해 RSI를 계산할 수 있으며, <code class="docutils literal notranslate"><span class="pre">timeperiod</span></code>는 기간을 의미한다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fillna()</span></code> 메서드를 통해 NA를 0으로 채워준다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GridSpec()</span></code> 함수를 통해 그림을 두 구간으로 나누어 준다.</p></li>
+<li><p>상단에는 주가를 그려준다.</p></li>
+<li><p>하단에는 RSI 및 과매수와 과매도를 의미하는 70과 30 부분에 수평선을 그려준다.</p></li>
+<li><p>두 그림 간 빈칸을 0으로 설정한다.</p></li>
+</ol>
+</section>
+<section id="id5">
+<h2><span class="section-number">15.4. </span>볼린저밴드<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>볼린저밴드는 이동평균선을 중심으로 일정 표준편차를 상한선과 하한선으로 설정한 밴드다.</p>
+<ul class="simple">
+<li><p>중심 밴드: n 기간 동안의 이동평균</p></li>
+<li><p>상단 밴드: 중심 밴드 기준 k 표준편차 위</p></li>
+<li><p>하단 밴드: 중심 밴드 기준 k 표준편차 아래</p></li>
+</ul>
+<figure class="align-default" id="bb">
+<img alt="_images/bb.png" src="_images/bb.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 15.6 </span><span class="caption-text">볼린저밴드</span><a class="headerlink" href="#bb" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>이는 주가의 움직임이 정규분포를 따른다는 가정에 기초한다. 정규분포에서는 데이터가 1 표준편차 내에 있을 확률이 약 68%, 2 표준편차 내에 있을 확률이 약 95%, 3 표준편차 내에 있을 확률이 약 99%다. 만일 주가가 정규분포를 따른다면, 주가의 움직임은 상한선과 하한선으로 구성된 밴드 내에서만 움직일 확률이 높다. 따라서 주가가 상한선 위에 있다는 것은 과매수 상태이므로 하락할 가능성이, 하단선 아래에 있다는 것은 과매도 상태이므로 상승할 가능성이 높다.</p>
+<figure class="align-default" id="norm">
+<img alt="_images/norm.png" src="_images/norm.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 15.7 </span><span class="caption-text">정규분포에 따른 확률</span><a class="headerlink" href="#norm" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>S&amp;P 500 지수의 볼린저밴드를 계산해보도록 하자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">upper_2sd</span><span class="p">,</span> <span class="n">mid_2sd</span><span class="p">,</span> <span class="n">lower_2sd</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">BBANDS</span><span class="p">(</span><span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">],</span>
+                                             <span class="n">nbdevup</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                                             <span class="n">nbdevdn</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                                             <span class="n">timeperiod</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">bb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">upper_2sd</span><span class="p">,</span> <span class="n">mid_2sd</span><span class="p">,</span> <span class="n">lower_2sd</span><span class="p">,</span> <span class="n">stock_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">bb</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Upper Band&#39;</span><span class="p">,</span> <span class="s1">&#39;Mid Band&#39;</span><span class="p">,</span> <span class="s1">&#39;Lower Band&#39;</span><span class="p">,</span> <span class="s1">&#39;Close&#39;</span><span class="p">]</span>
+<span class="n">bb</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+        <span class="n">color</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;Upper Band&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Lower Band&#39;</span><span class="p">:</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Mid Band&#39;</span><span class="p">:</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Close&#39;</span><span class="p">:</span> <span class="s1">&#39;black&#39;</span>
+        <span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7ed06abd2a89f5c2e7e3ea6a072d39e30ecfebffb2d6dc64d05f65fb49feecd7.png" src="_images/7ed06abd2a89f5c2e7e3ea6a072d39e30ecfebffb2d6dc64d05f65fb49feecd7.png" />
+</div>
+</div>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">BBANDS()</span></code> 함수를 이용해 볼린저 밴드의 상, 중, 하단 값을 계산한 후 각각의 변수에 저장한다. <code class="docutils literal notranslate"><span class="pre">nbdevup</span></code>와 <code class="docutils literal notranslate"><span class="pre">nbdevdn</span></code>는 각각 상단과 하단 밴드를 몇 표준편차 기준으로 계산할지를 의미하며, <code class="docutils literal notranslate"><span class="pre">timeperiod</span></code>는 이동평균에 계산되는 최근 일수를 의미한다.</p></li>
+<li><p>볼린저밴드 값과 종가를 <code class="docutils literal notranslate"><span class="pre">concat()</span></code> 함수를 이용해 하나의 데이터프레임으로 합찬다.</p></li>
+<li><p>그래프로 나타내며, 각각의 색을 지정한다.</p></li>
+</ol>
+<p>주가가 크게 움직이지 않는 한 2 표준편차로 계산된 밴드 내에서 주가가 움직이는 것이 확인된다.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="portfolio.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>포트폴리오 구성 전략</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="backtest.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">16. </span>백테스팅 시뮬레이션</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-lib">15.1. TA-Lib 패키지 설치하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">15.2. 이동평균</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rsi">15.3. 상대강도지수(RSI)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">15.4. 볼린저밴드</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By 이현열
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
