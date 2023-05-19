@@ -1,44 +1,54 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>14. 포트폴리오 구성 전략 &#8212; 파이썬을 이용한 퀀트 투자 포트폴리오 만들기</title>
-    
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -77,393 +87,312 @@ var addUtterances = () => {
 }
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'portfolio';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="15. 트레이딩을 위한 기술적 지표" href="technical.html" />
     <link rel="prev" title="13. 퀀트 전략을 이용한 종목선정" href="factor.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">파이썬을 이용한 퀀트 투자 포트폴리오 만들기</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="index.html">
-   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  퀀트와 프로그래밍 기초 배워보기
- </span>
-</p>
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">퀀트와 프로그래밍 기초 배워보기</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="quant_intro.html">
-   1. 퀀트에 대해 알아보기
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python.html">
-   2. 파이썬 기초 배워보기
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="eda.html">
-   3. 데이터 분석 배워보기
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="plot.html">
-   4. 데이터 시각화 배워보기
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="sql.html">
-   5. SQL 기초 배워보기
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="sql_in_python.html">
-   6. 파이썬에서 SQL 연결하기
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="quant_intro.html">1. 퀀트에 대해 알아보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">2. 파이썬 기초 배워보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eda.html">3. 데이터 분석 배워보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot.html">4. 데이터 시각화 배워보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql.html">5. SQL 기초 배워보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql_in_python.html">6. 파이썬에서 SQL 연결하기</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  크롤링을 이용한 데이터 수집
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">크롤링을 이용한 데이터 수집</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="web.html">
-   7. 크롤링을 위한 웹 기본지식
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="crawl_basic.html">
-   8. 정적 크롤링 실습하기
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="selenium.html">
-   9. 동적 크롤링과 정규 표현식
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="data_korea.html">
-   10. 국내 주식 데이터 수집
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="data_global.html">
-   11. 전 세계 주식 데이터 수집하기
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="data_ref.html">
-   12. 투자 참고용 데이터 수집
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="web.html">7. 크롤링을 위한 웹 기본지식</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crawl_basic.html">8. 정적 크롤링 실습하기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selenium.html">9. 동적 크롤링과 정규 표현식</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_korea.html">10. 국내 주식 데이터 수집</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_global_revision.html">11. 전 세계 주식 데이터 수집하기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_ref.html">12. 투자 참고용 데이터 수집</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  포트폴리오 구성, 백테스트 및 매매하기
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">포트폴리오 구성, 백테스트 및 매매하기</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="factor.html">
-   13. 퀀트 전략을 이용한 종목선정
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   14. 포트폴리오 구성 전략
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="technical.html">
-   15. 트레이딩을 위한 기술적 지표
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="backtest.html">
-   16. 백테스팅 시뮬레이션
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="api_trading.html">
-   17. 증권사 API 연결과 매매하기
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="factor.html">13. 퀀트 전략을 이용한 종목선정</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. 포트폴리오 구성 전략</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technical.html">15. 트레이딩을 위한 기술적 지표</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backtest.html">16. 백테스팅 시뮬레이션</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_trading.html">17. 증권사 API 연결과 매매하기</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  부록
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">부록</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="install_python.html">
-   파이썬 다운로드 및 설치하기
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="install_sql.html">
-   SQL 다운로드 및 설치하기
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="install_python.html">파이썬 다운로드 및 설치하기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install_sql.html">SQL 다운로드 및 설치하기</a></li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/portfolio.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_py/main?urlpath=tree/portfolio.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main">
         
         
-        
-        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/portfolio.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
 
-        </div>
 
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>포트폴리오 구성 전략</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   14.1. 수익률 계산 및 상관관계 확인하기
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   14.2. 최대샤프지수 포트폴리오
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   14.3. 최소분산 포트폴리오
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     14.3.1. 최소 및 최대 투자비중 제약조건
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
-     14.3.2. 각 종목 별 제약조건
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
-     14.3.3. 자산군 별 비중
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id8">
-   14.4. 위험균형 포트폴리오
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id9">
-     14.4.1. 위험예산 포트폴리오
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">14.1. 수익률 계산 및 상관관계 확인하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">14.2. 최대샤프지수 포트폴리오</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">14.3. 최소분산 포트폴리오</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">14.3.1. 최소 및 최대 투자비중 제약조건</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">14.3.2. 각 종목 별 제약조건</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">14.3.3. 자산군 별 비중</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">14.4. 위험균형 포트폴리오</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">14.4.1. 위험예산 포트폴리오</a></li>
+</ul>
+</li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>포트폴리오 구성 전략</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   14.1. 수익률 계산 및 상관관계 확인하기
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   14.2. 최대샤프지수 포트폴리오
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   14.3. 최소분산 포트폴리오
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     14.3.1. 최소 및 최대 투자비중 제약조건
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
-     14.3.2. 각 종목 별 제약조건
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
-     14.3.3. 자산군 별 비중
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id8">
-   14.4. 위험균형 포트폴리오
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id9">
-     14.4.1. 위험예산 포트폴리오
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
-              <div>
+              
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1><span class="section-number">14. </span>포트폴리오 구성 전략<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">14. </span>포트폴리오 구성 전략<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <p>어떠한 종목에 투자할 지 선택하는 것도 즁요하지만, 비중을 어떻게 배분하느냐에 따라 성과가 달라지므로 포트폴리오 구성 전략 역시 중요하다. 물론 가장 간편한 형태인 동일비중, 즉 모든 종목에 동일한 비중으로 투자를 할 수도 있다. 그러나 최적의 포트폴리오를 구성한다면 훨씬 안정적인 성과를 거둘 수 있으며, 파이썬에서는 riskfolio-lib 패키지를 이용하면 매우 간단하게 최적 포트폴리오를 구성할 수도 있다.</p>
 <p>이번 장에서는 일반적으로 많이 사용되는 최대샤프지수 포트폴리오, 최소분산 포트폴리오, 위험균형 포트폴리오를 구현해보도록 하겠다. 먼저 포트폴리오 구성을 위해 글로벌 자산을 대표하는 ETF 데이터를 다운로드 한 후 DB에 저장한다.</p>
 <div class="cell docutils container">
@@ -501,14 +430,14 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 </div>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>글로벌 대표 자산 ETF의 티커를 입력한다.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">DataReader()</span></code> 함수를 이용해 야후 파이낸스에서 데이터를 받으며, 기간은 1993년 1월 22일부터 한다.</p></li>
 <li><p>수정주가에 해당하는 부분만 선택하여 데이터프레임으로 만든다.</p></li>
 <li><p>DB의 sample_etf 테이블에 해당 데이터를 저장한다.</p></li>
 </ol>
-<div class="section" id="id2">
-<h2><span class="section-number">14.1. </span>수익률 계산 및 상관관계 확인하기<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<section id="id2">
+<h2><span class="section-number">14.1. </span>수익률 계산 및 상관관계 확인하기<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>먼저 DB에서 ETF 데이터를 불러온 후 수익률을 계산한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -634,7 +563,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </table>
 </div></div></div>
 </div>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>ETF 데이터를 불러온다.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pct_change()</span></code> 함수를 통해 수익률을 계산하며, <code class="docutils literal notranslate"><span class="pre">dropna()</span></code> 함수를 통해 결측치를 제거한다.</p></li>
 </ol>
@@ -651,13 +580,13 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/portfolio_5_0.png" src="_images/portfolio_5_0.png" />
+<img alt="_images/fb720a8064066679fc2bc13a5ded0b5b80782b6442dd1d24880c0ea535267b2c.png" src="_images/fb720a8064066679fc2bc13a5ded0b5b80782b6442dd1d24880c0ea535267b2c.png" />
 </div>
 </div>
 <p>같은 자산군 내에서는 강한 상관관계를 보이며, 주식과 채권 간에는 매우 낮은 상관관계를 보인다. 또한 주식과 리츠 간에도 꽤 높은 상관관계를 보인다.</p>
-</div>
-<div class="section" id="id3">
-<h2><span class="section-number">14.2. </span>최대샤프지수 포트폴리오<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id3">
+<h2><span class="section-number">14.2. </span>최대샤프지수 포트폴리오<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <p>최대샤프지수 포트폴리오(Maximum Sharpe Ratio Portfolio)란 샤프지수가 최대가 되도록 하는 포트폴리오를 구성하는 것이다. 샤프지수는 <span class="math notranslate nohighlight">\(\frac{R_p-R_f}{\sigma_p}\)</span>, 즉 포트폴리오의 수익을 변동성으로 나눈 값이며, 위험 대비 수익률이라고도 볼 수 있다. 따라서 샤프지수가 최대가 되는 포트폴리오는 위험은 낮으면서 수익은 높은 지점이다. riskfolio-lib 패키지의 함수를 이용해 해당 포트폴리오를 구성하기 위한 자산별 투자비중을 구해보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -736,7 +665,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </table>
 </div></div></div>
 </div>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Portfolio()</span></code> 함수를 통해 포트폴리오 객체를 생성하며, <code class="docutils literal notranslate"><span class="pre">returns</span></code>에는 수익률 데이터를 입력한다.</p></li>
 <li><p>‘mu(수익률)’과 ‘cov(분산-공분산 행렬)’을 구한 후 <code class="docutils literal notranslate"><span class="pre">assets_stats()</span></code> 함수에 이를 입력한다.</p></li>
 <li><p>구하고자 하는 목적에 맞게 각종 파라미터를 입력한다.</p></li>
@@ -857,7 +786,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </table>
 </div></div></div>
 </div>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>몇 개의 점으로 효율적 투자선을 구성할 지 정한다.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">efficient_frontier()</span></code> 함수를 이용해 효율적 투자선을 이루는 포트폴리오들의 비중을 계산한다.</p></li>
 </ol>
@@ -889,19 +818,19 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/portfolio_11_0.png" src="_images/portfolio_11_0.png" />
+<img alt="_images/06819605a7ea0f79e5d6da50094e4eae8f96ec31a8909cbc99c943fad35656e5.png" src="_images/06819605a7ea0f79e5d6da50094e4eae8f96ec31a8909cbc99c943fad35656e5.png" />
 </div>
 </div>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>라벨, 기대 수익률, 분산-공분산 행렬, 자산별 수익률 값을 입력한다.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">plot_frontier()</span></code> 함수를 통해 효율적 투자선을 시각화한다. 각종 파라미터를 수정하여 그래프를 꾸밀수도 있다.</p></li>
 </ol>
 <p>각 점의 색은 샤프지수를 의미하며, 붉은색 별은 샤프지수가 최대가 되는 점을 의미한다.</p>
-</div>
-<div class="section" id="id4">
-<h2><span class="section-number">14.3. </span>최소분산 포트폴리오<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id4">
+<h2><span class="section-number">14.3. </span>최소분산 포트폴리오<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
 <p>효율적 투자선과 무위험 수익률의 접점에 해당하는 최대샤프지수 포트폴리오는 이론적으로 많이 사용되는 포트폴리오 구성 방법이지만, 실무에서는 잘 사용되지 않는다. 그 이유는 크게 다음가 같다.</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>변동성 및 상관관계는 시간이 지나도 어느정도 유지되는 경향이 있다.</p></li>
 <li><p>기대 수익률을 추정하는 것은 매우 어렵다. 이론에서는 과거 수익률을 미래 수익률의 예측치로 사용하지만 실제 투자에서 사용하기는 무리가 있는 가정이다.</p></li>
 <li><p>위 결과를 살펴보면 10개 자산 중 일부 자산으로만 포트폴리오가 구성된다. 즉 상관관계가 높은 자산이 있으면 하나에만 투자하는 결과를 낳는다. 그러나 현실에서는 상관관계가 높은 자산에도 투자해야 하는 경우가 많다.</p></li>
@@ -986,12 +915,12 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/portfolio_15_0.png" src="_images/portfolio_15_0.png" />
+<img alt="_images/8fecc2a0c310552eb79223dce5d2d5c4c55ce075a3f982f59292a63e18fbc0c9.png" src="_images/8fecc2a0c310552eb79223dce5d2d5c4c55ce075a3f982f59292a63e18fbc0c9.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">plot_bar()</span></code> 함수를 이용하면 비중을 막대그래프로 나타낼 수 있다. 그림을 살펴보면 채권 ETF가 대부분의 비중을 구성하므로, 이를 이용해 그대로 투자하기는 문제가 있다. 반면 일부 자산은 투자비중이 0%, 즉 전혀 투자하지 않기도 한다. 이처럼 변동성이 가장 낮은 종목에 대부분의 비중이 투자되는 구석해(Corner Solution) 문제를 해결하기 각종 제약조건을 추가해 줄 필요가 있다.</p>
-<div class="section" id="id5">
-<h3><span class="section-number">14.3.1. </span>최소 및 최대 투자비중 제약조건<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<section id="id5">
+<h3><span class="section-number">14.3.1. </span>최소 및 최대 투자비중 제약조건<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>모든 자산에 최소 투자비중 5%, 최대 투자비중 20%의 제약조건을 설정하도록 하겠다. 먼저 아래와 같이 유니버스에 해당하는 ETF명과 해당 ETF의 자산군을 데이터프레임 형태로 만든다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1168,7 +1097,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </table>
 </div></div></div>
 </div>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Disabled: 제약조건의 사용 여부이며, 제약조건 갯수만큼 False를 입력한다.</p></li>
 <li><p>Type: ‘All Assets’은 모든 자산(종목)에 적용되는 조건을 의미한다. 각 자산에 조건을 적용할 때는 Assets, 하부 항목에 조건을 적용할 때는 Classes를 입력한다.</p></li>
 <li><p>Set: 위에서 입력한 유니버스 중 제약조건에 해당하는 열을 의미하며, All Assets의 경우 빈칸으로 둔다.</p></li>
@@ -1240,7 +1169,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </table>
 </div></div></div>
 </div>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">assets_constraints()</span></code> 함수를 통해 제약조건을 행렬 형태로 변경한다. (제약조건은 <span class="math notranslate nohighlight">\(Aw \ge B\)</span> 형태로 입력된다.)</p></li>
 <li><p>ainequality와 binequality, 즉 제약조건 부분에 위에서 구한 행렬을 입력한다.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">optimization()</span></code> 함수를 통해 최소분산 포트폴리오를 만족하는 해를 구한다.</p></li>
@@ -1253,16 +1182,16 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/portfolio_23_0.png" src="_images/portfolio_23_0.png" />
+<img alt="_images/6ee1199184842e0e5d05c8777c69e136917be42e934b3df67e2060f55ba930fc.png" src="_images/6ee1199184842e0e5d05c8777c69e136917be42e934b3df67e2060f55ba930fc.png" />
 </div>
 </div>
-</div>
-<div class="section" id="id6">
-<h3><span class="section-number">14.3.2. </span>각 종목 별 제약조건<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id6">
+<h3><span class="section-number">14.3.2. </span>각 종목 별 제약조건<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p>위에서 추가한 제약조건만으로도 충분히 훌륭한 포트폴리오가 구성되지만, 투자 규모가 커지면 추가적인 제약조건들을 고려해야 할 경우가 생긴다. 벤치마크 비중과의 괴리로 인한 추적오차(Tracking Error)를 고려해야 할 수도 있고, 투자 대상별 거래량을 고려한 제약조건을 추가해야 할 때도 있다.</p>
 <p>기존 제약조건에는 모든 자산에 동일한 최소 및 최대 투자비중 제약조건을 다루었지만, 자산별로 제약조건을 각각 다르게 설정해야할 때도 있다. 이번에는 <a class="reference internal" href="#min-const"><span class="std std-numref">Table 14.1</span></a>과 같이 자산 별로 최소 및 최대 투자비중이 다른 제약조건을 만족하는 포트폴리오를 구성해보도록 하겠다.</p>
-<table class="colwidths-auto table" id="min-const">
-<caption><span class="caption-number">Table 14.1 </span><span class="caption-text">각 자산 별 최소 및 최대 제약조건</span><a class="headerlink" href="#min-const" title="Permalink to this table">¶</a></caption>
+<table class="table" id="min-const">
+<caption><span class="caption-number">Table 14.1 </span><span class="caption-text">각 자산 별 최소 및 최대 제약조건</span><a class="headerlink" href="#min-const" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>제약</p></th>
 <th class="head"><p>SPY</p></th>
@@ -1653,7 +1582,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </table>
 </div></div></div>
 </div>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Disabled: 제약조건이 총 20개이므로 False를 20번 입력한다.</p></li>
 <li><p>Type: 제약조건을 각 자산에 적용하므로 Assets를 입력한다.</p></li>
 <li><p>Set: 유니버스 중 티커에 해당하는 Asset을 입력한다.</p></li>
@@ -1733,15 +1662,15 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/portfolio_29_0.png" src="_images/portfolio_29_0.png" />
+<img alt="_images/31332d1fcb4768d97c51fb7e080a4aff09d64c31b977d872993c788ee0737532.png" src="_images/31332d1fcb4768d97c51fb7e080a4aff09d64c31b977d872993c788ee0737532.png" />
 </div>
 </div>
-</div>
-<div class="section" id="id7">
-<h3><span class="section-number">14.3.3. </span>자산군 별 비중<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id7">
+<h3><span class="section-number">14.3.3. </span>자산군 별 비중<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <p>마지막으로 개별 자산이 아닌 자산군 별로 제약조건을 다르게 주도록 한다. 즉 <a class="reference internal" href="#min-const-2"><span class="std std-numref">Table 14.2</span></a>와 같이 주식 ETF에 투자하는 비중은 최소 40%, 최대 70%이어야 한다. 또한 자산군 내에서 한 종목에 투자 비중이 쏠리는 것을 방지하기 위해 개별 자산의 투자 비중은 최소 3%, 최대 20%로 한다.</p>
-<table class="colwidths-auto table" id="min-const-2">
-<caption><span class="caption-number">Table 14.2 </span><span class="caption-text">각 자산 별 최소 및 최대 제약조건</span><a class="headerlink" href="#min-const-2" title="Permalink to this table">¶</a></caption>
+<table class="table" id="min-const-2">
+<caption><span class="caption-number">Table 14.2 </span><span class="caption-text">각 자산 별 최소 및 최대 제약조건</span><a class="headerlink" href="#min-const-2" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>제약</p></th>
 <th class="head"><p>개별</p></th>
@@ -1930,7 +1859,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </table>
 </div></div></div>
 </div>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Disabled: 개별 자산의 제약 조건 2개, 자산군 별 제약 조건이 6개 이므로 False를 8개 입력한다.</p></li>
 <li><p>Type: 모든 자산(종목)에 적용되는 조건은 ‘All Assets’을, 자산군에 적용되는 조건은 ‘Classes’를 입력한다.</p></li>
 <li><p>Set: 모든 자산(종목)에 적용되는 조건에는 공백을, 자산군에 적용되는 조건은 열 이름인 ‘Class’를 입력한다.</p></li>
@@ -2053,10 +1982,10 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div></div></div>
 </div>
 <p>자산군 별 그룹을 묶어 비중을 더해보면 <a class="reference internal" href="#min-const-2"><span class="std std-numref">Table 14.2</span></a>에서 설정한 최소 및 최대 투자비중의 범위 내에 해가 위치함을 확인할 수 있다. 이처럼 패키지 내의 함수를 이용하면 복잡한 제약조건도 매우 손쉽게 적용할 수 있다.</p>
-</div>
-</div>
-<div class="section" id="id8">
-<h2><span class="section-number">14.4. </span>위험균형 포트폴리오<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="id8">
+<h2><span class="section-number">14.4. </span>위험균형 포트폴리오<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
 <p>포트폴리오를 구성하는 자산들과 전체 위험의 관계를 이해하기 위해서는, 먼저 한계 위험기여도(MRC: Marginal Risk Contribution)와 위험기여도(RC: Risk Contribution)에 대해 알아야 한다. 한계 위험기여도는 특정 자산의 비중을 한 단위 증가시켰을 때 전체 포트폴리오 위험의 증가를 나타내는 단위로서, 수학의 편미분과 같은 개념이다. <span class="math notranslate nohighlight">\(i\)</span>번째 자산의 한계 위험기여도는 아래와 같이 나타낼 수 있다.</p>
 <div class="math notranslate nohighlight">
 \[MRC_i = \frac{\partial\sigma_p}{\partial w_i} \]</div>
@@ -2169,16 +2098,16 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/portfolio_39_0.png" src="_images/portfolio_39_0.png" />
+<img alt="_images/b60217f69ca501b9201a5f5df923e005147ba2edbab4bcf490a275ddf932593f.png" src="_images/b60217f69ca501b9201a5f5df923e005147ba2edbab4bcf490a275ddf932593f.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">plot_risk_con()</span></code> 함수를 이용하면 투자 비중에 따른 자산들의 위험기여도를 알 수 있으며, 모든 자산이 동일한 위험기여도를 가진다는 것이 확인된다.</p>
-<div class="section" id="id9">
-<h3><span class="section-number">14.4.1. </span>위험예산 포트폴리오<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<section id="id9">
+<h3><span class="section-number">14.4.1. </span>위험예산 포트폴리오<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <p>모든 자산의 위험기여도가 동일한 값이 아닌, 자산별로 다른 위험기여도를 가지는 포트폴리오를 구성해야 할 경우도 있다. 이러한 포트폴리오를 위험예산 포트폴리오(Risk Budget Portfolio)라고 한다. 위험균형 포트폴리오는 각 자산의 위험예산이 <span class="math notranslate nohighlight">\(\frac{1}{n}\)</span>로 동일한 특수 형태이다.</p>
 <p>먼저 각 자산 별 위험예산을 <a class="reference internal" href="#risk-contri"><span class="std std-numref">Table 14.3</span></a>과 같이 정한다. 즉, 1~4번 자산(주식)은 각각 15%씩, 5~6번 자산(채권)은 각각 10%씩, 7~10번 자산(대체자산)은 각각 5%씩 위험예산을 부여한다.</p>
-<table class="colwidths-auto table" id="risk-contri">
-<caption><span class="caption-number">Table 14.3 </span><span class="caption-text">위험예산 포트폴리오 예시</span><a class="headerlink" href="#risk-contri" title="Permalink to this table">¶</a></caption>
+<table class="table" id="risk-contri">
+<caption><span class="caption-number">Table 14.3 </span><span class="caption-text">위험예산 포트폴리오 예시</span><a class="headerlink" href="#risk-contri" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>제약</p></th>
 <th class="head"><p>SPY</p></th>
@@ -2283,7 +2212,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/portfolio_43_0.png" src="_images/portfolio_43_0.png" />
+<img alt="_images/cb97718b41832dca51620e1f3b4c6d4cfdf18b711d28f945223979e58226a1bf.png" src="_images/cb97718b41832dca51620e1f3b4c6d4cfdf18b711d28f945223979e58226a1bf.png" />
 </div>
 </div>
 <p>각 자산의 위험기여도가 <a class="reference internal" href="#risk-contri"><span class="std std-numref">Table 14.3</span></a>에서 설정한 목표치와 동일함이 확인된다.</p>
@@ -2292,9 +2221,9 @@ commentsRunWhenDOMLoaded(addUtterances);
 <p>이 외에도 Riskfolio 패키지의 자세한 사용법은 공식 홈페이지를 참조하기 바란다.</p>
 <p><a class="reference external" href="https://riskfolio-lib.readthedocs.io/en/latest/index.html">https://riskfolio-lib.readthedocs.io/en/latest/index.html</a></p>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2308,7 +2237,7 @@ commentsRunWhenDOMLoaded(addUtterances);
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -2316,44 +2245,116 @@ commentsRunWhenDOMLoaded(addUtterances);
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="factor.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">13. </span>퀀트 전략을 이용한 종목선정</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="factor.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>퀀트 전략을 이용한 종목선정</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="technical.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="technical.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">15. </span>트레이딩을 위한 기술적 지표</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            
-        </div>
-    </div>
-    <footer class="footer">
-  <p>
-    
-      By 이현열<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
-
-
       </div>
-    </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+</div>
 
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">14.1. 수익률 계산 및 상관관계 확인하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">14.2. 최대샤프지수 포트폴리오</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">14.3. 최소분산 포트폴리오</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">14.3.1. 최소 및 최대 투자비중 제약조건</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">14.3.2. 각 종목 별 제약조건</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">14.3.3. 자산군 별 비중</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">14.4. 위험균형 포트폴리오</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">14.4.1. 위험예산 포트폴리오</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By 이현열
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

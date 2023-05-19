@@ -1,44 +1,54 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>파이썬 다운로드 및 설치하기 &#8212; 파이썬을 이용한 퀀트 투자 포트폴리오 만들기</title>
-    
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -77,404 +87,381 @@ var addUtterances = () => {
 }
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'install_python';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="SQL 다운로드 및 설치하기" href="install_sql.html" />
     <link rel="prev" title="17. 증권사 API 연결과 매매하기" href="api_trading.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">파이썬을 이용한 퀀트 투자 포트폴리오 만들기</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="index.html">
-   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  퀀트와 프로그래밍 기초 배워보기
- </span>
-</p>
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">퀀트와 프로그래밍 기초 배워보기</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="quant_intro.html">
-   1. 퀀트에 대해 알아보기
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python.html">
-   2. 파이썬 기초 배워보기
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="eda.html">
-   3. 데이터 분석 배워보기
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="plot.html">
-   4. 데이터 시각화 배워보기
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="sql.html">
-   5. SQL 기초 배워보기
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="sql_in_python.html">
-   6. 파이썬에서 SQL 연결하기
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="quant_intro.html">1. 퀀트에 대해 알아보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">2. 파이썬 기초 배워보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eda.html">3. 데이터 분석 배워보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot.html">4. 데이터 시각화 배워보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql.html">5. SQL 기초 배워보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql_in_python.html">6. 파이썬에서 SQL 연결하기</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  크롤링을 이용한 데이터 수집
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">크롤링을 이용한 데이터 수집</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="web.html">
-   7. 크롤링을 위한 웹 기본지식
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="crawl_basic.html">
-   8. 정적 크롤링 실습하기
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="selenium.html">
-   9. 동적 크롤링과 정규 표현식
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="data_korea.html">
-   10. 국내 주식 데이터 수집
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="data_global.html">
-   11. 전 세계 주식 데이터 수집하기
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="data_ref.html">
-   12. 투자 참고용 데이터 수집
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="web.html">7. 크롤링을 위한 웹 기본지식</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crawl_basic.html">8. 정적 크롤링 실습하기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selenium.html">9. 동적 크롤링과 정규 표현식</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_korea.html">10. 국내 주식 데이터 수집</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_global_revision.html">11. 전 세계 주식 데이터 수집하기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_ref.html">12. 투자 참고용 데이터 수집</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  포트폴리오 구성, 백테스트 및 매매하기
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">포트폴리오 구성, 백테스트 및 매매하기</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="factor.html">
-   13. 퀀트 전략을 이용한 종목선정
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="portfolio.html">
-   14. 포트폴리오 구성 전략
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="technical.html">
-   15. 트레이딩을 위한 기술적 지표
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="backtest.html">
-   16. 백테스팅 시뮬레이션
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="api_trading.html">
-   17. 증권사 API 연결과 매매하기
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="factor.html">13. 퀀트 전략을 이용한 종목선정</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portfolio.html">14. 포트폴리오 구성 전략</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technical.html">15. 트레이딩을 위한 기술적 지표</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backtest.html">16. 백테스팅 시뮬레이션</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_trading.html">17. 증권사 API 연결과 매매하기</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  부록
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">부록</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   파이썬 다운로드 및 설치하기
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="install_sql.html">
-   SQL 다운로드 및 설치하기
-  </a>
- </li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">파이썬 다운로드 및 설치하기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install_sql.html">SQL 다운로드 및 설치하기</a></li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/install_python.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_py/main?urlpath=tree/install_python.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main">
         
         
-        
-        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/install_python.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
 
-        </div>
 
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>파이썬 다운로드 및 설치하기</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   아나콘다 설치하기
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   스파이더 사용하기
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">아나콘다 설치하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">스파이더 사용하기</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>파이썬 다운로드 및 설치하기</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   아나콘다 설치하기
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   스파이더 사용하기
-  </a>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
-              <div>
+              
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1>파이썬 다운로드 및 설치하기<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>파이썬 다운로드 및 설치하기<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <p>파이썬 프로그램은 공식 홈페이지(<a class="reference external" href="https://www.python.org/">https://www.python.org/</a>)에서 직접 다운로드하여 설치할 수 있다. 그러나 아나콘다(Anaconda)를 설치하면 파이썬 뿐만 아니라 IDE, 각종 패키지를 함께 설치할 수 있으므로 훨씬 편리하다.</p>
-<div class="section" id="id2">
-<h2>아나콘다 설치하기<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<section id="id2">
+<h2>아나콘다 설치하기<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>아나콘다를 설치하기 위해서는 먼저 구글에서 [아나콘다 다운로드]를 검색하거나, 홈페이지(<a class="reference external" href="https://www.anaconda.com/products/distribution">https://www.anaconda.com/products/distribution</a>)에 접속한다. 그 후 본인의 운영체제에 맞는 파일을 다운로드 한다.</p>
-<div class="figure align-default" id="os">
+<figure class="align-default" id="os">
 <img alt="_images/os.png" src="_images/os.png" />
-</div>
+</figure>
 <p>[Download] 부분을 클릭한다.</p>
 <hr>
-<div class="figure align-default" id="ins1">
+<figure class="align-default" id="ins1">
 <img alt="_images/ins1.png" src="_images/ins1.png" />
-</div>
+</figure>
 <p>다운로드한 설치 파일을 실행한 후 [Next]를 클릭한다.</p>
 <hr>
-<div class="figure align-default" id="ins2">
+<figure class="align-default" id="ins2">
 <img alt="_images/ins2.png" src="_images/ins2.png" />
-</div>
+</figure>
 <p>[I Agree]를 클릭한다.</p>
 <hr>
-<div class="figure align-default" id="ins3">
+<figure class="align-default" id="ins3">
 <img alt="_images/ins3.png" src="_images/ins3.png" />
-</div>
+</figure>
 <p>[Just Me]를 선택한 후 [Next]를 클릭한다.</p>
 <hr>
-<div class="figure align-default" id="ins4">
+<figure class="align-default" id="ins4">
 <img alt="_images/ins4.png" src="_images/ins4.png" />
-</div>
+</figure>
 <p>저장경로를 선택한 후 [Next]를 클릭한다.</p>
 <hr>
-<div class="figure align-default" id="ins5">
+<figure class="align-default" id="ins5">
 <img alt="_images/ins5.png" src="_images/ins5.png" />
-</div>
+</figure>
 <p>아래의 [Register Anaconda3 as my default Python 3.9]를 체크한 후 [Install]을 클릭한다.</p>
 <hr>
-<div class="figure align-default" id="ins6">
+<figure class="align-default" id="ins6">
 <img alt="_images/ins6.png" src="_images/ins6.png" />
-</div>
-<div class="figure align-default" id="ins7">
+</figure>
+<figure class="align-default" id="ins7">
 <img alt="_images/ins7.png" src="_images/ins7.png" />
-</div>
+</figure>
 <p>설치가 완료되면 [Next]를 클릭한다.</p>
 <hr>
-<div class="figure align-default" id="ins8">
+<figure class="align-default" id="ins8">
 <img alt="_images/ins8.png" src="_images/ins8.png" />
-</div>
+</figure>
 <p>두 부분 모두 체크를 해제한 후 [Finish]를 클릭해 설치를 마감한다.</p>
-</div>
-<div class="section" id="id3">
-<h2>스파이더 사용하기<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id3">
+<h2>스파이더 사용하기<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <p>아나콘다에는 파이썬을 쉽게 사용할 수 있게 하기 위해 여러 IDE가 함께 설치된다. 그 중 본 책에서는 Spyder를 사용하도록 한다.</p>
-<div class="figure align-default" id="spyder1">
+<figure class="align-default" id="spyder1">
 <img alt="_images/spyder1.png" src="_images/spyder1.png" />
-</div>
+</figure>
 <p>먼저 검색창에서 [spyder]를 검색하여 ‘Spyder (anaconda3)’ 프로그램을 연다.</p>
 <hr>
-<div class="figure align-default" id="spyder2">
+<figure class="align-default" id="spyder2">
 <img alt="_images/spyder2.png" src="_images/spyder2.png" />
-</div>
+</figure>
 <p>스파이더는 크게 3개의 화면으로 구성되어 있다.</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Editor 창: 파이썬 코드를 작성하는 곳으로써, 이곳에서 작성된 스크립트는 F9나 Ctrl+Enter 등을 사용해 명시적으로 실행을 시켜야만 실행이 된다. 보통 이곳에서 코드를 작성한 후 파일로 저장한다.</p></li>
 <li><p>Variable Explorer: 현재 입력된 변수 및 값이 무엇인지 확인할 수 있으며, 그 외에도 Plot이나 File 등을 확인할 수 있는 탭도 있다.</p></li>
 <li><p>IPython 콘솔: 에디터 창에서 입력한 코드를 실행하면 이 부분에 결과가 출력되며, 파이썬 명령을 직접 입력하여 결과를 확인할 수도 있다.</p></li>
 </ol>
 <hr>
-<div class="figure align-default" id="spyder3">
+<figure class="align-default" id="spyder3">
 <img alt="_images/spyder3.png" src="_images/spyder3.png" />
-</div>
+</figure>
 <p>스크립트 창에 코드를 입력해보자. 그 후 실행하고자 하는 부분을 드래그해 F9 키를 누르면 해당 부분이 콘솔창에 입력되면서 <code class="docutils literal notranslate"><span class="pre">print('Hello</span> <span class="pre">World')</span></code>에 해당하는 코드가 실행된다.</p>
 <hr>
-<div class="figure align-default" id="spyder4">
+<figure class="align-default" id="spyder4">
 <img alt="_images/spyder4.png" src="_images/spyder4.png" />
-</div>
+</figure>
 <p>콘솔창에서 바로 코드를 입력할 수도 있다. <code class="docutils literal notranslate"><span class="pre">1+2</span></code>를 입력하면 결과값인 <code class="docutils literal notranslate"><span class="pre">3</span></code>이 출력된다.</p>
 <hr>
-<div class="figure align-default" id="spyder5">
+<figure class="align-default" id="spyder5">
 <img alt="_images/spyder5.png" src="_images/spyder5.png" />
-</div>
+</figure>
 <p>코드를 통해 변수를 입력해보자. <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">1</span></code>을 입력한 후 우측 상단의 ‘Variable Explorer’를 확인해보면 a라는 변수에 1이라는 값이 입력된 것을 확인할 수 있다.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -488,7 +475,7 @@ commentsRunWhenDOMLoaded(addUtterances);
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -496,44 +483,106 @@ commentsRunWhenDOMLoaded(addUtterances);
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="api_trading.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">17. </span>증권사 API 연결과 매매하기</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="api_trading.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">17. </span>증권사 API 연결과 매매하기</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="install_sql.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="install_sql.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">SQL 다운로드 및 설치하기</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            
-        </div>
-    </div>
-    <footer class="footer">
-  <p>
-    
-      By 이현열<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
-
-
       </div>
-    </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+</div>
 
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">아나콘다 설치하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">스파이더 사용하기</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By 이현열
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

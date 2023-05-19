@@ -1,44 +1,54 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>11. 전 세계 주식 데이터 수집하기 &#8212; 파이썬을 이용한 퀀트 투자 포트폴리오 만들기</title>
-    
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -77,425 +87,335 @@ var addUtterances = () => {
 }
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'data_global';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="12. 투자 참고용 데이터 수집" href="data_ref.html" />
     <link rel="prev" title="10. 국내 주식 데이터 수집" href="data_korea.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">파이썬을 이용한 퀀트 투자 포트폴리오 만들기</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="index.html">
-   파이썬을 이용한 퀀트 투자 포트폴리오 만들기
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  퀀트와 프로그래밍 기초 배워보기
- </span>
-</p>
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    파이썬을 이용한 퀀트 투자 포트폴리오 만들기
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">퀀트와 프로그래밍 기초 배워보기</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="quant_intro.html">
-   1. 퀀트에 대해 알아보기
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python.html">
-   2. 파이썬 기초 배워보기
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="eda.html">
-   3. 데이터 분석 배워보기
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="plot.html">
-   4. 데이터 시각화 배워보기
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="sql.html">
-   5. SQL 기초 배워보기
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="sql_in_python.html">
-   6. 파이썬에서 SQL 연결하기
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="quant_intro.html">1. 퀀트에 대해 알아보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">2. 파이썬 기초 배워보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eda.html">3. 데이터 분석 배워보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot.html">4. 데이터 시각화 배워보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql.html">5. SQL 기초 배워보기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql_in_python.html">6. 파이썬에서 SQL 연결하기</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  크롤링을 이용한 데이터 수집
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">크롤링을 이용한 데이터 수집</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="web.html">
-   7. 크롤링을 위한 웹 기본지식
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="crawl_basic.html">
-   8. 정적 크롤링 실습하기
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="selenium.html">
-   9. 동적 크롤링과 정규 표현식
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="data_korea.html">
-   10. 국내 주식 데이터 수집
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   11. 전 세계 주식 데이터 수집하기
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="data_ref.html">
-   12. 투자 참고용 데이터 수집
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="web.html">7. 크롤링을 위한 웹 기본지식</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crawl_basic.html">8. 정적 크롤링 실습하기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selenium.html">9. 동적 크롤링과 정규 표현식</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_korea.html">10. 국내 주식 데이터 수집</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. 전 세계 주식 데이터 수집하기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_ref.html">12. 투자 참고용 데이터 수집</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  포트폴리오 구성, 백테스트 및 매매하기
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">포트폴리오 구성, 백테스트 및 매매하기</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="factor.html">
-   13. 퀀트 전략을 이용한 종목선정
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="portfolio.html">
-   14. 포트폴리오 구성 전략
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="technical.html">
-   15. 트레이딩을 위한 기술적 지표
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="backtest.html">
-   16. 백테스팅 시뮬레이션
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="api_trading.html">
-   17. 증권사 API 연결과 매매하기
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="factor.html">13. 퀀트 전략을 이용한 종목선정</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portfolio.html">14. 포트폴리오 구성 전략</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technical.html">15. 트레이딩을 위한 기술적 지표</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backtest.html">16. 백테스팅 시뮬레이션</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_trading.html">17. 증권사 API 연결과 매매하기</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  부록
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">부록</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="install_python.html">
-   파이썬 다운로드 및 설치하기
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="install_sql.html">
-   SQL 다운로드 및 설치하기
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="install_python.html">파이썬 다운로드 및 설치하기</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install_sql.html">SQL 다운로드 및 설치하기</a></li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/data_global.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/hyunyulhenry/quant_py/main?urlpath=tree/data_global.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main">
         
         
-        
-        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/data_global.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
 
-        </div>
 
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>전 세계 주식 데이터 수집하기</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   11.1. 유료 데이터 벤더 이용하기
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#api-token">
-     11.1.1. 가입 및 API token 받기
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     11.1.2. 데이터 다운로드
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   11.2. 티커 수집하기
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     11.2.1. 전 종목 티커 크롤링
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id6">
-   11.3. 주가 다운로드
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
-     11.3.1. 전 종목 주가 다운로드
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id8">
-   11.4. 재무제표 다운로드
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id9">
-     11.4.1. 전 종목 재무제표 다운로드
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">11.1. 유료 데이터 벤더 이용하기</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-token">11.1.1. 가입 및 API token 받기</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">11.1.2. 데이터 다운로드</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">11.2. 티커 수집하기</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">11.2.1. 전 종목 티커 크롤링</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">11.3. 주가 다운로드</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">11.3.1. 전 종목 주가 다운로드</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">11.4. 재무제표 다운로드</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">11.4.1. 전 종목 재무제표 다운로드</a></li>
+</ul>
+</li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>전 세계 주식 데이터 수집하기</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   11.1. 유료 데이터 벤더 이용하기
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#api-token">
-     11.1.1. 가입 및 API token 받기
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     11.1.2. 데이터 다운로드
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   11.2. 티커 수집하기
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     11.2.1. 전 종목 티커 크롤링
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id6">
-   11.3. 주가 다운로드
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
-     11.3.1. 전 종목 주가 다운로드
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id8">
-   11.4. 재무제표 다운로드
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id9">
-     11.4.1. 전 종목 재무제표 다운로드
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
-              <div>
+              
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1><span class="section-number">11. </span>전 세계 주식 데이터 수집하기<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">11. </span>전 세계 주식 데이터 수집하기<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <p>퀀트 투자의 장점은 데이터만 있다면 동일한 투자 전략을 전 세계 모든 국가에 적용할 수 있다는 점이다. 이번 장에서는 전 세계 종목의 티커 수집 및 주가, 재무제표, 가치지표를 다운로드 하는 방법에 대해 알아보겠다.</p>
-<div class="section" id="id2">
-<h2><span class="section-number">11.1. </span>유료 데이터 벤더 이용하기<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<section id="id2">
+<h2><span class="section-number">11.1. </span>유료 데이터 벤더 이용하기<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>미국 시장의 데이터만 필요할 경우 유료 데이터 벤더를 이용하는 것도 좋은 방법이다. 미국에는 금융 데이터를 API로 제공하는 수많은 업체가 있으며, tiingo의 경우는 월 $10만 지불하면 미국과 중국의 4만여개 종목에 대한 데이터를 API 형태로 받을 수 있다. 이는 상장폐지된 종목을 커버할 뿐만 아니라, API를 이용하므로 크롤링과는 비교할 수 없는 속도로 데이터를 받을 수 있다는 장점이 있다. 이 외에도 Alpha Vantage, Quandl, Polygon 등 수많은 데이터 벤더가 존재한다.</p>
-<div class="figure align-default" id="tiingo">
+<figure class="align-default" id="tiingo">
 <a class="reference internal image-reference" href="_images/tiingo.png"><img alt="_images/tiingo.png" src="_images/tiingo.png" style="width: 564.1999999999999px; height: 579.5999999999999px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 11.1 </span><span class="caption-text">tiingo의 유/무료 서비스 비교</span><a class="headerlink" href="#tiingo" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 11.1 </span><span class="caption-text">tiingo의 유/무료 서비스 비교</span><a class="headerlink" href="#tiingo" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>tiingo는 무료 계정도 하루 1,000회까지 API 요청을 할 수 있으며, 파이썬에서 사용할 수 있는 패키지도 있으므로 이를 사용해 데이터를 수집해보도록 하겠다.</p>
-<div class="section" id="api-token">
-<h3><span class="section-number">11.1.1. </span>가입 및 API token 받기<a class="headerlink" href="#api-token" title="Permalink to this headline">¶</a></h3>
+<section id="api-token">
+<h3><span class="section-number">11.1.1. </span>가입 및 API token 받기<a class="headerlink" href="#api-token" title="Permalink to this heading">#</a></h3>
 <p>먼저 <a class="reference external" href="https://api.tiingo.com/">https://api.tiingo.com/</a> 사이트에 접속하여 우측 상단의 [Sign-up]을 클릭해 회원가입을 한다. 그 후 로그인을 한 후 우측 상단에서 본인의 ID를 클릭한 후 [Account]를 선택, 좌측 메뉴의 [API] 부분에서 [Token]을 클릭하면 본인의 API token을 확인할 수 있다.</p>
-<div class="figure align-default" id="token">
+<figure class="align-default" id="token">
 <img alt="_images/token1.png" src="_images/token1.png" />
-<p class="caption"><span class="caption-number">Fig. 11.2 </span><span class="caption-text">API token 확인</span><a class="headerlink" href="#token" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 11.2 </span><span class="caption-text">API token 확인</span><a class="headerlink" href="#token" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>발급받은 토큰을 PC에 저장할 경우, keyring 패키지를 이용하면 안전하게 저장할 수 있다. 패키지를 이용해 암호나 키 값을 저장하는 법은 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -524,9 +444,9 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id3">
-<h3><span class="section-number">11.1.2. </span>데이터 다운로드<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id3">
+<h3><span class="section-number">11.1.2. </span>데이터 다운로드<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p>tiingo 패키지를 이용해 데이터를 받아보도록 하겠다. 데이터를 받기위해 API 접속환경을 셋팅한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1008,7 +928,7 @@ Name: ticker, dtype: int64
 </table>
 </div></div></div>
 </div>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">get_fundamentals_statements()</span></code> 메서드 내에 티커를 입력하면 재무제표의 세부항목을 받을 수 있다. 또한 <code class="docutils literal notranslate"><span class="pre">fmt</span></code>은 포맷 형태를 의미하며, JSON으로 받을 경우 형태가 지나치게 복잡하므로 CSV로 받는 것이 좋다.</p></li>
 <li><p>텍스트 형태로 데이터가 들어오므로, 클렌징을 통해 데이터프레임 형태로 변경한다.</p></li>
 <li><p>첫번째 행을 열 이름으로 지정한 후, 해당 행은 삭제한다.</p></li>
@@ -1019,27 +939,31 @@ Name: ticker, dtype: int64
 <p>tiingo의 API 사용법 및 파이썬 패키지 사용법은 아래 페이지에 나와있다.</p>
 <ul class="simple">
 <li><p>tiingo API: <a class="reference external" href="https://api.tiingo.com/documentation/general/overview">https://api.tiingo.com/documentation/general/overview</a></p></li>
-<li><p>파이썬 패키지: <a class="reference external" href="https://github.com/hydrosquall/tiingo-python">https://github.com/hydrosquall/tiingo-python</a></p></li>
+<li><p>파이썬 패키지: <a class="github reference external" href="https://github.com/hydrosquall/tiingo-python">hydrosquall/tiingo-python</a></p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="id4">
-<h2><span class="section-number">11.2. </span>티커 수집하기<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="id4">
+<h2><span class="section-number">11.2. </span>티커 수집하기<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
 <p>이번에는 크롤링을 통해 데이터를 수집하는 방법에 대해 알아보겠다. 우리나라는 한국거래소를 통해 티커를 손쉽게 수집할 수 있지만 해외의 경우는 그렇지 않다. 먼저 우리나라와 달리 국가 별로 거래소가 여러개인 경우도 있으며, 홈페이지에 상장 종목 리스트를 제공하지 않는 경우도 많기 때문이다.</p>
 <p>다행히 투자자들이 많이 참조하는 사이트인 인베스팅닷컴(<a class="reference external" href="https://www.investing.com/">https://www.investing.com/</a>)에서는 전 세계 주식 및 각종 금융 데이터를 제공하고 있다. 이 중 스크리닝 기능을 활용하면 각 국가별 티커 리스트를 수집할 수 있다. 먼저 인베스팅닷컴에 접속한 후 [Markets → Stocks → Stock Screener]에 접속한다.</p>
-<div class="figure align-default" id="screen">
+<figure class="align-default" id="screen">
 <img alt="_images/screen.png" src="_images/screen.png" />
-<p class="caption"><span class="caption-number">Fig. 11.3 </span><span class="caption-text">인베스팅닷컴의 주식 스크리너</span><a class="headerlink" href="#screen" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 11.3 </span><span class="caption-text">인베스팅닷컴의 주식 스크리너</span><a class="headerlink" href="#screen" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>페이지를 접속하면 미국 종목들이 나타나며, URL은 다음과 같다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://www.investing.com/stock-screener/?sp=country::5|sector::a|industry::a|equityType::a%3Ceq_market_cap;1
 </pre></div>
 </div>
 <p>하단에 표로 나타는 정보 중 Symbol이 티커에 해당하며, 이를 통해 티커를 손쉽게 수집할 수 있다. 다음으로 국가를 Japan(일본)으로 선택하고, Equity Type은 ORD(보통주)를 선택하자.</p>
-<div class="figure align-default" id="japan">
+<figure class="align-default" id="japan">
 <img alt="_images/japan.png" src="_images/japan.png" />
-<p class="caption"><span class="caption-number">Fig. 11.4 </span><span class="caption-text">일본 국가 선택</span><a class="headerlink" href="#japan" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 11.4 </span><span class="caption-text">일본 국가 선택</span><a class="headerlink" href="#japan" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>하단의 테이블이 일본 종목들로 바뀌며 URL 역시 다음과 같이 바뀐다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://www.investing.com/stock-screener/?sp=country::35|sector::a|industry::a|equityType::ORD%3Ceq_market_cap;1
 </pre></div>
@@ -1067,15 +991,17 @@ Name: ticker, dtype: int64
 </div>
 </div>
 </div>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>먼저 크롬 드라이버를 설정한다.</p></li>
 <li><p>미국 보통주에 해당하는 URL을 입력한다.</p></li>
 <li><p>해당 페이지를 연다.</p></li>
 </ol>
-<div class="figure align-default" id="selenium-open">
+<figure class="align-default" id="selenium-open">
 <img alt="_images/selenium_open.png" src="_images/selenium_open.png" />
-<p class="caption"><span class="caption-number">Fig. 11.5 </span><span class="caption-text">셀레니움을 이용한 스크리너 접속</span><a class="headerlink" href="#selenium-open" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 11.5 </span><span class="caption-text">셀레니움을 이용한 스크리너 접속</span><a class="headerlink" href="#selenium-open" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>다음으로 HTML 정보를 가져오도록 한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1085,15 +1011,19 @@ Name: ticker, dtype: int64
 </div>
 </div>
 <p>HTML 정보에 해당하는 <code class="docutils literal notranslate"><span class="pre">driver.page_source</span></code>를 BeautifulSoup 객체로 만들어준다. 이제 우리가 찾고자 하는 데이터를 하나씩 살펴보도록 한다. 먼저 각 국가별 코드를 살펴보도록 하자. 개발자도구 화면에서 ‘newBtnDropdown noHover’ 클래스 하단의 ‘li 태그의 ‘data-value’ 속성을 살펴보면 국가별 코드와 국가명이 적혀있다.</p>
-<div class="figure align-default" id="country-ticker">
+<figure class="align-default" id="country-ticker">
 <img alt="_images/country_ticker.png" src="_images/country_ticker.png" />
-<p class="caption"><span class="caption-number">Fig. 11.6 </span><span class="caption-text">국가별 코드</span><a class="headerlink" href="#country-ticker" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 11.6 </span><span class="caption-text">국가별 코드</span><a class="headerlink" href="#country-ticker" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>이번에는 위젯에서 선택되어 있는 국가명을 확인해보도록 하자. ‘newBtnDropdown noHover’ 클래스 하단의 ‘input’ 태그의 ‘value’ 속성의 속성명에는 국가명이 적혀 있다. 이를 코드를 통해 찾아보도록 하자.</p>
-<div class="figure align-default" id="country-name">
+<figure class="align-default" id="country-name">
 <img alt="_images/country_name.png" src="_images/country_name.png" />
-<p class="caption"><span class="caption-number">Fig. 11.7 </span><span class="caption-text">국가명 확인</span><a class="headerlink" href="#country-name" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 11.7 </span><span class="caption-text">국가명 확인</span><a class="headerlink" href="#country-name" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">html</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">class_</span><span class="o">=</span><span class="s1">&#39;js-search-input inputDropDown&#39;</span><span class="p">)[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span>
@@ -1107,10 +1037,12 @@ Name: ticker, dtype: int64
 </div>
 </div>
 <p>이번에는 종목들의 정보가 있는 테이블을 확인해보도록 하자. 클래스 명이 ‘genTbl openTbl resultsStockScreenerTbl elpTbl’ 인 테이블 중 ‘tbody’ 부분에 해당 데이터가 위치하고 있다. 이 정보를 이용해 해당 테이블 데이터를 선택하자.</p>
-<div class="figure align-default" id="screen-table">
+<figure class="align-default" id="screen-table">
 <img alt="_images/screen_table.png" src="_images/screen_table.png" />
-<p class="caption"><span class="caption-number">Fig. 11.8 </span><span class="caption-text">종목 테이블</span><a class="headerlink" href="#screen-table" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 11.8 </span><span class="caption-text">종목 테이블</span><a class="headerlink" href="#screen-table" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">html_table</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;table.genTbl.openTbl.resultsStockScreenerTbl.elpTbl&#39;</span><span class="p">)</span>
@@ -1125,9 +1057,9 @@ Name: ticker, dtype: int64
 </div>
 </div>
 </div>
-<div class="figure align-default" id="selenium-1">
+<figure class="align-default" id="selenium-1">
 <img alt="_images/selenium_1.png" src="_images/selenium_1.png" />
-</div>
+</figure>
 <p><code class="docutils literal notranslate"><span class="pre">select</span></code> 함수를 이용해 table 태그 중 해당 클래스명을 찾은 후 출력하면, 종목 정보들이 담긴 테이블의 HTML 정보가 출력된다. 이제 이를 데이터프레임 형태로 변환해보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1138,10 +1070,12 @@ Name: ticker, dtype: int64
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">prettify()</span></code> 메서드를 이용해 BeautifulSoup 에서 파싱한 파서 트리를 유니코드 형태로 다시 돌려준 후, <code class="docutils literal notranslate"><span class="pre">read_html()</span></code> 함수를 통해 테이블을 읽어온다. Variable Explorer 창에서 df_table_result 변수를 확인해보자.</p>
-<div class="figure align-default" id="selenium-2">
+<figure class="align-default" id="selenium-2">
 <img alt="_images/selenium_2.png" src="_images/selenium_2.png" />
-<p class="caption"><span class="caption-number">Fig. 11.9 </span><span class="caption-text">크롤링 결과 확인</span><a class="headerlink" href="#selenium-2" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 11.9 </span><span class="caption-text">크롤링 결과 확인</span><a class="headerlink" href="#selenium-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>결과를 살펴보면 웹페이지에 있는 내역 외에도 Exchange(거래소), Sector, Industy 등 추가적인 정보를 확인할 수 있다. 이 중 필요한 열만 선택하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1222,10 +1156,12 @@ Name: ticker, dtype: int64
 </div></div></div>
 </div>
 <p>마지막으로 종목 정보가 몇페이지까지 있는지 확인해야 한다. 웹페이지의 ‘Screener Results’ 글자 뒤에는 해당 국가에 총 몇 종목이 있는지 출력된다. 한 페이지에는 총 50 종목이 출력되므로 해당 숫자를 50으로 나눈 후 올림을 하면 총 페이지 수를 계산할 수 있다. 해당 정보는 ‘js-total-results’ 클래스에 위치하고 있으며, 이를 이용해 페이지 수를 계산해보도록 하자.</p>
-<div class="figure align-default" id="country-page">
+<figure class="align-default" id="country-page">
 <img alt="_images/country_page.png" src="_images/country_page.png" />
-<p class="caption"><span class="caption-number">Fig. 11.10 </span><span class="caption-text">종목 수 확인</span><a class="headerlink" href="#country-page" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 11.10 </span><span class="caption-text">종목 수 확인</span><a class="headerlink" href="#country-page" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">end_num</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;js-total-results&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
@@ -1247,8 +1183,8 @@ Name: ticker, dtype: int64
 </div>
 </div>
 </div>
-<div class="section" id="id5">
-<h3><span class="section-number">11.2.1. </span>전 종목 티커 크롤링<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<section id="id5">
+<h3><span class="section-number">11.2.1. </span>전 종목 티커 크롤링<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>위 과정을 통해 국가별 전 종목의 티커 및 관련 정보를 수집하는 방법과, 페이지 수를 계산할 수 있었다. 이제 for문을 이용해 미국의 전 종목 티커를 크롤링해보도록 하겠다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1286,7 +1222,7 @@ Name: ticker, dtype: int64
 </div>
 </div>
 </div>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>크롬 드라이브를 불러온다.</p></li>
 <li><p>국가 코드는 미국에 해당하는 ‘5’를 입력한다.</p></li>
 <li><p>먼저 첫페이지에 해당하는 URL을 생성한다.</p></li>
@@ -1343,7 +1279,7 @@ Name: ticker, dtype: int64
 </div>
 </div>
 </div>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>빈 리스트(all_data_df)를 생성한다.</p></li>
 <li><p>for문을 통해 전체 페이지에서 종목명과 티커 등의 정보를 크롤링한다.</p></li>
 <li><p>f-string을 통해 각 페이지에 해당하는 URL을 생성한 후 페이지를 연다.</p></li>
@@ -1412,29 +1348,33 @@ create table global_ticker
 </div>
 </div>
 </div>
-<div class="figure align-default" id="ticker-sql">
+<figure class="align-default" id="ticker-sql">
 <img alt="_images/ticker_sql.png" src="_images/ticker_sql.png" />
-<p class="caption"><span class="caption-number">Fig. 11.11 </span><span class="caption-text">글로벌 티커 테이블</span><a class="headerlink" href="#ticker-sql" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 11.11 </span><span class="caption-text">글로벌 티커 테이블</span><a class="headerlink" href="#ticker-sql" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
 <li><p>nationcode 부분만 변경하면 모든 국가의 티커 리스트 역시 동일한 방법으로 다운로드 받을 수 있다.</p></li>
 </ul>
 </div>
-</div>
-</div>
-<div class="section" id="id6">
-<h2><span class="section-number">11.3. </span>주가 다운로드<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="id6">
+<h2><span class="section-number">11.3. </span>주가 다운로드<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 <p>야후 파이낸스에서는 전 세계 주가(한국 포함)를 제공하고 있다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">finance</span><span class="o">.</span><span class="n">yahoo</span><span class="o">.</span><span class="n">com</span><span class="o">/</span>
 </pre></div>
 </div>
 <p>사이트에서 종목 티커를 검색한 후 [Historical Data] 탭을 선택하면 확인 및 다운로드가 가능하다. 또한 pandas_datareader 패키지의 <code class="docutils literal notranslate"><span class="pre">DataReader()</span></code> 함수를 사용하면 야후 API를 통해 해당 데이터를 매우 손쉽게 다운로드 받을 수도 있다. 예시로써 애플(AAPL)의 주가를 다운로드 받아보도록 하자.</p>
-<div class="figure align-default" id="yahoo-price">
+<figure class="align-default" id="yahoo-price">
 <img alt="_images/yahoo_price.png" src="_images/yahoo_price.png" />
-<p class="caption"><span class="caption-number">Fig. 11.12 </span><span class="caption-text">야후에서 제공하는 주가 데이터</span><a class="headerlink" href="#yahoo-price" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 11.12 </span><span class="caption-text">야후에서 제공하는 주가 데이터</span><a class="headerlink" href="#yahoo-price" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">web</span>
@@ -1532,10 +1472,12 @@ create table global_ticker
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">DataReader()</span></code> 함수 내에 티커와 출처에 해당하는 ‘yahoo’를 입력하면 주가 정보를 매우 손쉽게 받을 수 있다.</p>
 <p>반면 미국이 아닌 국가의 경우 단순히 티커만 입력할 경우 데이터를 받을 수 없다. 예를 들어 일본의 ‘도쿄 일렉트론’은 일본 내에서 티커가 ‘8035’이며, 야후 파이낸스에서 이를 검색해보자.</p>
-<div class="figure align-default" id="same-ticker">
+<figure class="align-default" id="same-ticker">
 <img alt="_images/same_ticker.png" src="_images/same_ticker.png" />
-<p class="caption"><span class="caption-number">Fig. 11.13 </span><span class="caption-text">중복 티커</span><a class="headerlink" href="#same-ticker" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 11.13 </span><span class="caption-text">중복 티커</span><a class="headerlink" href="#same-ticker" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>우리가 원하는 도쿄 일렉트론 뿐만 아니라 홍콩에 상장된 ‘Janco Holdings Limited’라는 주식 역시 티커가 8035 이다. 이처럼 각기 다른 국가에서 중복된 티커가 사용되는 경우가 종종 발생되므로, 야후 파이낸스 혹은 여러 벤더의 경우 ‘티커.국가코드’ 형태를 통해 이들을 구분한다. 야후 파이낸스에서 일본의 국가코드는 ‘T’ 이다. 이를 이용해 도쿄 일렉트론의 주가를 받는 법은 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1639,8 +1581,8 @@ create table global_ticker
 <li><p>국내 주가 역시 야후 파이낸스를 통해 다운로드 받을 수 있다. 그러나 일부 중소형주의 경우 데이터가 존재하지 않는 문제가 있어 국내 사이트를 이용해 수집하는 것을 권장한다.</p></li>
 </ul>
 </div>
-<div class="section" id="id7">
-<h3><span class="section-number">11.3.1. </span>전 종목 주가 다운로드<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<section id="id7">
+<h3><span class="section-number">11.3.1. </span>전 종목 주가 다운로드<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <p>미국 데이터 역시 국내 전종목 주가를 다운로드 받고 DB에 저장했던것과 동일하게 for문을 이용하면 된다. 먼저 SQL에서 주가 데이터에 해당하는 테이블(global_price)를 만든다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1739,7 +1681,7 @@ create table global_price
 </div>
 </div>
 </div>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>DB에 연결한다.</p></li>
 <li><p>기준일이 최대, 즉 최근일 기준 보통주에 해당하며, 미국 종목의 리스트(ticker_list)만 불러온다.</p></li>
 <li><p>DB에 저장할 쿼리(query)를 입력한다.</p></li>
@@ -1750,27 +1692,31 @@ create table global_price
 <li><p>무한 크롤링을 방지하기 위해 한 번의 루프가 끝날 때마다 타임슬립을 적용한다.</p></li>
 <li><p>모든 작업이 끝나면 DB와의 연결을 종료한다.</p></li>
 </ol>
-<div class="figure align-default" id="sql-price">
+<figure class="align-default" id="sql-price">
 <img alt="_images/sql_price.png" src="_images/sql_price.png" />
-<p class="caption"><span class="caption-number">Fig. 11.14 </span><span class="caption-text">글로벌 주가 테이블</span><a class="headerlink" href="#sql-price" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 11.14 </span><span class="caption-text">글로벌 주가 테이블</span><a class="headerlink" href="#sql-price" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>작업이 종료된 후 ‘error_list’에는 오류가 발생해 다운로드 받지 못한 종목들이 입력되어 있다. 이는 페이지 오류나 통신 오류 때문일 수도 있으며, 인베스팅닷컴에는 존재하지만 야후 파이낸스에는 존재하지 않는 종목일 수도 있다.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>미국이 아닌 타 국가의 경우 티커의 중복 방지를 위해 ticker 열에 국가코드도 함께 입력한 후 DB에 저장하는 것을 추천한다.</p>
 </div>
-</div>
-</div>
-<div class="section" id="id8">
-<h2><span class="section-number">11.4. </span>재무제표 다운로드<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="id8">
+<h2><span class="section-number">11.4. </span>재무제표 다운로드<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
 <p>재무제표 역시 야후 파이낸스에서 구할 수 있으며, [Financials] 탭을 클릭하면 연간 및 분기 기준 재무제표를 제공하고 있다. 해당 데이터를 다운로드 받을 수 있는 여러 패키지가 존재하며, 본 책에서는 그 중에서도 yahoo_fin 패키지를 사용하도록 하겠다. 해당 패키지의 자세한 설명은 아래 사이트에서 확인할 수 있다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">theautomatic</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">yahoo_fin</span><span class="o">-</span><span class="n">documentation</span><span class="o">/</span>
 </pre></div>
 </div>
-<div class="figure align-default" id="yahoo-fs">
+<figure class="align-default" id="yahoo-fs">
 <img alt="_images/yahoo_fs.png" src="_images/yahoo_fs.png" />
-<p class="caption"><span class="caption-number">Fig. 11.15 </span><span class="caption-text">야후에서 제공하는 재무제표 데이터</span><a class="headerlink" href="#yahoo-fs" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 11.15 </span><span class="caption-text">야후에서 제공하는 재무제표 데이터</span><a class="headerlink" href="#yahoo-fs" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>해당 패키지의 <code class="docutils literal notranslate"><span class="pre">get_financials()</span></code> 함수를 이용하면 손익계산서, 재무상태표, 현금흐름표를 한번에 다운로드 받을 수 있으며, 예시로 애플(AAPL) 종목의 연간 재무제표를 받아보도록 하겠다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1866,7 +1812,7 @@ create table global_price
 </table>
 </div></div></div>
 </div>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>딕셔너리의 value에 해당하는 부분만을 선택한 후 <code class="docutils literal notranslate"><span class="pre">concat()</span></code> 함수를 통해 데이터프레임 형태로 합쳐준다.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">stack()</span></code> 함수를 통해 데이터를 위에서 아래로 길게 재구조화 해주며, <code class="docutils literal notranslate"><span class="pre">reset_index()</span></code>를 통해 인덱스를 초기화한다.</p></li>
 <li><p>열 이름을 변경한다.</p></li>
@@ -1950,8 +1896,8 @@ create table global_price
 </table>
 </div></div></div>
 </div>
-<div class="section" id="id9">
-<h3><span class="section-number">11.4.1. </span>전 종목 재무제표 다운로드<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<section id="id9">
+<h3><span class="section-number">11.4.1. </span>전 종목 재무제표 다운로드<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <p>for문을 이용하여 전 종목 재무제표를 다운로드 받도록 하겠다. 먼저 SQL에서 재무제표 데이터에 해당하는 테이블(global_fs)를 만든다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2055,7 +2001,7 @@ create table global_price
 </div>
 </div>
 </div>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>DB에 연결한다.</p></li>
 <li><p>기준일이 최대, 즉 최근일 기준 보통주에 해당하며, 미국 종목의 리스트(ticker_list)만 불러온다.</p></li>
 <li><p>DB에 저장할 쿼리(query)를 입력한다.</p></li>
@@ -2066,17 +2012,19 @@ create table global_price
 <li><p>무한 크롤링을 방지하기 위해 한 번의 루프가 끝날 때마다 타임슬립을 적용한다.</p></li>
 <li><p>모든 작업이 끝나면 DB와의 연결을 종료한다.</p></li>
 </ol>
-<div class="figure align-default" id="sql-fs">
+<figure class="align-default" id="sql-fs">
 <img alt="_images/sql_fs.png" src="_images/sql_fs.png" />
-<p class="caption"><span class="caption-number">Fig. 11.16 </span><span class="caption-text">글로벌 재무제표 테이블</span><a class="headerlink" href="#sql-fs" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 11.16 </span><span class="caption-text">글로벌 재무제표 테이블</span><a class="headerlink" href="#sql-fs" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>미국 종목들의 가치지표는 국내 재무제표 데이터를 이용해 가치지표를 계산했던 것과 동일한 방법으로 계산할 수 있으므로, 이는 생략하도록 한다.</p>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2090,7 +2038,7 @@ create table global_price
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -2098,44 +2046,121 @@ create table global_price
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="data_korea.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">10. </span>국내 주식 데이터 수집</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="data_korea.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>국내 주식 데이터 수집</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="data_ref.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="data_ref.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">12. </span>투자 참고용 데이터 수집</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            
-        </div>
-    </div>
-    <footer class="footer">
-  <p>
-    
-      By 이현열<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
-
-
       </div>
-    </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+</div>
 
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">11.1. 유료 데이터 벤더 이용하기</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-token">11.1.1. 가입 및 API token 받기</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">11.1.2. 데이터 다운로드</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">11.2. 티커 수집하기</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">11.2.1. 전 종목 티커 크롤링</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">11.3. 주가 다운로드</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">11.3.1. 전 종목 주가 다운로드</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">11.4. 재무제표 다운로드</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">11.4.1. 전 종목 재무제표 다운로드</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By 이현열
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
