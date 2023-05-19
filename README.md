@@ -63,7 +63,7 @@ pip install riskfolio-lib==3.3.0
 8. [정적 크롤링 실습하기](https://github.com/hyunyulhenry/quant_py/blob/main/crawl_basic.ipynb)
 9. [동적 크롤링과 정규 표현식](https://github.com/hyunyulhenry/quant_py/blob/main/selenium.ipynb)
 10. [국내 주식 데이터 수집](https://github.com/hyunyulhenry/quant_py/blob/main/data_korea.ipynb)
-11. [전 세계 주식 데이터 수집하기](https://github.com/hyunyulhenry/quant_py/blob/main/data_global.ipynb)
+11. [전 세계 주식 데이터 수집하기](https://github.com/hyunyulhenry/quant_py/blob/main/data_global_revision.ipynb)
 12. [투자 참고용 데이터 수집](https://github.com/hyunyulhenry/quant_py/blob/main/data_ref.ipynb)
 
 #### Part 3 포트폴리오 구성, 백테스트 및 매매하기
