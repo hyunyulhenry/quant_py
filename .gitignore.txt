@@ -12,3 +12,5 @@ save_data.*
 update/
 .gitattributes
 model.*
+_config.yml
+_toc.yml
