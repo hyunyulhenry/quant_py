@@ -1,0 +1,4 @@
+데이터 다운로드 방법이 변경되었습니다.
+아래 방법을 참조해주세요.
+
+https://github.com/hyunyulhenry/quant_py/blob/main/read_data.ipynb

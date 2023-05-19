@@ -18,7 +18,7 @@ parts:
     - file: crawl_basic.ipynb
     - file: selenium.ipynb
     - file: data_korea.ipynb
-    - file: data_global.ipynb
+    - file: data_global_revision.ipynb
     - file: data_ref.ipynb  
     
   - caption: 포트폴리오 구성, 백테스트 및 매매하기
