@@ -12,3 +12,5 @@ save_data.*
 오타/
 update/
 model.xlsx
+data/save_data.py
+data/.ipynb_checkpoints
