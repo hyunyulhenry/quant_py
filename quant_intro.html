@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>1. 퀀트에 대해 알아보기 &#8212; 파이썬을 이용한 퀀트 투자 포트폴리오 만들기</title>
   
@@ -19,40 +18,39 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script kind="utterances">
 
     var commentsRunWhenDOMLoaded = cb => {
@@ -88,13 +86,11 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'quant_intro';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -109,7 +105,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -144,11 +148,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -163,9 +170,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="index.html">
+  
   
   
   
@@ -175,12 +184,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-light" alt="파이썬을 이용한 퀀트 투자 포트폴리오 만들기 - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="파이썬을 이용한 퀀트 투자 포트폴리오 만들기 - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -326,20 +346,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -379,14 +401,14 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">1. </span>퀀트에 대해 알아보기<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">1. </span>퀀트에 대해 알아보기<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>투자에 관심이 있는 사람들이라면 ‘퀀트 투자’라는 단어를 한 번씩은 들어보았을 것이다. 퀀트 투자에서 ‘퀀트’란 모형을 기반으로 금융상품의 가격을 산정하거나, 이를 바탕으로 투자를 하는 사람을 말한다. 퀀트(Quant)라는 단어가 ‘계량적’을 의미하는 퀀티터티브(<strong>Quant</strong>itative)의 앞 글자를 따왔음을 생각하면 쉽게 이해가 될 것이다.</p>
 <p>일반적으로 투자자들이 산업과 기업을 분석해 가치를 매기는 정성적인 투자법과는 달리, 퀀트 투자는 수학과 통계, 데이터를 기반으로 전략을 만들고 이를 바탕으로 투자하는 정량적인 투자법을 의미한다. <a class="reference internal" href="#diff"><span class="std std-numref">Table 1.1</span></a>은 퀀트 투자와 정성적 투자의 차이가 비교되어 있다.</p>
 <table class="table" id="diff">
-<caption><span class="caption-number">Table 1.1 </span><span class="caption-text">퀀트 투자와 정성적 투자의 차이</span><a class="headerlink" href="#diff" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 1.1 </span><span class="caption-text">퀀트 투자와 정성적 투자의 차이</span><a class="headerlink" href="#diff" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>분류</p></th>
 <th class="head"><p>퀀트 투자</p></th>
@@ -425,12 +447,12 @@ document.write(`
 </ol>
 <p>퀀트 투자는 이와 같은 장점들로 인해 날로 인기가 증가하고 있다. 해외의 경우 퀀트 투자를 전문으로 하는 자산관리 회사도 많을 뿐만 아니라, 정성적인 투자를 하는 회사들 조차 일정 부분은 계량 분석의 도움을 받고 있다. 또한 세계 최고의 헤지펀드 중 대부분은 이미 퀀트를 기반으로 운용하고 있다.</p>
 <section id="id2">
-<h2><span class="section-number">1.1. </span>퀀트 투자의 핵심 재료, 데이터<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.1. </span>퀀트 투자의 핵심 재료, 데이터<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>퀀트들은 데이터를 통해 전략을 만들어내므로 그들에게 데이터는 가장 기본이 되면서도 중요한 밑천이다. 이는 마치 요리사에게 있어 재료와도 같다. 만일 재료가 부실하다면 제대로 된 요리를 만들 수 없을 뿐만 아니라 먹고 탈이 날 수도 있다. 반면 재료가 싱싱하고 최상급이라면 좋은 요리를 만들어낼 수 있다. 또한 재료가 한정적이라면 할 수 있는 요리의 수도 한정적이지만, 재료가 다채롭다면 요리사의 실력에 따라 얼마든지 다양한 요리를 만들 수 있다. 퀀트 투자의 영역 또한 마찬가지다. 만일 데이터가 부실하거나 틀린 내용이라면 잘못된 전략을 만들어 손실을 보게 될 것이다. 또한 데이터가 한정적이라면 만들 수 있는 전략의 수도 한정적이지만, 데이터가 다채롭다면, 예를 들어 전 세계 모든 국가의 주식뿐 아니라 모든 자산군의 데이터가 있다면 이를 다루는 퀀트의 실력에 따라 얼마든지 다양한 전략을 만들 수 있다.</p>
 <p>그렇다면 퀀트 투자에 필요한 데이터는 어떻게 구할까? 전문 투자자의 경우 ClariFi, 캐피탈 IQ, 팩셋, 톰슨 로이터, 블룸버그 등 해외의 여러 데이터 공급업체를 통해 양질의 데이터를 구할 수 있다. 하지만 그 비용이 1년에 최소 수천만원에서 수십억원에 이르므로 개인 투자자가 이러한 서비스를 이용하는 것은 사실상 불가능하다. 국내의 데이터 공급업체를 이용할 경우에는 그보다 저렴한 금액으로도 데이터를 구할 수 있지만, 데이터의 양이 매우 한정적이다. 웹스크래핑 혹은 크롤링과 같은 기술을 통해 웹페이지의 데이터를 무료로 추출하는 방법도 있다. 본 책에는 크롤링과 API를 이용해 국내 및 글로벌 데이터를 구하는 방법에 대해 살펴보도록 하겠다.</p>
 </section>
 <section id="id3">
-<h2><span class="section-number">1.2. </span>퀀트 투자에 프로그래밍이 필요한 이유<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.2. </span>퀀트 투자에 프로그래밍이 필요한 이유<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>우리가 구한 데이터는 연구나 투자에 바로 사용할 수 있는 형태로 주어지는 경우가 거의 없다. 따라서 데이터를 목적에 맞게 처리하는 과정을 거쳐야 하며, 이를 흔히 데이터 클렌징 작업이라고 한다. 또한 정제된 데이터를 활용한 투자 전략의 백테스트나 종목 선정을 위해서 프로그래밍은 필수다. 물론 엑셀을 이용해도 간단한 형태의 백테스트 및 종목 선정은 가능하지만, 응용성 및 효율성 측면에서 엑셀은 매우 비효율적이다.</p>
 <p>데이터를 수집하고 클렌징 작업을 할 때 대상이 몇 종목 되지 않는다면 엑셀을 이용해도 충분히 가능하다. 그러나 종목 수가 수천 종목을 넘어간다면 데이터를 손으로 일일이 처리하기가 사실상 불가능하다. 이러한 단순 반복 작업은 프로그래밍을 이용한다면 훨씬 효율적으로 수행할 수 있다.</p>
 <p>백테스트에서도 프로그래밍이 훨씬 효율적이다. 과거 12개월 누적수익률이 높은 종목에 투자하는 모멘텀 전략의 백테스트를 한다고 가정하자. 처음에는 엑셀로 백테스트를 하는 것이 편하다고 생각할 수 있다. 그러나 만일 12개월이 아닌 6개월 누적 수익률로 백테스트를 하고자 한다면 어떨까? 엑셀에서 다시 6개월 누적수익률을 구하기 위해 수식을 바꾸고 드래그하는 작업을 반복해야 할 것이아다. 그러나 프로그래밍을 이용한다면 <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">12</span></code> 부분을 <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">6</span></code>으로 변경한 후 단지 클릭 한 번만으로 새로운 백테스트를 할 수 있다.</p>
@@ -438,24 +460,24 @@ document.write(`
 <p>프로그래밍을 이용하면 어떠할까? 백테스트를 수행하는 프로그래밍 스크립트는 불과 몇 KB에 불과하므로, 10개의 전략에 대한 스크립트 파일을 합해도 1MB가 되지 않는다. 데이터가 바뀌더라도 원본 데이터 파일 하나만 수정해주면 된다.</p>
 </section>
 <section id="id4">
-<h2><span class="section-number">1.3. </span>최고의 인기언어, 파이썬<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.3. </span>최고의 인기언어, 파이썬<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>인간이 사용하는 언어의 종류가 다양하듯이, 프로그래밍 언어의 종류 역시 다양하다. 대략 700여 개 이상의 프로그래밍 언어 중 대중적으로 사용되는 언어는 그리 많지 않으므로, 대중성과 효율성을 위해 사용량이 많은 언어를 이용하는 것이 좋다. <a class="reference internal" href="#tiobe"><span class="std std-numref">Fig. 1.1</span></a>은 프로그래밍 언어의 사용 순위로써, 파이썬(Python)은 1위를 기록하고 있을 정도로 매우 대중적인 언어다.</p>
 <figure class="align-default" id="tiobe">
 <img alt="_images/tiobe.png" src="_images/tiobe.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.1 </span><span class="caption-text">프로그래밍 언어 사용 통계 순위</span><a class="headerlink" href="#tiobe" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.1 </span><span class="caption-text">프로그래밍 언어 사용 통계 순위</span><a class="headerlink" href="#tiobe" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>이처럼 파이썬의 인기가 높은 가장 큰 이유는 무료인데다 일반인들이 사용하기에도 매우 편한 형태로 구성되어 있기 때문이다. 기존에는 적게는 수십만 원, 많게는 수천만 원을 지불해야 했던 상용 소프트웨어의 기능을 파이썬에서도 모두 구현할 수 있을 뿐만 아니라, 훨씬 더 많은 기능을 활용할 수도 있다. 이로 인해 학계와 산업계에서 점차 기존 소프트웨어 대신 파이썬을 사용하는 비중이 늘어나고 있다. 또한 책이나 온라인 강의 등 파이썬을 공부할 수 있는 환경도 많아졌기에 진입 장벽도 매우 낮다.</p>
 </section>
 <section id="sql">
-<h2><span class="section-number">1.4. </span>데이터 관리의 표준, SQL<a class="headerlink" href="#sql" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.4. </span>데이터 관리의 표준, SQL<a class="headerlink" href="#sql" title="Link to this heading">#</a></h2>
 <p>만일 수많은 데이터를 텍스트나 엑셀 파일로 관리할 경우 어떠한 단점이 있을까? 먼저 다수의 사람이 데이터를 공유하기 어려우며, 원하는 데이터가 있으면 매번 파일을 전송해주어야 하는 번거로움이 있다. 둘째로는 대량의 데이터를 다루기가 힘들다. 마지막으로 파일 삭제, 하드 디스크 고장, 보안 문제 등 사고에 대응하기가 어렵다. 이러한 이유로 실무에서는 대부분 데이터베이스를 이용해 데이터를 효율적으로 관리한다.</p>
 <p>데이터베이스(database, DB)란 여러 사람이 공유하여 사용할 목적으로 체계화하여 통합, 관리하는 데이터의 집합이다. 예를 들어 티커, 주가, 재무제표, 목표주가 등 투자와 관련된 모든 데이터를 데이터베이스에 저장한 후 이를 관리하거나 사용할 수 있다. 데이터베이스 관리 시스템(database management system, DBMS)이란 다수의 사용자들이 데이터베이스 내의 데이터를 접근할 수 있도록 해주는 소프트웨어 도구의 집합이다. DBMS는 대량의 데이터를 다수의 사람이 안전하고 간단히 다룰 수 있게 해주는 장점이 있다.</p>
 <figure class="align-default" id="dbms">
 <img alt="_images/dbms.png" src="_images/dbms.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1.2 </span><span class="caption-text">데이터베이스 관리 시스템의 활용</span><a class="headerlink" href="#dbms" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1.2 </span><span class="caption-text">데이터베이스 관리 시스템의 활용</span><a class="headerlink" href="#dbms" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>DBMS 중 가장 일반적으로 사용되는 것이 관계형 데이터베이스(Relational Database)다. 이는 엑셀 시트처럼 열과 행으로 이루어진 2차원 표 형식으로써 데이터를 관리하거나 이해하기 쉽다. 또한 SQL이라는 전용 언어를 사용해서 데이터를 처리할 수 있다. 이러한 관계형 데이터베이스 관리 시스템 중 대표적으로 사용되는 것으로는 오라클 RDBMS, MS SQL Server, Postgre SQL, MySQL 등이 있으며 본 책에서는 무료로 사용 가능한 MySQL을 살펴보도록 하겠다.</p>
@@ -491,11 +513,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="index.html"
@@ -515,10 +536,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -526,6 +544,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -558,9 +577,10 @@ By 이현열
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -584,8 +604,8 @@ By 이현열
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>9. 동적 크롤링과 정규 표현식 &#8212; 파이썬을 이용한 퀀트 투자 포트폴리오 만들기</title>
   
@@ -19,40 +18,39 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script kind="utterances">
 
     var commentsRunWhenDOMLoaded = cb => {
@@ -88,13 +86,11 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'selenium';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -109,7 +105,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -144,11 +148,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -163,9 +170,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="index.html">
+  
   
   
   
@@ -175,12 +184,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-light" alt="파이썬을 이용한 퀀트 투자 포트폴리오 만들기 - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="파이썬을 이용한 퀀트 투자 포트폴리오 만들기 - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -326,20 +346,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -405,30 +427,30 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">9. </span>동적 크롤링과 정규 표현식<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">9. </span>동적 크롤링과 정규 표현식<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>이번 장에서는 좀 더 복잡한 형태의 데이터를 크롤링하기 위한 동적 크롤링 및 정규 표현식의 사용방법에 대해 알아보도록 하겠다.</p>
 <section id="id2">
-<h2><span class="section-number">9.1. </span>동적 크롤링이란?<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.1. </span>동적 크롤링이란?<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>지난 장에서 크롤링을 통해 웹사이트의 데이터를 수집하는 방법에 대해 배웠다. 그러나 일반적인 크롤링으로는 정적 데이터, 즉 변하지 않는 데이터만을 수집할 수 있다. 한 페이지 안에서 원하는 정보가 모두 드러나는 것을 정적 데이터라 한다. 반면 입력, 클릭, 로그인 등을 통해 데이터가 바뀌는 것을 동적 데이터라 한다. 예를 들어 네이버 지도에서 매장을 검색을 한 후 좌측에서 원하는 선택할 때 마다 이에 해당하는 내용이 뜬다.</p>
 <figure class="align-default" id="twosome">
 <img alt="_images/twosome.png" src="_images/twosome.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9.1 </span><span class="caption-text">동적 페이지</span><a class="headerlink" href="#twosome" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.1 </span><span class="caption-text">동적 페이지</span><a class="headerlink" href="#twosome" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>이는 웹페이지에서 사용자가 클릭 등과 같은 조작을 하면 AJAX 호출이 발생하여 그 결과가 페이지의 일부분에만 반영되어 변경되기 때문이다. 즉 매장을 클릭하면 웹브라우저가 연결된 자바스크립트 코드를 실행하여 해당 매장의 상세 정보가 동일한 페이지에 동적으로 표시된다. <a class="reference internal" href="#compare"><span class="std std-numref">Fig. 9.2</span></a>은 정적 페이지와 동적 페이지의 작동 방식의 차이를 나타낸다.</p>
 <figure class="align-default" id="compare">
 <img alt="_images/compare.png" src="_images/compare.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9.2 </span><span class="caption-text">정적 페이지와 동적 페이지의 차이</span><a class="headerlink" href="#compare" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.2 </span><span class="caption-text">정적 페이지와 동적 페이지의 차이</span><a class="headerlink" href="#compare" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>셀레니움을 이용할 경우 정적 페이지와 동적 페이지를 모두 크롤링 할 수 있다는 강력함이 있지만, 상대적으로 속도가 느리다. 따라서 정적 페이지는 기존의 방법을 이용한 크롤링을, 동적 페이지는 셀레니움을 이용한 크롤링을 하는 것이 일반적이다.</p>
 <table class="table" id="crawl-compare">
-<caption><span class="caption-number">Table 9.1 </span><span class="caption-text">정적 크롤링과 동적 크롤링 비교</span><a class="headerlink" href="#crawl-compare" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 9.1 </span><span class="caption-text">정적 크롤링과 동적 크롤링 비교</span><a class="headerlink" href="#crawl-compare" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>구분</p></th>
 <th class="head"><p>정적 크롤링</p></th>
@@ -456,7 +478,7 @@ document.write(`
 </table>
 <p>셀레니움이란 다양한 브라우저(인터넷 익스플로러, 크롬, 사파리 오페라 등) 및 플랫폼에서 웹 응용 프로그램을 테스트할 수 있게 해주는 라이브러리다. 즉 웹 자동화 테스트 용도로 개발이 되었기에 실제 브라우저를 사용하며, 페이지가 변화하는 것도 관찰이 가능하기에 동적 크롤링에 사용할 수 있다.</p>
 <section id="id3">
-<h3><span class="section-number">9.1.1. </span>셀레니움 실습하기<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.1.1. </span>셀레니움 실습하기<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>이제 간단한 예제를 통해 셀레니움 사용법을 알아보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -472,16 +494,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</div>
 </div>
 <figure class="align-default" id="selenium-open">
 <img alt="_images/selenium_open1.png" src="_images/selenium_open1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9.3 </span><span class="caption-text">셀레니움: 창 열기</span><a class="headerlink" href="#selenium-open" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.3 </span><span class="caption-text">셀레니움: 창 열기</span><a class="headerlink" href="#selenium-open" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><code class="docutils literal notranslate"><span class="pre">webdriver.Chrome(service=Service(ChromeDriverManager().install()))</span></code> 코드를 실행하면 크롬 브라우저의 버전을 탐색한 다음, 버전에 맞는 웹드라이버를 다운로드하여 해당 경로를 셀레니움에 전달해준다. 또한 <a class="reference internal" href="#selenium-open"><span class="std std-numref">Fig. 9.3</span></a>와 같이 크롬 창이 열리며, 좌측 상단에 ‘Chrome이 자동화된 테스트 소프트웨어에 의해 제어되고 있습니다.’라는 문구가 뜬다. 이제 파이썬 코드를 이용해 해당 페이지를 조작할 수 있다.</p>
@@ -494,7 +511,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;html lang=&quot;ko&quot; data-dark=&quot;false&quot; data-useragent=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.79 Safari/537.36&quot;&gt;&lt;head&gt;&lt;script async=&quot;&quot; type=&quot;text/javascript&quot; src=&quot;https://ssl.pstatic.net/tveta/libs/ndpsdk/prod/ndp-core.js&quot;&gt;&lt;/script&gt; &lt;meta charset=&quot;utf-8&quot;&gt; &lt;title&gt;NAVER&lt;/title&gt; &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt; &lt;meta name=&quot;viewport&quot; content=&quot;width=1190&quot;&gt; &lt;meta name=&quot;apple-mobile-web-app-title&quot; content=&quot;NAVER&quot;&gt; &lt;meta name=&quot;robots&quot; content=&quot;index,nofollow&quot;&gt; &lt;meta name=&quot;description&quot; content=&quot;네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요&quot;&gt; &lt;meta property=&quot;og:title&quot; content=&quot;네이버&quot;&gt; &lt;meta property=&quot;og:url&quot; content=&quot;https://www.naver.com/&quot;&gt; &lt;meta property=&quot;og:image&quot; content=&quot;https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png&quot;&gt; &lt;meta property=&quot;og:description&quot; content=&quot;네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요&quot;&gt; &lt;meta name=&quot;twitter:card&quot; content=&quot;summary&quot;&gt; &lt;meta name=&quot;twitter:title&quot; content=&quot;&quot;&gt; &lt;meta name=&quot;twitter:url&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;html lang=&quot;ko&quot; class=&quot;fzoom&quot; data-dark=&quot;false&quot;&gt;&lt;head&gt;&lt;script async=&quot;&quot; src=&quot;https://ntm.pstatic.net/ex/nlog.js&quot;&gt;&lt;/script&gt;&lt;script async=&quot;&quot; src=&quot;https://ntm.pstatic.net/scripts/ntm_27291e35193e.js&quot;&gt;&lt;/script&gt;&lt;script async=&quot;&quot; type=&quot;text/javascript&quot; src=&quot;https://ssl.pstatic.net/tveta/libs/ndpsdk/prod/ndp-core.js&quot;&gt;&lt;/script&gt; &lt;meta charset=&quot;utf-8&quot;&gt; &lt;meta name=&quot;Referrer&quot; content=&quot;origin&quot;&gt; &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt; &lt;meta name=&quot;viewport&quot; content=&quot;width=1190&quot;&gt; &lt;title&gt;NAVER&lt;/title&gt; &lt;meta name=&quot;apple-mobile-web-app-title&quot; content=&quot;NAVER&quot;&gt; &lt;meta name=&quot;robots&quot; content=&quot;index,nofollow&quot;&gt; &lt;meta name=&quot;description&quot; content=&quot;네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요&quot;&gt; &lt;meta property=&quot;og:title&quot; content=&quot;네이버&quot;&gt; &lt;meta property=&quot;og:url&quot; content=&quot;https://www.naver.com/&quot;&gt; &lt;meta property=&quot;og:image&quot; content=&quot;https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png&quot;&gt; &lt;meta property=&quot;og:description&quot; content=&quot;네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요&quot;&gt; &lt;meta name=&quot;twitter:card&quot; content=&quot;&#39;
 </pre></div>
 </div>
 </div>
@@ -502,18 +519,18 @@ document.write(`
 <figure class="align-default" id="selenium-naver">
 <img alt="_images/selenium_naver.png" src="_images/selenium_naver.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9.4 </span><span class="caption-text">셀레니움을 이용한 네이버 접속</span><a class="headerlink" href="#selenium-naver" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.4 </span><span class="caption-text">셀레니움을 이용한 네이버 접속</span><a class="headerlink" href="#selenium-naver" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><code class="docutils literal notranslate"><span class="pre">driver.get()</span></code> 내에 URL 주소를 입력하면 해당 주소로 이동한다. 또한 <code class="docutils literal notranslate"><span class="pre">driver.page_source</span></code>를 통해 열려있는 창의 HTML 코드를 확인할 수도 있다. 이제 네이버 메인에서 [뉴스]버튼을 누르는 동작을 실행해보자. 개발자도구 화면을 통해 확인해보면 [뉴스] 탭은 아래 HTML에 위치하고 있다.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;https://news.naver.com/&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;nav&quot;</span> <span class="n">data</span><span class="o">-</span><span class="n">clk</span><span class="o">=</span><span class="s2">&quot;svc.news&quot;</span><span class="o">&gt;</span><span class="n">뉴스</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;https://news.naver.com/&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;link_service&quot;</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;_blank&quot;</span><span class="o">&gt;&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;service_icon type_news&quot;</span><span class="o">&gt;&lt;/</span><span class="n">span</span><span class="o">&gt;&lt;</span><span class="n">span</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;service_name&quot;</span><span class="o">&gt;</span><span class="n">뉴스</span><span class="o">&lt;/</span><span class="n">span</span><span class="o">&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>위 정보를 통해 해당 부분을 클릭해보도록 하자.</p>
 <figure class="align-default" id="selenium-news">
 <img alt="_images/selenium_news.png" src="_images/selenium_news.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9.5 </span><span class="caption-text">뉴스 탭의 HTML 확인</span><a class="headerlink" href="#selenium-news" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.5 </span><span class="caption-text">뉴스 탭의 HTML 확인</span><a class="headerlink" href="#selenium-news" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -526,29 +543,31 @@ document.write(`
 <figure class="align-default" id="selenium-news2">
 <img alt="_images/selenium_news2.png" src="_images/selenium_news2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9.6 </span><span class="caption-text">뉴스 탭으로 이동</span><a class="headerlink" href="#selenium-news2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.6 </span><span class="caption-text">뉴스 탭으로 이동</span><a class="headerlink" href="#selenium-news2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>브라우저 상에서 보이는 버튼, 검색창, 사진, 테이블, 동영상 등을 엘레먼트(element, 요소)라고 한다. <code class="docutils literal notranslate"><span class="pre">find_element()</span></code>는 다양한 방법으로 엘레먼트에 접근하게 해주며, <code class="docutils literal notranslate"><span class="pre">By.*</span></code> 를 통해 어떠한 방법으로 엘레먼트에 접근할지 선언한다. LINK_TEXT의 경우 링크가 달려 있는 텍스트로 접근하며, <code class="docutils literal notranslate"><span class="pre">value</span> <span class="pre">=</span> <span class="pre">'뉴스'</span></code>, 즉 뉴스라는 단어가 있는 엘레먼트로 접근한다. <code class="docutils literal notranslate"><span class="pre">click()</span></code> 함수는 마우스 클릭을 실행하며 결과 적으로 뉴스 탭을 클릭한 후 페이지가 이동되는 것을 확인할 수 있다. <code class="docutils literal notranslate"><span class="pre">find_element()</span></code> 내 접근방법 및 셀레니움의 각종 동작 제어 방법에 대해서는 나중에 다시 정리하도록 한다.</p>
-<p>이제 뒤로가기를 실행해보도록 하자.</p>
+<p>새로운 탭이 열리면서 뉴스 화면이 열린다. 브라우저 상에서 보이는 버튼, 검색창, 사진, 테이블, 동영상 등을 엘레먼트(element, 요소)라고 한다. <code class="docutils literal notranslate"><span class="pre">find_element()</span></code>는 다양한 방법으로 엘레먼트에 접근하게 해주며, <code class="docutils literal notranslate"><span class="pre">By.*</span></code> 를 통해 어떠한 방법으로 엘레먼트에 접근할지 선언한다. LINK_TEXT의 경우 링크가 달려 있는 텍스트로 접근하며, <code class="docutils literal notranslate"><span class="pre">value</span> <span class="pre">=</span> <span class="pre">'뉴스'</span></code>, 즉 뉴스라는 단어가 있는 엘레먼트로 접근한다. <code class="docutils literal notranslate"><span class="pre">click()</span></code> 함수는 마우스 클릭을 실행하며 결과 적으로 뉴스 탭을 클릭한 후 페이지가 이동되는 것을 확인할 수 있다. <code class="docutils literal notranslate"><span class="pre">find_element()</span></code> 내 접근방법 및 셀레니움의 각종 동작 제어 방법에 대해서는 나중에 다시 정리하도록 한다.</p>
+<p>이제 해당 탭을 닫아보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">back</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">window</span><span class="p">(</span><span class="n">driver</span><span class="o">.</span><span class="n">window_handles</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">back()</span></code>은 뒤로가기를 의미하며, 기존 페이지인 네이버 메인으로 이동한다.</p>
-<p>이제 특정 검색어를 검색하는 방법에 대해 알아보자. 먼저 검색창의 위치가 어디에 있는지 확인해보면 query라는 id와 input_text라는 class에 위치하고 있다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">switch_to.window()</span></code> 메서드는 인자로 전달된 창의 핸들로 드라이버의 컨트롤을 전환한다. 즉 <code class="docutils literal notranslate"><span class="pre">driver.window_handles[1]</span></code>를 통해 현재 열린 두번째 창으로 포커스를 이동한다. 이 후 <code class="docutils literal notranslate"><span class="pre">close()</span></code>를 통해 해당 페이지를 닫는다.</p>
+<p>이제 특정 검색어를 검색하는 방법에 대해 알아보자. 먼저 검색창의 위치가 어디에 있는지 확인해보면 query라는 id와 search_input라는 class에 위치하고 있다.</p>
 <figure class="align-default" id="selenium-search">
 <img alt="_images/selenium_search.png" src="_images/selenium_search.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9.7 </span><span class="caption-text">검색 창 위치 확인하기</span><a class="headerlink" href="#selenium-search" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.7 </span><span class="caption-text">검색 창 위치 확인하기</span><a class="headerlink" href="#selenium-search" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;input_text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s1">&#39;퀀트 투자 포트폴리오 만들기&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">window</span><span class="p">(</span><span class="n">driver</span><span class="o">.</span><span class="n">window_handles</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;search_input&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s1">&#39;퀀트 투자 포트폴리오 만들기&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -556,19 +575,20 @@ document.write(`
 <figure class="align-default" id="selenium-send-keys">
 <img alt="_images/selenium_send_keys.png" src="_images/selenium_send_keys.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9.8 </span><span class="caption-text">검색어 입력하기</span><a class="headerlink" href="#selenium-send-keys" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.8 </span><span class="caption-text">검색어 입력하기</span><a class="headerlink" href="#selenium-send-keys" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p><code class="docutils literal notranslate"><span class="pre">find_element()</span></code> 내에 By.CLASS_NAME을 입력하면 클래스 명에 해당하는 엘레먼트에 접근하며, 여기서는 검색창에 접근한다. 그 후 <code class="docutils literal notranslate"><span class="pre">send_keys()</span></code> 내에 텍스트를 입력하면 해당 내용이 웹페이지에 입력된다. 이제 웹페이지에서 검색 버튼 해당하는 돋보기 모양을 클릭하거나 엔터키를 누르면 검색이 실행된다. 먼저 돋보기 모양의 위치를 확인해보면 search_btn id와 btn_submit 클래스에 위치하고 있다.</p>
+<p>먼저 <code class="docutils literal notranslate"><span class="pre">driver.switch_to.window(driver.window_handles[0])</span></code>를 통해 현재 탭으로 다시 포커스를 이동한다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">find_element()</span></code> 내에 By.CLASS_NAME을 입력하면 클래스 명에 해당하는 엘레먼트에 접근하며, 여기서는 검색창에 접근한다. 그 후 <code class="docutils literal notranslate"><span class="pre">send_keys()</span></code> 내에 텍스트를 입력하면 해당 내용이 웹페이지에 입력된다. 이제 웹페이지에서 검색 버튼 해당하는 돋보기 모양을 클릭하거나 엔터키를 누르면 검색이 실행된다. 먼저 돋보기 모양의 위치를 확인해보면 btn_search 클래스에 위치하고 있다.</p>
 <figure class="align-default" id="selenium-searchbutton">
 <img alt="_images/selenium_searchbutton.png" src="_images/selenium_searchbutton.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9.9 </span><span class="caption-text">검색 버튼의 위치 확인</span><a class="headerlink" href="#selenium-searchbutton" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.9 </span><span class="caption-text">검색 버튼의 위치 확인</span><a class="headerlink" href="#selenium-searchbutton" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;btn_submit&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">Keys</span><span class="o">.</span><span class="n">ENTER</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;btn_search&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">Keys</span><span class="o">.</span><span class="n">ENTER</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -576,25 +596,25 @@ document.write(`
 <figure class="align-default" id="selenium-enter">
 <img alt="_images/selenium_enter.png" src="_images/selenium_enter.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9.10 </span><span class="caption-text">엔터키 제어하기</span><a class="headerlink" href="#selenium-enter" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.10 </span><span class="caption-text">엔터키 제어하기</span><a class="headerlink" href="#selenium-enter" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p><code class="docutils literal notranslate"><span class="pre">find_element(By.CLASS_NAME,</span> <span class="pre">value</span> <span class="pre">=</span> <span class="pre">'btn_submit')</span></code>를 통해 검색 버튼에 접근한다. 그 후 <code class="docutils literal notranslate"><span class="pre">send_keys(Keys.ENTER)</span></code>를 입력하면 엔터키를 누르는 동작이 실행된다. 페이지를 확인해보면 검색이 실행된 후 결과를 확인할 수 있다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">find_element(By.CLASS_NAME,</span> <span class="pre">value</span> <span class="pre">=</span> <span class="pre">'btn_search')</span></code>를 통해 검색 버튼에 접근한다. 그 후 <code class="docutils literal notranslate"><span class="pre">send_keys(Keys.ENTER)</span></code>를 입력하면 엔터키를 누르는 동작이 실행된다. 페이지를 확인해보면 검색이 실행된 후 결과를 확인할 수 있다.</p>
 <p>이번에는 다른 단어를 검색해보도록 하자. 웹에서 기존 검색어 내용을 지운 후, 검색어를 입력하고, 버튼을 클릭해야 한다. 이를 위해 검색어 박스와 검색 버튼의 위치를 찾아보면 다음과 같다.</p>
 <ul class="simple">
-<li><p>검색어 박스: box_window 클래스</p></li>
+<li><p>검색어 박스: nx_query id</p></li>
 <li><p>검색 버튼: bt_search 클래스</p></li>
 </ul>
 <figure class="align-default" id="selenium-research">
 <img alt="_images/selenium_research.png" src="_images/selenium_research.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9.11 </span><span class="caption-text">검색어 박스와 검색 버튼의 위치 확인</span><a class="headerlink" href="#selenium-research" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.11 </span><span class="caption-text">검색어 박스와 검색 버튼의 위치 확인</span><a class="headerlink" href="#selenium-research" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;box_window&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-<span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;box_window&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s1">&#39;이현열 퀀트&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;nx_query&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;nx_query&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s1">&#39;이현열 퀀트&#39;</span><span class="p">)</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;bt_search&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -603,15 +623,15 @@ document.write(`
 <figure class="align-default" id="selenium-research2">
 <img alt="_images/selenium_research2.png" src="_images/selenium_research2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9.12 </span><span class="caption-text">새로운 단어 검색하기</span><a class="headerlink" href="#selenium-research2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.12 </span><span class="caption-text">새로운 단어 검색하기</span><a class="headerlink" href="#selenium-research2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ol class="arabic simple">
-<li><p>검색어 박스(box_window)에 접근한 후, <code class="docutils literal notranslate"><span class="pre">clear()</span></code>를 실행하면 모든 텍스트가 지워진다.</p></li>
+<li><p>검색어 박스(nx_query)에 접근한 후, <code class="docutils literal notranslate"><span class="pre">clear()</span></code>를 실행하면 모든 텍스트가 지워진다.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">send_keys('이현열</span> <span class="pre">퀀트')</span></code>를 실행하여 새로운 검색어를 입력한다.</p></li>
 <li><p>검색 버튼(bt_search)에 접근한 후, <code class="docutils literal notranslate"><span class="pre">click()</span></code>을 실행하여 해당 버튼을 클릭한다.</p></li>
 </ol>
-<p>이번에는 [VIEW] 버튼을 클릭하는 동작을 실행해보도록 한다. 기존처럼 링크나 클래스명을 통해 엘레먼트에 접근할 수도 있지만, 이번에는 XPATH를 이용해 접근해보도록 하자. XPATH란 XML 중 특정 값의 태그나 속성을 찾기 쉽게 만든 주소다. 예를 들어 윈도우 탐색기에서는 특정 폴더의 위치가 ‘<strong>C:\Program Files</strong>’과 같이 주소처럼 보이며 이는 윈도우의 PATH 문법이다. XML 역시 이와 동일한 개념의 XPATH가 있다. 웹페이지에서 XPATH를 찾는 법은 다음과 같다.</p>
+<p>이번에는 블로그에서 [최신순] 버튼을 클릭하는 동작을 실행해보도록 한다. 기존처럼 링크나 클래스명을 통해 엘레먼트에 접근할 수도 있지만, 이번에는 XPATH를 이용해 접근해보도록 하자. XPATH란 XML 중 특정 값의 태그나 속성을 찾기 쉽게 만든 주소다. 예를 들어 윈도우 탐색기에서는 특정 폴더의 위치가 ‘<strong>C:\Program Files</strong>’과 같이 주소처럼 보이며 이는 윈도우의 PATH 문법이다. XML 역시 이와 동일한 개념의 XPATH가 있다. 웹페이지에서 XPATH를 찾는 법은 다음과 같다.</p>
 <ol class="arabic simple">
 <li><p>개발자도구 화면에서 위치를 찾고 싶은 부분에서 마우스 우클릭을 한다.</p></li>
 <li><p>[Copy → Copy Xpath]를 선택한다.</p></li>
@@ -619,50 +639,19 @@ document.write(`
 <figure class="align-default" id="selenium-xpath">
 <img alt="_images/selenium_xpath.png" src="_images/selenium_xpath.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9.13 </span><span class="caption-text">XPATH 찾기 및 복사하기</span><a class="headerlink" href="#selenium-xpath" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.13 </span><span class="caption-text">XPATH 찾기 및 복사하기</span><a class="headerlink" href="#selenium-xpath" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>위 과정을 통해 XPATH가 복사된다. 메모장을 확인해보면 VEW 부분의 XPATH는 다음과 같다.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//*</span><span class="p">[</span><span class="nd">@id</span><span class="o">=</span><span class="s2">&quot;lnb&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">div</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">div</span><span class="o">/</span><span class="n">ul</span><span class="o">/</span><span class="n">li</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="n">a</span>
+<p>위 과정을 통해 XPATH가 복사된다. 메모장을 확인해보면 [최신순] 부분의 XPATH는 다음과 같다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//*</span><span class="p">[</span><span class="nd">@id</span><span class="o">=</span><span class="s2">&quot;snb&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">div</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="n">ul</span><span class="o">/</span><span class="n">li</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">div</span><span class="o">/</span><span class="n">div</span><span class="o">/</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>이를 이용해 해당 부분을 클릭하는 동작을 실행해보자.</p>
+<p>이를 이용해 해당 부분을 클릭하는 동작을 실행해보자. 실행 순서는 [블로그 클릭 → 옵션 클릭 → 최신순 클릭] 순이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;//*[@id=&quot;lnb&quot;]/div[1]/div/ul/li[2]/a&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<figure class="align-default" id="selenium-view">
-<img alt="_images/selenium_view.png" src="_images/selenium_view.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 9.14 </span><span class="caption-text">VIEW 부분으로 이동</span><a class="headerlink" href="#selenium-view" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>탭이 [통합] 검색이 아닌 [VIEW]로 변경되었다. 이번에는 [옵션]을 클릭한 후 정렬을 [최신순]으로 하는 동작을 실행해보자. 둘의 위치는 다음과 같다.</p>
-<ul class="simple">
-<li><p>옵션 버튼: option_filter (클래스)</p></li>
-<li><p>최신순 버튼: //*[&#64;id=”snb”]/div[2]/ul/li[2]/div/div/a[2] (Xpath)</p></li>
-</ul>
-<figure class="align-default" id="xpath">
-<img alt="_images/xpath.png" src="_images/xpath.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 9.15 </span><span class="caption-text">옵션 버튼과 최신순 버튼의 위치</span><a class="headerlink" href="#xpath" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>코드 실행에 앞서 <a class="reference internal" href="#xpath-close"><span class="std std-numref">Fig. 9.16</span></a>와 같이 옵션 창이 열려있다면 [X] 버튼을 눌러 닫아주도록 한다.</p>
-<figure class="align-default" id="xpath-close">
-<img alt="_images/xpath_close.png" src="_images/xpath_close.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 9.16 </span><span class="caption-text">옵션 창 닫기</span><a class="headerlink" href="#xpath-close" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>옵션 창을 닫은 후 아래의 코드를 실행하도록 한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;option_filter&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-<span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;//*[@id=&quot;snb&quot;]/div[2]/ul/li[2]/div/div/a[2]&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;//*[@id=&quot;lnb&quot;]/div[1]/div/div[1]/div/div[1]/div[1]/a&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;//*[@id=&quot;snb&quot;]/div[1]/div/div[2]/a&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;//*[@id=&quot;snb&quot;]/div[2]/ul/li[1]/div/div/a[2]&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -670,10 +659,10 @@ document.write(`
 <figure class="align-default" id="selenium-new">
 <img alt="_images/selenium_new.png" src="_images/selenium_new.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9.17 </span><span class="caption-text">최신순 정렬</span><a class="headerlink" href="#selenium-new" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9.17 </span><span class="caption-text">최신순 정렬</span><a class="headerlink" href="#selenium-new" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>옵션 클릭 후 최신순 버튼을 클릭하는 동작을 수행하여 검색어가 최신순으로 정렬되었다. 이제 page down 기능을 수행해보도록 하자.</p>
+<p>위의 순서대로 클릭하는 동작을 수행하여 검색어가 최신순으로 정렬되었다. 이제 page down 기능을 수행해보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s1">&#39;window.scrollTo(0, document.body.scrollHeight);&#39;</span><span class="p">)</span>
@@ -709,11 +698,11 @@ document.write(`
 <li><p>curr_height와 prev_height가 동일하다는 의미는 페이지가 끝까지 내려왔다는 의미이다. 따라서 이 경우 <code class="docutils literal notranslate"><span class="pre">break</span></code>를 통해 while문을 멈추며, 그렇지 않을 경우 다시 스크롤을 내리는 동작을 반복한다.</p></li>
 <li><p>prev_height에 새로운 창 높이를 입력한다.</p></li>
 </ol>
-<p>이제 모든 검색 결과가 나타났으면 이전 장에서 살펴보았던 정적 크롤링을 통해 데이터 수집이 가능하다. 제목 부분을 확인해보면 <strong>api_txt_lines total_tit _cross_trigger</strong> 클래스에 위치하고 있으며, 이를 통해 모든 제목을 크롤링해보자.</p>
+<p>이제 모든 검색 결과가 나타났으면 이전 장에서 살펴보았던 정적 크롤링을 통해 데이터 수집이 가능하다. 제목 부분을 확인해보면 <strong>title_link</strong> 클래스에 위치하고 있으며, 이를 통해 모든 제목을 크롤링해보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">html</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">driver</span><span class="o">.</span><span class="n">page_source</span><span class="p">,</span> <span class="s1">&#39;lxml&#39;</span><span class="p">)</span>
-<span class="n">txt</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="n">class_</span> <span class="o">=</span> <span class="s1">&#39;api_txt_lines total_tit _cross_trigger&#39;</span><span class="p">)</span>
+<span class="n">txt</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="n">class_</span> <span class="o">=</span> <span class="s1">&#39;title_link&#39;</span><span class="p">)</span>
 <span class="n">txt_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">txt</span><span class="p">]</span>
 
 <span class="n">txt_list</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span>
@@ -721,16 +710,16 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;스마트 베타_김병규, 이현열&#39;,
- &#39;감으로 하는 투자, 데이터로 하는 투자&#39;,
- &#39;[서평] 감으로 하는 투자, 데이터로 하는 투자&#39;,
- &#39;Investment Book 25 - 감으로 하는 투자 데이터로 하는 투자&#39;,
- &#39;퀀트 투자자라면 반드시 생각해야 할 7가지&#39;,
- &#39;[주식] 올라떼 - 구루(guru)들의 주식투자(1탄)&#39;,
- &#39;패스트캠퍼스 캐시백 챌린지 44일차&#39;,
- &#39;[재테크도서] 감으로 하는 투자 데이터로 하는 투자 - 천영록,이현열 저.&#39;,
- &#39;이현열 교수님 퀀트 관련 Q&amp;A 세션&#39;,
- &#39;‘분산-장투해라’ 감으로하는 투자, 데이터로 하는 투자, 천영록-이현열&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;월가의 퀀트투자 바이블, 스마트 베타&#39;,
+ &#39;신진오님의 시선으로 본 투자의 세계해석(벤저민 그레이엄 현명한 투자자 해석) - 현명한 투자자2 해제(신진오)&#39;,
+ &#39;2019-1학기 금융공학회 기록&#39;,
+ &#39;2023년 12월 주식 투자 결산&#39;,
+ &#39;[독서기록 #34] 헤지펀드 열전 『금융시장에서 돈을 벌고 싶은데, 방법을 모르는 사람들은 꼭 읽어봐야... &#39;,
+ &#39;[책] 파이썬을 이용한 퀀트 투자 포트폴리오 만들기 (이현열)&#39;,
+ &#39;[이런저런 공부] 포트폴리오 최적화의 예&#39;,
+ &#39;20231122 멱(冪)파레토 독서법&#39;,
+ &#39;[책] R을 이용한 퀀트 투자 포트폴리오 만들기 (이현열)&#39;,
+ &#39;에드워드 소프의 생애에 관한 영상&#39;]
 </pre></div>
 </div>
 </div>
@@ -751,10 +740,10 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">driver.quit()</span></code>을 실행하면 열려있던 페이지가 종료된다.</p>
 </section>
 <section id="id4">
-<h3><span class="section-number">9.1.2. </span>셀레니움 명령어 정리<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.1.2. </span>셀레니움 명령어 정리<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>마지막으로 셀레니움의 각종 명령어는 다음과 같다.</p>
 <section id="id5">
-<h4><span class="section-number">9.1.2.1. </span>브라우저 관련<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">9.1.2.1. </span>브라우저 관련<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">webdriver.Chrome()</span></code>: 브라우저 열기</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">driver.close()</span></code>: 현재 탭 닫기</p></li>
@@ -764,7 +753,7 @@ document.write(`
 </ul>
 </section>
 <section id="id6">
-<h4><span class="section-number">9.1.2.2. </span>엘레먼트 접근<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">9.1.2.2. </span>엘레먼트 접근<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">driver.find_element(by</span> <span class="pre">=</span> <span class="pre">'id',</span> <span class="pre">value</span> <span class="pre">=</span> <span class="pre">'value')</span></code> 중 by = ‘id’ 부분에 해당하는 방법에 따라 엘레먼트에 접근한다. 또한 <code class="docutils literal notranslate"><span class="pre">find_element()</span></code>는 해당하는 엘레먼트가 여러 개 있을 경우 첫 번째 요소 하나만을 반환하며, <code class="docutils literal notranslate"><span class="pre">find_elements()</span></code>는 여러 엘레먼트가 있을 경우 리스트로 반환한다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">By.ID</span></code>: 태그의 ID 값으로 추출</p></li>
@@ -777,7 +766,7 @@ document.write(`
 </ul>
 </section>
 <section id="id7">
-<h4><span class="section-number">9.1.2.3. </span>동작<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">9.1.2.3. </span>동작<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
 <p>엘레먼트에 접근한 후 각종 동작을 수행할 수 있다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">click()</span></code>: 엘레먼트를 클릭</p></li>
@@ -787,7 +776,7 @@ document.write(`
 </ul>
 </section>
 <section id="id8">
-<h4><span class="section-number">9.1.2.4. </span>자바스크립트 코드 실행<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">9.1.2.4. </span>자바스크립트 코드 실행<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">execute_script()</span></code> 내에 자바스크립트 코드를 입력하여 여러가지 동작을 수행할 수 있다.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -798,13 +787,13 @@ document.write(`
 </section>
 </section>
 <section id="id9">
-<h2><span class="section-number">9.2. </span>정규 표현식<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.2. </span>정규 표현식<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
 <p>정규 표현식(정규식)이란 프로그래밍에서 문자열을 다룰 때 문자열의 일정한 패턴을 표현하는 일종의 형식 언어를 말하며, 영어로는 regular expression를 줄여 일반적으로 regex라 표현한다. 정규 표현식은 파이썬만의 고유 문법이 아니라 문자열을 처리하는 모든 프로그래밍에서 사용되는 공통 문법이기에 한 번 알아두면 파이썬 뿐만 아니라 다른 언어에서도 쉽게 적용할 수 있다. 본 책의 내용은 아래 페이지의 내용을 참고하여 작성되었다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">docs</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mf">3.10</span><span class="o">/</span><span class="n">howto</span><span class="o">/</span><span class="n">regex</span><span class="o">.</span><span class="n">html</span>
 </pre></div>
 </div>
 <section id="id10">
-<h3><span class="section-number">9.2.1. </span>정규 표현식을 알아야 하는 이유<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.2.1. </span>정규 표현식을 알아야 하는 이유<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <p>만약 우리가 크롤링한 결과물이 다음과 같다고 하자.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;동 기업의 매출액은 전년 대비 29.2% 늘어났습니다.&quot;</span>
 </pre></div>
@@ -828,14 +817,14 @@ document.write(`
 <p>‘\d+.\d+%’라는 표현식은 ‘숫자.숫자%’의 형태를 나타내는 정규 표현식이며, re 모듈의 <code class="docutils literal notranslate"><span class="pre">findall()</span></code> 함수를 통해 텍스트에서 해당 표현식의 글자를 추출할 수 있다. 이제 정규 표현식의 종류에는 어떠한 것들이 있는지 알아보도록 하자.</p>
 </section>
 <section id="id11">
-<h3><span class="section-number">9.2.2. </span>메타문자<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.2.2. </span>메타문자<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
 <p>프로그래밍에서 메타 문자(Meta Characters)란 문자가 가진 원래의 의미가 아닌 특별한 용도로 사용되는 문자를 말한다. 정규 표현식에서 사용되는 메타 문자는 다음과 같다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>. ^ $ * + ? { } [ ] \ | ( )
 </pre></div>
 </div>
 <p>정규 표현식에 메타 문자를 사용하면 특별한 기능을 갖는다.</p>
 <section id="id12">
-<h4><span class="section-number">9.2.2.1. </span>문자 클래스([ ])<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">9.2.2.1. </span>문자 클래스([ ])<a class="headerlink" href="#id12" title="Link to this heading">#</a></h4>
 <p>정규 표현식에서 대괄호([ ])는 <strong>대괄호 안에 포함된 문자들 중 하나와 매치</strong>를 뜻한다. 예를 들어 ‘apple’, ‘blueberry’, ‘coconut’이 정규표현식이 [ae]와 어떻게 매치되는지 살펴보자.</p>
 <ul class="simple">
 <li><p>‘apple’에는 정규표현식 내의 a와 e가 모두 존재하므로 매치된다.</p></li>
@@ -845,7 +834,7 @@ document.write(`
 <p>만일 [ ] 안의 두 문자 사이에 하이픈(-)을 입력하면 두 문자 사이의 범위를 의미한다. 즉 [a-e]라는 정규 표현식은 [abcde]와 동일하며, [0-5]는 [012345]와 동일하다. 흔히 [a-z]는 알파벳 소문자를, [A-Z]는 알파벳 대문자를, [a-zA-Z]는 모든 알파벳을, [0-9]는 모든 숫자를 뜻한다. 또한 [ ]안의 ^는 반대를 뜻한다. 즉 [^0-9]는 숫자를 제외한 문자만 매치를, [^abc]는 a,b,c를 제외한 모든 문자와 매치를 뜻한다.</p>
 <p>자주 사용하는 문자 클래스의 경우 별도의 표기법이 존재하여 훨씬 간단하게 표현할 수 있다.</p>
 <table class="table" id="character-class">
-<caption><span class="caption-number">Table 9.2 </span><span class="caption-text">자주 사용하는 문자 클래스</span><a class="headerlink" href="#character-class" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 9.2 </span><span class="caption-text">자주 사용하는 문자 클래스</span><a class="headerlink" href="#character-class" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>문자 클래스</p></th>
 <th class="head"><p>설명</p></th>
@@ -875,7 +864,7 @@ document.write(`
 <p><a class="reference internal" href="#character-class"><span class="std std-numref">Table 9.2</span></a>에서 알 수 있듯이 대문자로 표현된 문자 클래스는 소문자로 표현된 것의 반대를 의미한다.</p>
 </section>
 <section id="id13">
-<h4><span class="section-number">9.2.2.2. </span>모든 문자(.)<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">9.2.2.2. </span>모든 문자(.)<a class="headerlink" href="#id13" title="Link to this heading">#</a></h4>
 <p>Dot(.) 메타 문자는 줄바꿈 문자인 \n을 제외한 모든 문자와 매치되며, Dot 하나당 임의의 한 문자를 나타낸다. 정규 표현식 <code class="docutils literal notranslate"><span class="pre">a.e</span></code>는 ‘a+모든문자+e’의 형태다. 즉 a와 e 문자 사이에는 어떤 문자가 들어가도 모두 매치가 된다. ‘abe’, ‘ace’, ‘abate’, ‘ae’의 경우 정규식 <code class="docutils literal notranslate"><span class="pre">a.e</span></code>와 어떻게 매치되는지 살펴보자.</p>
 <ul class="simple">
 <li><p>‘abe’: a와 e 사이에 b라는 문자가 있으므로 정규식과 매치된다.</p></li>
@@ -886,14 +875,14 @@ document.write(`
 <p>만일 정규식이 a[.]c의 형태일 경우는 ‘a.c’를 의미한다. 즉 a와 c사이의 dot(.)은 모든 문자를 의미하는 것이 아닌 문자 그대로인 .를 의미한다.</p>
 </section>
 <section id="id14">
-<h4><span class="section-number">9.2.2.3. </span>반복문<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">9.2.2.3. </span>반복문<a class="headerlink" href="#id14" title="Link to this heading">#</a></h4>
 <p>정규 표현식에는 반복을 의미하는 여러 메타문자가 존재한다. 먼저 <code class="docutils literal notranslate"><span class="pre">*</span></code>의 경우 <code class="docutils literal notranslate"><span class="pre">*</span></code> 바로 앞에 있는 문자가 0부터 무한대로 반복될 수 있다는 의미다.  <code class="docutils literal notranslate"><span class="pre">ca*t</span></code> 이라는 정규식은 c 다음의 a가 0부터 무한대로 반복되고 t로 끝이난다는 의미로, ‘ct’, ‘cat’, ‘caat’, ‘caaaat’ 모두 정규식과 매치된다.</p>
 <p>반면 메타문자 <code class="docutils literal notranslate"><span class="pre">+</span></code>는 최소 1번 이상 반복될 때 사용된다. <code class="docutils literal notranslate"><span class="pre">ca+t</span></code> 라는 정규식은 c 다음의 a가 1번 이상 반복된 후 t로 끝남을 의미하며, 위 예제에서 ct는 a가 없으므로 매치되지 않는다.</p>
 <p>메타문자 <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code>를 사용하면 반복 횟수를 고정할 수 있다. 즉 {m, n}은 반복 횟수가 m부터 n까지 고정된다. m 혹은 n은 생략할 수도 있으며, {3, }의 경우 반복 횟수가 3 이상, {, 3}의 경우 반복 횟수가 3 이하를 의미한다.</p>
 <p>메타문자 <code class="docutils literal notranslate"><span class="pre">?</span></code>는 {0, 1}과 동일하다. 즉 <code class="docutils literal notranslate"><span class="pre">?</span></code> 앞의 문자가 있어도 되고 없어도 된다는 의미다.</p>
 </section>
 <section id="id15">
-<h4><span class="section-number">9.2.2.4. </span>기타 메타문자<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">9.2.2.4. </span>기타 메타문자<a class="headerlink" href="#id15" title="Link to this heading">#</a></h4>
 <p>이 외에도 정규 표현식에는 다양한 메타문자가 존재한다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">|</span></code>: or과 동일한 의미다. 즉 <code class="docutils literal notranslate"><span class="pre">expr1</span> <span class="pre">|</span> <span class="pre">expr2</span></code>라는 정규식은 expr1 혹은 expr2 라는 의미로써, 둘 중 하나의 형태만 만족해도 매치가 된다.</p></li>
@@ -905,7 +894,7 @@ document.write(`
 </section>
 </section>
 <section id="id16">
-<h3><span class="section-number">9.2.3. </span>정규식을 이용한 문자열 검색<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.2.3. </span>정규식을 이용한 문자열 검색<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
 <p>대략적인 정규 표현식을 익혔다면, 실제 예제를 통해 문자열을 검색하는 법을 알아보자. 파이썬에서는 re(regular expression) 모듈을 통해 정규 표현식을 사용할 수 있다. 정규 표현식과 관련된 메서드는 다음과 같다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">match()</span></code>: 시작부분부터 일치하는 패턴을 찾는다.</p></li>
@@ -915,7 +904,7 @@ document.write(`
 </ul>
 <p>간단한 실습을 해보도록 하자.</p>
 <section id="match">
-<h4><span class="section-number">9.2.3.1. </span><code class="docutils literal notranslate"><span class="pre">match()</span></code><a class="headerlink" href="#match" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">9.2.3.1. </span><code class="docutils literal notranslate"><span class="pre">match()</span></code><a class="headerlink" href="#match" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
@@ -1004,7 +993,7 @@ document.write(`
 <p>한글의 경우 알파벳이 아니므로 모든 한글을 뜻하는 <code class="docutils literal notranslate"><span class="pre">[가-힣]+</span></code> 표현식을 사용하면 매치가 된다.</p>
 </section>
 <section id="search">
-<h4><span class="section-number">9.2.3.2. </span><code class="docutils literal notranslate"><span class="pre">search()</span></code><a class="headerlink" href="#search" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">9.2.3.2. </span><code class="docutils literal notranslate"><span class="pre">search()</span></code><a class="headerlink" href="#search" title="Link to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">search()</span></code> 함수는 첫 번째 일치하는 패턴을 찾는다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1037,7 +1026,7 @@ document.write(`
 <p>‘Use python’ 문자의 경우 첫번째 문자인 ‘U’는 대문자라 매치가 되지 않지만, 그 이후의 문자열 ‘se’는 소문자로 구성되어 있기에 매치가 된다. 이처럼 <code class="docutils literal notranslate"><span class="pre">search()</span></code>는 문자열의 처음부터 검색하는 것이 아니라 문자열 전체를 검색하며, 첫 번째로 일치하는 패턴을 찾기에 띄어쓰기 이후의 ‘python’은 매치되지 않는다.</p>
 </section>
 <section id="findall">
-<h4><span class="section-number">9.2.3.3. </span><code class="docutils literal notranslate"><span class="pre">findall()</span></code><a class="headerlink" href="#findall" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">9.2.3.3. </span><code class="docutils literal notranslate"><span class="pre">findall()</span></code><a class="headerlink" href="#findall" title="Link to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">findall()</span></code>은 하나가 아닌 일치하는 모든 패턴을 찾는다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1056,7 +1045,7 @@ document.write(`
 <p>이번에는 대소문자 모든 알파벳을 뜻하는 <code class="docutils literal notranslate"><span class="pre">[a-zA-Z]+</span></code> 표현식을 입력하였다. 그 후 ‘Life is too short, You need Python.’라는 문자에 <code class="docutils literal notranslate"><span class="pre">finall()</span></code> 메서드를 적용하면 정규 표현식과 매치되는 모든 단어를 리스트 형태도 반환한다.</p>
 </section>
 <section id="finditer">
-<h4><span class="section-number">9.2.3.4. </span>finditer()<a class="headerlink" href="#finditer" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">9.2.3.4. </span>finditer()<a class="headerlink" href="#finditer" title="Link to this heading">#</a></h4>
 <p>마지막으로 <code class="docutils literal notranslate"><span class="pre">findall()</span></code>과 비슷한 <code class="docutils literal notranslate"><span class="pre">finditer()</span></code> 함수의 결과를 살펴보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1067,7 +1056,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;callable_iterator object at 0x0000022B9F40E730&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;callable_iterator object at 0x000001C26ED74BB0&gt;
 </pre></div>
 </div>
 </div>
@@ -1095,7 +1084,7 @@ document.write(`
 </section>
 </section>
 <section id="id17">
-<h3><span class="section-number">9.2.4. </span>정규 표현식 연습해보기<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.2.4. </span>정규 표현식 연습해보기<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
 <p>위에서 배운 것들을 토대로 실제 크롤링 결과물 중 정규 표현식을 사용해 원하는 부분만 찾는 연습을 해보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1209,11 +1198,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="crawl_basic.html"
@@ -1233,10 +1221,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1244,6 +1229,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1302,9 +1288,10 @@ By 이현열
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1328,8 +1315,8 @@ By 이현열
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>6. 파이썬에서 SQL 연결하기 &#8212; 파이썬을 이용한 퀀트 투자 포트폴리오 만들기</title>
   
@@ -19,40 +18,39 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script kind="utterances">
 
     var commentsRunWhenDOMLoaded = cb => {
@@ -88,13 +86,11 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'sql_in_python';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -109,7 +105,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -144,11 +148,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -163,9 +170,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="index.html">
+  
   
   
   
@@ -175,12 +184,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-light" alt="파이썬을 이용한 퀀트 투자 포트폴리오 만들기 - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="파이썬을 이용한 퀀트 투자 포트폴리오 만들기 - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -326,20 +346,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -382,13 +404,13 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sql">
-<h1><span class="section-number">6. </span>파이썬에서 SQL 연결하기<a class="headerlink" href="#sql" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">6. </span>파이썬에서 SQL 연결하기<a class="headerlink" href="#sql" title="Link to this heading">#</a></h1>
 <p>SQL을 통해 데이터베이스에서 필요한 데이터를 불러와 CSV 파일로 저장한 후 이를 다시 파이썬으로 불러오는 과정은 다소 비효율적이다. 파이썬에서는 SQL에 직접 연결이 가능하기에 이를 통해 훨씬 효율적으로 작업을 할 수 있다. 즉, 파이썬에서 SQL DB에 접속하여 데이터를 가공 후 불러오고, 이를 토대로 결과물을 얻거나 가공한 데이터를 다시 SQL DB에 저장하는 것이 가능하다.</p>
 <section id="sql-db">
-<h2><span class="section-number">6.1. </span>파이썬에서 SQL DB에 접속하기<a class="headerlink" href="#sql-db" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.1. </span>파이썬에서 SQL DB에 접속하기<a class="headerlink" href="#sql-db" title="Link to this heading">#</a></h2>
 <p>pymysql 패키지를 이용하면 파이썬에서 SQL DB에 접속 및 작업이 가능하다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -482,13 +504,13 @@ document.write(`
 <figure class="align-default" id="insert">
 <img alt="_images/insert.png" src="_images/insert.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6.1 </span><span class="caption-text">테이블 내 데이터 업데이트</span><a class="headerlink" href="#insert" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6.1 </span><span class="caption-text">테이블 내 데이터 업데이트</span><a class="headerlink" href="#insert" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>이처럼 파이썬을 이용해 SQL 데이터베이스의 데이터를 불러오기 혹은 쓰기 작업이 가능하다.</p>
 </section>
 <section id="pandas">
-<h2><span class="section-number">6.2. </span>pandas를 이용한 데이터 읽기 및 쓰기<a class="headerlink" href="#pandas" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.2. </span>pandas를 이용한 데이터 읽기 및 쓰기<a class="headerlink" href="#pandas" title="Link to this heading">#</a></h2>
 <p>위 방법을 이용해 데이터를 불러오면 아쉬운 점이 있다. 먼저 열 이름이 보이지 않는다. 둘째, 데이터분석 작업을 하기 편한 데이터프레임 형태가 아니다. pandas 패키지에는 SQL 데이터베이스의 데이터를 불러오거나 저장할 수 있는 함수가 있으므로, 이에 대해 살펴보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -689,12 +711,12 @@ document.write(`
 <figure class="align-default" id="iris">
 <img alt="_images/iris.png" src="_images/iris.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">iris 테이블</span><a class="headerlink" href="#iris" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">iris 테이블</span><a class="headerlink" href="#iris" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="upsert">
-<h2><span class="section-number">6.3. </span>upsert 기능 구현하기<a class="headerlink" href="#upsert" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.3. </span>upsert 기능 구현하기<a class="headerlink" href="#upsert" title="Link to this heading">#</a></h2>
 <p>퀀트 투자에 사용할 시계열 데이터는 크게 두가지 특성을 가지고 있다.</p>
 <ol class="arabic simple">
 <li><p>insert: 시간이 지남에 따라 데이터가 추가된다.</p></li>
@@ -783,7 +805,7 @@ document.write(`
 <figure class="align-default" id="exam-price">
 <img alt="_images/exam_price.png" src="_images/exam_price.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6.3 </span><span class="caption-text">exam 데이터베이스 내 price 테이블</span><a class="headerlink" href="#exam-price" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6.3 </span><span class="caption-text">exam 데이터베이스 내 price 테이블</span><a class="headerlink" href="#exam-price" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><code class="docutils literal notranslate"><span class="pre">to_sql()</span></code> 함수의 인자로 if_exists = ‘append’를 입력하면, 테이블이 존재할 경우 기존 테이블에 데이터를 추가한다. 이제 하루가 지나 시계열이 추가되었다고 가정하자.</p>
@@ -866,7 +888,7 @@ document.write(`
 <figure class="align-default" id="exam-update">
 <img alt="_images/exam_update.png" src="_images/exam_update.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6.4 </span><span class="caption-text">price 테이블에 새로운 데이터 추가</span><a class="headerlink" href="#exam-update" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6.4 </span><span class="caption-text">price 테이블에 새로운 데이터 추가</span><a class="headerlink" href="#exam-update" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>단순히 데이터를 추가하면 2021-01-02와 2021-01-03에 해당하는 데이터가 중복으로 들어가는 문제가 발생한다. <code class="docutils literal notranslate"><span class="pre">to_sql()</span></code> 함수 내에 if_exists = ‘replace’로 입력할 경우 새로운 데이터로 덮어쓰게 되어 이러한 문제가 해결되지만, 이는 이전 데이터(예: 2021년 이전)도 모두 삭제되는 문제가 발생한다. 따라서 기존에 값이 있는 2021-01-02와 2021-01-03 데이터는 그대로 두고, 새롭게 추가되는 2021-01-04 데이터만 추가할 필요가 있다.</p>
@@ -885,7 +907,7 @@ document.write(`
 </div>
 <p>즉 [table]의 [arg1, arg2, arg3] 열에 [&#64;arg1, &#64;arg2, &#64;arg3] 데이터를 추가하며, 만약 키 값(arg1)에 데이터(&#64;arg1)가 이미 존재한다면 &#64;arg2와 &#64;arg3로 데이터를 업데이트 한다.</p>
 <section id="mysql-upsert">
-<h3><span class="section-number">6.3.1. </span>MySQL에서 upsert 기능 구현하기<a class="headerlink" href="#mysql-upsert" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.3.1. </span>MySQL에서 upsert 기능 구현하기<a class="headerlink" href="#mysql-upsert" title="Link to this heading">#</a></h3>
 <p>먼저 쉬운 이해를 위해 SQL에서 해당 기능이 어떻게 구현되는지 확인해보도록 하자. MySQL Workbench에서 다음의 쿼리를 입력하여 price_2 테이블을 만든다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -917,7 +939,7 @@ document.write(`
 <figure class="align-default" id="price-2">
 <img alt="_images/price_2.png" src="_images/price_2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6.5 </span><span class="caption-text">테이블 생성 및 데이터 입력</span><a class="headerlink" href="#price-2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6.5 </span><span class="caption-text">테이블 생성 및 데이터 입력</span><a class="headerlink" href="#price-2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>000001 종목은 1월 2일과 3일 모두 데이터가 입력되었지만, 000002 종목은 1월 2일 데이터만 입력되었다. upsert 기능을 이용해 데이터를 추가해보도록 하자.</p>
@@ -939,7 +961,7 @@ document.write(`
 <figure class="align-default" id="price-2-insert">
 <img alt="_images/price_2_insert.png" src="_images/price_2_insert.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6.6 </span><span class="caption-text">데이터 업데이트</span><a class="headerlink" href="#price-2-insert" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6.6 </span><span class="caption-text">데이터 업데이트</span><a class="headerlink" href="#price-2-insert" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>앞의 [insert into … values] 부분은 일반적인 데이터를 입력하는 쿼리와 형태가 같으며, 그 후 new라는 별명을 붙여준 후 [on duplicate key update] 구문을 추가해준다. 즉 데이터를 입력하되, 키 값(날짜, 티커)을 기준으로 이미 데이터가 존재할 경우에는 입력이 아닌 업데이트를 해준다. 000001 종목의 1월 2~3일, 000002 종목의 1월 2일 데이터는 이미 존재하며 데이터가 바뀌지 않아 값이 그대로 유지된다. 반면 000002 종목의 1월 3일 데이터는 기존에 없던 값이기에 새롭게 추가된다.</p>
@@ -960,7 +982,7 @@ document.write(`
 <figure class="align-default" id="price-2-upsert">
 <img alt="_images/price_2_upsert.png" src="_images/price_2_upsert.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6.7 </span><span class="caption-text">upsert 기능 구현</span><a class="headerlink" href="#price-2-upsert" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6.7 </span><span class="caption-text">upsert 기능 구현</span><a class="headerlink" href="#price-2-upsert" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ol class="arabic simple">
@@ -970,7 +992,7 @@ document.write(`
 <p>이처럼 upsert 기능을 이용하면 시계열 데이터의 추가 및 수정을 한번에 할 수 있다.</p>
 </section>
 <section id="id1">
-<h3><span class="section-number">6.3.2. </span>파이썬에서 upsert 기능 구현하기<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.3.2. </span>파이썬에서 upsert 기능 구현하기<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>이번에는 upsert 기능을 파이썬에서 구현해보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1029,7 +1051,7 @@ document.write(`
 <figure class="align-default" id="price-2-upsert-python">
 <img alt="_images/price_2_upsert_python.png" src="_images/price_2_upsert_python.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6.8 </span><span class="caption-text">파이썬에서 upsert 기능 구현</span><a class="headerlink" href="#price-2-upsert-python" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6.8 </span><span class="caption-text">파이썬에서 upsert 기능 구현</span><a class="headerlink" href="#price-2-upsert-python" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>마지막으로 예제로 사용했던 데이터베이스(exam)는 삭제해준다.</p>
@@ -1083,11 +1105,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="sql.html"
@@ -1107,10 +1128,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1118,6 +1136,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1153,9 +1172,10 @@ By 이현열
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1179,8 +1199,8 @@ By 이현열
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>
