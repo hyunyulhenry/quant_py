@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>11. 전 세계 주식 데이터 수집하기 &#8212; 파이썬을 이용한 퀀트 투자 포트폴리오 만들기</title>
   
@@ -19,40 +18,39 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script kind="utterances">
 
     var commentsRunWhenDOMLoaded = cb => {
@@ -88,13 +86,11 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'data_global_revision';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -109,7 +105,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -144,11 +148,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -163,9 +170,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="index.html">
+  
   
   
   
@@ -175,12 +184,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-light" alt="파이썬을 이용한 퀀트 투자 포트폴리오 만들기 - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="파이썬을 이용한 퀀트 투자 포트폴리오 만들기 - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -326,20 +346,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -392,28 +414,28 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">11. </span>전 세계 주식 데이터 수집하기<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">11. </span>전 세계 주식 데이터 수집하기<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>퀀트 투자의 장점은 데이터만 있다면 동일한 투자 전략을 전 세계 모든 국가에 적용할 수 있다는 점이다. 이번 장에서는 전 세계 종목의 티커 수집 및 주가, 재무제표, 가치지표를 다운로드 하는 방법에 대해 알아보겠다.</p>
 <section id="id2">
-<h2><span class="section-number">11.1. </span>유료 데이터 벤더 이용하기<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">11.1. </span>유료 데이터 벤더 이용하기<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>미국 시장의 데이터만 필요할 경우 유료 데이터 벤더를 이용하는 것도 좋은 방법이다. 미국에는 금융 데이터를 API로 제공하는 수많은 업체가 있으며, tiingo의 경우는 월 $10만 지불하면 미국과 중국의 4만여개 종목에 대한 데이터를 API 형태로 받을 수 있다. 이는 상장폐지된 종목을 커버할 뿐만 아니라, API를 이용하므로 크롤링과는 비교할 수 없는 속도로 데이터를 받을 수 있다는 장점이 있다. 이 외에도 Alpha Vantage, Quandl, Polygon 등 수많은 데이터 벤더가 존재한다.</p>
 <figure class="align-default" id="tiingo">
 <a class="reference internal image-reference" href="_images/tiingo.png"><img alt="_images/tiingo.png" src="_images/tiingo.png" style="width: 564.1999999999999px; height: 579.5999999999999px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 11.1 </span><span class="caption-text">tiingo의 유/무료 서비스 비교</span><a class="headerlink" href="#tiingo" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11.1 </span><span class="caption-text">tiingo의 유/무료 서비스 비교</span><a class="headerlink" href="#tiingo" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>tiingo는 무료 계정도 하루 1,000회까지 API 요청을 할 수 있으며, 파이썬에서 사용할 수 있는 패키지도 있으므로 이를 사용해 데이터를 수집해보도록 하겠다.</p>
 <section id="api-token">
-<h3><span class="section-number">11.1.1. </span>가입 및 API token 받기<a class="headerlink" href="#api-token" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">11.1.1. </span>가입 및 API token 받기<a class="headerlink" href="#api-token" title="Link to this heading">#</a></h3>
 <p>먼저 <a class="reference external" href="https://api.tiingo.com/">https://api.tiingo.com/</a> 사이트에 접속하여 우측 상단의 [Sign-up]을 클릭해 회원가입을 한다. 그 후 로그인을 한 후 우측 상단에서 본인의 ID를 클릭한 후 [Account]를 선택, 좌측 메뉴의 [API] 부분에서 [Token]을 클릭하면 본인의 API token을 확인할 수 있다.</p>
 <figure class="align-default" id="token">
 <img alt="_images/token1.png" src="_images/token1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 11.2 </span><span class="caption-text">API token 확인</span><a class="headerlink" href="#token" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11.2 </span><span class="caption-text">API token 확인</span><a class="headerlink" href="#token" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>발급받은 토큰을 PC에 저장할 경우, keyring 패키지를 이용하면 안전하게 저장할 수 있다. 패키지를 이용해 암호나 키 값을 저장하는 법은 다음과 같다.</p>
@@ -446,7 +468,7 @@ document.write(`
 </div>
 </section>
 <section id="id3">
-<h3><span class="section-number">11.1.2. </span>데이터 다운로드<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">11.1.2. </span>데이터 다운로드<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>tiingo 패키지를 이용해 데이터를 받아보도록 하겠다. 데이터를 받기위해 API 접속환경을 셋팅한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -474,120 +496,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>ticker</th>
-      <th>exchange</th>
-      <th>assetType</th>
-      <th>priceCurrency</th>
-      <th>startDate</th>
-      <th>endDate</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>-P-H</td>
-      <td>NYSE</td>
-      <td>Stock</td>
-      <td>USD</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>-P-S</td>
-      <td>NYSE</td>
-      <td>Stock</td>
-      <td>USD</td>
-      <td>2018-08-22</td>
-      <td>2023-05-05</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>000001</td>
-      <td>SHE</td>
-      <td>Stock</td>
-      <td>CNY</td>
-      <td>2007-01-04</td>
-      <td>2023-05-17</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>000002</td>
-      <td>SHE</td>
-      <td>Stock</td>
-      <td>CNY</td>
-      <td>2007-01-04</td>
-      <td>2023-05-17</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>000003</td>
-      <td>SHE</td>
-      <td>Stock</td>
-      <td>CNY</td>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">list_stock_tickers()</span></code> 메서드를 통해 티커 정보를 받아올 수 있다. ticker(티커), exchange(거래소), assetType(주식 종류), priceCurrency(거래 통화), startDate(시작일), endDate(마감일) 정보가 표시된다. 거래소와 통화 별 종목이 몇개가 있는지 확인해보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tickers_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;exchange&#39;</span><span class="p">,</span> <span class="s1">&#39;priceCurrency&#39;</span><span class="p">])[</span><span class="s1">&#39;ticker&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>exchange   priceCurrency
-           USD               2462
-AMEX       USD                 75
-ASX        AUD                169
-           USD               2173
-BATS       USD                 12
-CSE        USD                 32
-EXPM       USD               1792
-LSE        USD                 13
-NASDAQ     USD              12441
-NMFQS      USD                 28
-NYSE       USD               7677
-NYSE ARCA  USD                 74
-NYSE MKT   USD                448
-NYSE NAT   USD                  4
-OTCBB      USD                643
-OTCCE      USD               1118
-OTCGREY    USD               3781
-OTCMKTS    USD               1181
-OTCQB      USD               1316
-OTCQX      USD                776
-PINK       USD              14988
-SHE        CNY               2554
-           HKD                 12
-SHEB       HKD                 42
-SHG        CNY               1933
-           USD                  6
-SHGB       USD                 44
-Name: ticker, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -598,11 +511,6 @@ Name: ticker, dtype: int64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ticker_metadata</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_ticker_metadata</span><span class="p">(</span><span class="s2">&quot;AAPL&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ticker_metadata</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;ticker&#39;: &#39;AAPL&#39;, &#39;name&#39;: &#39;Apple Inc&#39;, &#39;description&#39;: &quot;Apple Inc. (Apple) designs, manufactures and markets mobile communication and media devices, personal computers, and portable digital music players, and a variety of related software, services, peripherals, networking solutions, and third-party digital content and applications. The Company&#39;s products and services include iPhone, iPad, Mac, iPod, Apple TV, a portfolio of consumer and professional software applications, the iOS and OS X operating systems, iCloud, and a variety of accessory, service and support offerings. The Company also delivers digital content and applications through the iTunes Store, App StoreSM, iBookstoreSM, and Mac App Store. The Company distributes its products worldwide through its retail stores, online stores, and direct sales force, as well as through third-party cellular network carriers, wholesalers, retailers, and value-added resellers. In February 2012, the Company acquired app-search engine Chomp.&quot;, &#39;startDate&#39;: &#39;1980-12-12&#39;, &#39;endDate&#39;: &#39;2023-05-17&#39;, &#39;exchangeCode&#39;: &#39;NASDAQ&#39;}
 </pre></div>
 </div>
 </div>
@@ -619,133 +527,6 @@ Name: ticker, dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>close</th>
-      <th>high</th>
-      <th>low</th>
-      <th>open</th>
-      <th>volume</th>
-      <th>adjClose</th>
-      <th>adjHigh</th>
-      <th>adjLow</th>
-      <th>adjOpen</th>
-      <th>adjVolume</th>
-      <th>divCash</th>
-      <th>splitFactor</th>
-    </tr>
-    <tr>
-      <th>date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2017-08-01 00:00:00+00:00</th>
-      <td>150.05</td>
-      <td>150.22</td>
-      <td>148.4100</td>
-      <td>149.10</td>
-      <td>24725526</td>
-      <td>35.294300</td>
-      <td>35.334287</td>
-      <td>34.908544</td>
-      <td>35.070844</td>
-      <td>98902104</td>
-      <td>0.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>2017-08-02 00:00:00+00:00</th>
-      <td>157.14</td>
-      <td>159.75</td>
-      <td>156.1600</td>
-      <td>159.28</td>
-      <td>69222793</td>
-      <td>36.961988</td>
-      <td>37.575904</td>
-      <td>36.731475</td>
-      <td>37.465352</td>
-      <td>276891172</td>
-      <td>0.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>2017-08-03 00:00:00+00:00</th>
-      <td>155.57</td>
-      <td>157.21</td>
-      <td>155.0200</td>
-      <td>157.05</td>
-      <td>26000738</td>
-      <td>36.592698</td>
-      <td>36.978453</td>
-      <td>36.463328</td>
-      <td>36.940819</td>
-      <td>104002952</td>
-      <td>0.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>2017-08-04 00:00:00+00:00</th>
-      <td>156.39</td>
-      <td>157.40</td>
-      <td>155.6900</td>
-      <td>156.07</td>
-      <td>20349532</td>
-      <td>36.785575</td>
-      <td>37.023144</td>
-      <td>36.620924</td>
-      <td>36.710306</td>
-      <td>81398128</td>
-      <td>0.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>2017-08-07 00:00:00+00:00</th>
-      <td>158.81</td>
-      <td>158.92</td>
-      <td>156.6701</td>
-      <td>157.06</td>
-      <td>21870321</td>
-      <td>37.354800</td>
-      <td>37.380674</td>
-      <td>36.851460</td>
-      <td>36.943171</td>
-      <td>87481284</td>
-      <td>0.0</td>
-      <td>1.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">get_dataframe()</span></code> 메서드 내에 티커를 입력하면 close(종가), high(고가), low(저가), open(시가), volumne(거래량) 및 수정주가와 divCash(현금 배당), splitFactor(주식분할 조정계수)까지 데이터를 받을 수 있다.</p>
 <p>이번에는 일별 가치지표를 받아보도록 하자. (무료 계정의 경우 다우존스 30 지수에 포함되는 종목 정보만 제공한다.)</p>
@@ -758,82 +539,6 @@ Name: ticker, dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>date</th>
-      <th>marketCap</th>
-      <th>enterpriseVal</th>
-      <th>peRatio</th>
-      <th>pbRatio</th>
-      <th>trailingPEG1Y</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2020-05-18T00:00:00.000Z</td>
-      <td>1.365142e+12</td>
-      <td>1.380598e+12</td>
-      <td>23.859865</td>
-      <td>17.406977</td>
-      <td>6.702453</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2020-05-19T00:00:00.000Z</td>
-      <td>1.357254e+12</td>
-      <td>1.372710e+12</td>
-      <td>23.721990</td>
-      <td>17.306390</td>
-      <td>6.663723</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2020-05-20T00:00:00.000Z</td>
-      <td>1.383650e+12</td>
-      <td>1.399106e+12</td>
-      <td>24.183339</td>
-      <td>17.642968</td>
-      <td>6.793320</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2020-05-21T00:00:00.000Z</td>
-      <td>1.373334e+12</td>
-      <td>1.388790e+12</td>
-      <td>24.003042</td>
-      <td>17.511432</td>
-      <td>6.742673</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2020-05-22T00:00:00.000Z</td>
-      <td>1.382176e+12</td>
-      <td>1.397632e+12</td>
-      <td>24.157583</td>
-      <td>17.624177</td>
-      <td>6.786085</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">get_fundamentals_daily()</span></code> 메서드 내에 티커를 입력하면 일간 시가총액, 기업가치, PER, PBR, PEG 정보가 JSON 형태로 받아지며, <code class="docutils literal notranslate"><span class="pre">from_records()</span></code> 메서드를 통해 데이터프레임 형태로 변경해준다.</p>
 <p>마지막으로 재무제표를 받아보도록 하자.</p>
@@ -852,84 +557,6 @@ Name: ticker, dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>year</th>
-      <th>quarter</th>
-      <th>statementType</th>
-      <th>dataCode</th>
-      <th>value</th>
-    </tr>
-    <tr>
-      <th>date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2023-05-05</th>
-      <td>2023</td>
-      <td>2</td>
-      <td>incomeStatement</td>
-      <td>intexp</td>
-      <td>930000000.0</td>
-    </tr>
-    <tr>
-      <th>2023-05-05</th>
-      <td>2023</td>
-      <td>2</td>
-      <td>balanceSheet</td>
-      <td>acctRec</td>
-      <td>35899000000.0</td>
-    </tr>
-    <tr>
-      <th>2023-05-05</th>
-      <td>2023</td>
-      <td>2</td>
-      <td>balanceSheet</td>
-      <td>acctPay</td>
-      <td>42945000000.0</td>
-    </tr>
-    <tr>
-      <th>2023-05-05</th>
-      <td>2023</td>
-      <td>2</td>
-      <td>cashFlow</td>
-      <td>issrepayDebt</td>
-      <td>-1996000000.0</td>
-    </tr>
-    <tr>
-      <th>2023-05-05</th>
-      <td>2023</td>
-      <td>2</td>
-      <td>incomeStatement</td>
-      <td>opex</td>
-      <td>13658000000.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">get_fundamentals_statements()</span></code> 메서드 내에 티커를 입력하면 재무제표의 세부항목을 받을 수 있다. 또한 <code class="docutils literal notranslate"><span class="pre">fmt</span></code>은 포맷 형태를 의미하며, JSON으로 받을 경우 형태가 지나치게 복잡하므로 CSV로 받는 것이 좋다.</p></li>
@@ -947,13 +574,13 @@ Name: ticker, dtype: int64
 </section>
 </section>
 <section id="id4">
-<h2><span class="section-number">11.2. </span>티커 수집하기<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">11.2. </span>티커 수집하기<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>이번에는 크롤링을 통해 데이터를 수집하는 방법에 대해 알아보겠다. 우리나라는 한국거래소를 통해 티커를 손쉽게 수집할 수 있지만 해외의 경우는 그렇지 않다. 먼저 우리나라와 달리 국가 별로 거래소가 여러개인 경우도 있으며, 홈페이지에 상장 종목 리스트를 제공하지 않는 경우도 많기 때문이다.</p>
 <p>다행히 투자자들이 많이 참조하는 사이트인 인베스팅닷컴(<a class="reference external" href="https://www.investing.com/">https://www.investing.com/</a>)에서는 전 세계 주식 및 각종 금융 데이터를 제공하고 있다. 이 중 스크리닝 기능을 활용하면 각 국가별 티커 리스트를 수집할 수 있다. 먼저 인베스팅닷컴에 접속한 후 [Markets → Stocks → Stock Screener]에 접속한다.</p>
 <figure class="align-default" id="screen">
 <img alt="_images/screen.png" src="_images/screen.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 11.3 </span><span class="caption-text">인베스팅닷컴의 주식 스크리너</span><a class="headerlink" href="#screen" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11.3 </span><span class="caption-text">인베스팅닷컴의 주식 스크리너</span><a class="headerlink" href="#screen" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>페이지를 접속하면 미국 종목들이 나타나며, URL은 다음과 같다.</p>
@@ -964,7 +591,7 @@ Name: ticker, dtype: int64
 <figure class="align-default" id="japan">
 <img alt="_images/japan.png" src="_images/japan.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 11.4 </span><span class="caption-text">일본 국가 선택</span><a class="headerlink" href="#japan" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11.4 </span><span class="caption-text">일본 국가 선택</span><a class="headerlink" href="#japan" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>하단의 테이블이 일본 종목들로 바뀌며 URL 역시 다음과 같이 바뀐다.</p>
@@ -983,7 +610,7 @@ Name: ticker, dtype: int64
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="n">Service</span><span class="p">(</span><span class="n">ChromeDriverManager</span><span class="p">()</span><span class="o">.</span><span class="n">install</span><span class="p">()))</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.investing.com/stock-screener/?sp=country::5|sector::a|industry::a|equityType::ORD%3Ceq_market_cap;1&#39;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.investing.com/stock-screener/?sp=country::5|sector::a|industry::a|equityType::ORD|exchange::a%3Ceq_market_cap;1&#39;</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -997,7 +624,7 @@ Name: ticker, dtype: int64
 <figure class="align-default" id="selenium-open">
 <img alt="_images/selenium_open.png" src="_images/selenium_open.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 11.5 </span><span class="caption-text">셀레니움을 이용한 스크리너 접속</span><a class="headerlink" href="#selenium-open" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11.5 </span><span class="caption-text">셀레니움을 이용한 스크리너 접속</span><a class="headerlink" href="#selenium-open" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>다음으로 HTML 정보를 가져오도록 한다.</p>
@@ -1012,14 +639,14 @@ Name: ticker, dtype: int64
 <figure class="align-default" id="country-ticker">
 <img alt="_images/country_ticker.png" src="_images/country_ticker.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 11.6 </span><span class="caption-text">국가별 코드</span><a class="headerlink" href="#country-ticker" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11.6 </span><span class="caption-text">국가별 코드</span><a class="headerlink" href="#country-ticker" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>이번에는 위젯에서 선택되어 있는 국가명을 확인해보도록 하자. ‘newBtnDropdown noHover’ 클래스 하단의 ‘input’ 태그의 ‘value’ 속성의 속성명에는 국가명이 적혀 있다. 이를 코드를 통해 찾아보도록 하자.</p>
 <figure class="align-default" id="country-name">
 <img alt="_images/country_name.png" src="_images/country_name.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 11.7 </span><span class="caption-text">국가명 확인</span><a class="headerlink" href="#country-name" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11.7 </span><span class="caption-text">국가명 확인</span><a class="headerlink" href="#country-name" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -1038,7 +665,7 @@ Name: ticker, dtype: int64
 <figure class="align-default" id="screen-table">
 <img alt="_images/screen_table.png" src="_images/screen_table.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 11.8 </span><span class="caption-text">종목 테이블</span><a class="headerlink" href="#screen-table" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11.8 </span><span class="caption-text">종목 테이블</span><a class="headerlink" href="#screen-table" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -1071,7 +698,7 @@ Name: ticker, dtype: int64
 <figure class="align-default" id="selenium-2">
 <img alt="_images/selenium_2.png" src="_images/selenium_2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 11.9 </span><span class="caption-text">크롤링 결과 확인</span><a class="headerlink" href="#selenium-2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11.9 </span><span class="caption-text">크롤링 결과 확인</span><a class="headerlink" href="#selenium-2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>결과를 살펴보면 웹페이지에 있는 내역 외에도 Exchange(거래소), Sector, Industy 등 추가적인 정보를 확인할 수 있다. 이 중 필요한 열만 선택하자.</p>
@@ -1082,93 +709,18 @@ Name: ticker, dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Name</th>
-      <th>Symbol</th>
-      <th>Exchange</th>
-      <th>Sector</th>
-      <th>Market Cap</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Apple</td>
-      <td>AAPL</td>
-      <td>NASDAQ</td>
-      <td>Technology</td>
-      <td>2.72T</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Microsoft</td>
-      <td>MSFT</td>
-      <td>NASDAQ</td>
-      <td>Technology</td>
-      <td>2.33T</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Alphabet C</td>
-      <td>GOOG</td>
-      <td>NASDAQ</td>
-      <td>Technology</td>
-      <td>1.54T</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Alphabet A</td>
-      <td>GOOGL</td>
-      <td>NASDAQ</td>
-      <td>Technology</td>
-      <td>1.54T</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Amazon.com</td>
-      <td>AMZN</td>
-      <td>NASDAQ</td>
-      <td>Consumer Cyclicals</td>
-      <td>1.19T</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>마지막으로 종목 정보가 몇페이지까지 있는지 확인해야 한다. 웹페이지의 ‘Screener Results’ 글자 뒤에는 해당 국가에 총 몇 종목이 있는지 출력된다. 한 페이지에는 총 50 종목이 출력되므로 해당 숫자를 50으로 나눈 후 올림을 하면 총 페이지 수를 계산할 수 있다. 해당 정보는 ‘js-total-results’ 클래스에 위치하고 있으며, 이를 이용해 페이지 수를 계산해보도록 하자.</p>
 <figure class="align-default" id="country-page">
 <img alt="_images/country_page.png" src="_images/country_page.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 11.10 </span><span class="caption-text">종목 수 확인</span><a class="headerlink" href="#country-page" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11.10 </span><span class="caption-text">종목 수 확인</span><a class="headerlink" href="#country-page" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">end_num</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;js-total-results&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">end_num</span><span class="p">)</span> <span class="o">/</span> <span class="mi">50</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>171
 </pre></div>
 </div>
 </div>
@@ -1182,7 +734,7 @@ Name: ticker, dtype: int64
 </div>
 </div>
 <section id="id5">
-<h3><span class="section-number">11.2.1. </span>전 종목 티커 크롤링<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">11.2.1. </span>전 종목 티커 크롤링<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>위 과정을 통해 국가별 전 종목의 티커 및 관련 정보를 수집하는 방법과, 페이지 수를 계산할 수 있었다. 이제 for문을 이용해 미국의 전 종목 티커를 크롤링해보도록 하겠다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1294,19 +846,19 @@ Name: ticker, dtype: int64
 <p>마지막으로 위 데이터프레임을 SQL에 저장해주도록 한다. 먼저 SQL에서 다음의 쿼리를 통해 테이블(global_ticker)을 만든다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>use stock_db;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">use</span> <span class="n">stock_db</span><span class="p">;</span>
 
-create table global_ticker
-(
-    Name varchar(50) not null,
-    Symbol varchar(30),
-    Exchange varchar(30),
-    Sector varchar(30),
-    `Market Cap` varchar(10),
-    country varchar(20),    
-    date date,
-    primary key(Symbol, country, date)
-);
+<span class="n">create</span> <span class="n">table</span> <span class="n">global_ticker</span>
+<span class="p">(</span>
+    <span class="n">Name</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="ow">not</span> <span class="n">null</span><span class="p">,</span>
+    <span class="n">Symbol</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span>
+    <span class="n">Exchange</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span>
+    <span class="n">Sector</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">40</span><span class="p">),</span>
+    <span class="err">`</span><span class="n">Market</span> <span class="n">Cap</span><span class="err">`</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+    <span class="n">country</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>    
+    <span class="n">date</span> <span class="n">date</span><span class="p">,</span>
+    <span class="n">primary</span> <span class="n">key</span><span class="p">(</span><span class="n">Symbol</span><span class="p">,</span> <span class="n">country</span><span class="p">,</span> <span class="n">date</span><span class="p">)</span>
+<span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1344,7 +896,7 @@ create table global_ticker
 <figure class="align-default" id="ticker-sql">
 <img alt="_images/ticker_sql.png" src="_images/ticker_sql.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 11.11 </span><span class="caption-text">글로벌 티커 테이블</span><a class="headerlink" href="#ticker-sql" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11.11 </span><span class="caption-text">글로벌 티커 테이블</span><a class="headerlink" href="#ticker-sql" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -1356,7 +908,7 @@ create table global_ticker
 </section>
 </section>
 <section id="id6">
-<h2><span class="section-number">11.3. </span>주가 다운로드<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">11.3. </span>주가 다운로드<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
 <p>야후 파이낸스에서는 전 세계 주가(한국 포함)를 제공하고 있다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">finance</span><span class="o">.</span><span class="n">yahoo</span><span class="o">.</span><span class="n">com</span><span class="o">/</span>
 </pre></div>
@@ -1365,7 +917,7 @@ create table global_ticker
 <figure class="align-default" id="yahoo-price">
 <img alt="_images/yahoo_price.png" src="_images/yahoo_price.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 11.12 </span><span class="caption-text">야후에서 제공하는 주가 데이터</span><a class="headerlink" href="#yahoo-price" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11.12 </span><span class="caption-text">야후에서 제공하는 주가 데이터</span><a class="headerlink" href="#yahoo-price" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -1378,7 +930,7 @@ create table global_ticker
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[*********************100%***********************]  1 of 1 completed
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[*********************100%%**********************]  1 of 1 completed
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -1423,7 +975,7 @@ create table global_ticker
       <td>0.128906</td>
       <td>0.128348</td>
       <td>0.128348</td>
-      <td>0.099584</td>
+      <td>0.099192</td>
       <td>469033600</td>
     </tr>
     <tr>
@@ -1432,7 +984,7 @@ create table global_ticker
       <td>0.122210</td>
       <td>0.121652</td>
       <td>0.121652</td>
-      <td>0.094388</td>
+      <td>0.094017</td>
       <td>175884800</td>
     </tr>
     <tr>
@@ -1441,7 +993,7 @@ create table global_ticker
       <td>0.113281</td>
       <td>0.112723</td>
       <td>0.112723</td>
-      <td>0.087461</td>
+      <td>0.087117</td>
       <td>105728000</td>
     </tr>
     <tr>
@@ -1450,7 +1002,7 @@ create table global_ticker
       <td>0.116071</td>
       <td>0.115513</td>
       <td>0.115513</td>
-      <td>0.089625</td>
+      <td>0.089273</td>
       <td>86441600</td>
     </tr>
     <tr>
@@ -1459,7 +1011,7 @@ create table global_ticker
       <td>0.119420</td>
       <td>0.118862</td>
       <td>0.118862</td>
-      <td>0.092224</td>
+      <td>0.091861</td>
       <td>73449600</td>
     </tr>
   </tbody>
@@ -1525,7 +1077,7 @@ create table global_ticker
       <td>1.004464</td>
       <td>0.907924</td>
       <td>0.999442</td>
-      <td>0.849468</td>
+      <td>0.846127</td>
       <td>535796800</td>
     </tr>
     <tr>
@@ -1534,7 +1086,7 @@ create table global_ticker
       <td>0.987723</td>
       <td>0.903460</td>
       <td>0.915179</td>
-      <td>0.777850</td>
+      <td>0.774790</td>
       <td>512377600</td>
     </tr>
     <tr>
@@ -1543,7 +1095,7 @@ create table global_ticker
       <td>0.987165</td>
       <td>0.919643</td>
       <td>0.928571</td>
-      <td>0.789232</td>
+      <td>0.786128</td>
       <td>778321600</td>
     </tr>
     <tr>
@@ -1552,7 +1104,7 @@ create table global_ticker
       <td>0.955357</td>
       <td>0.848214</td>
       <td>0.848214</td>
-      <td>0.720933</td>
+      <td>0.718098</td>
       <td>767972800</td>
     </tr>
     <tr>
@@ -1561,7 +1113,7 @@ create table global_ticker
       <td>0.901786</td>
       <td>0.852679</td>
       <td>0.888393</td>
-      <td>0.755083</td>
+      <td>0.752113</td>
       <td>460734400</td>
     </tr>
   </tbody>
@@ -1572,7 +1124,7 @@ create table global_ticker
 <figure class="align-default" id="same-ticker">
 <img alt="_images/same_ticker.png" src="_images/same_ticker.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 11.13 </span><span class="caption-text">중복 티커</span><a class="headerlink" href="#same-ticker" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11.13 </span><span class="caption-text">중복 티커</span><a class="headerlink" href="#same-ticker" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>우리가 원하는 도쿄 일렉트론 뿐만 아니라 홍콩에 상장된 ‘Janco Holdings Limited’라는 주식 역시 티커가 8035 이다. 이처럼 각기 다른 국가에서 중복된 티커가 사용되는 경우가 종종 발생되므로, 야후 파이낸스 혹은 여러 벤더의 경우 ‘티커.국가코드’ 형태를 통해 이들을 구분한다. 야후 파이낸스에서 일본의 국가코드는 ‘T’ 이다. 이를 이용해 도쿄 일렉트론의 주가를 받는 법은 다음과 같다.</p>
@@ -1622,47 +1174,47 @@ create table global_ticker
   <tbody>
     <tr>
       <th>2000-01-04</th>
-      <td>13800.0</td>
-      <td>14000.0</td>
-      <td>12890.0</td>
-      <td>13010.0</td>
-      <td>11311.805664</td>
-      <td>231000</td>
+      <td>4600.000000</td>
+      <td>4666.666504</td>
+      <td>4296.666504</td>
+      <td>4336.666504</td>
+      <td>2920.333984</td>
+      <td>693000</td>
     </tr>
     <tr>
       <th>2000-01-05</th>
-      <td>11510.0</td>
-      <td>12140.0</td>
-      <td>11020.0</td>
-      <td>11950.0</td>
-      <td>10390.168945</td>
-      <td>672000</td>
+      <td>3836.666748</td>
+      <td>4046.666748</td>
+      <td>3673.333252</td>
+      <td>3983.333252</td>
+      <td>2682.397949</td>
+      <td>2016000</td>
     </tr>
     <tr>
       <th>2000-01-06</th>
-      <td>12000.0</td>
-      <td>12600.0</td>
-      <td>11000.0</td>
-      <td>11020.0</td>
-      <td>9581.561523</td>
-      <td>688000</td>
+      <td>4000.000000</td>
+      <td>4200.000000</td>
+      <td>3666.666748</td>
+      <td>3673.333252</td>
+      <td>2473.642822</td>
+      <td>2064000</td>
     </tr>
     <tr>
       <th>2000-01-07</th>
-      <td>10800.0</td>
-      <td>11530.0</td>
-      <td>10530.0</td>
-      <td>10920.0</td>
-      <td>9494.613281</td>
-      <td>1203000</td>
+      <td>3600.000000</td>
+      <td>3843.333252</td>
+      <td>3510.000000</td>
+      <td>3640.000000</td>
+      <td>2451.196289</td>
+      <td>3609000</td>
     </tr>
     <tr>
       <th>2000-01-10</th>
-      <td>10920.0</td>
-      <td>10920.0</td>
-      <td>10920.0</td>
-      <td>10920.0</td>
-      <td>9494.613281</td>
+      <td>3640.000000</td>
+      <td>3640.000000</td>
+      <td>3640.000000</td>
+      <td>3640.000000</td>
+      <td>2451.196289</td>
       <td>0</td>
     </tr>
   </tbody>
@@ -1677,24 +1229,24 @@ create table global_ticker
 </ul>
 </div>
 <section id="id7">
-<h3><span class="section-number">11.3.1. </span>전 종목 주가 다운로드<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">11.3.1. </span>전 종목 주가 다운로드<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>미국 데이터 역시 국내 전종목 주가를 다운로드 받고 DB에 저장했던것과 동일하게 for문을 이용하면 된다. 먼저 SQL에서 주가 데이터에 해당하는 테이블(global_price)를 만든다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>use stock_db;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">use</span> <span class="n">stock_db</span><span class="p">;</span>
 
-create table global_price
-(
-    Date date,
-    High double,
-    Low double,
-    Open double,
-    Close double,
-    Volume double,
-    `Adj Close` double,
-    ticker varchar(20),
-    primary key(Date, ticker)
-);
+<span class="n">create</span> <span class="n">table</span> <span class="n">global_price</span>
+<span class="p">(</span>
+    <span class="n">Date</span> <span class="n">date</span><span class="p">,</span>
+    <span class="n">High</span> <span class="n">double</span><span class="p">,</span>
+    <span class="n">Low</span> <span class="n">double</span><span class="p">,</span>
+    <span class="n">Open</span> <span class="n">double</span><span class="p">,</span>
+    <span class="n">Close</span> <span class="n">double</span><span class="p">,</span>
+    <span class="n">Volume</span> <span class="n">double</span><span class="p">,</span>
+    <span class="err">`</span><span class="n">Adj</span> <span class="n">Close</span><span class="err">`</span> <span class="n">double</span><span class="p">,</span>
+    <span class="n">ticker</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
+    <span class="n">primary</span> <span class="n">key</span><span class="p">(</span><span class="n">Date</span><span class="p">,</span> <span class="n">ticker</span><span class="p">)</span>
+<span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1790,7 +1342,7 @@ create table global_price
 <figure class="align-default" id="sql-price">
 <img alt="_images/sql_price.png" src="_images/sql_price.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 11.14 </span><span class="caption-text">글로벌 주가 테이블</span><a class="headerlink" href="#sql-price" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11.14 </span><span class="caption-text">글로벌 주가 테이블</span><a class="headerlink" href="#sql-price" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>작업이 종료된 후 ‘error_list’에는 오류가 발생해 다운로드 받지 못한 종목들이 입력되어 있다. 이는 페이지 오류나 통신 오류 때문일 수도 있으며, 인베스팅닷컴에는 존재하지만 야후 파이낸스에는 존재하지 않는 종목일 수도 있다.</p>
@@ -1801,7 +1353,7 @@ create table global_price
 </section>
 </section>
 <section id="id8">
-<h2><span class="section-number">11.4. </span>재무제표 다운로드<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">11.4. </span>재무제표 다운로드<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
 <p>재무제표 역시 야후 파이낸스에서 구할 수 있으며, [Financials] 탭을 클릭하면 연간 및 분기 기준 재무제표를 제공하고 있다. 해당 데이터를 다운로드 받을 수 있는 여러 패키지가 존재하며, 본 책에서는 그 중에서 yahooquery 패키지를 사용하도록 하겠다. 해당 패키지의 자세한 설명은 아래 사이트에서 확인할 수 있다. 예시로 애플(AAPL)의 종목정보 및 재무제표를 받아보도록 하겠다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">yahooquery</span><span class="o">.</span><span class="n">dpguthrie</span><span class="o">.</span><span class="n">com</span><span class="o">/</span>
 </pre></div>
@@ -1809,7 +1361,7 @@ create table global_price
 <figure class="align-default" id="yahoo-fs">
 <img alt="_images/yahoo_fs.png" src="_images/yahoo_fs.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 11.15 </span><span class="caption-text">야후에서 제공하는 재무제표 데이터</span><a class="headerlink" href="#yahoo-fs" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11.15 </span><span class="caption-text">야후에서 제공하는 재무제표 데이터</span><a class="headerlink" href="#yahoo-fs" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -1831,87 +1383,97 @@ create table global_price
   &#39;phone&#39;: &#39;408 996 1010&#39;,
   &#39;website&#39;: &#39;https://www.apple.com&#39;,
   &#39;industry&#39;: &#39;Consumer Electronics&#39;,
+  &#39;industryKey&#39;: &#39;consumer-electronics&#39;,
   &#39;industryDisp&#39;: &#39;Consumer Electronics&#39;,
   &#39;sector&#39;: &#39;Technology&#39;,
-  &#39;longBusinessSummary&#39;: &#39;Apple Inc. designs, manufactures, and markets smartphones, personal computers, tablets, wearables, and accessories worldwide. The company offers iPhone, a line of smartphones; Mac, a line of personal computers; iPad, a line of multi-purpose tablets; and wearables, home, and accessories comprising AirPods, Apple TV, Apple Watch, Beats products, and HomePod. It also provides AppleCare support and cloud services; and operates various platforms, including the App Store that allow customers to discover and download applications and digital content, such as books, music, video, games, and podcasts. In addition, the company offers various services, such as Apple Arcade, a game subscription service; Apple Fitness+, a personalized fitness service; Apple Music, which offers users a curated listening experience with on-demand radio stations; Apple News+, a subscription news and magazine service; Apple TV+, which offers exclusive original content; Apple Card, a co-branded credit card; and Apple Pay, a cashless payment service, as well as licenses its intellectual property. The company serves consumers, and small and mid-sized businesses; and the education, enterprise, and government markets. It distributes third-party applications for its products through the App Store. The company also sells its products through its retail and online stores, and direct sales force; and third-party cellular network carriers, wholesalers, retailers, and resellers. Apple Inc. was incorporated in 1977 and is headquartered in Cupertino, California.&#39;,
-  &#39;fullTimeEmployees&#39;: 164000,
+  &#39;sectorKey&#39;: &#39;technology&#39;,
+  &#39;sectorDisp&#39;: &#39;Technology&#39;,
+  &#39;longBusinessSummary&#39;: &#39;Apple Inc. designs, manufactures, and markets smartphones, personal computers, tablets, wearables, and accessories worldwide. The company offers iPhone, a line of smartphones; Mac, a line of personal computers; iPad, a line of multi-purpose tablets; and wearables, home, and accessories comprising AirPods, Apple TV, Apple Watch, Beats products, and HomePod. It also provides AppleCare support and cloud services; and operates various platforms, including the App Store that allow customers to discover and download applications and digital content, such as books, music, video, games, and podcasts. In addition, the company offers various services, such as Apple Arcade, a game subscription service; Apple Fitness+, a personalized fitness service; Apple Music, which offers users a curated listening experience with on-demand radio stations; Apple News+, a subscription news and magazine service; Apple TV+, which offers exclusive original content; Apple Card, a co-branded credit card; and Apple Pay, a cashless payment service, as well as licenses its intellectual property. The company serves consumers, and small and mid-sized businesses; and the education, enterprise, and government markets. It distributes third-party applications for its products through the App Store. The company also sells its products through its retail and online stores, and direct sales force; and third-party cellular network carriers, wholesalers, retailers, and resellers. Apple Inc. was founded in 1976 and is headquartered in Cupertino, California.&#39;,
+  &#39;fullTimeEmployees&#39;: 161000,
   &#39;companyOfficers&#39;: [{&#39;maxAge&#39;: 1,
     &#39;name&#39;: &#39;Mr. Timothy D. Cook&#39;,
-    &#39;age&#39;: 61,
+    &#39;age&#39;: 62,
     &#39;title&#39;: &#39;CEO &amp; Director&#39;,
     &#39;yearBorn&#39;: 1961,
-    &#39;fiscalYear&#39;: 2022,
-    &#39;totalPay&#39;: 16425933,
+    &#39;fiscalYear&#39;: 2023,
+    &#39;totalPay&#39;: 16239562,
     &#39;exercisedValue&#39;: 0,
     &#39;unexercisedValue&#39;: 0},
    {&#39;maxAge&#39;: 1,
     &#39;name&#39;: &#39;Mr. Luca  Maestri&#39;,
-    &#39;age&#39;: 59,
-    &#39;title&#39;: &#39;CFO &amp; Sr. VP&#39;,
+    &#39;age&#39;: 60,
+    &#39;title&#39;: &#39;CFO &amp; Senior VP&#39;,
     &#39;yearBorn&#39;: 1963,
-    &#39;fiscalYear&#39;: 2022,
-    &#39;totalPay&#39;: 5019783,
+    &#39;fiscalYear&#39;: 2023,
+    &#39;totalPay&#39;: 4612242,
     &#39;exercisedValue&#39;: 0,
     &#39;unexercisedValue&#39;: 0},
    {&#39;maxAge&#39;: 1,
     &#39;name&#39;: &#39;Mr. Jeffrey E. Williams&#39;,
-    &#39;age&#39;: 58,
+    &#39;age&#39;: 59,
     &#39;title&#39;: &#39;Chief Operating Officer&#39;,
     &#39;yearBorn&#39;: 1964,
-    &#39;fiscalYear&#39;: 2022,
-    &#39;totalPay&#39;: 5018337,
+    &#39;fiscalYear&#39;: 2023,
+    &#39;totalPay&#39;: 4637585,
     &#39;exercisedValue&#39;: 0,
     &#39;unexercisedValue&#39;: 0},
    {&#39;maxAge&#39;: 1,
     &#39;name&#39;: &#39;Ms. Katherine L. Adams&#39;,
-    &#39;age&#39;: 58,
-    &#39;title&#39;: &#39;Sr. VP, Gen. Counsel &amp; Sec.&#39;,
+    &#39;age&#39;: 59,
+    &#39;title&#39;: &#39;Senior VP, General Counsel &amp; Secretary&#39;,
     &#39;yearBorn&#39;: 1964,
-    &#39;fiscalYear&#39;: 2022,
-    &#39;totalPay&#39;: 5015208,
+    &#39;fiscalYear&#39;: 2023,
+    &#39;totalPay&#39;: 4618064,
     &#39;exercisedValue&#39;: 0,
     &#39;unexercisedValue&#39;: 0},
    {&#39;maxAge&#39;: 1,
     &#39;name&#39;: &quot;Ms. Deirdre  O&#39;Brien&quot;,
-    &#39;age&#39;: 55,
-    &#39;title&#39;: &#39;Sr. VP of Retail&#39;,
+    &#39;age&#39;: 56,
+    &#39;title&#39;: &#39;Senior Vice President of Retail&#39;,
     &#39;yearBorn&#39;: 1967,
-    &#39;fiscalYear&#39;: 2022,
-    &#39;totalPay&#39;: 5019783,
+    &#39;fiscalYear&#39;: 2023,
+    &#39;totalPay&#39;: 4613369,
     &#39;exercisedValue&#39;: 0,
     &#39;unexercisedValue&#39;: 0},
    {&#39;maxAge&#39;: 1,
     &#39;name&#39;: &#39;Mr. Chris  Kondo&#39;,
-    &#39;title&#39;: &#39;Sr. Director of Corp. Accounting&#39;,
+    &#39;title&#39;: &#39;Senior Director of Corporate Accounting&#39;,
+    &#39;fiscalYear&#39;: 2023,
     &#39;exercisedValue&#39;: 0,
     &#39;unexercisedValue&#39;: 0},
    {&#39;maxAge&#39;: 1,
     &#39;name&#39;: &#39;Mr. James  Wilson&#39;,
     &#39;title&#39;: &#39;Chief Technology Officer&#39;,
+    &#39;fiscalYear&#39;: 2023,
     &#39;exercisedValue&#39;: 0,
     &#39;unexercisedValue&#39;: 0},
    {&#39;maxAge&#39;: 1,
-    &#39;name&#39;: &#39;Ms. Mary  Demby&#39;,
-    &#39;title&#39;: &#39;Chief Information Officer&#39;,
-    &#39;exercisedValue&#39;: 0,
-    &#39;unexercisedValue&#39;: 0},
-   {&#39;maxAge&#39;: 1,
-    &#39;name&#39;: &#39;Ms. Nancy  Paxton&#39;,
-    &#39;title&#39;: &#39;Sr. Director of Investor Relations &amp; Treasury&#39;,
+    &#39;name&#39;: &#39;Suhasini  Chandramouli&#39;,
+    &#39;title&#39;: &#39;Director of Investor Relations&#39;,
+    &#39;fiscalYear&#39;: 2023,
     &#39;exercisedValue&#39;: 0,
     &#39;unexercisedValue&#39;: 0},
    {&#39;maxAge&#39;: 1,
     &#39;name&#39;: &#39;Mr. Greg  Joswiak&#39;,
-    &#39;title&#39;: &#39;Sr. VP of Worldwide Marketing&#39;,
+    &#39;title&#39;: &#39;Senior Vice President of Worldwide Marketing&#39;,
+    &#39;fiscalYear&#39;: 2023,
+    &#39;exercisedValue&#39;: 0,
+    &#39;unexercisedValue&#39;: 0},
+   {&#39;maxAge&#39;: 1,
+    &#39;name&#39;: &#39;Mr. Adrian  Perica&#39;,
+    &#39;age&#39;: 49,
+    &#39;title&#39;: &#39;Head of Corporate Development&#39;,
+    &#39;yearBorn&#39;: 1974,
+    &#39;fiscalYear&#39;: 2023,
     &#39;exercisedValue&#39;: 0,
     &#39;unexercisedValue&#39;: 0}],
   &#39;auditRisk&#39;: 4,
   &#39;boardRisk&#39;: 1,
-  &#39;compensationRisk&#39;: 5,
+  &#39;compensationRisk&#39;: 6,
   &#39;shareHolderRightsRisk&#39;: 1,
   &#39;overallRisk&#39;: 1,
-  &#39;governanceEpochDate&#39;: &#39;2023-05-01 09:00:00&#39;,
-  &#39;compensationAsOfEpochDate&#39;: &#39;2022-12-31 09:00:00&#39;,
+  &#39;governanceEpochDate&#39;: &#39;2024-02-01 09:00:00&#39;,
+  &#39;compensationAsOfEpochDate&#39;: &#39;2023-12-31 09:00:00&#39;,
   &#39;maxAge&#39;: 86400}}
 </pre></div>
 </div>
@@ -1927,39 +1489,39 @@ create table global_price
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;AAPL&#39;: {&#39;maxAge&#39;: 1,
   &#39;priceHint&#39;: 2,
-  &#39;previousClose&#39;: 172.07,
-  &#39;open&#39;: 171.71,
-  &#39;dayLow&#39;: 170.422,
-  &#39;dayHigh&#39;: 172.925,
-  &#39;regularMarketPreviousClose&#39;: 172.07,
-  &#39;regularMarketOpen&#39;: 171.71,
-  &#39;regularMarketDayLow&#39;: 170.422,
-  &#39;regularMarketDayHigh&#39;: 172.925,
+  &#39;previousClose&#39;: 188.08,
+  &#39;open&#39;: 188.65,
+  &#39;dayLow&#39;: 188.0,
+  &#39;dayHigh&#39;: 189.99,
+  &#39;regularMarketPreviousClose&#39;: 188.08,
+  &#39;regularMarketOpen&#39;: 188.65,
+  &#39;regularMarketDayLow&#39;: 188.0,
+  &#39;regularMarketDayHigh&#39;: 189.99,
   &#39;dividendRate&#39;: 0.96,
-  &#39;dividendYield&#39;: 0.0056,
-  &#39;exDividendDate&#39;: &#39;2023-05-12 09:00:00&#39;,
-  &#39;payoutRatio&#39;: 0.1559,
-  &#39;fiveYearAvgDividendYield&#39;: 0.92,
-  &#39;beta&#39;: 1.296622,
-  &#39;trailingPE&#39;: 29.219967,
-  &#39;forwardPE&#39;: 26.4052,
-  &#39;volume&#39;: 54958392,
-  &#39;regularMarketVolume&#39;: 54958392,
-  &#39;averageVolume&#39;: 58150286,
-  &#39;averageVolume10days&#39;: 58186880,
-  &#39;averageDailyVolume10Day&#39;: 58186880,
+  &#39;dividendYield&#39;: 0.0050999997,
+  &#39;exDividendDate&#39;: &#39;2024-02-09 09:00:00&#39;,
+  &#39;payoutRatio&#39;: 0.14770001,
+  &#39;fiveYearAvgDividendYield&#39;: 0.78,
+  &#39;beta&#39;: 1.312,
+  &#39;trailingPE&#39;: 29.324535,
+  &#39;forwardPE&#39;: 26.3757,
+  &#39;volume&#39;: 45155216,
+  &#39;regularMarketVolume&#39;: 45155216,
+  &#39;averageVolume&#39;: 53311511,
+  &#39;averageVolume10days&#39;: 57853670,
+  &#39;averageDailyVolume10Day&#39;: 57853670,
   &#39;bid&#39;: 0.0,
   &#39;ask&#39;: 0.0,
   &#39;bidSize&#39;: 3000,
-  &#39;askSize&#39;: 800,
-  &#39;marketCap&#39;: 2716189327360,
-  &#39;fiftyTwoWeekLow&#39;: 124.17,
-  &#39;fiftyTwoWeekHigh&#39;: 176.15,
-  &#39;priceToSalesTrailing12Months&#39;: 7.0532966,
-  &#39;fiftyDayAverage&#39;: 163.586,
-  &#39;twoHundredDayAverage&#39;: 152.02135,
-  &#39;trailingAnnualDividendRate&#39;: 0.92,
-  &#39;trailingAnnualDividendYield&#39;: 0.005346661,
+  &#39;askSize&#39;: 1100,
+  &#39;marketCap&#39;: 2916202840064,
+  &#39;fiftyTwoWeekLow&#39;: 143.9,
+  &#39;fiftyTwoWeekHigh&#39;: 199.62,
+  &#39;priceToSalesTrailing12Months&#39;: 7.5606885,
+  &#39;fiftyDayAverage&#39;: 190.4794,
+  &#39;twoHundredDayAverage&#39;: 183.0677,
+  &#39;trailingAnnualDividendRate&#39;: 0.95,
+  &#39;trailingAnnualDividendYield&#39;: 0.005051042,
   &#39;currency&#39;: &#39;USD&#39;,
   &#39;fromCurrency&#39;: None,
   &#39;toCurrency&#39;: None,
@@ -2021,53 +1583,53 @@ create table global_price
   <tbody>
     <tr>
       <th rowspan="5" valign="top">AAPL</th>
-      <th>2023-01-03</th>
-      <td>130.279999</td>
-      <td>130.899994</td>
-      <td>124.169998</td>
-      <td>125.070000</td>
-      <td>112117500</td>
-      <td>124.706833</td>
+      <th>2024-01-02</th>
+      <td>187.149994</td>
+      <td>188.440002</td>
+      <td>183.889999</td>
+      <td>185.639999</td>
+      <td>82488700</td>
+      <td>185.403412</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>2023-01-04</th>
-      <td>126.889999</td>
-      <td>128.660004</td>
-      <td>125.080002</td>
-      <td>126.360001</td>
-      <td>89113600</td>
-      <td>125.993095</td>
+      <th>2024-01-03</th>
+      <td>184.220001</td>
+      <td>185.880005</td>
+      <td>183.429993</td>
+      <td>184.250000</td>
+      <td>58414500</td>
+      <td>184.015198</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>2023-01-05</th>
-      <td>127.129997</td>
-      <td>127.769997</td>
-      <td>124.760002</td>
-      <td>125.019997</td>
-      <td>80962700</td>
-      <td>124.656982</td>
+      <th>2024-01-04</th>
+      <td>182.149994</td>
+      <td>183.089996</td>
+      <td>180.880005</td>
+      <td>181.910004</td>
+      <td>71983600</td>
+      <td>181.678177</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>2023-01-06</th>
-      <td>126.010002</td>
-      <td>130.289993</td>
-      <td>124.889999</td>
-      <td>129.619995</td>
-      <td>87754700</td>
-      <td>129.243622</td>
+      <th>2024-01-05</th>
+      <td>181.990005</td>
+      <td>182.759995</td>
+      <td>180.169998</td>
+      <td>181.179993</td>
+      <td>62303300</td>
+      <td>180.949097</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>2023-01-09</th>
-      <td>130.470001</td>
-      <td>133.410004</td>
-      <td>129.889999</td>
-      <td>130.149994</td>
-      <td>70790800</td>
-      <td>129.772079</td>
+      <th>2024-01-08</th>
+      <td>182.089996</td>
+      <td>185.600006</td>
+      <td>181.500000</td>
+      <td>185.559998</td>
+      <td>59144500</td>
+      <td>185.323517</td>
       <td>0.0</td>
     </tr>
   </tbody>
@@ -2113,7 +1675,6 @@ create table global_price
       <th>BasicEPS</th>
       <th>BeginningCashPosition</th>
       <th>...</th>
-      <th>TotalDebt</th>
       <th>TotalEquityGrossMinorityInterest</th>
       <th>TotalExpenses</th>
       <th>TotalLiabilitiesNetMinorityInterest</th>
@@ -2122,6 +1683,7 @@ create table global_price
       <th>TotalOperatingIncomeAsReported</th>
       <th>TotalRevenue</th>
       <th>TradeandOtherPayablesNonCurrent</th>
+      <th>TreasurySharesNumber</th>
       <th>WorkingCapital</th>
     </tr>
     <tr>
@@ -2152,30 +1714,6 @@ create table global_price
   <tbody>
     <tr>
       <th>AAPL</th>
-      <td>2019-09-30</td>
-      <td>12M</td>
-      <td>USD</td>
-      <td>4.623600e+10</td>
-      <td>2.292600e+10</td>
-      <td>-5.857900e+10</td>
-      <td>1.053410e+11</td>
-      <td>1.847134e+10</td>
-      <td>2.9925</td>
-      <td>2.591300e+10</td>
-      <td>...</td>
-      <td>1.080470e+11</td>
-      <td>9.048800e+10</td>
-      <td>1.962440e+11</td>
-      <td>2.480280e+11</td>
-      <td>1.756970e+11</td>
-      <td>1.423100e+11</td>
-      <td>6.393000e+10</td>
-      <td>2.601740e+11</td>
-      <td>2.954500e+10</td>
-      <td>5.710100e+10</td>
-    </tr>
-    <tr>
-      <th>AAPL</th>
       <td>2020-09-30</td>
       <td>12M</td>
       <td>USD</td>
@@ -2184,10 +1722,9 @@ create table global_price
       <td>-6.676000e+10</td>
       <td>1.008870e+11</td>
       <td>1.735212e+10</td>
-      <td>3.3100</td>
+      <td>3.31</td>
       <td>5.022400e+10</td>
       <td>...</td>
-      <td>1.124360e+11</td>
       <td>6.533900e+10</td>
       <td>2.082270e+11</td>
       <td>2.585490e+11</td>
@@ -2196,6 +1733,7 @@ create table global_price
       <td>6.628800e+10</td>
       <td>2.745150e+11</td>
       <td>2.817000e+10</td>
+      <td>NaN</td>
       <td>3.832100e+10</td>
     </tr>
     <tr>
@@ -2208,10 +1746,9 @@ create table global_price
       <td>-7.028300e+10</td>
       <td>1.278770e+11</td>
       <td>1.670127e+10</td>
-      <td>5.6700</td>
+      <td>5.67</td>
       <td>3.978900e+10</td>
       <td>...</td>
-      <td>1.247190e+11</td>
       <td>6.309000e+10</td>
       <td>2.568680e+11</td>
       <td>2.879120e+11</td>
@@ -2220,6 +1757,7 @@ create table global_price
       <td>1.089490e+11</td>
       <td>3.658170e+11</td>
       <td>2.468900e+10</td>
+      <td>NaN</td>
       <td>9.355000e+09</td>
     </tr>
     <tr>
@@ -2232,10 +1770,9 @@ create table global_price
       <td>-7.234000e+10</td>
       <td>1.208050e+11</td>
       <td>1.621596e+10</td>
-      <td>6.1500</td>
+      <td>6.15</td>
       <td>3.592900e+10</td>
       <td>...</td>
-      <td>1.200690e+11</td>
       <td>5.067200e+10</td>
       <td>2.748910e+11</td>
       <td>3.020830e+11</td>
@@ -2244,11 +1781,36 @@ create table global_price
       <td>1.194370e+11</td>
       <td>3.943280e+11</td>
       <td>1.665700e+10</td>
+      <td>NaN</td>
       <td>-1.857700e+10</td>
+    </tr>
+    <tr>
+      <th>AAPL</th>
+      <td>2023-09-30</td>
+      <td>12M</td>
+      <td>USD</td>
+      <td>6.261100e+10</td>
+      <td>2.950800e+10</td>
+      <td>-7.088400e+10</td>
+      <td>1.005440e+11</td>
+      <td>1.574423e+10</td>
+      <td>6.16</td>
+      <td>2.497700e+10</td>
+      <td>...</td>
+      <td>6.214600e+10</td>
+      <td>2.689840e+11</td>
+      <td>2.904370e+11</td>
+      <td>2.090170e+11</td>
+      <td>1.451290e+11</td>
+      <td>1.143010e+11</td>
+      <td>3.832850e+11</td>
+      <td>1.545700e+10</td>
+      <td>0.0</td>
+      <td>-1.742000e+09</td>
     </tr>
   </tbody>
 </table>
-<p>4 rows × 155 columns</p>
+<p>4 rows × 158 columns</p>
 </div></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">all_financial_data()</span></code>를 입력하면 세 개의 재무제표를 한 번에 받을 수 있으며, 인자에 <code class="docutils literal notranslate"><span class="pre">frequency</span> <span class="pre">=</span> <span class="pre">'a'</span></code>를 입력하면 연간(annual) 재무제표를 받는다. 이는 가로로 긴 형태이므로 클렌징처리를 해주도록 한다.</p>
@@ -2295,21 +1857,13 @@ create table global_price
     <tr>
       <th>0</th>
       <td>AAPL</td>
-      <td>2019-09-30</td>
-      <td>AccountsPayable</td>
-      <td>46236000000.0</td>
-      <td>y</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>AAPL</td>
       <td>2020-09-30</td>
       <td>AccountsPayable</td>
       <td>42296000000.0</td>
       <td>y</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>1</th>
       <td>AAPL</td>
       <td>2021-09-30</td>
       <td>AccountsPayable</td>
@@ -2317,7 +1871,7 @@ create table global_price
       <td>y</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th>2</th>
       <td>AAPL</td>
       <td>2022-09-30</td>
       <td>AccountsPayable</td>
@@ -2325,11 +1879,19 @@ create table global_price
       <td>y</td>
     </tr>
     <tr>
+      <th>3</th>
+      <td>AAPL</td>
+      <td>2023-09-30</td>
+      <td>AccountsPayable</td>
+      <td>62611000000.0</td>
+      <td>y</td>
+    </tr>
+    <tr>
       <th>4</th>
       <td>AAPL</td>
-      <td>2019-09-30</td>
+      <td>2020-09-30</td>
       <td>AccountsReceivable</td>
-      <td>22926000000.0</td>
+      <td>16120000000.0</td>
       <td>y</td>
     </tr>
   </tbody>
@@ -2389,41 +1951,41 @@ create table global_price
     <tr>
       <th>0</th>
       <td>AAPL</td>
-      <td>2022-03-31</td>
-      <td>AccountsPayable</td>
-      <td>52682000000.0</td>
-      <td>q</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>AAPL</td>
-      <td>2022-06-30</td>
-      <td>AccountsPayable</td>
-      <td>48343000000.0</td>
-      <td>q</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>AAPL</td>
-      <td>2022-09-30</td>
-      <td>AccountsPayable</td>
-      <td>64115000000.0</td>
-      <td>q</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>AAPL</td>
       <td>2022-12-31</td>
       <td>AccountsPayable</td>
       <td>57918000000.0</td>
       <td>q</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>1</th>
       <td>AAPL</td>
       <td>2023-03-31</td>
       <td>AccountsPayable</td>
       <td>42945000000.0</td>
+      <td>q</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AAPL</td>
+      <td>2023-06-30</td>
+      <td>AccountsPayable</td>
+      <td>46699000000.0</td>
+      <td>q</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AAPL</td>
+      <td>2023-09-30</td>
+      <td>AccountsPayable</td>
+      <td>62611000000.0</td>
+      <td>q</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>AAPL</td>
+      <td>2023-12-31</td>
+      <td>AccountsPayable</td>
+      <td>58146000000.0</td>
       <td>q</td>
     </tr>
   </tbody>
@@ -2431,7 +1993,7 @@ create table global_price
 </div></div></div>
 </div>
 <section id="id9">
-<h3><span class="section-number">11.4.1. </span>전 종목 재무제표 다운로드<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">11.4.1. </span>전 종목 재무제표 다운로드<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p>for문을 이용하여 전 종목 재무제표를 다운로드 받도록 하겠다. 먼저 SQL에서 재무제표 데이터에 해당하는 테이블(global_fs)를 만든다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2561,7 +2123,7 @@ create table global_price
 <figure class="align-default" id="sql-fs">
 <img alt="_images/sql_fs.png" src="_images/sql_fs.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 11.16 </span><span class="caption-text">글로벌 재무제표 테이블</span><a class="headerlink" href="#sql-fs" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11.16 </span><span class="caption-text">글로벌 재무제표 테이블</span><a class="headerlink" href="#sql-fs" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -2597,11 +2159,10 @@ create table global_price
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="data_korea.html"
@@ -2621,10 +2182,7 @@ create table global_price
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -2632,6 +2190,7 @@ create table global_price
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2677,9 +2236,10 @@ By 이현열
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -2703,8 +2263,8 @@ By 이현열
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

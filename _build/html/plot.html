@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>4. 데이터 시각화 배워보기 &#8212; 파이썬을 이용한 퀀트 투자 포트폴리오 만들기</title>
   
@@ -19,40 +18,39 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script kind="utterances">
 
     var commentsRunWhenDOMLoaded = cb => {
@@ -88,13 +86,11 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'plot';</script>
@@ -111,7 +107,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -146,11 +150,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -165,9 +172,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="index.html">
+  
   
   
   
@@ -177,12 +186,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-light" alt="파이썬을 이용한 퀀트 투자 포트폴리오 만들기 - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="파이썬을 이용한 퀀트 투자 포트폴리오 만들기 - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -328,20 +348,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -387,18 +409,18 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">4. </span>데이터 시각화 배워보기<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">4. </span>데이터 시각화 배워보기<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>이전 장에서는 데이터를 분석하는 법에 대해 배웠으며, 이번 장에서는 데이터 및 분석된 자료를 시각화 하는법에 대해 배워보겠다. 데이터를 글자나 표가 아닌 그림으로 나타낼 경우 훨씬 직관적으로 이해가 가능하다. 파이썬에서는 데이터 시각화에 matplotlib 혹은 pandas 패키지를 사용하며, 고급 시각화에는 seaborn 패키지를 사용한다.</p>
 <section id="id2">
-<h2><span class="section-number">4.1. </span>그래프의 구성요소<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.1. </span>그래프의 구성요소<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>그래프를 그리기에 앞서, 그래프는 어떠한 요소들로 이루어져있는지 알아보도록 하자.</p>
 <figure class="align-default" id="matplotlib">
 <a class="reference internal image-reference" href="_images/matplotlib.png"><img alt="_images/matplotlib.png" src="_images/matplotlib.png" style="width: 568.4px; height: 590.8px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">그래프 구성요소 (출처: <a class="reference external" href="https://matplotlib.org">https://matplotlib.org</a>)</span><a class="headerlink" href="#matplotlib" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">그래프 구성요소 (출처: <a class="reference external" href="https://matplotlib.org">https://matplotlib.org</a>)</span><a class="headerlink" href="#matplotlib" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -421,12 +443,12 @@ document.write(`
 <figure class="align-default" id="figure-axes">
 <img alt="_images/figure_axes.png" src="_images/figure_axes.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 4.2 </span><span class="caption-text">다중 axes</span><a class="headerlink" href="#figure-axes" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.2 </span><span class="caption-text">다중 axes</span><a class="headerlink" href="#figure-axes" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="id3">
-<h2><span class="section-number">4.2. </span>matplotlib 패키지를 이용한 시각화<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.2. </span>matplotlib 패키지를 이용한 시각화<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>matplotlib 패키지는 파이썬 표준 시각화 도구라도 불릴 정도로 널리 활용되고 있다. 그래프 요소를 세세하게 꾸밀 수 있을 뿐만 아니라 배우는것도 그리 어렵지 않다. 먼저 해당 패키지의 기본적인 사용법에 대해 알아보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -441,7 +463,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7536021fec5edf49b739a20f7edb67804c19d957c1d61147b2c675c61b31ec9c.png" src="_images/7536021fec5edf49b739a20f7edb67804c19d957c1d61147b2c675c61b31ec9c.png" />
+<img alt="_images/cd52d2f91aa40891b24d2bb02e7259d02efb71fc84f30cd2a90ee463e4871005.png" src="_images/cd52d2f91aa40891b24d2bb02e7259d02efb71fc84f30cd2a90ee463e4871005.png" />
 </div>
 </div>
 <ol class="arabic simple">
@@ -461,7 +483,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5e9f04beca933dacd2415c5cf90ecc3f50aaa3e92b084739e67c212f8b9196dc.png" src="_images/5e9f04beca933dacd2415c5cf90ecc3f50aaa3e92b084739e67c212f8b9196dc.png" />
+<img alt="_images/1f12ecf64823a714829396bd269aea75fd4a8f84d79486d0b38b57070cdaaf8f.png" src="_images/1f12ecf64823a714829396bd269aea75fd4a8f84d79486d0b38b57070cdaaf8f.png" />
 </div>
 </div>
 <ol class="arabic simple">
@@ -482,7 +504,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4e4c0ac42130d011109aa1d589d5f7f7cccec11e8b1859f4e14befdf3023ab1a.png" src="_images/4e4c0ac42130d011109aa1d589d5f7f7cccec11e8b1859f4e14befdf3023ab1a.png" />
+<img alt="_images/0c62a51c14c4d1f154b3ac3a6b1a06cd9574ee761367e0c4ff2ea3091188b338.png" src="_images/0c62a51c14c4d1f154b3ac3a6b1a06cd9574ee761367e0c4ff2ea3091188b338.png" />
 </div>
 </div>
 <ol class="arabic simple">
@@ -567,7 +589,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9aa2867a8a01ad4e7828d1db4962d41816688bbc43bb644517511e9708adf376.png" src="_images/9aa2867a8a01ad4e7828d1db4962d41816688bbc43bb644517511e9708adf376.png" />
+<img alt="_images/4afe8f70d03370aefca5f5e61d7e3cbec8128ac99b7b77b744523088f23c45d6.png" src="_images/4afe8f70d03370aefca5f5e61d7e3cbec8128ac99b7b77b744523088f23c45d6.png" />
 </div>
 </div>
 <ol class="arabic simple">
@@ -577,7 +599,7 @@ document.write(`
 </ol>
 <p>코로나 이후 실업률이 급증했음을 확인할 수 있다.</p>
 <section id="id4">
-<h3><span class="section-number">4.2.1. </span>한 번에 여러개의 그래프 나타내기<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.2.1. </span>한 번에 여러개의 그래프 나타내기<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>하나의 figure 내에는 여러 개의 axes를 그릴수도 있다. 이를 실행하는 코드는 책이나 설명하는 사람 마다 약간씩 다르며, 그 이유에 대해 간략하게 설명하겠다. matplotlib 패키지는 크게 두 가지 방법으로 사용할 수 있다.</p>
 <ul class="simple">
 <li><p>stateless API (objected-based): 내가 지정한 figure, 내가 지정한 axes에 그림을 그리는 방법</p></li>
@@ -614,7 +636,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d7b67ac4b3340b9568698650c80dae014378d8d2727d0178adba656f70c5349d.png" src="_images/d7b67ac4b3340b9568698650c80dae014378d8d2727d0178adba656f70c5349d.png" />
+<img alt="_images/6f708689dab7302260d1f185e111f597eec7c90cf10499d781810730ebad97ab.png" src="_images/6f708689dab7302260d1f185e111f597eec7c90cf10499d781810730ebad97ab.png" />
 </div>
 </div>
 <ol class="arabic simple">
@@ -656,7 +678,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d7b67ac4b3340b9568698650c80dae014378d8d2727d0178adba656f70c5349d.png" src="_images/d7b67ac4b3340b9568698650c80dae014378d8d2727d0178adba656f70c5349d.png" />
+<img alt="_images/6f708689dab7302260d1f185e111f597eec7c90cf10499d781810730ebad97ab.png" src="_images/6f708689dab7302260d1f185e111f597eec7c90cf10499d781810730ebad97ab.png" />
 </div>
 </div>
 <ol class="arabic simple">
@@ -674,7 +696,7 @@ document.write(`
 </section>
 </section>
 <section id="pandas">
-<h2><span class="section-number">4.3. </span>pandas 패키지를 이용한 시각화<a class="headerlink" href="#pandas" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.3. </span>pandas 패키지를 이용한 시각화<a class="headerlink" href="#pandas" title="Link to this heading">#</a></h2>
 <p>pandas 패키지는 matplotlib 패키지의 기능을 일부 내장하고 있어 시리즈 또는 데이터프레임 객체를 바로 그래프로 표현할 수 있으며, 그래프 종류는 다음과 같다.</p>
 <ul class="simple">
 <li><p>line: 선 그래프</p></li>
@@ -822,7 +844,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c3fd5b3d4711bd8337d781037f3eed0d3745d69fc946e1716bafb725640341f6.png" src="_images/c3fd5b3d4711bd8337d781037f3eed0d3745d69fc946e1716bafb725640341f6.png" />
+<img alt="_images/cdd21b8ec8d991c85f89ff043df61696a78dd4de7a63be58330b1735a86b57df.png" src="_images/cdd21b8ec8d991c85f89ff043df61696a78dd4de7a63be58330b1735a86b57df.png" />
 </div>
 </div>
 <p>데이터프레임에 <code class="docutils literal notranslate"><span class="pre">plot()</span></code> 메서드를 입력하고, 그 후 산점도에 해당하는 <code class="docutils literal notranslate"><span class="pre">scatter()</span></code>를 추가로 입력한다. <span class="math notranslate nohighlight">\(x\)</span>축과 <span class="math notranslate nohighlight">\(y\)</span>축 정보를 입력하고 figure 사이즈 및 제목을 입력하면 이에 해당하는 그래프가 출력된다. 이번에는 추가로 cut 별로 색을 다르게 표현해보도록 하자.</p>
@@ -834,7 +856,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bf2dbf0100d788c6f045b349105bfdb15b9ea7512be92d79b18bed13fd64e8c8.png" src="_images/bf2dbf0100d788c6f045b349105bfdb15b9ea7512be92d79b18bed13fd64e8c8.png" />
+<img alt="_images/1918bf7374cbf15e44a5ee052dcd354c715ebcfc87b7d56440812c27627c2a90.png" src="_images/1918bf7374cbf15e44a5ee052dcd354c715ebcfc87b7d56440812c27627c2a90.png" />
 </div>
 </div>
 <p>c 인자에 색을 구분하고 싶은 열을 입력하며, cmap에는 파레트를 지정한다. 결과를 확인해보면 cut 별로 색이 다르게 표현되었다.</p>
@@ -847,7 +869,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0aa53bd61dc648d0b768bac3c130de7065826956622f742a20d25ee88db3c894.png" src="_images/0aa53bd61dc648d0b768bac3c130de7065826956622f742a20d25ee88db3c894.png" />
+<img alt="_images/ee6fca29edce6a78d851c88bcb14af671440c6a4669a560a4498dcbd698621ca.png" src="_images/ee6fca29edce6a78d851c88bcb14af671440c6a4669a560a4498dcbd698621ca.png" />
 </div>
 </div>
 <p>히스토그램으로 표현하고 싶은 열만 선택한 후, <code class="docutils literal notranslate"><span class="pre">plot.hist()</span></code> 메서드를 적용하면 히스토그램이 표현된다. matplotlib 패키지를 사용했을 때와 동일하게 bins 인자를 통해 몇개의 구간으로 나눌지도 선택할 수 있다.</p>
@@ -860,7 +882,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2af92f483150deacda8f57861b70e132fa637607a4a2e6867e076d3397f3c76f.png" src="_images/2af92f483150deacda8f57861b70e132fa637607a4a2e6867e076d3397f3c76f.png" />
+<img alt="_images/c78102d59937f41de8b28bc5c4f018caf18a5babc2e056d5cdefa23bf3ea651b.png" src="_images/c78102d59937f41de8b28bc5c4f018caf18a5babc2e056d5cdefa23bf3ea651b.png" />
 </div>
 </div>
 <ol class="arabic simple">
@@ -870,7 +892,7 @@ document.write(`
 <p>이처럼 pandas 패키지를 사용하면 데이터 분석 및 시각화를 한 줄의 코드로 작성할 수 있다.</p>
 </section>
 <section id="seaborn">
-<h2><span class="section-number">4.4. </span>seaborn 패키지를 이용한 시각화<a class="headerlink" href="#seaborn" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.4. </span>seaborn 패키지를 이용한 시각화<a class="headerlink" href="#seaborn" title="Link to this heading">#</a></h2>
 <p>seaborn 패키지는 matplotlib 패키지 보다 좀 더 화려하고 복잡한 그래프를 표현할 수 있다. 이번에는 예제로써 타이타닉 데이터셋을 이용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1021,7 +1043,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a00eb2463a843b422eaa0f9c18b55974505282b797fdc869fd16aaa283b29a58.png" src="_images/a00eb2463a843b422eaa0f9c18b55974505282b797fdc869fd16aaa283b29a58.png" />
+<img alt="_images/db3ec962eacedc8353944f90e710681bd23ddd6c6965f197bee056bd5436bf09.png" src="_images/db3ec962eacedc8353944f90e710681bd23ddd6c6965f197bee056bd5436bf09.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">scatterplot()</span></code> 함수를 통해 산점도를 그릴 수 있다. data에는 사용하고자 하는 데이터를, x와 y에는 각각의 축 정보를 입력한다. 이번에는 각 그룹 별로 점의 색과 모양을 다르게 표현해보도록 하자.</p>
@@ -1033,7 +1055,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ce8ef9923efbd810d257f1c97bda56e046d98d06a715b4208177ab646a5331bc.png" src="_images/ce8ef9923efbd810d257f1c97bda56e046d98d06a715b4208177ab646a5331bc.png" />
+<img alt="_images/b9ac7c6fa6f40a15414c6ad9f6597d52be9c6e6740592593c39181ba03c52305.png" src="_images/b9ac7c6fa6f40a15414c6ad9f6597d52be9c6e6740592593c39181ba03c52305.png" />
 </div>
 </div>
 <p>hue는 그룹 별 색을, style은 그룹 별 모양을 의미한다. class 별로 점의 색과 모양이 다르며, ‘First’ 클래스의 운임이 타 클래스 대비 훨씬 높음을 알 수 있다.</p>
@@ -1105,12 +1127,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d84aa079111fd5a808ac56114563fdd2a1afc6c2d5e4602456565b900289aea4.png" src="_images/d84aa079111fd5a808ac56114563fdd2a1afc6c2d5e4602456565b900289aea4.png" />
+<img alt="_images/04ae3010c5d78effc1217d9c73976e4099b7f9d5bc8e55bfebe552fb308da85e.png" src="_images/04ae3010c5d78effc1217d9c73976e4099b7f9d5bc8e55bfebe552fb308da85e.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">heatmap()</span></code> 함수를 통해 히트맵을 나타낼 수 있으며, annot은 데이터의 값을 표시할 지 여부를 의미한다. 또한 cmap은 팔레트 종류로써 coolwarm은 값이 높을 수록 붉은색, 낮을 수록 푸른색을 표현한다. class가 높을 수록 생존율이 높고, 남성에 비해 여성의 생존율이 높다는 것을 한 눈에 확인할 수 있다.</p>
 <section id="id5">
-<h3><span class="section-number">4.4.1. </span>한 번에 여러개의 그래프 나타내기<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.4.1. </span>한 번에 여러개의 그래프 나타내기<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>seaborn 패키지 역시 한번에 여러개의 그래프를 나타내는 것이 가능하지만, 표현 방법에 따라 사용하는 함수가 다르다. seaborn 패키지의 함수들은 크게 ‘figure-level’과 ‘axes-level’ 함수로 나누어져 있다.</p>
 <ul class="simple">
 <li><p>figure-level: matplotlib와 별개로 seaborn의 figure를 만들어 그곳에 그래프를 나타낸다. 따라서 figure-level 함수를 사용할 경우 facetgrid(seaborn의 figure)를 통해 레이아웃을 변경하고, 여러개의 그래프를 나타낼 수 있다.</p></li>
@@ -1120,7 +1142,7 @@ document.write(`
 <figure class="align-default" id="id6">
 <img alt="_images/seaborn.png" src="_images/seaborn.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 4.3 </span><span class="caption-text">seaborn 패키지의 함수 차이</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4.3 </span><span class="caption-text">seaborn 패키지의 함수 차이</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>먼저 figure-level의 예제로 class 별 나이의 분포를 나타내보자.</p>
@@ -1132,7 +1154,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8a5db3ded7449a00d2c5b496aa4c154db54b90091685d1bb6d705821eef4a178.png" src="_images/8a5db3ded7449a00d2c5b496aa4c154db54b90091685d1bb6d705821eef4a178.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\leebi\anaconda3\Lib\site-packages\seaborn\axisgrid.py:118: UserWarning: The figure layout has changed to tight
+  self._figure.tight_layout(*args, **kwargs)
+</pre></div>
+</div>
+<img alt="_images/2d358e6051c7c9449d3be5d6ed5a7b70d6ef157959e622049639575e8a032fbc.png" src="_images/2d358e6051c7c9449d3be5d6ed5a7b70d6ef157959e622049639575e8a032fbc.png" />
 </div>
 </div>
 <p>figure-level 함수에 해당하는 <code class="docutils literal notranslate"><span class="pre">displot()</span></code> 함수를 통해 분포를 나타내는 그래프를 그릴 수 있으며, 그래프 종류에 해당하는 kind에 ‘hist’를 입력하면 히스토그램을 나타낸다. hue 인자를 통해 ‘class’ 별로 색을 구분했으며, alpha 인자를 통해 투명도를 조절할 수 있다.</p>
@@ -1145,7 +1171,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/56503583f6369d7cc160d92580d0cf72a6ca8b330e73415ae505fa5377c4bd9d.png" src="_images/56503583f6369d7cc160d92580d0cf72a6ca8b330e73415ae505fa5377c4bd9d.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\leebi\anaconda3\Lib\site-packages\seaborn\axisgrid.py:118: UserWarning: The figure layout has changed to tight
+  self._figure.tight_layout(*args, **kwargs)
+</pre></div>
+</div>
+<img alt="_images/a04142f335c87e2d101774d207e38faba062747304999e68ebfad5c4fc6d4eb6.png" src="_images/a04142f335c87e2d101774d207e38faba062747304999e68ebfad5c4fc6d4eb6.png" />
 </div>
 </div>
 <p>col 인자에 특정 열을 입력하면 해당 열을 기준으로 그래프가 열 방향으로 각각 분할되어 표현되며, 이는 화면을 분할하는 facetgrid 가 적용되었기 때문이다. 세로 뿐만 아니라 가로로도 그래프를 분할할 수 있다.</p>
@@ -1157,7 +1187,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f97d0bb1987d39dc5ce5aefd22827ccb9ec819f6a5f536856ec2611cd62e1cc0.png" src="_images/f97d0bb1987d39dc5ce5aefd22827ccb9ec819f6a5f536856ec2611cd62e1cc0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\leebi\anaconda3\Lib\site-packages\seaborn\axisgrid.py:118: UserWarning: The figure layout has changed to tight
+  self._figure.tight_layout(*args, **kwargs)
+</pre></div>
+</div>
+<img alt="_images/fa25e4e09d91e3e7f5c7e7bad59b725e75be817e181325c974e16c51a2bc5069.png" src="_images/fa25e4e09d91e3e7f5c7e7bad59b725e75be817e181325c974e16c51a2bc5069.png" />
 </div>
 </div>
 <p>행으로는 sex, 열로는 class 별로 구분이 되었다. 즉, 위의 행은 sex = male, 아래 행은 sex = female에 해당하는 데이터이며, 첫번째 열은 class = First, 두번째 열은 class = Second, 세번째 열은 class = Third에 해당한다.</p>
@@ -1192,7 +1226,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7ccac8ca1b1d4ff5046bbe29b793a3786390bc733cbdca782b399e361faced09.png" src="_images/7ccac8ca1b1d4ff5046bbe29b793a3786390bc733cbdca782b399e361faced09.png" />
+<img alt="_images/78083adb85a290b3d6e959be518dce4c50a23adaf30cedbb98de2fc9e54939b1.png" src="_images/78083adb85a290b3d6e959be518dce4c50a23adaf30cedbb98de2fc9e54939b1.png" />
 </div>
 </div>
 <ol class="arabic simple">
@@ -1237,11 +1271,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="eda.html"
@@ -1261,10 +1294,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1272,6 +1302,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1310,9 +1341,10 @@ By 이현열
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1336,8 +1368,8 @@ By 이현열
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

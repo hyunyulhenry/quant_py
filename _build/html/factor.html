@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>13. 퀀트 전략을 이용한 종목선정 &#8212; 파이썬을 이용한 퀀트 투자 포트폴리오 만들기</title>
   
@@ -19,40 +18,39 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script kind="utterances">
 
     var commentsRunWhenDOMLoaded = cb => {
@@ -88,13 +86,11 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'factor';</script>
@@ -111,7 +107,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -146,11 +150,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -165,9 +172,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="index.html">
+  
   
   
   
@@ -177,12 +186,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-light" alt="파이썬을 이용한 퀀트 투자 포트폴리오 만들기 - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="파이썬을 이용한 퀀트 투자 포트폴리오 만들기 - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -328,20 +348,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -414,13 +436,13 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">13. </span>퀀트 전략을 이용한 종목선정<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">13. </span>퀀트 전략을 이용한 종목선정<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>투자에 필요한 주가, 재무제표, 가치지표 데이터가 준비되었다면 퀀트 전략을 이용해 투자할 종목을 선정해야 한다. 퀀트 투자는 크게 포트폴리오 운용 전략과 트레이딩 전략으로 나눌 수 있다. 포트폴리오 운용 전략은 과거 주식 시장을 분석해 좋은 주식의 기준을 찾아낸 후 해당 기준에 만족하는 종목을 매수하거나, 이와 반대에 있는 나쁜 주식을 공매도하기도 한다. 투자의 속도가 느리며, 다수의 종목을 하나의 포트폴리오로 구성해 운용하는 특징이 있다. 반면 트레이딩 전략은 주식이 오르거나 내리는 움직임을 연구한 후 각종 지표를 이용해 매수 혹은 매도하는 전략이다. 투자의 속도가 빠르며 소수의 종목을 대상으로 한다. 이번 장에서는 퀀트 전략을 이용한 종목선정에 대해 알아보며, 트레이딩 전략에 대해서는 이후 장에서 살펴볼 것이다.</p>
 <table class="table" id="quant-type">
-<caption><span class="caption-number">Table 13.1 </span><span class="caption-text">퀀트 투자 종류의 비교</span><a class="headerlink" href="#quant-type" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 13.1 </span><span class="caption-text">퀀트 투자 종류의 비교</span><a class="headerlink" href="#quant-type" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>기준</p></th>
 <th class="head"><p>포트폴리오 운용 전략</p></th>
@@ -448,12 +470,11 @@ document.write(`
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>SQL에 데이터베이스를 구축하지 않은 상태에서 이번 장을 실습하고자 할 경우 깃허브에 업로드 된 피클 파일을 다운로드 받으면 된다. 먼저 아래 사이트에 접속하여 각 파일을 클릭한 후 [Download] 버튼을 눌러 파일을 다운받는다.</p>
+<p>SQL에 데이터베이스를 구축하지 않은 상태에서 이번 장을 실습하고자 할 경우 아래 URL에서 실습용 데이터 다운로드 및 불러오는 방법을 참조하기 바란다.</p>
 <p><a class="github reference external" href="https://github.com/hyunyulhenry/quant_py/tree/main/data">hyunyulhenry/quant_py</a></p>
-<p>파이썬에서 <code class="docutils literal notranslate"><span class="pre">pd.read_pickle(&quot;파일주소/파일명.pkl&quot;)</span></code>을 실행하면 피클 파일을 불러올 수 있다.</p>
 </div>
 <section id="id2">
-<h2><span class="section-number">13.1. </span>팩터 이해하기<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">13.1. </span>팩터 이해하기<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>하나 혹은 소수의 주식만을 연구해서 주식이 오르거나 내리는 공통적인 이유를 찾는 것은 불가능에 가깝지만, 그룹으로 살펴보면 어느 정도 파악이 가능하다. 어떠한 특성, 예를 들어 기업의 크기 별로 주식들을 묶은 후 수익률을 살펴보면, 크기가 큰 기업의 수익률이 좋았는지 아니면 작은 기업의 수익률이 좋았는지 알 수 있다. 즉, 오르는 주식과 내리는 주식은 애초에 가지고 있는 특성이 다르며 그로 인해 수익률에도 차이가 있다. 이처럼 주식의 수익률에 영향을 미치는 특성들을 ‘팩터(Factor)’라고 하며, 주식의 수익률은 이러한 팩터들로 대부분 설명된다. 주식이 가지고 있는 특성만 제대로 알아도 오를만한 주식을 선별하거나, 혹은 내릴만한 주식을 걸러낼 수 있다.</p>
 <p>그러나 단순히 특성을 기준으로 수익률이 높거나 낮다고 해서 팩터로 인정되는 것은 아니다. 팩터로 인정되고 전략으로 사용되기 위해서는 아래의 조건을 충족해야 한다.</p>
 <ul class="simple">
@@ -466,11 +487,11 @@ document.write(`
 <p>퀀트 운용 전략에서는 팩터의 강도가 양인 종목들로 구성한 포트폴리오는 향후 수익률이 높을 것으로 예상되어 매수를 하며, 팩터의 강도가 음인 종목들로 구성한 포트폴리오는 반대로 향후 수익률이 낮을 것으로 예상되어 매수를 하지 않거나 공매도를 한다. 이번 장에서는 투자에 많이 활용되는 기본적인 팩터들에 대해 알아보고, 우리가 구한 데이터를 바탕으로 각 팩터별 투자 종목을 선택하는 방법을 알아보겠다.</p>
 </section>
 <section id="id3">
-<h2><span class="section-number">13.2. </span>베타 이해하기<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">13.2. </span>베타 이해하기<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>투자자들이라면 누구나 한 번은 베타(Beta)라는 용어를 들어봤을 것이다. 기본적으로 전체 주식시장의 움직임은 개별 주식의 수익률에 가장 크게 영향을 주는 팩터일 수밖에 없다. 아무리 좋은 주식도 주식시장이 폭락한다면 같이 떨어지며, 아무리 나쁜 주식도 주식시장이 상승한다면 대부분 같이 오르기 마련이다.</p>
 <p>개별 주식이 전체 주식시장의 변동에 반응하는 정도를 나타낸 값이 베타다. 베타가 1이라는 뜻은 주식시장과 움직임이 정확히 같다는 뜻으로서 시장 그 자체를 나타낸다. 베타가 1.5라는 뜻은 주식시장이 수익률이 +1%일 때 개별 주식의 수익률은 +1.5% 움직이며, 반대로 주식시장의 수익률이 -1%일 때 개별 주식의 수익률은 -1.5% 움직인다는 뜻이다. 반면 베타가 0.5라면 주식시장 수익률의 절반 정도만 움직인다.</p>
 <table class="table" id="beta">
-<caption><span class="caption-number">Table 13.2 </span><span class="caption-text">베타에 따른 개별 주식의 수익률 움직임</span><a class="headerlink" href="#beta" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 13.2 </span><span class="caption-text">베타에 따른 개별 주식의 수익률 움직임</span><a class="headerlink" href="#beta" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>베타</p></th>
 <th class="head"><p>주식시장이 +1% 일 경우</p></th>
@@ -500,7 +521,7 @@ document.write(`
 \[자산가격결정모형: R_i = R_f + \beta_i \times [R_m - R_f]\]</div>
 <p>먼저 회귀분석모형의 상수항인 <span class="math notranslate nohighlight">\(a\)</span>에 해당하는 부분은 무위험 수익률을 나타내는 <span class="math notranslate nohighlight">\(R_f\)</span>다. 독립변수인 <span class="math notranslate nohighlight">\(x\)</span>에 해당하는 부분은 무위험 수익률 대비 주식 시장의 초과 수익률을 나타내는 시장위험 프리미엄인 <span class="math notranslate nohighlight">\(R_m - R_f\)</span>이다. 종속변수인 <span class="math notranslate nohighlight">\(y\)</span>에 해당하는 부분은 개별주식의 수익률을 나타내는 <span class="math notranslate nohighlight">\(R_i\)</span>이며, 최종적으로 회귀계수인 <span class="math notranslate nohighlight">\(b\)</span>에 해당하는 부분은 개별 주식의 베타다.</p>
 <table class="table" id="beta-formulta">
-<caption><span class="caption-number">Table 13.3 </span><span class="caption-text">회귀분석모형과 자산가격결정모형의 비교</span><a class="headerlink" href="#beta-formulta" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 13.3 </span><span class="caption-text">회귀분석모형과 자산가격결정모형의 비교</span><a class="headerlink" href="#beta-formulta" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>구분</p></th>
 <th class="head"><p>회귀분석모형</p></th>
@@ -528,8 +549,16 @@ document.write(`
 </table>
 <p>통계학에서 회귀계수는 <span class="math notranslate nohighlight">\(\beta = \frac{cov(x,y)}{\sigma_x^2}\)</span> 형태로 구할 수 있으며, <span class="math notranslate nohighlight">\(x\)</span>와 <span class="math notranslate nohighlight">\(y\)</span>에 각각 시장수익률과 개별주식의 수익률을 대입할 경우 개별주식의 베타는 <span class="math notranslate nohighlight">\(\beta_i= \rho(i,m) \times\frac{\sigma_i}{\sigma_m}\)</span> 형태로 구할 수 있다. 그러나 이러한 수식을 모르더라도 파이썬에서는 함수를 이용해 간단히 베타를 구할 수 있다.</p>
 <section id="id4">
-<h3><span class="section-number">13.2.1. </span>베타 계산하기<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.2.1. </span>베타 계산하기<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>베타를 구하는 방법을 알아보기 위해 주식시장에 대한 대용치로 KOSPI 지수를, 개별주식으로는 전통적 고베타주인 증권주를 이용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">yfinance</span> <span class="k">as</span> <span class="nn">yf</span>
@@ -549,15 +578,15 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[*********************100%***********************]  1 of 1 completed
-[*********************100%***********************]  1 of 1 completed
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[*********************100%%**********************]  1 of 1 completed
+[*********************100%%**********************]  1 of 1 completed
 </pre></div>
 </div>
 </div>
 </div>
 <ol class="arabic simple">
 <li><p>KOSPI 코드(^KS11)와  증권주인 키움증권의 티커(039490.KS)를 입력한다.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">DataReader()</span></code> 함수를 이용하여 해당 티커들의 2016년부터 2021년까지 데이터를 다운로드 받는다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">download()</span></code> 함수를 이용하여 해당 티커들의 2016년부터 2021년까지 데이터를 다운로드 받는다.</p></li>
 <li><p>종가(Close)에 해당하는 열만 선택한 후, 데이터프레임 형태로 만들어준다.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pct_change()</span></code> 함수를 통해 수익률을 계산한 후, NA 데이터는 삭제한다.</p></li>
 </ol>
@@ -596,10 +625,10 @@ document.write(`
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   860.1</td> 
 </tr>
 <tr>
-  <th>Date:</th>             <td>Fri, 05 Aug 2022</td> <th>  Prob (F-statistic):</th> <td>3.07e-149</td>
+  <th>Date:</th>             <td>Tue, 13 Feb 2024</td> <th>  Prob (F-statistic):</th> <td>3.07e-149</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>21:27:12</td>     <th>  Log-Likelihood:    </th> <td>  3691.2</td> 
+  <th>Time:</th>                 <td>14:49:17</td>     <th>  Log-Likelihood:    </th> <td>  3691.2</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  1472</td>      <th>  AIC:               </th> <td>  -7378.</td> 
@@ -659,10 +688,10 @@ dtype: float64
 </section>
 </section>
 <section id="id5">
-<h2><span class="section-number">13.3. </span>밸류 전략<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">13.3. </span>밸류 전략<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <p>가치주 효과란 내재 가치 대비 낮은 가격의 주식(저PER, 저PBR 등)이, 내재 가치 대비 비싼 주식(고PER, 고PBR)보다 수익률이 높은 현상을 뜻한다. 가치주 효과가 발생하는 원인은 바로 사람들이 가치주(저밸류에이션)를 기피하고, 성장주(고밸류에이션)를 선호하기 때문이다. 달리 말하면 사람들이 기피한 주식이 가치주가 되었다고 할 수도 있다. 가치주는 일반적으로 차입비율이 높고, 수익의 변동성이 크며, 경기가 좋지 않을 때 더 위험한 경향이 있다. 사람들은 이처럼 위험한 주식에 필요 이상으로 과민 반응을 보인다. 그로 인해 주가가 하락하고 가치주가 되는 것이다. 반면 인간은 익숙한 것을 안전하다고 착각하는 경향이 있다. 최근 성과가 좋은 주식은 여러 매체를 통해 접하기 쉬운데, 이런 주식을 안전하다고 착각해 많은 사람이 매수에 나선다. 그로 인해 주가가 상승하고 고평가주가 된다. 보고 싶은 것만 보는 확증 편향으로 인해 투자자들은 위험하다고 생각되는 가치주가 망할 것 같은 이유만 찾아 더욱 기피하고, 안전하다고 생각되는 성장주는 영원히 상승할 것 같은 이유만 찾아 더욱 선호한다. 그러나 가치주가 생각보다 위험하지 않다는 것을, 성장주가 너무 많이 상승해 안전하지 않다는 것을 깨닫는 순간 주가는 원래 수준으로 회귀하기 마련이고, 이로 인해 가치주 효과가 발생한다.</p>
 <section id="datareader">
-<h3><span class="section-number">13.3.1. </span><code class="docutils literal notranslate"><span class="pre">DataReader()</span></code> 함수를 이용한 팩터 데이터 다운로드<a class="headerlink" href="#datareader" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.3.1. </span><code class="docutils literal notranslate"><span class="pre">DataReader()</span></code> 함수를 이용한 팩터 데이터 다운로드<a class="headerlink" href="#datareader" title="Link to this heading">#</a></h3>
 <p>주식시장 내에서 실제로 가치주 효과가 있는지 데이터로 확인해볼 필요가 있다. 파마-프렌치 3팩터로 유명한 케네스 프렌치 교수의 Data Library에는 각종 팩터에 관한 수익률이 매월 업데이트 되고 있다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mba</span><span class="o">.</span><span class="n">tuck</span><span class="o">.</span><span class="n">dartmouth</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">pages</span><span class="o">/</span><span class="n">faculty</span><span class="o">/</span><span class="n">ken</span><span class="o">.</span><span class="n">french</span><span class="o">/</span><span class="n">data_library</span><span class="o">.</span><span class="n">html</span>
 </pre></div>
@@ -706,7 +735,7 @@ dtype: float64
 <figure class="align-default" id="link">
 <img alt="_images/link.png" src="_images/link.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 13.1 </span><span class="caption-text">프렌치 라이브러리에서 주소 확인하기</span><a class="headerlink" href="#link" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 13.1 </span><span class="caption-text">프렌치 라이브러리에서 주소 확인하기</span><a class="headerlink" href="#link" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>PBR에 따른 수익률에 해당하는 ‘Portfolios Formed on Book-to-Market’의 다운로드 링크를 메모장 등에서 확인해보면 다음과 같다.</p>
@@ -716,7 +745,7 @@ dtype: float64
 <p>이 중 끝부분의 ‘Portfolios_Formed_on_BE-ME_CSV’ 에서 ‘_CSV’ 를 제외한 글자인 ‘Portfolios_Formed_on_BE-ME’를 <code class="docutils literal notranslate"><span class="pre">DataReader()</span></code> 함수 내에 입력하면 해당 데이터가 다운로드 된다.</p>
 </section>
 <section id="pbr">
-<h3><span class="section-number">13.3.2. </span>PBR별 포트폴리오의 수익률<a class="headerlink" href="#pbr" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.3.2. </span>PBR별 포트폴리오의 수익률<a class="headerlink" href="#pbr" title="Link to this heading">#</a></h3>
 <p>먼저 기업의 가치 여부를 판단할 때 가장 많이 사용되는 지표인 PBR을 기준으로 구성된 포트폴리오의 수익률을 비교해보겠다. 프렌치 라이브러리에서 해당 데이터의 이름은 ‘Portfolios_Formed_on_BE-ME’ 이다. B/M에서 B는 장부가치(Book Value), M는 시장가치(Market Value)로써, 이는 PBR의 역수라고 생각해도 된다. 즉 해당값이 높을수록 저PBR 주식을 의미한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -730,6 +759,24 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\1800322367.py:3: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_pbr = web.DataReader(&#39;Portfolios_Formed_on_BE-ME&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\1800322367.py:3: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_pbr = web.DataReader(&#39;Portfolios_Formed_on_BE-ME&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\1800322367.py:3: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_pbr = web.DataReader(&#39;Portfolios_Formed_on_BE-ME&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\1800322367.py:3: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_pbr = web.DataReader(&#39;Portfolios_Formed_on_BE-ME&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\1800322367.py:3: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_pbr = web.DataReader(&#39;Portfolios_Formed_on_BE-ME&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\1800322367.py:3: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_pbr = web.DataReader(&#39;Portfolios_Formed_on_BE-ME&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\1800322367.py:3: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_pbr = web.DataReader(&#39;Portfolios_Formed_on_BE-ME&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\1800322367.py:3: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_pbr = web.DataReader(&#39;Portfolios_Formed_on_BE-ME&#39;,
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -796,21 +843,21 @@ dtype: float64
       <th>1926-07</th>
       <td>12.07</td>
       <td>5.55</td>
-      <td>1.92</td>
-      <td>1.06</td>
-      <td>3.17</td>
+      <td>1.86</td>
+      <td>1.54</td>
+      <td>3.18</td>
       <td>5.41</td>
-      <td>1.77</td>
-      <td>2.44</td>
+      <td>1.78</td>
+      <td>2.41</td>
       <td>0.60</td>
-      <td>4.55</td>
-      <td>1.27</td>
-      <td>11.40</td>
+      <td>4.63</td>
+      <td>1.22</td>
+      <td>11.38</td>
       <td>1.68</td>
       <td>1.50</td>
-      <td>2.09</td>
-      <td>2.73</td>
-      <td>1.58</td>
+      <td>2.12</td>
+      <td>2.40</td>
+      <td>2.45</td>
       <td>0.63</td>
       <td>0.52</td>
     </tr>
@@ -818,21 +865,21 @@ dtype: float64
       <th>1926-08</th>
       <td>-9.73</td>
       <td>2.65</td>
-      <td>2.64</td>
-      <td>6.09</td>
+      <td>2.67</td>
+      <td>5.61</td>
       <td>1.00</td>
       <td>4.01</td>
       <td>2.05</td>
-      <td>4.58</td>
+      <td>4.59</td>
       <td>7.10</td>
-      <td>0.18</td>
-      <td>2.17</td>
-      <td>6.40</td>
+      <td>0.15</td>
+      <td>2.19</td>
+      <td>6.39</td>
       <td>2.38</td>
       <td>1.58</td>
-      <td>2.63</td>
-      <td>4.46</td>
-      <td>4.94</td>
+      <td>2.62</td>
+      <td>4.77</td>
+      <td>4.17</td>
       <td>8.31</td>
       <td>3.92</td>
     </tr>
@@ -840,21 +887,21 @@ dtype: float64
       <th>1926-09</th>
       <td>-15.16</td>
       <td>1.28</td>
-      <td>0.06</td>
+      <td>0.07</td>
       <td>-0.71</td>
-      <td>-1.05</td>
-      <td>3.05</td>
-      <td>-0.30</td>
-      <td>-0.17</td>
+      <td>-1.04</td>
+      <td>3.04</td>
+      <td>-0.29</td>
+      <td>-0.19</td>
       <td>-1.46</td>
-      <td>-0.09</td>
-      <td>-2.39</td>
-      <td>6.32</td>
+      <td>-0.11</td>
+      <td>-2.32</td>
+      <td>6.30</td>
       <td>0.73</td>
       <td>-0.89</td>
-      <td>0.38</td>
+      <td>0.40</td>
       <td>-0.28</td>
-      <td>0.17</td>
+      <td>0.04</td>
       <td>-2.16</td>
       <td>0.44</td>
     </tr>
@@ -862,21 +909,21 @@ dtype: float64
       <th>1926-10</th>
       <td>-5.63</td>
       <td>-3.60</td>
-      <td>-2.42</td>
-      <td>-3.59</td>
+      <td>-2.41</td>
+      <td>-3.55</td>
       <td>-2.89</td>
       <td>-2.96</td>
-      <td>-2.21</td>
-      <td>-4.18</td>
+      <td>-2.20</td>
+      <td>-4.20</td>
       <td>-4.28</td>
-      <td>-3.80</td>
-      <td>-1.60</td>
+      <td>-3.78</td>
+      <td>-1.67</td>
       <td>-5.01</td>
       <td>-1.41</td>
       <td>-2.31</td>
-      <td>-2.10</td>
-      <td>-4.65</td>
-      <td>-2.80</td>
+      <td>-2.07</td>
+      <td>-4.77</td>
+      <td>-2.84</td>
       <td>-5.46</td>
       <td>-1.17</td>
     </tr>
@@ -884,21 +931,21 @@ dtype: float64
       <th>1926-11</th>
       <td>5.58</td>
       <td>3.13</td>
-      <td>2.92</td>
-      <td>3.13</td>
-      <td>4.11</td>
-      <td>2.57</td>
-      <td>1.89</td>
+      <td>2.95</td>
+      <td>2.94</td>
+      <td>4.12</td>
+      <td>2.56</td>
+      <td>1.90</td>
       <td>3.96</td>
       <td>2.48</td>
-      <td>6.04</td>
-      <td>1.41</td>
-      <td>1.11</td>
+      <td>6.03</td>
+      <td>1.51</td>
+      <td>1.10</td>
       <td>3.63</td>
       <td>1.97</td>
-      <td>1.80</td>
-      <td>4.00</td>
-      <td>3.85</td>
+      <td>1.81</td>
+      <td>4.20</td>
+      <td>3.39</td>
       <td>2.77</td>
       <td>1.76</td>
     </tr>
@@ -933,7 +980,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e9a220f0097571161e9d004b9f211664131dda30566262c6dfc677a929af6f83.png" src="_images/e9a220f0097571161e9d004b9f211664131dda30566262c6dfc677a929af6f83.png" />
+<img alt="_images/ad5d0f0f371d7747bbfce1a30c5ca1e12a5536eb74b22920676cc6b408e3a5c5.png" src="_images/ad5d0f0f371d7747bbfce1a30c5ca1e12a5536eb74b22920676cc6b408e3a5c5.png" />
 </div>
 </div>
 <ol class="arabic simple">
@@ -950,7 +997,7 @@ dtype: float64
 <div class="math notranslate nohighlight">
 \[(1+r_1)(1+r_2) = e^{R_1}e^{R_2} = e^{R_1+R_2}\]</div>
 <div class="math notranslate nohighlight">
-\[ln(1+r_1)(1+r_2) = R_1+R_2\]</div>
+\[ln[(1+r_1)(1+r_2)] = R_1+R_2\]</div>
 <p>위의 관계를 이용해 로그 차트로 다시 나타내보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -966,7 +1013,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7a21a92b8b708d3e098c73783310909d2ef3470117d20c86dac849277d0efb85.png" src="_images/7a21a92b8b708d3e098c73783310909d2ef3470117d20c86dac849277d0efb85.png" />
+<img alt="_images/df8dd7cd97b6f3d937b244234db461a798f0f87768c59a90ecc0661225754348.png" src="_images/df8dd7cd97b6f3d937b244234db461a798f0f87768c59a90ecc0661225754348.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">log()</span></code> 함수를 이용해 로그 수익률을 계산해준 후 <code class="docutils literal notranslate"><span class="pre">cumsum()</span></code> 메서드를 통해 누적합을 구했다. 로그 수익률로 살펴보면 앞의 그래프보다 장기적인 성장률이 훨씬 더 잘 비교가 된다. 이번에는 PBR별 포트폴리오의 간단한 성과를 비교해보도록 하자. 연율화 수익률(기하), 연율화 수익률(산술), 연율화 변동성 및 샤프지수를 구하는 함수를 만들면 다음과 같다.</p>
@@ -1039,35 +1086,35 @@ dtype: float64
   <tbody>
     <tr>
       <th>연율화 수익률(산술)</th>
-      <td>11.0100</td>
-      <td>11.2000</td>
-      <td>12.2000</td>
-      <td>12.8100</td>
-      <td>15.8500</td>
+      <td>11.2200</td>
+      <td>11.2300</td>
+      <td>12.2700</td>
+      <td>12.8000</td>
+      <td>15.9100</td>
     </tr>
     <tr>
       <th>연율화 수익률(기하)</th>
-      <td>9.6300</td>
-      <td>9.9000</td>
-      <td>10.8500</td>
+      <td>9.8500</td>
+      <td>9.9400</td>
       <td>10.9200</td>
-      <td>12.9300</td>
+      <td>10.9100</td>
+      <td>13.0100</td>
     </tr>
     <tr>
       <th>연율화 변동성</th>
-      <td>18.7900</td>
-      <td>18.6100</td>
-      <td>19.5100</td>
-      <td>22.3600</td>
-      <td>27.8100</td>
+      <td>18.8500</td>
+      <td>18.5800</td>
+      <td>19.4900</td>
+      <td>22.3400</td>
+      <td>27.7400</td>
     </tr>
     <tr>
       <th>샤프지수</th>
-      <td>0.5858</td>
-      <td>0.6018</td>
-      <td>0.6256</td>
-      <td>0.5731</td>
-      <td>0.5699</td>
+      <td>0.5954</td>
+      <td>0.6043</td>
+      <td>0.6295</td>
+      <td>0.5729</td>
+      <td>0.5734</td>
     </tr>
   </tbody>
 </table>
@@ -1091,7 +1138,25 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/16da9f37921e16f855be55950cc5a874b7ed84019bb4fb4846cf62da6988bcd3.png" src="_images/16da9f37921e16f855be55950cc5a874b7ed84019bb4fb4846cf62da6988bcd3.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\903409442.py:1: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_per = web.DataReader(&#39;Portfolios_Formed_on_E-P&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\903409442.py:1: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_per = web.DataReader(&#39;Portfolios_Formed_on_E-P&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\903409442.py:1: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_per = web.DataReader(&#39;Portfolios_Formed_on_E-P&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\903409442.py:1: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_per = web.DataReader(&#39;Portfolios_Formed_on_E-P&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\903409442.py:1: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_per = web.DataReader(&#39;Portfolios_Formed_on_E-P&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\903409442.py:1: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_per = web.DataReader(&#39;Portfolios_Formed_on_E-P&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\903409442.py:1: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_per = web.DataReader(&#39;Portfolios_Formed_on_E-P&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\903409442.py:1: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_per = web.DataReader(&#39;Portfolios_Formed_on_E-P&#39;,
+</pre></div>
+</div>
+<img alt="_images/6b585968dc8d0b9fa839d48a752e44fa765dd808ad031a44af6a46a0eece4ee2.png" src="_images/6b585968dc8d0b9fa839d48a752e44fa765dd808ad031a44af6a46a0eece4ee2.png" />
 </div>
 </div>
 <p>Hi 20, 즉 PER가 낮을 수록 수익률이 높다. 이번에는 PCR의 역수에 해당하는 CF/P 지표의 누적 수익률을 살펴보도록 하자.</p>
@@ -1111,13 +1176,31 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/232bb75742aa5e01dcb1edeb8bd9b129fbbc353d27906f97f5815dc3129d20fb.png" src="_images/232bb75742aa5e01dcb1edeb8bd9b129fbbc353d27906f97f5815dc3129d20fb.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\1137851293.py:1: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_pcr = web.DataReader(&#39;Portfolios_Formed_on_CF-P&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\1137851293.py:1: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_pcr = web.DataReader(&#39;Portfolios_Formed_on_CF-P&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\1137851293.py:1: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_pcr = web.DataReader(&#39;Portfolios_Formed_on_CF-P&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\1137851293.py:1: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_pcr = web.DataReader(&#39;Portfolios_Formed_on_CF-P&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\1137851293.py:1: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_pcr = web.DataReader(&#39;Portfolios_Formed_on_CF-P&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\1137851293.py:1: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_pcr = web.DataReader(&#39;Portfolios_Formed_on_CF-P&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\1137851293.py:1: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_pcr = web.DataReader(&#39;Portfolios_Formed_on_CF-P&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\1137851293.py:1: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_pcr = web.DataReader(&#39;Portfolios_Formed_on_CF-P&#39;,
+</pre></div>
+</div>
+<img alt="_images/80c0c581a07bba89a5b1e03462fbb8815e39b4a3f7c0065efdbb3749897a7fee.png" src="_images/80c0c581a07bba89a5b1e03462fbb8815e39b4a3f7c0065efdbb3749897a7fee.png" />
 </div>
 </div>
 <p>역시나 Hi 20, 즉 PCR이 낮을 수록 수익률이 높다. 즉, PBR 뿐만 아니라 PER, PCR과 같은 모든 지표에서 가치주 효과가 나타난다.</p>
 </section>
 <section id="id6">
-<h3><span class="section-number">13.3.3. </span>밸류 포트폴리오 구하기<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.3.3. </span>밸류 포트폴리오 구하기<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>가치주에 투자하는 것이 훨씬 수익률이 높다는 점을 확인하였으니, 국내 종목들 중 가치주에는 어떠한 것이 있는 확인해보도록 하자. 먼저 국내 기업 중 전통적인 가치지표인 PER와 PBR이 낮은 종목을 선정해보도록 하겠다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1189,51 +1272,51 @@ dtype: float64
       <th>0</th>
       <td>000020</td>
       <td>동화약품</td>
-      <td>0.0170</td>
-      <td>0.8314</td>
-      <td>6.7597</td>
-      <td>14.9532</td>
-      <td>0.9660</td>
+      <td>0.0182</td>
+      <td>0.7071</td>
+      <td>7.5400</td>
+      <td>9.4508</td>
+      <td>0.7636</td>
     </tr>
     <tr>
       <th>1</th>
       <td>000040</td>
       <td>KR모터스</td>
       <td>NaN</td>
-      <td>1.3430</td>
+      <td>1.0807</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>0.4828</td>
+      <td>0.3749</td>
     </tr>
     <tr>
       <th>2</th>
       <td>000050</td>
       <td>경방</td>
-      <td>0.0097</td>
-      <td>0.4666</td>
-      <td>9.8130</td>
-      <td>11.5126</td>
-      <td>0.8860</td>
+      <td>0.0143</td>
+      <td>0.3200</td>
+      <td>5.8166</td>
+      <td>NaN</td>
+      <td>0.6278</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>000060</td>
-      <td>메리츠화재</td>
-      <td>0.0172</td>
-      <td>1.9039</td>
-      <td>3.8105</td>
-      <td>5.6745</td>
-      <td>NaN</td>
+      <td>000070</td>
+      <td>삼양홀딩스</td>
+      <td>0.0548</td>
+      <td>0.2106</td>
+      <td>1.9929</td>
+      <td>2.4301</td>
+      <td>0.1700</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>000070</td>
-      <td>삼양홀딩스</td>
-      <td>0.0414</td>
-      <td>0.2568</td>
-      <td>3.0723</td>
-      <td>2.6045</td>
-      <td>0.1923</td>
+      <td>000080</td>
+      <td>하이트진로</td>
+      <td>0.0439</td>
+      <td>1.3433</td>
+      <td>NaN</td>
+      <td>87.7682</td>
+      <td>0.6054</td>
     </tr>
   </tbody>
 </table>
@@ -1280,137 +1363,144 @@ dtype: float64
   </thead>
   <tbody>
     <tr>
-      <th>41</th>
+      <th>27</th>
+      <td>000540</td>
+      <td>흥국화재</td>
+      <td>1.5493</td>
+      <td>0.1496</td>
+    </tr>
+    <tr>
+      <th>40</th>
       <td>000880</td>
       <td>한화</td>
-      <td>1.3062</td>
-      <td>0.1055</td>
+      <td>1.7013</td>
+      <td>0.0562</td>
     </tr>
     <tr>
-      <th>66</th>
+      <th>43</th>
+      <td>000950</td>
+      <td>전방</td>
+      <td>0.7188</td>
+      <td>0.1842</td>
+    </tr>
+    <tr>
+      <th>65</th>
       <td>001390</td>
       <td>KG케미칼</td>
-      <td>1.4431</td>
-      <td>0.2173</td>
+      <td>0.6694</td>
+      <td>0.1235</td>
     </tr>
     <tr>
-      <th>95</th>
-      <td>001940</td>
-      <td>KISCO홀딩스</td>
-      <td>1.1537</td>
-      <td>0.1651</td>
+      <th>152</th>
+      <td>003240</td>
+      <td>태광산업</td>
+      <td>1.9829</td>
+      <td>0.1637</td>
     </tr>
     <tr>
-      <th>97</th>
-      <td>002030</td>
-      <td>아세아</td>
-      <td>1.4143</td>
-      <td>0.1617</td>
+      <th>154</th>
+      <td>003300</td>
+      <td>한일홀딩스</td>
+      <td>1.9142</td>
+      <td>0.1564</td>
     </tr>
     <tr>
-      <th>158</th>
+      <th>157</th>
       <td>003380</td>
       <td>하림지주</td>
-      <td>1.5678</td>
-      <td>0.2296</td>
+      <td>1.5778</td>
+      <td>0.1524</td>
     </tr>
     <tr>
-      <th>264</th>
+      <th>263</th>
       <td>005990</td>
       <td>매일홀딩스</td>
-      <td>1.3967</td>
-      <td>0.1862</td>
-    </tr>
-    <tr>
-      <th>270</th>
-      <td>006120</td>
-      <td>SK디스커버리</td>
-      <td>1.9001</td>
-      <td>0.2238</td>
-    </tr>
-    <tr>
-      <th>375</th>
-      <td>009970</td>
-      <td>영원무역홀딩스</td>
-      <td>1.2914</td>
-      <td>0.2135</td>
-    </tr>
-    <tr>
-      <th>524</th>
-      <td>017940</td>
-      <td>E1</td>
-      <td>1.9544</td>
-      <td>0.2208</td>
-    </tr>
-    <tr>
-      <th>580</th>
-      <td>023590</td>
-      <td>다우기술</td>
-      <td>1.0623</td>
-      <td>0.1893</td>
-    </tr>
-    <tr>
-      <th>672</th>
-      <td>032190</td>
-      <td>다우데이타</td>
-      <td>0.5644</td>
-      <td>0.0931</td>
-    </tr>
-    <tr>
-      <th>746</th>
-      <td>036000</td>
-      <td>예림당</td>
-      <td>1.5409</td>
-      <td>0.2203</td>
-    </tr>
-    <tr>
-      <th>781</th>
-      <td>037400</td>
-      <td>우리엔터프라이즈</td>
-      <td>1.2032</td>
-      <td>0.2630</td>
-    </tr>
-    <tr>
-      <th>1317</th>
-      <td>088350</td>
-      <td>한화생명</td>
-      <td>1.9060</td>
+      <td>2.2136</td>
       <td>0.1517</td>
     </tr>
     <tr>
-      <th>1365</th>
-      <td>092230</td>
-      <td>KPX홀딩스</td>
-      <td>1.7471</td>
-      <td>0.1831</td>
+      <th>269</th>
+      <td>006120</td>
+      <td>SK디스커버리</td>
+      <td>1.7191</td>
+      <td>0.1162</td>
     </tr>
     <tr>
-      <th>1449</th>
-      <td>101360</td>
-      <td>이엔드디</td>
-      <td>0.2104</td>
-      <td>0.2104</td>
+      <th>316</th>
+      <td>007700</td>
+      <td>F&amp;F홀딩스</td>
+      <td>1.1415</td>
+      <td>0.1818</td>
     </tr>
     <tr>
-      <th>1632</th>
-      <td>139480</td>
-      <td>이마트</td>
-      <td>1.2827</td>
-      <td>0.2436</td>
+      <th>321</th>
+      <td>007860</td>
+      <td>서연</td>
+      <td>1.1288</td>
+      <td>0.1557</td>
     </tr>
     <tr>
-      <th>1656</th>
-      <td>146320</td>
-      <td>비씨엔씨</td>
-      <td>0.3056</td>
-      <td>0.3056</td>
+      <th>356</th>
+      <td>009410</td>
+      <td>태영건설</td>
+      <td>0.8944</td>
+      <td>0.1102</td>
     </tr>
     <tr>
-      <th>2005</th>
-      <td>267320</td>
-      <td>나인테크</td>
-      <td>0.3453</td>
-      <td>0.3453</td>
+      <th>436</th>
+      <td>012630</td>
+      <td>HDC</td>
+      <td>2.1971</td>
+      <td>0.0797</td>
+    </tr>
+    <tr>
+      <th>577</th>
+      <td>023590</td>
+      <td>다우기술</td>
+      <td>0.8437</td>
+      <td>0.1438</td>
+    </tr>
+    <tr>
+      <th>594</th>
+      <td>024800</td>
+      <td>유성티엔에스</td>
+      <td>1.1297</td>
+      <td>0.1922</td>
+    </tr>
+    <tr>
+      <th>669</th>
+      <td>032190</td>
+      <td>다우데이타</td>
+      <td>0.5182</td>
+      <td>0.0876</td>
+    </tr>
+    <tr>
+      <th>755</th>
+      <td>036530</td>
+      <td>SNT홀딩스</td>
+      <td>2.1595</td>
+      <td>0.1570</td>
+    </tr>
+    <tr>
+      <th>825</th>
+      <td>040610</td>
+      <td>SG&amp;G</td>
+      <td>1.4509</td>
+      <td>0.1781</td>
+    </tr>
+    <tr>
+      <th>1002</th>
+      <td>054800</td>
+      <td>아이디스홀딩스</td>
+      <td>2.2240</td>
+      <td>0.1429</td>
+    </tr>
+    <tr>
+      <th>1655</th>
+      <td>151860</td>
+      <td>KG ETS</td>
+      <td>0.6850</td>
+      <td>0.1402</td>
     </tr>
   </tbody>
 </table>
@@ -1424,7 +1514,7 @@ dtype: float64
 <p>전통적으로 PER와 PBR이 낮은 지주회사가 많이 분포되어 있다.</p>
 </section>
 <section id="id7">
-<h3><span class="section-number">13.3.4. </span>여러 지표 결합하기<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.3.4. </span>여러 지표 결합하기<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>이번에는 가치지표에 해당하는 모든 지표, 즉  PER, PBR, PCR, PSR, DY를 고려한 밸류 포트폴리오를 만들어보도록 하겠다. 먼저 각 지표 별 상관관계를 살펴보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1454,7 +1544,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7675a6dc962ab89a791a402e6d86ffb94c659e085ffaa52dced6da15ad9da8fc.png" src="_images/7675a6dc962ab89a791a402e6d86ffb94c659e085ffaa52dced6da15ad9da8fc.png" />
+<img alt="_images/fa32b04e828e2cfc28d115f0268d50a35d8f38817a38bc61c20310b077fca11b.png" src="_images/fa32b04e828e2cfc28d115f0268d50a35d8f38817a38bc61c20310b077fca11b.png" />
 </div>
 </div>
 <ol class="arabic simple">
@@ -1500,204 +1590,204 @@ dtype: float64
   </thead>
   <tbody>
     <tr>
-      <th>4</th>
+      <th>3</th>
       <td>000070</td>
       <td>삼양홀딩스</td>
-      <td>0.0414</td>
-      <td>0.2568</td>
-      <td>3.0723</td>
-      <td>2.6045</td>
-      <td>0.1923</td>
+      <td>0.0548</td>
+      <td>0.2106</td>
+      <td>1.9929</td>
+      <td>2.4301</td>
+      <td>0.1700</td>
     </tr>
     <tr>
-      <th>8</th>
-      <td>000140</td>
-      <td>하이트진로홀딩스</td>
-      <td>0.0380</td>
-      <td>0.2536</td>
-      <td>0.9281</td>
-      <td>3.6280</td>
-      <td>0.1227</td>
+      <th>17</th>
+      <td>000320</td>
+      <td>노루홀딩스</td>
+      <td>0.0469</td>
+      <td>0.2110</td>
+      <td>1.6196</td>
+      <td>2.5878</td>
+      <td>0.1177</td>
     </tr>
     <tr>
-      <th>41</th>
+      <th>38</th>
+      <td>000850</td>
+      <td>화천기공</td>
+      <td>0.0814</td>
+      <td>0.1954</td>
+      <td>1.9749</td>
+      <td>1.8657</td>
+      <td>0.2888</td>
+    </tr>
+    <tr>
+      <th>40</th>
       <td>000880</td>
       <td>한화</td>
-      <td>0.0264</td>
-      <td>0.1055</td>
-      <td>0.4383</td>
-      <td>1.3062</td>
-      <td>0.0401</td>
-    </tr>
-    <tr>
-      <th>49</th>
-      <td>001040</td>
-      <td>CJ</td>
-      <td>0.0294</td>
-      <td>0.1386</td>
-      <td>0.8642</td>
-      <td>2.7092</td>
-      <td>0.0640</td>
-    </tr>
-    <tr>
-      <th>66</th>
-      <td>001390</td>
-      <td>KG케미칼</td>
-      <td>0.0180</td>
-      <td>0.2173</td>
-      <td>1.2267</td>
-      <td>1.4431</td>
-      <td>0.0730</td>
-    </tr>
-    <tr>
-      <th>95</th>
-      <td>001940</td>
-      <td>KISCO홀딩스</td>
+      <td>0.0322</td>
+      <td>0.0562</td>
+      <td>0.5644</td>
+      <td>1.7013</td>
       <td>0.0283</td>
-      <td>0.1651</td>
-      <td>1.5962</td>
-      <td>1.1537</td>
-      <td>0.1301</td>
     </tr>
     <tr>
-      <th>96</th>
-      <td>002020</td>
-      <td>코오롱</td>
-      <td>0.0216</td>
-      <td>0.3052</td>
-      <td>1.0309</td>
-      <td>1.6598</td>
-      <td>0.0588</td>
+      <th>52</th>
+      <td>001120</td>
+      <td>LX인터내셔널</td>
+      <td>0.1128</td>
+      <td>0.3295</td>
+      <td>1.1839</td>
+      <td>2.9026</td>
+      <td>0.0691</td>
     </tr>
     <tr>
-      <th>97</th>
-      <td>002030</td>
-      <td>아세아</td>
-      <td>0.0242</td>
-      <td>0.1617</td>
-      <td>1.5127</td>
-      <td>1.4143</td>
-      <td>0.1423</td>
-    </tr>
-    <tr>
-      <th>139</th>
-      <td>002990</td>
-      <td>금호건설</td>
-      <td>0.0958</td>
-      <td>0.4872</td>
-      <td>1.8678</td>
-      <td>2.2622</td>
-      <td>0.1495</td>
-    </tr>
-    <tr>
-      <th>155</th>
+      <th>154</th>
       <td>003300</td>
       <td>한일홀딩스</td>
-      <td>0.0495</td>
-      <td>0.1774</td>
-      <td>2.2620</td>
-      <td>4.4796</td>
-      <td>0.1869</td>
+      <td>0.0754</td>
+      <td>0.1564</td>
+      <td>1.9719</td>
+      <td>1.9142</td>
+      <td>0.1421</td>
     </tr>
     <tr>
-      <th>185</th>
-      <td>004020</td>
-      <td>현대제철</td>
-      <td>0.0303</td>
-      <td>0.2446</td>
-      <td>2.2555</td>
-      <td>2.4833</td>
-      <td>0.1768</td>
+      <th>220</th>
+      <td>004960</td>
+      <td>한신공영</td>
+      <td>0.0445</td>
+      <td>0.1072</td>
+      <td>1.1046</td>
+      <td>2.9208</td>
+      <td>0.0586</td>
     </tr>
     <tr>
-      <th>264</th>
+      <th>263</th>
       <td>005990</td>
       <td>매일홀딩스</td>
-      <td>0.0167</td>
-      <td>0.1862</td>
-      <td>1.0899</td>
-      <td>1.3967</td>
-      <td>0.0668</td>
+      <td>0.0197</td>
+      <td>0.1517</td>
+      <td>0.6537</td>
+      <td>2.2136</td>
+      <td>0.0490</td>
     </tr>
     <tr>
-      <th>322</th>
-      <td>007860</td>
-      <td>서연</td>
-      <td>0.0143</td>
-      <td>0.1806</td>
-      <td>0.8709</td>
-      <td>2.3993</td>
-      <td>0.0640</td>
+      <th>269</th>
+      <td>006120</td>
+      <td>SK디스커버리</td>
+      <td>0.0461</td>
+      <td>0.1162</td>
+      <td>1.5314</td>
+      <td>1.7191</td>
+      <td>0.0754</td>
     </tr>
     <tr>
-      <th>325</th>
-      <td>008060</td>
-      <td>대덕</td>
-      <td>0.0445</td>
-      <td>0.1667</td>
-      <td>0.7072</td>
-      <td>3.0016</td>
-      <td>0.1565</td>
-    </tr>
-    <tr>
-      <th>358</th>
+      <th>356</th>
       <td>009410</td>
       <td>태영건설</td>
-      <td>0.0515</td>
-      <td>0.3761</td>
-      <td>0.6515</td>
-      <td>4.3292</td>
-      <td>0.0937</td>
+      <td>0.0983</td>
+      <td>0.1102</td>
+      <td>4.4763</td>
+      <td>0.8944</td>
+      <td>0.0279</td>
     </tr>
     <tr>
-      <th>375</th>
-      <td>009970</td>
-      <td>영원무역홀딩스</td>
-      <td>0.0418</td>
-      <td>0.2135</td>
-      <td>2.0210</td>
-      <td>1.2914</td>
-      <td>0.1869</td>
+      <th>392</th>
+      <td>010770</td>
+      <td>평화홀딩스</td>
+      <td>0.0474</td>
+      <td>0.3604</td>
+      <td>0.8620</td>
+      <td>2.4754</td>
+      <td>0.0581</td>
     </tr>
     <tr>
-      <th>379</th>
-      <td>010100</td>
-      <td>한국프랜지</td>
-      <td>0.0345</td>
-      <td>0.3058</td>
-      <td>1.3562</td>
-      <td>4.5940</td>
-      <td>0.0746</td>
+      <th>436</th>
+      <td>012630</td>
+      <td>HDC</td>
+      <td>0.0386</td>
+      <td>0.0797</td>
+      <td>0.8204</td>
+      <td>2.1971</td>
+      <td>0.0685</td>
     </tr>
     <tr>
-      <th>724</th>
-      <td>034730</td>
-      <td>SK</td>
-      <td>0.0370</td>
-      <td>0.2526</td>
-      <td>2.9644</td>
-      <td>1.9668</td>
-      <td>0.1496</td>
+      <th>493</th>
+      <td>016450</td>
+      <td>한세예스24홀딩스</td>
+      <td>0.0555</td>
+      <td>0.2172</td>
+      <td>1.2436</td>
+      <td>3.0388</td>
+      <td>0.0630</td>
     </tr>
     <tr>
-      <th>1230</th>
+      <th>521</th>
+      <td>017940</td>
+      <td>E1</td>
+      <td>0.0613</td>
+      <td>0.2472</td>
+      <td>1.8074</td>
+      <td>1.4958</td>
+      <td>0.0521</td>
+    </tr>
+    <tr>
+      <th>755</th>
+      <td>036530</td>
+      <td>SNT홀딩스</td>
+      <td>0.0387</td>
+      <td>0.1570</td>
+      <td>1.2711</td>
+      <td>2.1595</td>
+      <td>0.1524</td>
+    </tr>
+    <tr>
+      <th>780</th>
+      <td>037460</td>
+      <td>삼지전자</td>
+      <td>0.0542</td>
+      <td>0.2672</td>
+      <td>1.3849</td>
+      <td>1.8812</td>
+      <td>0.0548</td>
+    </tr>
+    <tr>
+      <th>1217</th>
       <td>078930</td>
       <td>GS</td>
-      <td>0.0490</td>
-      <td>0.2853</td>
-      <td>2.3694</td>
-      <td>2.1344</td>
-      <td>0.1654</td>
+      <td>0.0607</td>
+      <td>0.2263</td>
+      <td>1.1478</td>
+      <td>2.2586</td>
+      <td>0.1438</td>
     </tr>
     <tr>
-      <th>1373</th>
-      <td>093050</td>
-      <td>LF</td>
-      <td>0.0359</td>
-      <td>0.3278</td>
-      <td>1.5438</td>
-      <td>2.7666</td>
-      <td>0.2646</td>
+      <th>1351</th>
+      <td>092230</td>
+      <td>KPX홀딩스</td>
+      <td>0.0598</td>
+      <td>0.1498</td>
+      <td>2.0977</td>
+      <td>3.6315</td>
+      <td>0.1752</td>
+    </tr>
+    <tr>
+      <th>1999</th>
+      <td>267250</td>
+      <td>HD현대</td>
+      <td>0.0685</td>
+      <td>0.2281</td>
+      <td>1.5196</td>
+      <td>5.6376</td>
+      <td>0.0868</td>
+    </tr>
+    <tr>
+      <th>2144</th>
+      <td>317400</td>
+      <td>자이에스앤디</td>
+      <td>0.0642</td>
+      <td>0.2400</td>
+      <td>0.9389</td>
+      <td>1.3979</td>
+      <td>0.0651</td>
     </tr>
   </tbody>
 </table>
@@ -1711,7 +1801,7 @@ dtype: float64
 </section>
 </section>
 <section id="id8">
-<h2><span class="section-number">13.4. </span>모멘텀 전략<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">13.4. </span>모멘텀 전략<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
 <p>투자에서 모멘텀이란 주가 혹은 이익의 추세로서, 상승 추세의 주식은 지속적으로 상승하며 하락 추세의 주식은 지속적으로 하락하는 현상을 말한다. 모멘텀의 종류는 크게 기업의 이익에 대한 추세를 나타내는 이익 모멘텀과 주가의 모멘텀에 대한 가격 모멘텀이 있으며, 이 중에서 3개월에서 12개월 가격 모멘텀을 흔히 모멘텀이라고 한다. 즉 과거 12개월 수익률이 높았던 종목이 계속해서 상승하는 현상을 모멘텀이라 한다.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1726,14 +1816,14 @@ dtype: float64
 <figure class="align-default" id="momentum">
 <img alt="_images/momentum.png" src="_images/momentum.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 13.2 </span><span class="caption-text">내재가치 변화에 따른 시장가격의 반응</span><a class="headerlink" href="#momentum" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 13.2 </span><span class="caption-text">내재가치 변화에 따른 시장가격의 반응</span><a class="headerlink" href="#momentum" title="Link to this image">#</a></p>
 <div class="legend">
 <p>출처: Hurst, Ooi, and Pedersen (2013)</p>
 </div>
 </figcaption>
 </figure>
 <section id="id9">
-<h3><span class="section-number">13.4.1. </span>모멘텀별 포트폴리오의 수익률<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.4.1. </span>모멘텀별 포트폴리오의 수익률<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p>최근 12개월 수익률을 기준으로 구성된 포트폴리오의 수익률을 비교해보겠다. 프렌치 라이브러이에서 해당 데이터의 이름은 ‘10_Portfolios_Prior_12_2’ 이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1760,7 +1850,23 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0dc06773de3439a13caa3008e9526970984eb9fcfe27f581dfe4bc9a9756e50e.png" src="_images/0dc06773de3439a13caa3008e9526970984eb9fcfe27f581dfe4bc9a9756e50e.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\731033236.py:6: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_mom = web.DataReader(&#39;10_Portfolios_Prior_12_2&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\731033236.py:6: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_mom = web.DataReader(&#39;10_Portfolios_Prior_12_2&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\731033236.py:6: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_mom = web.DataReader(&#39;10_Portfolios_Prior_12_2&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\731033236.py:6: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_mom = web.DataReader(&#39;10_Portfolios_Prior_12_2&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\731033236.py:6: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_mom = web.DataReader(&#39;10_Portfolios_Prior_12_2&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\731033236.py:6: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_mom = web.DataReader(&#39;10_Portfolios_Prior_12_2&#39;,
+C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\731033236.py:6: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df_mom = web.DataReader(&#39;10_Portfolios_Prior_12_2&#39;,
+</pre></div>
+</div>
+<img alt="_images/ae3b997c073a3f7467a0be2d4439c9e4fdfb92a0688b9db1d6c321f316b93bbb.png" src="_images/ae3b997c073a3f7467a0be2d4439c9e4fdfb92a0688b9db1d6c321f316b93bbb.png" />
 </div>
 </div>
 <p>모멘텀별 포트폴리오의 누적수익률을 확인해보면, 최근 12개월 수익률이 높을수록(Hi PRIOR) 향후에도 지속적으로 수익률이 높으며, 최근 12월 수익률이 낮을수록(Lo PRIOR) 향후에도 수익률이 낮은 ‘모멘텀 현상’이 존재한다. 이번에는 앞서 작성한 <code class="docutils literal notranslate"><span class="pre">factor_stat()</span></code> 함수를 이용해 포트폴리오별 통계값을 확인해보자.</p>
@@ -1804,55 +1910,55 @@ dtype: float64
   <tbody>
     <tr>
       <th>연율화 수익률(산술)</th>
-      <td>3.8100</td>
-      <td>8.7600</td>
-      <td>9.1000</td>
-      <td>10.8900</td>
-      <td>10.6900</td>
-      <td>11.460</td>
-      <td>12.1600</td>
-      <td>13.2900</td>
-      <td>14.1900</td>
-      <td>17.7300</td>
+      <td>4.2700</td>
+      <td>9.120</td>
+      <td>9.5100</td>
+      <td>10.8600</td>
+      <td>10.7300</td>
+      <td>11.5900</td>
+      <td>12.2500</td>
+      <td>13.3700</td>
+      <td>14.2200</td>
+      <td>17.8700</td>
     </tr>
     <tr>
       <th>연율화 수익률(기하)</th>
-      <td>-1.6900</td>
-      <td>5.1200</td>
-      <td>6.4900</td>
-      <td>8.9200</td>
-      <td>9.0000</td>
-      <td>9.930</td>
-      <td>10.8700</td>
-      <td>12.2500</td>
-      <td>13.0200</td>
-      <td>16.3100</td>
+      <td>-1.2400</td>
+      <td>5.470</td>
+      <td>6.9000</td>
+      <td>8.9000</td>
+      <td>9.0500</td>
+      <td>10.0700</td>
+      <td>10.9800</td>
+      <td>12.3400</td>
+      <td>13.0600</td>
+      <td>16.4600</td>
     </tr>
     <tr>
       <th>연율화 변동성</th>
-      <td>34.1600</td>
-      <td>28.0600</td>
-      <td>24.0600</td>
-      <td>21.9300</td>
-      <td>20.4900</td>
-      <td>19.970</td>
-      <td>18.9300</td>
-      <td>18.3400</td>
-      <td>19.3700</td>
-      <td>22.2900</td>
+      <td>34.1800</td>
+      <td>28.140</td>
+      <td>24.1400</td>
+      <td>21.8800</td>
+      <td>20.4500</td>
+      <td>19.9700</td>
+      <td>18.9200</td>
+      <td>18.3300</td>
+      <td>19.3200</td>
+      <td>22.3200</td>
     </tr>
     <tr>
       <th>샤프지수</th>
-      <td>0.1115</td>
-      <td>0.3121</td>
-      <td>0.3784</td>
-      <td>0.4966</td>
-      <td>0.5219</td>
-      <td>0.574</td>
-      <td>0.6423</td>
-      <td>0.7246</td>
-      <td>0.7327</td>
-      <td>0.7953</td>
+      <td>0.1251</td>
+      <td>0.324</td>
+      <td>0.3938</td>
+      <td>0.4963</td>
+      <td>0.5246</td>
+      <td>0.5806</td>
+      <td>0.6478</td>
+      <td>0.7294</td>
+      <td>0.7361</td>
+      <td>0.8004</td>
     </tr>
   </tbody>
 </table>
@@ -1860,7 +1966,7 @@ dtype: float64
 </div>
 </section>
 <section id="id10">
-<h3><span class="section-number">13.4.2. </span>모멘텀 포트폴리오 구하기<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.4.2. </span>모멘텀 포트폴리오 구하기<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <p>최근 12개월 수익률이 높은 주식에 투자하는 것이 훨씬 수익률이 높다는 점을 확인하였으니, 국내 종목들 중 모멘텀 주식에는 어떠한 것이 있는 확인해보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1917,33 +2023,33 @@ dtype: float64
   <tbody>
     <tr>
       <th>0</th>
-      <td>2021-08-05</td>
-      <td>15100.0</td>
+      <td>2023-01-26</td>
+      <td>9270.0</td>
       <td>000020</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2021-08-05</td>
-      <td>1235.0</td>
+      <td>2023-01-26</td>
+      <td>538.0</td>
       <td>000040</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2021-08-05</td>
-      <td>13850.0</td>
+      <td>2023-01-26</td>
+      <td>10660.0</td>
       <td>000050</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2021-08-05</td>
-      <td>25900.0</td>
-      <td>000060</td>
+      <td>2023-01-26</td>
+      <td>71000.0</td>
+      <td>000070</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2021-08-05</td>
-      <td>112000.0</td>
-      <td>000070</td>
+      <td>2023-01-26</td>
+      <td>25800.0</td>
+      <td>000080</td>
     </tr>
   </tbody>
 </table>
@@ -1979,8 +2085,8 @@ dtype: float64
       <th>000020</th>
       <th>000040</th>
       <th>000050</th>
-      <th>000060</th>
       <th>000070</th>
+      <th>000080</th>
     </tr>
     <tr>
       <th>날짜</th>
@@ -1993,44 +2099,44 @@ dtype: float64
   </thead>
   <tbody>
     <tr>
-      <th>2021-08-05</th>
-      <td>15100.0</td>
-      <td>1235.0</td>
-      <td>13850.0</td>
+      <th>2023-01-26</th>
+      <td>9270.0</td>
+      <td>538.0</td>
+      <td>10660.0</td>
+      <td>71000.0</td>
+      <td>25800.0</td>
+    </tr>
+    <tr>
+      <th>2023-01-27</th>
+      <td>9290.0</td>
+      <td>540.0</td>
+      <td>10630.0</td>
+      <td>71400.0</td>
       <td>25900.0</td>
-      <td>112000.0</td>
     </tr>
     <tr>
-      <th>2021-08-06</th>
-      <td>14900.0</td>
-      <td>1225.0</td>
-      <td>14550.0</td>
-      <td>25700.0</td>
-      <td>112000.0</td>
+      <th>2023-01-30</th>
+      <td>9330.0</td>
+      <td>537.0</td>
+      <td>10630.0</td>
+      <td>71600.0</td>
+      <td>26000.0</td>
     </tr>
     <tr>
-      <th>2021-08-09</th>
-      <td>15250.0</td>
-      <td>1200.0</td>
-      <td>14550.0</td>
-      <td>25150.0</td>
-      <td>109500.0</td>
+      <th>2023-01-31</th>
+      <td>9380.0</td>
+      <td>531.0</td>
+      <td>10700.0</td>
+      <td>71900.0</td>
+      <td>26300.0</td>
     </tr>
     <tr>
-      <th>2021-08-10</th>
-      <td>14950.0</td>
-      <td>1195.0</td>
-      <td>14200.0</td>
-      <td>25400.0</td>
-      <td>112000.0</td>
-    </tr>
-    <tr>
-      <th>2021-08-11</th>
-      <td>14850.0</td>
-      <td>1180.0</td>
-      <td>14250.0</td>
-      <td>25500.0</td>
-      <td>109000.0</td>
+      <th>2023-02-01</th>
+      <td>9430.0</td>
+      <td>530.0</td>
+      <td>10740.0</td>
+      <td>72100.0</td>
+      <td>26000.0</td>
     </tr>
   </tbody>
 </table>
@@ -2076,31 +2182,31 @@ dtype: float64
       <th>0</th>
       <td>000020</td>
       <td>동화약품</td>
-      <td>-0.284768</td>
+      <td>0.058252</td>
     </tr>
     <tr>
       <th>1</th>
       <td>000040</td>
       <td>KR모터스</td>
-      <td>-0.425101</td>
+      <td>-0.371747</td>
     </tr>
     <tr>
       <th>2</th>
       <td>000050</td>
       <td>경방</td>
-      <td>-0.046931</td>
+      <td>-0.221388</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>000060</td>
-      <td>메리츠화재</td>
-      <td>0.399614</td>
+      <td>000070</td>
+      <td>삼양홀딩스</td>
+      <td>-0.098592</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>000070</td>
-      <td>삼양홀딩스</td>
-      <td>-0.341071</td>
+      <td>000080</td>
+      <td>하이트진로</td>
+      <td>-0.153101</td>
     </tr>
   </tbody>
 </table>
@@ -2144,124 +2250,124 @@ dtype: float64
   </thead>
   <tbody>
     <tr>
-      <th>208</th>
-      <td>004690</td>
-      <td>삼천리</td>
-      <td>1.122905</td>
+      <th>124</th>
+      <td>002710</td>
+      <td>TCC스틸</td>
+      <td>3.180180</td>
     </tr>
     <tr>
-      <th>257</th>
-      <td>005860</td>
-      <td>한일사료</td>
-      <td>1.327511</td>
-    </tr>
-    <tr>
-      <th>314</th>
+      <th>313</th>
       <td>007660</td>
       <td>이수페타시스</td>
-      <td>1.215265</td>
+      <td>3.398217</td>
     </tr>
     <tr>
-      <th>420</th>
-      <td>011700</td>
-      <td>한신기계</td>
-      <td>1.321990</td>
+      <th>566</th>
+      <td>022100</td>
+      <td>포스코DX</td>
+      <td>7.238806</td>
     </tr>
     <tr>
-      <th>503</th>
-      <td>016710</td>
-      <td>대성홀딩스</td>
-      <td>1.280840</td>
+      <th>827</th>
+      <td>041020</td>
+      <td>폴라리스오피스</td>
+      <td>4.746165</td>
     </tr>
     <tr>
-      <th>505</th>
-      <td>016790</td>
-      <td>카나리아바이오</td>
-      <td>10.205433</td>
+      <th>851</th>
+      <td>042700</td>
+      <td>한미반도체</td>
+      <td>3.250543</td>
     </tr>
     <tr>
-      <th>957</th>
-      <td>052020</td>
-      <td>에스티큐브</td>
-      <td>1.277481</td>
+      <th>900</th>
+      <td>047560</td>
+      <td>이스트소프트</td>
+      <td>2.741039</td>
     </tr>
     <tr>
-      <th>974</th>
-      <td>053050</td>
-      <td>지에스이</td>
-      <td>1.423267</td>
+      <th>1034</th>
+      <td>058970</td>
+      <td>엠로</td>
+      <td>3.630952</td>
     </tr>
     <tr>
-      <th>1000</th>
-      <td>054210</td>
-      <td>이랜텍</td>
-      <td>1.731421</td>
+      <th>1086</th>
+      <td>065350</td>
+      <td>신성델타테크</td>
+      <td>8.302885</td>
     </tr>
     <tr>
-      <th>1019</th>
-      <td>056090</td>
-      <td>이노시스</td>
-      <td>2.150558</td>
+      <th>1215</th>
+      <td>078860</td>
+      <td>아이오케이</td>
+      <td>5.803279</td>
     </tr>
     <tr>
-      <th>1128</th>
-      <td>066970</td>
-      <td>엘앤에프</td>
-      <td>1.129904</td>
+      <th>1236</th>
+      <td>080220</td>
+      <td>제주반도체</td>
+      <td>6.626076</td>
     </tr>
     <tr>
-      <th>1169</th>
-      <td>069920</td>
-      <td>아이에스이커머스</td>
-      <td>1.241153</td>
+      <th>1290</th>
+      <td>086520</td>
+      <td>에코프로</td>
+      <td>3.301766</td>
     </tr>
     <tr>
-      <th>1346</th>
-      <td>090710</td>
-      <td>휴림로봇</td>
-      <td>1.966981</td>
+      <th>1339</th>
+      <td>091440</td>
+      <td>텔레필드</td>
+      <td>4.290441</td>
     </tr>
     <tr>
-      <th>1456</th>
-      <td>101730</td>
-      <td>위메이드맥스</td>
-      <td>2.989455</td>
+      <th>1372</th>
+      <td>094360</td>
+      <td>칩스앤미디어</td>
+      <td>2.821293</td>
     </tr>
     <tr>
-      <th>1508</th>
-      <td>112040</td>
-      <td>위메이드</td>
-      <td>1.851725</td>
+      <th>1429</th>
+      <td>101000</td>
+      <td>상상인인더스트리</td>
+      <td>3.193841</td>
     </tr>
     <tr>
-      <th>1546</th>
-      <td>121600</td>
-      <td>나노신소재</td>
-      <td>1.340136</td>
+      <th>1617</th>
+      <td>139050</td>
+      <td>BF랩스</td>
+      <td>9.751634</td>
     </tr>
     <tr>
-      <th>1584</th>
-      <td>128540</td>
-      <td>에코캡</td>
-      <td>1.530799</td>
+      <th>1923</th>
+      <td>241710</td>
+      <td>코스메카코리아</td>
+      <td>2.904899</td>
     </tr>
     <tr>
-      <th>1609</th>
-      <td>134580</td>
-      <td>탑코미디어</td>
-      <td>1.690583</td>
+      <th>2166</th>
+      <td>322510</td>
+      <td>제이엘케이</td>
+      <td>3.423810</td>
     </tr>
     <tr>
-      <th>1946</th>
-      <td>249420</td>
-      <td>일동제약</td>
-      <td>1.477273</td>
+      <th>2174</th>
+      <td>328130</td>
+      <td>루닛</td>
+      <td>2.677054</td>
     </tr>
     <tr>
-      <th>2245</th>
-      <td>373200</td>
-      <td>하인크코리아</td>
-      <td>2.129707</td>
+      <th>2326</th>
+      <td>399720</td>
+      <td>가온칩스</td>
+      <td>2.893757</td>
+    </tr>
+    <tr>
+      <th>2366</th>
+      <td>425420</td>
+      <td>티에프이</td>
+      <td>3.107143</td>
     </tr>
   </tbody>
 </table>
@@ -2302,12 +2408,16 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9af630e143d4d043d1a9b6c59dd84f8163ec4457274a76f7bdb2c5857e9387c1.png" src="_images/9af630e143d4d043d1a9b6c59dd84f8163ec4457274a76f7bdb2c5857e9387c1.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\leebi\anaconda3\Lib\site-packages\seaborn\axisgrid.py:118: UserWarning: The figure layout has changed to tight
+  self._figure.tight_layout(*args, **kwargs)
+</pre></div>
+</div>
+<img alt="_images/d43ac520c4a9f769d6a84575aa0ef749bfdfc421d7d99b1e6f98f14b401756ef.png" src="_images/d43ac520c4a9f769d6a84575aa0ef749bfdfc421d7d99b1e6f98f14b401756ef.png" />
 </div>
 </div>
 </section>
 <section id="k-ratio">
-<h3><span class="section-number">13.4.3. </span>K-Ratio<a class="headerlink" href="#k-ratio" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.4.3. </span>K-Ratio<a class="headerlink" href="#k-ratio" title="Link to this heading">#</a></h3>
 <p>12개월 수익률 기준 모멘텀 종목들의 주가 그래프를 보면 단순히 수익률 만으로 종목을 선택할 경우 다음과 같은 종목 또한 포함된다.</p>
 <ol class="arabic simple">
 <li><p>장기간 수익률이 횡보하다가 최근 주가가 급등하여 누적수익률 역시 높게 나타나는 종목</p></li>
@@ -2317,7 +2427,7 @@ dtype: float64
 <figure class="align-default" id="factor-k">
 <img alt="_images/factor_k.png" src="_images/factor_k.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 13.3 </span><span class="caption-text">모멘텀의 종류</span><a class="headerlink" href="#factor-k" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 13.3 </span><span class="caption-text">모멘텀의 종류</span><a class="headerlink" href="#factor-k" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>동일한 누적수익률을 가진 두 종목이 있다고 가정해보자. A의 경우 상승폭이 작다가 최근 급등하여 누적수익률이 높아진 경우다. 반면 B의 경우 꾸준하게 상승하여 누적수익률이 높아진 경우다. 이 중 꾸준하게 상승한 B가 더 뛰어난 모멘텀 주식이라고 볼 수 있다. 이처럼 꾸준한 상승을 측정하기 위해 실무에서는 단순 12개월 수익률이 아닌 3~12개월 수익률을 같이 보거나, 변동성을 함께 고려하기도 한다. 그 중 모멘텀의 꾸준함을 측정하는 지표 중 하나가 ‘K-Ratio’다. 해당 지표는 다음과 같다.</p>
@@ -2355,25 +2465,25 @@ dtype: float64
 <div class="output text_html"><table class="simpletable">
 <caption>OLS Regression Results</caption>
 <tr>
-  <th>Dep. Variable:</th>            <td>y</td>        <th>  R-squared (uncentered):</th>      <td>   0.767</td>
+  <th>Dep. Variable:</th>            <td>y</td>        <th>  R-squared (uncentered):</th>      <td>   0.370</td>
 </tr>
 <tr>
-  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared (uncentered):</th> <td>   0.766</td>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared (uncentered):</th> <td>   0.368</td>
 </tr>
 <tr>
-  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th>          <td>   807.8</td>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th>          <td>   144.6</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Fri, 05 Aug 2022</td> <th>  Prob (F-statistic):</th>          <td>1.57e-79</td>
+  <th>Date:</th>             <td>Tue, 13 Feb 2024</td> <th>  Prob (F-statistic):</th>          <td>1.65e-26</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>21:27:37</td>     <th>  Log-Likelihood:    </th>          <td>  219.47</td>
+  <th>Time:</th>                 <td>14:49:30</td>     <th>  Log-Likelihood:    </th>          <td>  335.22</td>
 </tr>
 <tr>
-  <th>No. Observations:</th>      <td>   246</td>      <th>  AIC:               </th>          <td>  -436.9</td>
+  <th>No. Observations:</th>      <td>   247</td>      <th>  AIC:               </th>          <td>  -668.4</td>
 </tr>
 <tr>
-  <th>Df Residuals:</th>          <td>   245</td>      <th>  BIC:               </th>          <td>  -433.4</td>
+  <th>Df Residuals:</th>          <td>   246</td>      <th>  BIC:               </th>          <td>  -664.9</td>
 </tr>
 <tr>
   <th>Df Model:</th>              <td>     1</td>      <th>                     </th>              <td> </td>   
@@ -2387,21 +2497,21 @@ dtype: float64
    <td></td>     <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
 </tr>
 <tr>
-  <th>x1</th> <td>   -0.0013</td> <td> 4.47e-05</td> <td>  -28.423</td> <td> 0.000</td> <td>   -0.001</td> <td>   -0.001</td>
+  <th>x1</th> <td>    0.0003</td> <td> 2.79e-05</td> <td>   12.026</td> <td> 0.000</td> <td>    0.000</td> <td>    0.000</td>
 </tr>
 </table>
 <table class="simpletable">
 <tr>
-  <th>Omnibus:</th>       <td> 8.013</td> <th>  Durbin-Watson:     </th> <td>   0.104</td>
+  <th>Omnibus:</th>       <td> 3.344</td> <th>  Durbin-Watson:     </th> <td>   0.064</td>
 </tr>
 <tr>
-  <th>Prob(Omnibus):</th> <td> 0.018</td> <th>  Jarque-Bera (JB):  </th> <td>  12.363</td>
+  <th>Prob(Omnibus):</th> <td> 0.188</td> <th>  Jarque-Bera (JB):  </th> <td>   2.671</td>
 </tr>
 <tr>
-  <th>Skew:</th>          <td> 0.164</td> <th>  Prob(JB):          </th> <td> 0.00207</td>
+  <th>Skew:</th>          <td>-0.132</td> <th>  Prob(JB):          </th> <td>   0.263</td>
 </tr>
 <tr>
-  <th>Kurtosis:</th>      <td> 4.048</td> <th>  Cond. No.          </th> <td>    1.00</td>
+  <th>Kurtosis:</th>      <td> 2.564</td> <th>  Cond. No.          </th> <td>    1.00</td>
 </tr>
 </table><br/><br/>Notes:<br/>[1] R² is computed without centering (uncentered) since the model does not contain a constant.<br/>[2] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
 </div>
@@ -2413,7 +2523,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.00127156] [4.47376881e-05] [-28.42258455]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.00033588] [2.79294451e-05] [12.0260539]
 </pre></div>
 </div>
 </div>
@@ -2445,6 +2555,10 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\leebi\AppData\Local\Temp\ipykernel_33656\3328310397.py:11: FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+  res = float(reg.params / reg.bse)
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2471,27 +2585,27 @@ dtype: float64
     <tr>
       <th>0</th>
       <td>000020</td>
-      <td>-28.422585</td>
+      <td>12.026054</td>
     </tr>
     <tr>
       <th>1</th>
       <td>000040</td>
-      <td>-64.848605</td>
+      <td>-3.058807</td>
     </tr>
     <tr>
       <th>2</th>
       <td>000050</td>
-      <td>2.501597</td>
+      <td>-44.645122</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>000060</td>
-      <td>28.585126</td>
+      <td>000070</td>
+      <td>-4.289771</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>000070</td>
-      <td>-72.720990</td>
+      <td>000080</td>
+      <td>-28.751010</td>
     </tr>
   </tbody>
 </table>
@@ -2539,144 +2653,144 @@ dtype: float64
   </thead>
   <tbody>
     <tr>
-      <th>51</th>
-      <td>001070</td>
-      <td>대한방직</td>
-      <td>0.172178</td>
-      <td>43.772480</td>
+      <th>357</th>
+      <td>009420</td>
+      <td>한올바이오파마</td>
+      <td>1.133621</td>
+      <td>75.456146</td>
     </tr>
     <tr>
-      <th>125</th>
-      <td>002710</td>
-      <td>TCC스틸</td>
-      <td>1.099533</td>
-      <td>57.613128</td>
+      <th>376</th>
+      <td>010100</td>
+      <td>한국무브넥스</td>
+      <td>1.620690</td>
+      <td>74.181751</td>
     </tr>
     <tr>
-      <th>147</th>
-      <td>003100</td>
-      <td>선광</td>
-      <td>1.047668</td>
-      <td>96.243087</td>
+      <th>566</th>
+      <td>022100</td>
+      <td>포스코DX</td>
+      <td>7.238806</td>
+      <td>89.860070</td>
     </tr>
     <tr>
-      <th>193</th>
-      <td>004250</td>
-      <td>NPC</td>
-      <td>0.567881</td>
-      <td>42.230256</td>
+      <th>770</th>
+      <td>036930</td>
+      <td>주성엔지니어링</td>
+      <td>1.637014</td>
+      <td>88.879723</td>
     </tr>
     <tr>
-      <th>218</th>
-      <td>004890</td>
-      <td>동일산업</td>
-      <td>0.600000</td>
-      <td>59.401851</td>
+      <th>803</th>
+      <td>039030</td>
+      <td>이오테크닉스</td>
+      <td>1.542069</td>
+      <td>70.224722</td>
     </tr>
     <tr>
-      <th>225</th>
-      <td>005010</td>
-      <td>휴스틸</td>
-      <td>0.500000</td>
-      <td>36.122372</td>
+      <th>851</th>
+      <td>042700</td>
+      <td>한미반도체</td>
+      <td>3.250543</td>
+      <td>93.504988</td>
     </tr>
     <tr>
-      <th>314</th>
-      <td>007660</td>
-      <td>이수페타시스</td>
-      <td>1.215265</td>
-      <td>61.223590</td>
+      <th>996</th>
+      <td>054450</td>
+      <td>텔레칩스</td>
+      <td>1.335448</td>
+      <td>97.615337</td>
     </tr>
     <tr>
-      <th>402</th>
-      <td>011070</td>
-      <td>LG이노텍</td>
-      <td>0.568233</td>
-      <td>41.270171</td>
+      <th>1125</th>
+      <td>067310</td>
+      <td>하나마이크론</td>
+      <td>1.659574</td>
+      <td>81.677045</td>
     </tr>
     <tr>
-      <th>503</th>
-      <td>016710</td>
-      <td>대성홀딩스</td>
-      <td>1.280840</td>
-      <td>100.657403</td>
+      <th>1372</th>
+      <td>094360</td>
+      <td>칩스앤미디어</td>
+      <td>2.821293</td>
+      <td>85.997592</td>
     </tr>
     <tr>
-      <th>514</th>
-      <td>017390</td>
-      <td>서울가스</td>
-      <td>0.766784</td>
-      <td>70.054746</td>
+      <th>1453</th>
+      <td>103590</td>
+      <td>일진전기</td>
+      <td>1.621785</td>
+      <td>75.162375</td>
     </tr>
     <tr>
-      <th>974</th>
-      <td>053050</td>
-      <td>지에스이</td>
-      <td>1.423267</td>
-      <td>52.213864</td>
+      <th>1489</th>
+      <td>110020</td>
+      <td>전진바이오팜</td>
+      <td>1.511050</td>
+      <td>70.605377</td>
     </tr>
     <tr>
-      <th>1000</th>
-      <td>054210</td>
-      <td>이랜텍</td>
-      <td>1.731421</td>
-      <td>83.068202</td>
+      <th>1491</th>
+      <td>110990</td>
+      <td>디아이티</td>
+      <td>2.308208</td>
+      <td>91.107413</td>
     </tr>
     <tr>
-      <th>1128</th>
-      <td>066970</td>
-      <td>엘앤에프</td>
-      <td>1.129904</td>
-      <td>40.497085</td>
+      <th>1592</th>
+      <td>131970</td>
+      <td>두산테스나</td>
+      <td>0.494590</td>
+      <td>75.339508</td>
     </tr>
     <tr>
-      <th>1238</th>
-      <td>079550</td>
-      <td>LIG넥스원</td>
-      <td>1.004520</td>
-      <td>69.862628</td>
+      <th>1780</th>
+      <td>204270</td>
+      <td>제이앤티씨</td>
+      <td>1.043103</td>
+      <td>75.367888</td>
     </tr>
     <tr>
-      <th>1499</th>
-      <td>109860</td>
-      <td>동일금속</td>
-      <td>0.807283</td>
-      <td>76.292037</td>
+      <th>1810</th>
+      <td>214150</td>
+      <td>클래시스</td>
+      <td>0.787257</td>
+      <td>70.392321</td>
     </tr>
     <tr>
-      <th>1531</th>
-      <td>117580</td>
-      <td>대성에너지</td>
-      <td>0.735791</td>
-      <td>37.180676</td>
+      <th>1923</th>
+      <td>241710</td>
+      <td>코스메카코리아</td>
+      <td>2.904899</td>
+      <td>66.948528</td>
     </tr>
     <tr>
-      <th>1546</th>
-      <td>121600</td>
-      <td>나노신소재</td>
-      <td>1.340136</td>
-      <td>57.357731</td>
+      <th>2000</th>
+      <td>267260</td>
+      <td>HD현대일렉트릭</td>
+      <td>1.882834</td>
+      <td>104.971657</td>
     </tr>
     <tr>
-      <th>1618</th>
-      <td>137400</td>
-      <td>피엔티</td>
-      <td>0.792857</td>
-      <td>42.863412</td>
+      <th>2225</th>
+      <td>352480</td>
+      <td>씨앤씨인터내셔널</td>
+      <td>1.441860</td>
+      <td>70.196142</td>
     </tr>
     <tr>
-      <th>1946</th>
-      <td>249420</td>
-      <td>일동제약</td>
-      <td>1.477273</td>
-      <td>37.525955</td>
+      <th>2332</th>
+      <td>403870</td>
+      <td>HPSP</td>
+      <td>2.345955</td>
+      <td>81.811193</td>
     </tr>
     <tr>
-      <th>2212</th>
-      <td>353200</td>
-      <td>대덕전자</td>
-      <td>0.788991</td>
-      <td>69.976213</td>
+      <th>2366</th>
+      <td>425420</td>
+      <td>티에프이</td>
+      <td>3.107143</td>
+      <td>66.840885</td>
     </tr>
   </tbody>
 </table>
@@ -2710,14 +2824,18 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/529808b60e7165e25070de47c5c9619d5cc224b315efbdd20d51515aff1ba974.png" src="_images/529808b60e7165e25070de47c5c9619d5cc224b315efbdd20d51515aff1ba974.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\leebi\anaconda3\Lib\site-packages\seaborn\axisgrid.py:118: UserWarning: The figure layout has changed to tight
+  self._figure.tight_layout(*args, **kwargs)
+</pre></div>
+</div>
+<img alt="_images/213f6f3783cbae65f3c7df26dc429efa0d94e134c6b273464f7e617977676e34.png" src="_images/213f6f3783cbae65f3c7df26dc429efa0d94e134c6b273464f7e617977676e34.png" />
 </div>
 </div>
 <p>기존 단순 모멘텀이 비해 훨씬 더 꾸준하게 우상향하는 종목들이 선택되었다.</p>
 </section>
 </section>
 <section id="id11">
-<h2><span class="section-number">13.5. </span>퀄리티 전략<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">13.5. </span>퀄리티 전략<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
 <p>벤자민 그레이엄 이후 유지되고 있는 기본적 분석 혹은 가치 투자자들의 가장 중요한 투자 지표 중 하나는 기업의 우량성(퀄리티)이다. 벤저민 그레이엄은 종목 선정에 있어 유동 자산이 풍부하여 재무적으로 건전하고, 꾸준하게 이익을 달성하는 기업을 강조했다. 최고의 투자자로 꼽히는 워런 버핏의 종목 선정 기준 역시 실적의 강력한 성장 추세와 높은 자기자본 이익률로 알려져 있다.</p>
 <p>그러나 어떠한 지표가 기업의 우량성을 나타내는지 한 마디로 정의하기에는 너무나 주관적이고 광범위해 쉽지 않다. 연구에 따르면 수익성, 성장성, 안정성이 높을 주식일수록 수익률이 높은 경향이 있다. 이 외에도 학계 혹은 업계에서 사용되는 우량성 관련 지표는 다음과 같이 요약할 수 있다.</p>
 <ol class="arabic simple">
@@ -2731,7 +2849,7 @@ dtype: float64
 </ol>
 <p>이 중 사람들이 가장 중요하게 여기는 것은 바로 수익성이다. 돈을 벌지 못하는 기업은 지속될 수 없기 때문이다. 기업의 규모가 크면 당연히 돈을 더 많이 벌기 때문에 단순히 수익의 양이 아닌, 기업의 규모에 비해 얼마를 버는지 표준화를 통해 비교해야 한다. <a class="reference internal" href="#quality-table"><span class="std std-numref">Table 13.4</span></a>는 널리 사용되고 있는 수익성 지표들이다.</p>
 <table class="table" id="quality-table">
-<caption><span class="caption-number">Table 13.4 </span><span class="caption-text">수익성 지표</span><a class="headerlink" href="#quality-table" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 13.4 </span><span class="caption-text">수익성 지표</span><a class="headerlink" href="#quality-table" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>지표</p></th>
 <th class="head"><p>설명</p></th>
@@ -2764,7 +2882,7 @@ dtype: float64
 </table>
 <p>우량주 효과가 발생하는 이유 역시 사람들의 반응과 관계가 있다. 기업의 수익성이 높을 경우, 투자자들은 이익이 다시 원래 수준으로 빠르게 돌아갈 것이라 생각하지만, 실제로는 수익성이 높은 기업은 계속해서 높은 수익성을 보이는 경향이 있다. 반대로 기업의 수익성이 낮은 경우, 투자자들은 이익이 반등할 것이라 생각하지만 나쁜 기업은 계속해서 나쁜 경향이 있다.</p>
 <section id="id12">
-<h3><span class="section-number">13.5.1. </span>수익성별 포트폴리오의 수익률<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.5.1. </span>수익성별 포트폴리오의 수익률<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
 <p>영업수익성을 기준으로 구성된 포트폴리오의 수익률을 비교해보겠다. 프렌치 라이브러이에서 해당 데이터의 이름은 ‘Portfolios_Formed_on_OP’ 이다. 단, 수익성 항목이 들어간 데이터들은 <code class="docutils literal notranslate"><span class="pre">pandas_datareader</span></code> 패키지에서 불러올 경우 인코딩 문제로 인해 오류가 발생하므로, 홈페이지에서 직접 파일을 다운로드 받도록 한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2793,7 +2911,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/08fd29739a698e3d64a5b047f772848ea6a47236315fd7f68b400bed01740eae.png" src="_images/08fd29739a698e3d64a5b047f772848ea6a47236315fd7f68b400bed01740eae.png" />
+<img alt="_images/f34d849e8a41a6f8ba924c0447c11c5364be895701e50a8c6d763750f4857082.png" src="_images/f34d849e8a41a6f8ba924c0447c11c5364be895701e50a8c6d763750f4857082.png" />
 </div>
 </div>
 <ol class="arabic simple">
@@ -2839,35 +2957,35 @@ dtype: float64
   <tbody>
     <tr>
       <th>연율화 수익률(산술)</th>
-      <td>8.9900</td>
-      <td>10.2100</td>
-      <td>11.3900</td>
-      <td>11.3900</td>
-      <td>12.2800</td>
+      <td>9.2300</td>
+      <td>10.3500</td>
+      <td>11.4800</td>
+      <td>11.610</td>
+      <td>12.5200</td>
     </tr>
     <tr>
       <th>연율화 수익률(기하)</th>
-      <td>7.2800</td>
-      <td>9.2900</td>
-      <td>10.6800</td>
-      <td>10.7000</td>
-      <td>11.6600</td>
+      <td>7.5100</td>
+      <td>9.4300</td>
+      <td>10.7700</td>
+      <td>10.920</td>
+      <td>11.9000</td>
     </tr>
     <tr>
       <th>연율화 변동성</th>
-      <td>19.5000</td>
-      <td>16.0300</td>
-      <td>15.3800</td>
-      <td>15.3200</td>
-      <td>15.4600</td>
+      <td>19.6500</td>
+      <td>16.1100</td>
+      <td>15.5100</td>
+      <td>15.460</td>
+      <td>15.5900</td>
     </tr>
     <tr>
       <th>샤프지수</th>
-      <td>0.4612</td>
-      <td>0.6372</td>
-      <td>0.7403</td>
-      <td>0.7431</td>
-      <td>0.7942</td>
+      <td>0.4698</td>
+      <td>0.6425</td>
+      <td>0.7401</td>
+      <td>0.751</td>
+      <td>0.8032</td>
     </tr>
   </tbody>
 </table>
@@ -2876,7 +2994,7 @@ dtype: float64
 <p>수익성이 높을수록 수익률이 높고 변동성이 낮음을 확인할 수 있다.</p>
 </section>
 <section id="id13">
-<h3><span class="section-number">13.5.2. </span>우량성 포트폴리오 구하기<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.5.2. </span>우량성 포트폴리오 구하기<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
 <p>이번에는 국내 종목들 중 우량성(수익성)이 높은 종믁은 어떠한 것이 있는지 확인해보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2962,66 +3080,66 @@ dtype: float64
       <th>0</th>
       <td>000020</td>
       <td>동화약품</td>
-      <td>198.0</td>
-      <td>1582.0</td>
-      <td>438.0</td>
-      <td>3561.25</td>
-      <td>4507.00</td>
-      <td>0.0556</td>
-      <td>0.3510</td>
-      <td>0.0972</td>
+      <td>292.0</td>
+      <td>1897.0</td>
+      <td>366.0</td>
+      <td>3902.50</td>
+      <td>4775.25</td>
+      <td>0.0748</td>
+      <td>0.3973</td>
+      <td>0.0766</td>
     </tr>
     <tr>
       <th>1</th>
       <td>000040</td>
       <td>KR모터스</td>
-      <td>-130.0</td>
-      <td>181.0</td>
-      <td>-86.0</td>
-      <td>503.25</td>
-      <td>1727.50</td>
-      <td>-0.2583</td>
-      <td>0.1048</td>
-      <td>-0.0498</td>
+      <td>-278.0</td>
+      <td>90.0</td>
+      <td>-61.0</td>
+      <td>304.25</td>
+      <td>1513.25</td>
+      <td>-0.9137</td>
+      <td>0.0595</td>
+      <td>-0.0403</td>
     </tr>
     <tr>
       <th>2</th>
       <td>000050</td>
       <td>경방</td>
-      <td>306.0</td>
-      <td>1440.0</td>
-      <td>359.0</td>
-      <td>7550.75</td>
-      <td>12790.00</td>
-      <td>0.0405</td>
-      <td>0.1126</td>
-      <td>0.0281</td>
+      <td>-100.0</td>
+      <td>977.0</td>
+      <td>411.0</td>
+      <td>7471.00</td>
+      <td>12330.75</td>
+      <td>-0.0134</td>
+      <td>0.0792</td>
+      <td>0.0333</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>000060</td>
-      <td>메리츠화재</td>
-      <td>7441.0</td>
-      <td>NaN</td>
-      <td>11081.0</td>
-      <td>22177.50</td>
-      <td>271524.00</td>
-      <td>0.3355</td>
-      <td>NaN</td>
-      <td>0.0408</td>
+      <td>000070</td>
+      <td>삼양홀딩스</td>
+      <td>2252.0</td>
+      <td>5089.0</td>
+      <td>2746.0</td>
+      <td>25988.50</td>
+      <td>46164.00</td>
+      <td>0.0867</td>
+      <td>0.1102</td>
+      <td>0.0595</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>000070</td>
-      <td>삼양홀딩스</td>
-      <td>2384.0</td>
-      <td>7047.0</td>
-      <td>2021.0</td>
-      <td>24182.25</td>
-      <td>44074.75</td>
-      <td>0.0986</td>
-      <td>0.1599</td>
-      <td>0.0459</td>
+      <td>000080</td>
+      <td>하이트진로</td>
+      <td>173.0</td>
+      <td>10808.0</td>
+      <td>-223.0</td>
+      <td>11303.50</td>
+      <td>33565.00</td>
+      <td>0.0153</td>
+      <td>0.3220</td>
+      <td>-0.0066</td>
     </tr>
   </tbody>
 </table>
@@ -3068,7 +3186,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7d2f99815f8c4321a6501309eb1ea9db4291a00a719a64c5485c516dc6a189d0.png" src="_images/7d2f99815f8c4321a6501309eb1ea9db4291a00a719a64c5485c516dc6a189d0.png" />
+<img alt="_images/adb898d007f20a4197339853398d291d8ef3c6340cbd5a1de81eadb1b757be90.png" src="_images/adb898d007f20a4197339853398d291d8ef3c6340cbd5a1de81eadb1b757be90.png" />
 </div>
 </div>
 <p>비슷한 수익성 지표임에도 불구하고 서로 간의 상관관계가 꽤 낮다. 따라서 지표를 통합적으로 고려하면 분산효과를 기대할 수 있다. 수익성이 높은 종목을 선택해보도록 하자.</p>
@@ -3108,164 +3226,164 @@ dtype: float64
   </thead>
   <tbody>
     <tr>
-      <th>46</th>
-      <td>000990</td>
-      <td>DB하이텍</td>
-      <td>0.4055</td>
-      <td>0.4520</td>
-      <td>0.2979</td>
+      <th>137</th>
+      <td>002960</td>
+      <td>한국쉘석유</td>
+      <td>0.3213</td>
+      <td>0.5748</td>
+      <td>0.2599</td>
     </tr>
     <tr>
-      <th>407</th>
-      <td>011200</td>
-      <td>HMM</td>
-      <td>0.9067</td>
-      <td>0.5889</td>
-      <td>0.5699</td>
+      <th>691</th>
+      <td>033100</td>
+      <td>제룡전기</td>
+      <td>0.4981</td>
+      <td>0.6516</td>
+      <td>0.2759</td>
     </tr>
     <tr>
-      <th>1038</th>
+      <th>742</th>
+      <td>035900</td>
+      <td>JYP Ent.</td>
+      <td>0.3323</td>
+      <td>0.5261</td>
+      <td>0.2702</td>
+    </tr>
+    <tr>
+      <th>804</th>
+      <td>039130</td>
+      <td>하나투어</td>
+      <td>0.4655</td>
+      <td>0.6459</td>
+      <td>0.2196</td>
+    </tr>
+    <tr>
+      <th>924</th>
+      <td>049720</td>
+      <td>고려신용정보</td>
+      <td>0.3047</td>
+      <td>1.7778</td>
+      <td>0.1975</td>
+    </tr>
+    <tr>
+      <th>1028</th>
       <td>058630</td>
       <td>엠게임</td>
-      <td>0.3126</td>
-      <td>0.7389</td>
-      <td>0.2155</td>
+      <td>0.2304</td>
+      <td>0.6559</td>
+      <td>0.3145</td>
     </tr>
     <tr>
-      <th>1133</th>
+      <th>1121</th>
       <td>067160</td>
       <td>아프리카TV</td>
-      <td>0.3782</td>
-      <td>0.7456</td>
-      <td>0.3509</td>
+      <td>0.2362</td>
+      <td>0.6550</td>
+      <td>0.2112</td>
     </tr>
     <tr>
-      <th>1283</th>
-      <td>084650</td>
-      <td>랩지노믹스</td>
-      <td>0.7156</td>
-      <td>0.8150</td>
-      <td>0.2906</td>
+      <th>1347</th>
+      <td>092130</td>
+      <td>이크레더블</td>
+      <td>0.2492</td>
+      <td>0.7320</td>
+      <td>0.2671</td>
     </tr>
     <tr>
-      <th>1335</th>
-      <td>089970</td>
-      <td>에이피티씨</td>
-      <td>0.3756</td>
-      <td>0.4857</td>
-      <td>0.4497</td>
+      <th>1370</th>
+      <td>094170</td>
+      <td>동운아나텍</td>
+      <td>0.5725</td>
+      <td>0.6263</td>
+      <td>0.3400</td>
     </tr>
     <tr>
-      <th>1406</th>
-      <td>096530</td>
-      <td>씨젠</td>
-      <td>0.5233</td>
-      <td>0.7301</td>
-      <td>0.4055</td>
+      <th>1391</th>
+      <td>096240</td>
+      <td>크레버스</td>
+      <td>0.2228</td>
+      <td>1.0497</td>
+      <td>0.2019</td>
     </tr>
     <tr>
-      <th>1489</th>
-      <td>108320</td>
-      <td>LX세미콘</td>
-      <td>0.4598</td>
-      <td>0.6625</td>
-      <td>0.3586</td>
+      <th>1553</th>
+      <td>123690</td>
+      <td>한국화장품</td>
+      <td>0.1766</td>
+      <td>0.8335</td>
+      <td>0.1632</td>
     </tr>
     <tr>
-      <th>1617</th>
-      <td>137310</td>
-      <td>에스디바이오센서</td>
-      <td>0.5246</td>
-      <td>0.5600</td>
-      <td>0.3779</td>
-    </tr>
-    <tr>
-      <th>1666</th>
-      <td>150900</td>
-      <td>파수</td>
-      <td>0.2609</td>
-      <td>0.6655</td>
-      <td>0.3823</td>
-    </tr>
-    <tr>
-      <th>1758</th>
-      <td>194480</td>
-      <td>데브시스터즈</td>
-      <td>0.3083</td>
-      <td>1.3381</td>
-      <td>0.2407</td>
-    </tr>
-    <tr>
-      <th>1794</th>
-      <td>205470</td>
-      <td>휴마시스</td>
-      <td>1.6078</td>
-      <td>1.4010</td>
-      <td>1.1184</td>
-    </tr>
-    <tr>
-      <th>1831</th>
-      <td>215000</td>
-      <td>골프존</td>
-      <td>0.3250</td>
-      <td>0.6746</td>
-      <td>0.3084</td>
-    </tr>
-    <tr>
-      <th>1834</th>
+      <th>1828</th>
       <td>215200</td>
       <td>메가스터디교육</td>
-      <td>0.2664</td>
-      <td>0.6105</td>
-      <td>0.2788</td>
+      <td>0.2259</td>
+      <td>0.5759</td>
+      <td>0.1994</td>
     </tr>
     <tr>
-      <th>1874</th>
-      <td>225190</td>
-      <td>삼양옵틱스</td>
-      <td>0.3365</td>
-      <td>0.5404</td>
-      <td>0.3173</td>
+      <th>2039</th>
+      <td>282330</td>
+      <td>BGF리테일</td>
+      <td>0.2028</td>
+      <td>0.4810</td>
+      <td>0.1905</td>
     </tr>
     <tr>
-      <th>1875</th>
-      <td>225220</td>
-      <td>제놀루션</td>
-      <td>0.4199</td>
-      <td>0.5523</td>
-      <td>0.2622</td>
-    </tr>
-    <tr>
-      <th>1959</th>
-      <td>253840</td>
-      <td>수젠텍</td>
-      <td>0.6624</td>
-      <td>0.6154</td>
-      <td>0.2457</td>
-    </tr>
-    <tr>
-      <th>2048</th>
+      <th>2050</th>
       <td>287410</td>
       <td>제이시스메디칼</td>
-      <td>0.6294</td>
-      <td>0.9214</td>
-      <td>0.3265</td>
+      <td>0.3065</td>
+      <td>0.7316</td>
+      <td>0.2709</td>
     </tr>
     <tr>
-      <th>2200</th>
-      <td>348210</td>
-      <td>넥스틴</td>
-      <td>0.3430</td>
-      <td>0.5315</td>
-      <td>0.2658</td>
+      <th>2192</th>
+      <td>335890</td>
+      <td>비올</td>
+      <td>0.4496</td>
+      <td>0.6339</td>
+      <td>0.3543</td>
     </tr>
     <tr>
-      <th>2267</th>
+      <th>2196</th>
+      <td>336570</td>
+      <td>원텍</td>
+      <td>0.4651</td>
+      <td>0.6912</td>
+      <td>0.2701</td>
+    </tr>
+    <tr>
+      <th>2303</th>
       <td>383220</td>
       <td>F&amp;F</td>
-      <td>0.6814</td>
-      <td>1.0472</td>
-      <td>0.3961</td>
+      <td>0.4635</td>
+      <td>0.8100</td>
+      <td>0.2442</td>
+    </tr>
+    <tr>
+      <th>2304</th>
+      <td>383310</td>
+      <td>에코프로에이치엔</td>
+      <td>0.4539</td>
+      <td>0.4631</td>
+      <td>0.1660</td>
+    </tr>
+    <tr>
+      <th>2319</th>
+      <td>393210</td>
+      <td>토마토시스템</td>
+      <td>0.2712</td>
+      <td>0.5234</td>
+      <td>0.3516</td>
+    </tr>
+    <tr>
+      <th>2332</th>
+      <td>403870</td>
+      <td>HPSP</td>
+      <td>0.3506</td>
+      <td>0.4404</td>
+      <td>0.2647</td>
     </tr>
   </tbody>
 </table>
@@ -3278,10 +3396,10 @@ dtype: float64
 </section>
 </section>
 <section id="id14">
-<h2><span class="section-number">13.6. </span>마법공식<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">13.6. </span>마법공식<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
 <p>하나의 팩터만을 보고 투자하는 것보다, 둘 혹은 그 이상의 팩터를 결합해 투자해야 훨씬 좋은 포트폴리오를 구성할 수 있으며, 이러한 방법을 멀티팩터라고 한다. 그중에서도 밸류와 퀄리티의 조합은 전통적으로 많이 사용된 방법이며, 대표적인 예가 조엘 그린블라트의 ‘마법공식’이다. 이에 앞서, 퀄리티와 밸류 간의 관계, 마법공식의 정의와 구성 방법을 알아보겠다.</p>
 <section id="id15">
-<h3><span class="section-number">13.6.1. </span>퀄리티와 밸류 간의 관계<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.6.1. </span>퀄리티와 밸류 간의 관계<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
 <p>투자의 정석 중 하나는 좋은 기업을 싸게 사는 것이다. 이를 팩터의 관점에서 이해하면 퀄리티 팩터와 밸류 팩터로 이해할 수도 있다.</p>
 <p>여러 논문에 따르면 흔히 밸류 팩터와 퀄리티 팩터는 반대의 관계에 있다. 먼저 가치주들은 위험이 크기 때문에 시장에서 소외를 받아 저평가가 이루어지는 것이며, 이러한 위험에 대한 대가로 밸류 팩터의 수익률이 높다. 반대로 사람들은 우량주에 기꺼이 프리미엄을 지불하려 하기 때문에 퀄리티 팩터의 수익률이 높기도 하다. 이는 마치 동전의 양면과 같지만, 장기적으로 가치주와 우량주 모두 우수한 성과를 기록한다. 먼저 퀄리티 지표인 매출총이익과 밸류 지표인 PBR을 통해 둘 사이의 관계를 확인해 보자.</p>
 <div class="cell docutils container">
@@ -3351,13 +3469,13 @@ dtype: float64
   <tbody>
     <tr>
       <th>PBR</th>
-      <td>1.00000</td>
-      <td>-0.11797</td>
+      <td>1.000000</td>
+      <td>-0.131112</td>
     </tr>
     <tr>
       <th>GPA</th>
-      <td>-0.11797</td>
-      <td>1.00000</td>
+      <td>-0.131112</td>
+      <td>1.000000</td>
     </tr>
   </tbody>
 </table>
@@ -3391,7 +3509,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/044ba6bc3b2a9cc11d2ddae9672fecd3a4bd2d217496e32e1085804f603ac327.png" src="_images/044ba6bc3b2a9cc11d2ddae9672fecd3a4bd2d217496e32e1085804f603ac327.png" />
+<img alt="_images/eb5b2a877fc335b1d32d05cabdd7585492094307d3580e8b548c46d9e2fdfd6a.png" src="_images/eb5b2a877fc335b1d32d05cabdd7585492094307d3580e8b548c46d9e2fdfd6a.png" />
 </div>
 </div>
 <ol class="arabic simple">
@@ -3405,7 +3523,7 @@ dtype: float64
 <figure class="align-default" id="tableqv">
 <img alt="_images/tableqv.png" src="_images/tableqv.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 13.4 </span><span class="caption-text">밸류 팩터와 퀄리티 팩터간의 관계</span><a class="headerlink" href="#tableqv" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 13.4 </span><span class="caption-text">밸류 팩터와 퀄리티 팩터간의 관계</span><a class="headerlink" href="#tableqv" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>주가가 쌀수록(저밸류) 기업의 우량성은 떨어지며(①번), 반대로 기업의 우량성이 좋으면 주식은 비싼 경향(③번)이 있다. 물론 우량성도 떨어지고 비싸기만한 주식(②번)을 사려는 사람들 아마 없을 것이다. 결과적으로 우리가 원하는 최고의 주식은 우량성이 있으면서도 가격은 싼 주식(④번)이다. 프렌치 라이브러리의 데이터를 이용해 4개 포트폴리오의 수익률 차이를 확인해보도록 하자.</p>
@@ -3473,22 +3591,22 @@ dtype: float64
       <td>1.5667</td>
       <td>2.3959</td>
       <td>0.1563</td>
-      <td>-1.2606</td>
+      <td>-1.2642</td>
       <td>0.6103</td>
       <td>0.9993</td>
       <td>1.3035</td>
       <td>0.2018</td>
-      <td>-0.6785</td>
-      <td>-1.7133</td>
+      <td>-0.4454</td>
+      <td>-1.7355</td>
       <td>...</td>
-      <td>-1.7649</td>
-      <td>-0.2315</td>
-      <td>-5.2519</td>
+      <td>-1.7877</td>
+      <td>-0.4092</td>
+      <td>-5.2600</td>
       <td>1.2625</td>
       <td>2.4473</td>
-      <td>-2.0068</td>
+      <td>-1.9916</td>
       <td>1.4799</td>
-      <td>2.3818</td>
+      <td>2.7043</td>
       <td>-1.7646</td>
       <td>-1.0694</td>
     </tr>
@@ -3497,22 +3615,22 @@ dtype: float64
       <td>5.9311</td>
       <td>2.5545</td>
       <td>6.4142</td>
-      <td>5.5784</td>
+      <td>5.5728</td>
       <td>5.8709</td>
       <td>1.5049</td>
       <td>3.8605</td>
       <td>4.5227</td>
-      <td>5.0715</td>
-      <td>5.8196</td>
+      <td>5.2703</td>
+      <td>5.7711</td>
       <td>...</td>
-      <td>7.9667</td>
-      <td>6.3687</td>
-      <td>15.6138</td>
+      <td>7.7888</td>
+      <td>6.4719</td>
+      <td>15.5939</td>
       <td>4.1357</td>
       <td>11.9795</td>
-      <td>5.5811</td>
+      <td>5.6974</td>
       <td>5.4168</td>
-      <td>2.7514</td>
+      <td>2.6932</td>
       <td>6.3988</td>
       <td>3.4264</td>
     </tr>
@@ -3521,22 +3639,22 @@ dtype: float64
       <td>-5.0591</td>
       <td>-4.6972</td>
       <td>1.3918</td>
-      <td>-1.8821</td>
+      <td>-1.8810</td>
       <td>-1.2090</td>
       <td>-2.0466</td>
       <td>-3.4478</td>
       <td>0.5906</td>
-      <td>-2.3127</td>
-      <td>-4.7340</td>
+      <td>-2.4894</td>
+      <td>-4.7131</td>
       <td>...</td>
-      <td>-1.5994</td>
-      <td>-0.3443</td>
-      <td>3.7048</td>
+      <td>-1.5697</td>
+      <td>-0.3780</td>
+      <td>3.6947</td>
       <td>-1.3282</td>
       <td>-8.4785</td>
-      <td>-2.6077</td>
+      <td>-2.6355</td>
       <td>-4.7089</td>
-      <td>-0.3835</td>
+      <td>-0.3408</td>
       <td>-0.4710</td>
       <td>-2.9148</td>
     </tr>
@@ -3545,22 +3663,22 @@ dtype: float64
       <td>-2.1803</td>
       <td>-3.7151</td>
       <td>0.8348</td>
-      <td>3.9774</td>
+      <td>3.9738</td>
       <td>7.2644</td>
       <td>-0.5754</td>
       <td>1.9820</td>
       <td>2.5652</td>
-      <td>-0.9068</td>
-      <td>2.6782</td>
+      <td>-0.8234</td>
+      <td>2.6401</td>
       <td>...</td>
-      <td>2.8179</td>
-      <td>0.5102</td>
-      <td>9.8940</td>
+      <td>2.7924</td>
+      <td>0.4168</td>
+      <td>9.8824</td>
       <td>6.6686</td>
       <td>18.9219</td>
-      <td>1.2333</td>
+      <td>1.2438</td>
       <td>2.5739</td>
-      <td>2.0845</td>
+      <td>2.0655</td>
       <td>-2.1846</td>
       <td>8.5136</td>
     </tr>
@@ -3569,22 +3687,22 @@ dtype: float64
       <td>-3.1118</td>
       <td>0.0362</td>
       <td>-0.9976</td>
-      <td>1.0218</td>
+      <td>1.0173</td>
       <td>-2.6709</td>
       <td>-5.2223</td>
       <td>0.4643</td>
       <td>2.0600</td>
-      <td>-1.0086</td>
-      <td>-1.9512</td>
+      <td>-0.8061</td>
+      <td>-1.8956</td>
       <td>...</td>
-      <td>0.3664</td>
-      <td>-1.8246</td>
-      <td>-4.4502</td>
+      <td>0.3592</td>
+      <td>-1.7549</td>
+      <td>-4.4519</td>
       <td>0.9625</td>
       <td>5.1808</td>
-      <td>1.0473</td>
+      <td>1.0567</td>
       <td>-2.4117</td>
-      <td>-1.6163</td>
+      <td>-1.5184</td>
       <td>-0.4706</td>
       <td>-2.8375</td>
     </tr>
@@ -3614,7 +3732,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e7e455acae1822a8de1f58485ec8f00de53de03786e003e6a41cd42747f85f37.png" src="_images/e7e455acae1822a8de1f58485ec8f00de53de03786e003e6a41cd42747f85f37.png" />
+<img alt="_images/9fb0c502ff891628cc0f8b0d85251e87abeb4361ccefdac0eb167461c41e694f.png" src="_images/9fb0c502ff891628cc0f8b0d85251e87abeb4361ccefdac0eb167461c41e694f.png" />
 </div>
 </div>
 <p>아래의 기준별로 포트폴리오를 선택한 후 수익률의 평균을 구한다.</p>
@@ -3627,12 +3745,12 @@ dtype: float64
 <p>결과를 살펴보면 Worst 포트폴리오의 수익률이 가장 낮다. 밸류와 퀄리티는 비슷하게 좋은 모습을 보이며, 두 가지 팩터를 동시에 고려할 경우 가장 높은 수익률을 보인다.</p>
 </section>
 <section id="id16">
-<h3><span class="section-number">13.6.2. </span>마법공식 이해하기<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.6.2. </span>마법공식 이해하기<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
 <p>마법공식이란 고담 캐피탈의 설립자이자 전설적인 투자자 조엘 그린블라트에 의해 알려진 투자 방법이다. 그는 본인의 책 《주식 시장을 이기는 작은 책》에서 투자를 하는데 있어 중요한 두 가지 지표가 있으며, 이를 혼합하면 뛰어난 성과를 기록할 수 있다고 말했다.</p>
 <p>첫 번째 지표는 ‘이익 수익률(Earnings Yield)’ 로써 기업의 수익을 기업의 가치로 나는 값이다. 이는 PER의 역수와 비슷하며, 밸류 지표 중 하나이다. 두 번째 지표는 ‘투하자본 수익률(Return on Capital)’ 로써 기업의 수익을 투자한 자본으로 나눈 값이다. 이는 ROE와도 비슷하며, 퀄리티 지표 중 하나이다. 마법공식은 이 두 가지 지표의 순위를 각각 구한 후 순위의 합 기준 상위 30~50개 종목을 1년간 보유한 후 매도하는 전략이다.</p>
 <p>해당 전략은 국내 투자자들에게도 많이 사랑받는 전략이지만 두 지표를 계산하기 위한 데이터를 수집하기 어려워 많은 투자자들이 이율 대신 PER를 사용하고, 투하자본 수익률 대신 ROE를 사용한다. 그러나 우리가 수집한 데이터를 통해 충분히 원래의 마법공식을 구현할 수 있다.</p>
 <table class="table" id="magic-formula">
-<caption><span class="caption-number">Table 13.5 </span><span class="caption-text">마법공식의 구성 요소</span><a class="headerlink" href="#magic-formula" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 13.5 </span><span class="caption-text">마법공식의 구성 요소</span><a class="headerlink" href="#magic-formula" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>팩터</p></th>
 <th class="head"><p>Value</p></th>
@@ -3652,7 +3770,7 @@ dtype: float64
 </table>
 </section>
 <section id="id17">
-<h3><span class="section-number">13.6.3. </span>마법공식 포트폴리오<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.6.3. </span>마법공식 포트폴리오<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
 <p>재무제표 항목을 통해 이율과 투하자본 수익률을 계산하고, 이를 통해 마법공식 포트폴리오를 구성해보도록 하자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3736,81 +3854,81 @@ dtype: float64
       <th>0</th>
       <td>000020</td>
       <td>동화약품</td>
-      <td>2960.740</td>
-      <td>107.0</td>
-      <td>198.0</td>
-      <td>3065.0</td>
-      <td>66.0</td>
-      <td>945.25</td>
-      <td>2271.00</td>
-      <td>686.00</td>
-      <td>2235.75</td>
+      <td>2759.630</td>
+      <td>121.0</td>
+      <td>292.0</td>
+      <td>3614.0</td>
+      <td>37.0</td>
+      <td>872.75</td>
+      <td>2451.50</td>
+      <td>783.75</td>
+      <td>2323.75</td>
       <td>4.0</td>
-      <td>2152.0</td>
+      <td>2630.0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>000040</td>
       <td>KR모터스</td>
-      <td>675.853</td>
-      <td>33.0</td>
-      <td>-130.0</td>
-      <td>1400.0</td>
+      <td>328.794</td>
+      <td>37.0</td>
+      <td>-278.0</td>
+      <td>877.0</td>
       <td>NaN</td>
-      <td>1224.00</td>
-      <td>1020.25</td>
-      <td>995.00</td>
-      <td>707.50</td>
-      <td>69.0</td>
-      <td>902.0</td>
+      <td>1209.00</td>
+      <td>923.00</td>
+      <td>1050.25</td>
+      <td>590.25</td>
+      <td>84.0</td>
+      <td>535.0</td>
     </tr>
     <tr>
       <th>2</th>
       <td>000050</td>
       <td>경방</td>
-      <td>3522.860</td>
-      <td>406.0</td>
-      <td>306.0</td>
-      <td>3976.0</td>
-      <td>72.0</td>
-      <td>5239.50</td>
-      <td>11511.00</td>
-      <td>2507.25</td>
-      <td>1279.25</td>
-      <td>42.0</td>
-      <td>798.0</td>
+      <td>2390.610</td>
+      <td>405.0</td>
+      <td>-100.0</td>
+      <td>3808.0</td>
+      <td>-13.0</td>
+      <td>4859.50</td>
+      <td>10924.75</td>
+      <td>2208.00</td>
+      <td>1406.00</td>
+      <td>121.0</td>
+      <td>906.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>000060</td>
-      <td>메리츠화재</td>
-      <td>42223.900</td>
+      <td>000070</td>
+      <td>삼양홀딩스</td>
+      <td>5472.570</td>
       <td>NaN</td>
-      <td>7441.0</td>
-      <td>NaN</td>
-      <td>2866.0</td>
-      <td>249346.25</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>406.0</td>
-      <td>NaN</td>
+      <td>2252.0</td>
+      <td>32199.0</td>
+      <td>382.0</td>
+      <td>20175.50</td>
+      <td>28493.00</td>
+      <td>9825.00</td>
+      <td>17671.00</td>
+      <td>421.0</td>
+      <td>8553.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>000070</td>
-      <td>삼양홀딩스</td>
-      <td>6209.100</td>
-      <td>NaN</td>
-      <td>2384.0</td>
-      <td>32289.0</td>
-      <td>786.0</td>
-      <td>19892.75</td>
-      <td>27118.50</td>
-      <td>9580.25</td>
-      <td>16956.50</td>
-      <td>276.0</td>
-      <td>8312.0</td>
+      <td>000080</td>
+      <td>하이트진로</td>
+      <td>15183.900</td>
+      <td>1447.0</td>
+      <td>173.0</td>
+      <td>25081.0</td>
+      <td>96.0</td>
+      <td>22261.00</td>
+      <td>22867.75</td>
+      <td>16660.00</td>
+      <td>10697.50</td>
+      <td>483.0</td>
+      <td>11635.0</td>
     </tr>
   </tbody>
 </table>
@@ -3914,137 +4032,137 @@ dtype: float64
   </thead>
   <tbody>
     <tr>
-      <th>184</th>
-      <td>004000</td>
-      <td>롯데정밀화학</td>
-      <td>0.4503</td>
-      <td>0.3579</td>
+      <th>141</th>
+      <td>003030</td>
+      <td>세아제강지주</td>
+      <td>0.4826</td>
+      <td>0.2381</td>
     </tr>
     <tr>
-      <th>317</th>
+      <th>224</th>
+      <td>005010</td>
+      <td>휴스틸</td>
+      <td>2.2125</td>
+      <td>0.2525</td>
+    </tr>
+    <tr>
+      <th>240</th>
+      <td>005440</td>
+      <td>현대지에프홀딩스</td>
+      <td>0.6668</td>
+      <td>0.3742</td>
+    </tr>
+    <tr>
+      <th>256</th>
+      <td>005860</td>
+      <td>한일사료</td>
+      <td>0.5801</td>
+      <td>1.3711</td>
+    </tr>
+    <tr>
+      <th>316</th>
       <td>007700</td>
       <td>F&amp;F홀딩스</td>
-      <td>1.6710</td>
-      <td>1.2130</td>
+      <td>0.6536</td>
+      <td>0.2103</td>
     </tr>
     <tr>
-      <th>407</th>
-      <td>011200</td>
-      <td>HMM</td>
-      <td>0.5993</td>
-      <td>0.6362</td>
+      <th>375</th>
+      <td>010060</td>
+      <td>OCI홀딩스</td>
+      <td>0.5894</td>
+      <td>0.2569</td>
     </tr>
     <tr>
-      <th>422</th>
-      <td>011780</td>
-      <td>금호석유</td>
-      <td>0.4158</td>
-      <td>0.4678</td>
+      <th>499</th>
+      <td>016710</td>
+      <td>대성홀딩스</td>
+      <td>0.2703</td>
+      <td>0.2660</td>
     </tr>
     <tr>
-      <th>816</th>
-      <td>039560</td>
-      <td>다산네트웍스</td>
-      <td>0.5179</td>
-      <td>0.3019</td>
+      <th>713</th>
+      <td>033920</td>
+      <td>무학</td>
+      <td>0.6918</td>
+      <td>0.2355</td>
     </tr>
     <tr>
-      <th>1033</th>
-      <td>058430</td>
-      <td>포스코스틸리온</td>
-      <td>0.3880</td>
-      <td>0.4522</td>
+      <th>743</th>
+      <td>036000</td>
+      <td>예림당</td>
+      <td>1.1463</td>
+      <td>0.2173</td>
     </tr>
     <tr>
-      <th>1283</th>
-      <td>084650</td>
-      <td>랩지노믹스</td>
-      <td>0.7232</td>
-      <td>0.8998</td>
+      <th>889</th>
+      <td>046310</td>
+      <td>백금T&amp;A</td>
+      <td>0.4534</td>
+      <td>0.2125</td>
     </tr>
     <tr>
-      <th>1406</th>
-      <td>096530</td>
-      <td>씨젠</td>
-      <td>0.4194</td>
-      <td>0.6506</td>
+      <th>1010</th>
+      <td>056090</td>
+      <td>이노시스</td>
+      <td>0.9368</td>
+      <td>1.5910</td>
     </tr>
     <tr>
-      <th>1432</th>
-      <td>100030</td>
-      <td>모바일리더</td>
-      <td>0.3472</td>
-      <td>0.5361</td>
+      <th>1028</th>
+      <td>058630</td>
+      <td>엠게임</td>
+      <td>0.3500</td>
+      <td>0.2515</td>
     </tr>
     <tr>
-      <th>1472</th>
-      <td>104480</td>
-      <td>티케이케미칼</td>
-      <td>0.5441</td>
-      <td>0.6698</td>
+      <th>1330</th>
+      <td>090410</td>
+      <td>덕신하우징</td>
+      <td>0.2823</td>
+      <td>0.2974</td>
     </tr>
     <tr>
-      <th>1489</th>
-      <td>108320</td>
-      <td>LX세미콘</td>
-      <td>0.3263</td>
-      <td>0.5993</td>
+      <th>1471</th>
+      <td>106240</td>
+      <td>파인테크닉스</td>
+      <td>0.3923</td>
+      <td>0.2211</td>
     </tr>
     <tr>
-      <th>1571</th>
-      <td>124560</td>
-      <td>태웅로직스</td>
-      <td>0.3576</td>
-      <td>0.9140</td>
+      <th>1495</th>
+      <td>111770</td>
+      <td>영원무역</td>
+      <td>0.6250</td>
+      <td>0.2085</td>
     </tr>
     <tr>
-      <th>1617</th>
-      <td>137310</td>
-      <td>에스디바이오센서</td>
-      <td>0.4681</td>
-      <td>0.7114</td>
+      <th>1496</th>
+      <td>111870</td>
+      <td>KH 전자</td>
+      <td>0.8841</td>
+      <td>0.4955</td>
     </tr>
     <tr>
-      <th>1794</th>
-      <td>205470</td>
-      <td>휴마시스</td>
-      <td>0.6531</td>
-      <td>2.0810</td>
+      <th>1566</th>
+      <td>126700</td>
+      <td>하이비젼시스템</td>
+      <td>0.2753</td>
+      <td>0.3082</td>
     </tr>
     <tr>
-      <th>1875</th>
-      <td>225220</td>
-      <td>제놀루션</td>
-      <td>0.4734</td>
-      <td>0.5274</td>
+      <th>1924</th>
+      <td>241770</td>
+      <td>메카로</td>
+      <td>4.8700</td>
+      <td>0.2138</td>
     </tr>
     <tr>
-      <th>1879</th>
-      <td>225590</td>
-      <td>패션플랫폼</td>
-      <td>0.4558</td>
-      <td>0.2912</td>
-    </tr>
-    <tr>
-      <th>1959</th>
-      <td>253840</td>
-      <td>수젠텍</td>
-      <td>0.4493</td>
-      <td>0.7822</td>
-    </tr>
-    <tr>
-      <th>2057</th>
-      <td>290270</td>
-      <td>휴네시온</td>
-      <td>0.4491</td>
-      <td>0.4851</td>
-    </tr>
-    <tr>
-      <th>2083</th>
-      <td>298020</td>
-      <td>효성티앤씨</td>
-      <td>0.3389</td>
-      <td>0.7508</td>
+      <th>2303</th>
+      <td>383220</td>
+      <td>F&amp;F</td>
+      <td>0.2030</td>
+      <td>0.6090</td>
     </tr>
   </tbody>
 </table>
@@ -4077,14 +4195,14 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ef96372bf2e1594533e83bf14aad3c38943876106a6357c00938fa040a7ba561.png" src="_images/ef96372bf2e1594533e83bf14aad3c38943876106a6357c00938fa040a7ba561.png" />
+<img alt="_images/5cb53d2bf3cd347c3fdff9cb8a5c40eb08abfdcde7a7a2abb774a3f2c1da18f1.png" src="_images/5cb53d2bf3cd347c3fdff9cb8a5c40eb08abfdcde7a7a2abb774a3f2c1da18f1.png" />
 </div>
 </div>
 <p>전체 종목 중 마법공식에 해당하는 종목들이 우측 상단, 즉 이익 수익률이 높고 투하자본 수익률도 높은 지점에 위치하고 있다.</p>
 </section>
 </section>
 <section id="id18">
-<h2><span class="section-number">13.7. </span>섹터 중립 포트폴리오<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">13.7. </span>섹터 중립 포트폴리오<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
 <p>팩터 전략의 단점 중 하나는 선택된 종목들이 특정 섹터로 쏠리는 경우가 있다는 점이다. 특히 과거 수익률을 토대로 종목을 선정하는 모멘텀 전략은 특정 섹터의 호황기에 동일한 섹터의 모든 종목이 함께 움직이는 경향이 있어 이러한 쏠림이 심할 수 있다.</p>
 <p>먼저 12개월 모멘텀을 이용한 포트폴리오 구성 방법을 다시 살펴보자.</p>
 <div class="cell docutils container">
@@ -4103,7 +4221,7 @@ dtype: float64
 
 <span class="n">sector_list</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">select * from kor_sector</span>
-<span class="s2">where 기준일 = (select max(기준일) from kor_ticker) ;	</span>
+<span class="s2">where 기준일 = (select max(기준일) from kor_sector) ;	</span>
 <span class="s2">&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
 
 <span class="n">price_list</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
@@ -4169,7 +4287,7 @@ dtype: float64
       <td>동화약품</td>
       <td>000020</td>
       <td>건강관리</td>
-      <td>-0.284768</td>
+      <td>0.058252</td>
     </tr>
     <tr>
       <th>1</th>
@@ -4177,7 +4295,7 @@ dtype: float64
       <td>KR모터스</td>
       <td>000040</td>
       <td>경기관련소비재</td>
-      <td>-0.425101</td>
+      <td>-0.371747</td>
     </tr>
     <tr>
       <th>2</th>
@@ -4185,23 +4303,23 @@ dtype: float64
       <td>경방</td>
       <td>000050</td>
       <td>경기관련소비재</td>
-      <td>-0.046931</td>
+      <td>-0.221388</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>000060</td>
-      <td>메리츠화재</td>
-      <td>000060</td>
-      <td>금융</td>
-      <td>0.399614</td>
-    </tr>
-    <tr>
-      <th>4</th>
       <td>000070</td>
       <td>삼양홀딩스</td>
       <td>000070</td>
+      <td>소재</td>
+      <td>-0.098592</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>000080</td>
+      <td>하이트진로</td>
+      <td>000080</td>
       <td>필수소비재</td>
-      <td>-0.341071</td>
+      <td>-0.153101</td>
     </tr>
   </tbody>
 </table>
@@ -4215,17 +4333,18 @@ dtype: float64
 <span class="n">data_bind</span><span class="p">[</span><span class="s1">&#39;rank&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_bind</span><span class="p">[</span><span class="s1">&#39;return&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">sector_count</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_bind</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">data_bind</span><span class="p">[</span><span class="s1">&#39;rank&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">,</span>
                                           <span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;Malgun Gothic&#39;</span><span class="p">)</span>
 <span class="n">sector_count</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
 
-<span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sector_count</span><span class="p">[</span><span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">]):</span>
+<span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sector_count</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e97332b61d24fd3baa083aa90166b923a18b91a56a8a95d58b0a4ab9b511ba31.png" src="_images/e97332b61d24fd3baa083aa90166b923a18b91a56a8a95d58b0a4ab9b511ba31.png" />
+<img alt="_images/7576805a1c3de5bca9c8b8fb984c9f33846aa76a6733eeb9dd690821c5632dcf.png" src="_images/7576805a1c3de5bca9c8b8fb984c9f33846aa76a6733eeb9dd690821c5632dcf.png" />
 </div>
 </div>
 <ol class="arabic simple">
@@ -4241,7 +4360,7 @@ dtype: float64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_bind</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">data_bind</span><span class="p">[</span><span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">(),</span> <span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;기타&#39;</span>
 <span class="n">data_bind</span><span class="p">[</span><span class="s1">&#39;z-score&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_bind</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
-    <span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">,</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="s1">&#39;return&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">zscore</span><span class="p">,</span> <span class="n">nan_policy</span><span class="o">=</span><span class="s1">&#39;omit&#39;</span><span class="p">)</span>
+    <span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">,</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="s1">&#39;return&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">zscore</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">nan_policy</span><span class="o">=</span><span class="s1">&#39;omit&#39;</span><span class="p">))</span>
 <span class="n">data_bind</span><span class="p">[</span><span class="s1">&#39;z-rank&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_bind</span><span class="p">[</span><span class="s1">&#39;z-score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">sector_neutral_count</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_bind</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">data_bind</span><span class="p">[</span><span class="s1">&#39;z-rank&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">,</span>
                                                   <span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
@@ -4250,13 +4369,13 @@ dtype: float64
 <span class="n">sector_neutral_count</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
 
-<span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sector_neutral_count</span><span class="p">[</span><span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">]):</span>
+<span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sector_neutral_count</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/05e2dd48ba0f5da1f749dc0f55ed5cd72f1238ada7f302a3e15cbd60fceae715.png" src="_images/05e2dd48ba0f5da1f749dc0f55ed5cd72f1238ada7f302a3e15cbd60fceae715.png" />
+<img alt="_images/b2d6c63d4eca63399f39e12ea642e0ab750da369e79056b4b383d224e95cd8b3.png" src="_images/b2d6c63d4eca63399f39e12ea642e0ab750da369e79056b4b383d224e95cd8b3.png" />
 </div>
 </div>
 <ol class="arabic simple">
@@ -4269,7 +4388,7 @@ dtype: float64
 <p>이처럼 <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> 함수를 통해 손쉽게 그룹별 중립화를 할 수 있으며, 글로벌 투자를 하는 경우에는 지역, 국가, 섹터별로도 중립화된 포트폴리오를 구성하기도 한다.</p>
 </section>
 <section id="id19">
-<h2><span class="section-number">13.8. </span>이상치 데이터 처리 및 팩터의 결합<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">13.8. </span>이상치 데이터 처리 및 팩터의 결합<a class="headerlink" href="#id19" title="Link to this heading">#</a></h2>
 <p>훨씬 안정적인 퀀트 포트폴리오를 구성하기 위해서는 팩터 데이터를 어떻게 처리하여 결합할지에 대해서도 알고 있어야 하므로, 이러한 점에 대해 살펴보도록 하자.</p>
 <p>모든 데이터 분석에서 중요한 문제 중 하나가 이상치(극단치, Outlier) 데이터를 어떻게 처리할 것인가이다. 과거 12개월 수익률이 10배인 주식이 과연 모멘텀 관점에서 좋기만 한 주식인지, ROE가 100%를 넘는 주식이 과연 퀄리티 관점에서 좋기만 한 주식인지 고민이 되기 마련이다. 따라서 이러한 이상치를 제외하고 분석할지, 포함해서 분석할지를 판단해야 한다. 만일 이상치를 포함한다면 그대로 사용할 것인지, 보정해 사용할 것인지도 판단해야 한다.</p>
 <p>우리가 가지고 있는 PBR 데이터에서 이상치 데이터를 탐색해보자.</p>
@@ -4295,8 +4414,8 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>90.7855 
- -8.796
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>80.8886 
+ -42.9965
 </pre></div>
 </div>
 </div>
@@ -4313,12 +4432,12 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2ad877f4b8b4e6deb746d1a937372a2a2b43e98a69d90c78689f8b95f47415e9.png" src="_images/2ad877f4b8b4e6deb746d1a937372a2a2b43e98a69d90c78689f8b95f47415e9.png" />
+<img alt="_images/30ccee3a55cd35419c8f50d8ee92483c8571711ef99fbb2adf7b513eac84392e.png" src="_images/30ccee3a55cd35419c8f50d8ee92483c8571711ef99fbb2adf7b513eac84392e.png" />
 </div>
 </div>
 <p>국내 종목들의 PBR을 히스토그램으로 그려보면 오른쪽으로 꼬리가 매우 긴 분포를 보인다. 이는 PBR이 극단적으로 큰 이상치 데이터가 있기 때문이다. 이처럼 모든 팩터 데이터에는 극단치가 있기 마련이며, 이를 처리하는 방법을 알아보도록 하자.</p>
 <section id="trim">
-<h3><span class="section-number">13.8.1. </span>트림(Trim): 이상치 데이터 삭제<a class="headerlink" href="#trim" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.8.1. </span>트림(Trim): 이상치 데이터 삭제<a class="headerlink" href="#trim" title="Link to this heading">#</a></h3>
 <p>트림은 이상치 데이터를 삭제하는 방법이다. 위의 예제에서 이상치에 해당하는 상하위 1% 데이터를 삭제하겠다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4334,14 +4453,14 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0d703b73fa800be604e50c2c6c1d2b3ef0105378a6f34bb2b7392a40d94a2356.png" src="_images/0d703b73fa800be604e50c2c6c1d2b3ef0105378a6f34bb2b7392a40d94a2356.png" />
+<img alt="_images/c71e4e2a6c16c0e2aa5fe9d90750ee762a4a3eb4c1caadb8ec489b3d27cd6fe2.png" src="_images/c71e4e2a6c16c0e2aa5fe9d90750ee762a4a3eb4c1caadb8ec489b3d27cd6fe2.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">quantile()</span></code> 함수를 통해 백분위를 구한 후 상하위 1%에 해당하는 데이터를 제외한 데이터만 선택했다. 결과적으로 지나치게 PBR이 낮은 종목과 높은 종목은 제거되어 <span class="math notranslate nohighlight">\(x\)</span>축의 스케일이 많이 줄어든 모습이다.</p>
 <p>평균이나 분산 같이 통계값을 구하는 과정에서는 이상치 데이터를 제거하는 것이 바람직할 수 있다. 그러나 팩터를 이용해 포트폴리오를 구하는 과정에서 해당 방법은 조심스럽게 사용되어야 한다. 데이터의 손실이 발생하게 되며, 제거된 종목 중 정말로 좋은 종목이 있을 수도 있기 때문이다.</p>
 </section>
 <section id="winsorizing">
-<h3><span class="section-number">13.8.2. </span>윈저라이징(Winsorizing): 이상치 데이터 대체<a class="headerlink" href="#winsorizing" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.8.2. </span>윈저라이징(Winsorizing): 이상치 데이터 대체<a class="headerlink" href="#winsorizing" title="Link to this heading">#</a></h3>
 <p>이상치 데이터를 다른 데이터로 대체하는 윈저라이징 방법을 사용할 수도 있다. 예를 들어 상위 1%를 초과하는 데이터는 1% 값으로 대체하며, 하위 1% 미만의 데이터는 1% 데이터로 대체한다. 즉, 좌우로 울타리를 쳐놓고 해당 범위를 넘어가는 값을 강제로 울타리에 맞춰준다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4358,13 +4477,13 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5b9aa81412eedd714e60deef6867d8b04d74343812b1c482fe34045b13565efa.png" src="_images/5b9aa81412eedd714e60deef6867d8b04d74343812b1c482fe34045b13565efa.png" />
+<img alt="_images/e5bc69119648b29f688934ceea49ae57f2c990c8f663454665f01e534cda240c.png" src="_images/e5bc69119648b29f688934ceea49ae57f2c990c8f663454665f01e534cda240c.png" />
 </div>
 </div>
 <p>이번에는 값이 상하위 1%를 벗어나는 경우, 1%에 해당하는 값으로 대체하였다. 그림을 살펴보면 <span class="math notranslate nohighlight">\(x\)</span>축 양 끝부분의 막대(붉은색)가 길어진 것을 확인할 수 있다.</p>
 </section>
 <section id="id20">
-<h3><span class="section-number">13.8.3. </span>팩터의 결합 방법<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.8.3. </span>팩터의 결합 방법<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
 <p>앞서 밸류 지표의 결합, 퀄리티 지표의 결합, 마법공식 포트폴리오를 구성할 때는 단순히 순위를 더하는 방법을 사용했다. 물론 투자 종목수가 얼마 되지 않거나, 개인 투자자의 입장에서는 이러한 방법이 가장 단순하면서도 효과적일수 있다. 그러나 전문투자자가 포트폴리오를 구성하거나 팩터를 분석하는 업무를 할 경우 이처럼 단순히 순위를 더하는 방법은 여러 가지 문제를 안고 있다.</p>
 <p>각 밸류 지표의 순위를 구한 후 히스토그램으로 나타내보자.</p>
 <div class="cell docutils container">
@@ -4382,7 +4501,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ad5a77d3dbf4a58ef236d5074a173741d503d5bfb1534072e5c607d8695dfe1f.png" src="_images/ad5a77d3dbf4a58ef236d5074a173741d503d5bfb1534072e5c607d8695dfe1f.png" />
+<img alt="_images/0148f4419df0c75e801be3b44993fe5e6072d6b54a3c14e7517ae525527be768.png" src="_images/0148f4419df0c75e801be3b44993fe5e6072d6b54a3c14e7517ae525527be768.png" />
 </div>
 </div>
 <p>그림에서 알 수 있듯이 순위를 구하는 것의 가장 큰 장점은 극단치로 인한 효과가 사라진다는 점과 균등한 분포를 가진다는 점이다. 그러나 각 지표의 <span class="math notranslate nohighlight">\(x\)</span>축을 보면 최댓값이 서로 다르다. 이는 지표별 결측치로 인해 유효 데이터의 갯수가 달라 나타나는 현상이다.</p>
@@ -4394,11 +4513,11 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>지표
-DY     1121
-PBR       0
-PCR      10
-PER      10
-PSR      85
+DY     1234
+PBR     104
+PCR     111
+PER     110
+PSR     184
 dtype: int64
 </pre></div>
 </div>
@@ -4423,7 +4542,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6229f1a701ebc486ff612ef03c39a40fd6cce3ef83a5d40740a97916b70e56f7.png" src="_images/6229f1a701ebc486ff612ef03c39a40fd6cce3ef83a5d40740a97916b70e56f7.png" />
+<img alt="_images/43bc89240348208b8bc65ed7b689bf583fc35a7930275b0b45848fb67ba5490c.png" src="_images/43bc89240348208b8bc65ed7b689bf583fc35a7930275b0b45848fb67ba5490c.png" />
 </div>
 </div>
 <p>앞서 구해진 순위에 <code class="docutils literal notranslate"><span class="pre">apply(zscore)</span></code> 함수를 통해 정규화를 해준다. 기본적으로 순위의 분포가 가진 극단치 효과가 사라지는 점과 균등 분포의 장점을 유지하고 있으며, 분포의 범위 역시 거의 동일하게 바뀌었다. 이처럼 여러 팩터를 결합해 포트폴리오를 구성하고자 하는 경우, 먼저 각 팩터(지표)별 순위를 구한 후 이를 정규화한 뒤 더해야 왜곡 효과가 제거되어 안정적인 포트폴리오가 된다.</p>
@@ -4432,7 +4551,7 @@ dtype: int64
 </section>
 </section>
 <section id="id21">
-<h2><span class="section-number">13.9. </span>멀티팩터 포트폴리오<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">13.9. </span>멀티팩터 포트폴리오<a class="headerlink" href="#id21" title="Link to this heading">#</a></h2>
 <p>앞에서 배웠던 팩터 이론들과 결합 방법들을 응용해 멀티팩터 포트폴리오를 구성해보자. 각 팩터에 사용되는 지표는 다음과 같다.</p>
 <ul class="simple">
 <li><p>퀄리티: 자기자본이익률(ROE), 매출총이익(GPA), 영업활동현금흐름(CFO)</p></li>
@@ -4475,7 +4594,7 @@ dtype: int64
 
 <span class="n">sector_list</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">select * from kor_sector</span>
-<span class="s2">where 기준일 = (select max(기준일) from kor_ticker);	</span>
+<span class="s2">where 기준일 = (select max(기준일) from kor_sector);	</span>
 <span class="s2">&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
 
 <span class="n">engine</span><span class="o">.</span><span class="n">dispose</span><span class="p">()</span>
@@ -4490,7 +4609,7 @@ dtype: int64
 <span class="n">fs_list</span><span class="p">[</span><span class="s1">&#39;ttm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fs_list</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;종목코드&#39;</span><span class="p">,</span> <span class="s1">&#39;계정&#39;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="s1">&#39;값&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span>
     <span class="n">window</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">min_periods</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()[</span><span class="s1">&#39;값&#39;</span><span class="p">]</span>
 <span class="n">fs_list_clean</span> <span class="o">=</span> <span class="n">fs_list</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">fs_list_clean</span><span class="p">[</span><span class="s1">&#39;ttm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">fs_list_clean</span><span class="p">[</span><span class="s1">&#39;계정&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;자산&#39;</span><span class="p">,</span> <span class="s1">&#39;지배기업주주지분&#39;</span><span class="p">]),</span>
+<span class="n">fs_list_clean</span><span class="p">[</span><span class="s1">&#39;ttm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">fs_list_clean</span><span class="p">[</span><span class="s1">&#39;계정&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;자산&#39;</span><span class="p">,</span> <span class="s1">&#39;자본&#39;</span><span class="p">]),</span>
                                 <span class="n">fs_list_clean</span><span class="p">[</span><span class="s1">&#39;ttm&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">4</span><span class="p">,</span> <span class="n">fs_list_clean</span><span class="p">[</span><span class="s1">&#39;ttm&#39;</span><span class="p">])</span>
 <span class="n">fs_list_clean</span> <span class="o">=</span> <span class="n">fs_list_clean</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;종목코드&#39;</span><span class="p">,</span> <span class="s1">&#39;계정&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
@@ -4546,58 +4665,58 @@ dtype: int64
   <tbody>
     <tr>
       <th>000020</th>
-      <td>198.0</td>
-      <td>1582.0</td>
-      <td>438.0</td>
-      <td>14245.0</td>
-      <td>4507.00</td>
-      <td>0.0139</td>
-      <td>0.3510</td>
-      <td>0.0972</td>
+      <td>292.0</td>
+      <td>1897.0</td>
+      <td>366.0</td>
+      <td>3902.50</td>
+      <td>4775.25</td>
+      <td>0.0748</td>
+      <td>0.3973</td>
+      <td>0.0766</td>
     </tr>
     <tr>
       <th>000040</th>
-      <td>-130.0</td>
-      <td>181.0</td>
-      <td>-86.0</td>
-      <td>2013.0</td>
-      <td>1727.50</td>
-      <td>-0.0646</td>
-      <td>0.1048</td>
-      <td>-0.0498</td>
+      <td>-278.0</td>
+      <td>90.0</td>
+      <td>-61.0</td>
+      <td>304.25</td>
+      <td>1513.25</td>
+      <td>-0.9137</td>
+      <td>0.0595</td>
+      <td>-0.0403</td>
     </tr>
     <tr>
       <th>000050</th>
-      <td>306.0</td>
-      <td>1440.0</td>
-      <td>359.0</td>
-      <td>30203.0</td>
-      <td>12790.00</td>
-      <td>0.0101</td>
-      <td>0.1126</td>
-      <td>0.0281</td>
-    </tr>
-    <tr>
-      <th>000060</th>
-      <td>7441.0</td>
-      <td>NaN</td>
-      <td>11081.0</td>
-      <td>88710.0</td>
-      <td>271524.00</td>
-      <td>0.0839</td>
-      <td>NaN</td>
-      <td>0.0408</td>
+      <td>-100.0</td>
+      <td>977.0</td>
+      <td>411.0</td>
+      <td>7471.00</td>
+      <td>12330.75</td>
+      <td>-0.0134</td>
+      <td>0.0792</td>
+      <td>0.0333</td>
     </tr>
     <tr>
       <th>000070</th>
-      <td>2384.0</td>
-      <td>7047.0</td>
-      <td>2021.0</td>
-      <td>96729.0</td>
-      <td>44074.75</td>
-      <td>0.0246</td>
-      <td>0.1599</td>
-      <td>0.0459</td>
+      <td>2252.0</td>
+      <td>5089.0</td>
+      <td>2746.0</td>
+      <td>25988.50</td>
+      <td>46164.00</td>
+      <td>0.0867</td>
+      <td>0.1102</td>
+      <td>0.0595</td>
+    </tr>
+    <tr>
+      <th>000080</th>
+      <td>173.0</td>
+      <td>10808.0</td>
+      <td>-223.0</td>
+      <td>11303.50</td>
+      <td>33565.00</td>
+      <td>0.0153</td>
+      <td>0.3220</td>
+      <td>-0.0066</td>
     </tr>
   </tbody>
 </table>
@@ -4650,43 +4769,43 @@ dtype: int64
   <tbody>
     <tr>
       <th>000020</th>
-      <td>0.0170</td>
-      <td>0.8314</td>
-      <td>6.7597</td>
-      <td>14.9532</td>
-      <td>0.9660</td>
+      <td>0.0182</td>
+      <td>0.7071</td>
+      <td>7.5400</td>
+      <td>9.4508</td>
+      <td>0.7636</td>
     </tr>
     <tr>
       <th>000040</th>
       <td>NaN</td>
-      <td>1.3430</td>
+      <td>1.0807</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>0.4828</td>
+      <td>0.3749</td>
     </tr>
     <tr>
       <th>000050</th>
-      <td>0.0097</td>
-      <td>0.4666</td>
-      <td>9.8130</td>
-      <td>11.5126</td>
-      <td>0.8860</td>
-    </tr>
-    <tr>
-      <th>000060</th>
-      <td>0.0172</td>
-      <td>1.9039</td>
-      <td>3.8105</td>
-      <td>5.6745</td>
+      <td>0.0143</td>
+      <td>0.3200</td>
+      <td>5.8166</td>
       <td>NaN</td>
+      <td>0.6278</td>
     </tr>
     <tr>
       <th>000070</th>
-      <td>0.0414</td>
-      <td>0.2568</td>
-      <td>3.0723</td>
-      <td>2.6045</td>
-      <td>0.1923</td>
+      <td>0.0548</td>
+      <td>0.2106</td>
+      <td>1.9929</td>
+      <td>2.4301</td>
+      <td>0.1700</td>
+    </tr>
+    <tr>
+      <th>000080</th>
+      <td>0.0439</td>
+      <td>1.3433</td>
+      <td>NaN</td>
+      <td>87.7682</td>
+      <td>0.6054</td>
     </tr>
   </tbody>
 </table>
@@ -4752,27 +4871,27 @@ dtype: int64
     <tr>
       <th>0</th>
       <td>000020</td>
-      <td>-28.422585</td>
+      <td>12.026054</td>
     </tr>
     <tr>
       <th>1</th>
       <td>000040</td>
-      <td>-64.848605</td>
+      <td>-3.058807</td>
     </tr>
     <tr>
       <th>2</th>
       <td>000050</td>
-      <td>2.501597</td>
+      <td>-44.645122</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>000060</td>
-      <td>28.585126</td>
+      <td>000070</td>
+      <td>-4.289771</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>000070</td>
-      <td>-72.720990</td>
+      <td>000080</td>
+      <td>-28.751010</td>
     </tr>
   </tbody>
 </table>
@@ -4840,80 +4959,80 @@ dtype: int64
       <td>000020</td>
       <td>동화약품</td>
       <td>건강관리</td>
-      <td>0.0139</td>
-      <td>0.3510</td>
-      <td>0.0972</td>
-      <td>0.0170</td>
-      <td>0.8314</td>
-      <td>6.7597</td>
-      <td>14.9532</td>
-      <td>0.9660</td>
-      <td>-0.2848</td>
-      <td>-28.4226</td>
+      <td>0.0748</td>
+      <td>0.3973</td>
+      <td>0.0766</td>
+      <td>0.0182</td>
+      <td>0.7071</td>
+      <td>7.5400</td>
+      <td>9.4508</td>
+      <td>0.7636</td>
+      <td>0.0583</td>
+      <td>12.0261</td>
     </tr>
     <tr>
       <th>1</th>
       <td>000040</td>
       <td>KR모터스</td>
       <td>경기관련소비재</td>
-      <td>-0.0646</td>
-      <td>0.1048</td>
-      <td>-0.0498</td>
+      <td>-0.9137</td>
+      <td>0.0595</td>
+      <td>-0.0403</td>
       <td>NaN</td>
-      <td>1.3430</td>
+      <td>1.0807</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>0.4828</td>
-      <td>-0.4251</td>
-      <td>-64.8486</td>
+      <td>0.3749</td>
+      <td>-0.3717</td>
+      <td>-3.0588</td>
     </tr>
     <tr>
       <th>2</th>
       <td>000050</td>
       <td>경방</td>
       <td>경기관련소비재</td>
-      <td>0.0101</td>
-      <td>0.1126</td>
-      <td>0.0281</td>
-      <td>0.0097</td>
-      <td>0.4666</td>
-      <td>9.8130</td>
-      <td>11.5126</td>
-      <td>0.8860</td>
-      <td>-0.0469</td>
-      <td>2.5016</td>
+      <td>-0.0134</td>
+      <td>0.0792</td>
+      <td>0.0333</td>
+      <td>0.0143</td>
+      <td>0.3200</td>
+      <td>5.8166</td>
+      <td>NaN</td>
+      <td>0.6278</td>
+      <td>-0.2214</td>
+      <td>-44.6451</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>000060</td>
-      <td>메리츠화재</td>
-      <td>금융</td>
-      <td>0.0839</td>
-      <td>NaN</td>
-      <td>0.0408</td>
-      <td>0.0172</td>
-      <td>1.9039</td>
-      <td>3.8105</td>
-      <td>5.6745</td>
-      <td>NaN</td>
-      <td>0.3996</td>
-      <td>28.5851</td>
+      <td>000070</td>
+      <td>삼양홀딩스</td>
+      <td>소재</td>
+      <td>0.0867</td>
+      <td>0.1102</td>
+      <td>0.0595</td>
+      <td>0.0548</td>
+      <td>0.2106</td>
+      <td>1.9929</td>
+      <td>2.4301</td>
+      <td>0.1700</td>
+      <td>-0.0986</td>
+      <td>-4.2898</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>000070</td>
-      <td>삼양홀딩스</td>
+      <td>000080</td>
+      <td>하이트진로</td>
       <td>필수소비재</td>
-      <td>0.0246</td>
-      <td>0.1599</td>
-      <td>0.0459</td>
-      <td>0.0414</td>
-      <td>0.2568</td>
-      <td>3.0723</td>
-      <td>2.6045</td>
-      <td>0.1923</td>
-      <td>-0.3411</td>
-      <td>-72.7210</td>
+      <td>0.0153</td>
+      <td>0.3220</td>
+      <td>-0.0066</td>
+      <td>0.0439</td>
+      <td>1.3433</td>
+      <td>NaN</td>
+      <td>87.7682</td>
+      <td>0.6054</td>
+      <td>-0.1531</td>
+      <td>-28.7510</td>
     </tr>
   </tbody>
 </table>
@@ -4956,7 +5075,7 @@ dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_bind_group</span> <span class="o">=</span> <span class="n">data_bind</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;종목코드&#39;</span><span class="p">,</span>
-                                       <span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">)</span>
+                                       <span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;SEC_NM_KOR&#39;</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="n">data_bind_group</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
@@ -5015,166 +5134,166 @@ dtype: int64
       <th>000020</th>
       <th>건강관리</th>
       <td>동화약품</td>
-      <td>0.0139</td>
-      <td>0.3510</td>
-      <td>0.0972</td>
-      <td>0.0170</td>
-      <td>0.8314</td>
-      <td>6.7597</td>
-      <td>14.9532</td>
-      <td>0.9660</td>
-      <td>-0.2848</td>
-      <td>-28.4226</td>
+      <td>0.0748</td>
+      <td>0.3973</td>
+      <td>0.0766</td>
+      <td>0.0182</td>
+      <td>0.7071</td>
+      <td>7.5400</td>
+      <td>9.4508</td>
+      <td>0.7636</td>
+      <td>0.0583</td>
+      <td>12.0261</td>
     </tr>
     <tr>
       <th>000040</th>
       <th>경기관련소비재</th>
       <td>KR모터스</td>
-      <td>-0.0646</td>
-      <td>0.1048</td>
-      <td>-0.0498</td>
+      <td>-0.9137</td>
+      <td>0.0595</td>
+      <td>-0.0403</td>
       <td>NaN</td>
-      <td>1.3430</td>
+      <td>1.0807</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>0.4828</td>
-      <td>-0.4251</td>
-      <td>-64.8486</td>
-    </tr>
-    <tr>
-      <th>000060</th>
-      <th>금융</th>
-      <td>메리츠화재</td>
-      <td>0.0839</td>
-      <td>NaN</td>
-      <td>0.0408</td>
-      <td>0.0172</td>
-      <td>1.9039</td>
-      <td>3.8105</td>
-      <td>5.6745</td>
-      <td>NaN</td>
-      <td>0.3996</td>
-      <td>28.5851</td>
+      <td>0.3749</td>
+      <td>-0.3717</td>
+      <td>-3.0588</td>
     </tr>
     <tr>
       <th>000070</th>
-      <th>필수소비재</th>
+      <th>소재</th>
       <td>삼양홀딩스</td>
-      <td>0.0246</td>
-      <td>0.1599</td>
-      <td>0.0459</td>
-      <td>0.0414</td>
-      <td>0.2568</td>
-      <td>3.0723</td>
-      <td>2.6045</td>
-      <td>0.1923</td>
-      <td>-0.3411</td>
-      <td>-72.7210</td>
+      <td>0.0867</td>
+      <td>0.1102</td>
+      <td>0.0595</td>
+      <td>0.0548</td>
+      <td>0.2106</td>
+      <td>1.9929</td>
+      <td>2.4301</td>
+      <td>0.1700</td>
+      <td>-0.0986</td>
+      <td>-4.2898</td>
+    </tr>
+    <tr>
+      <th>000080</th>
+      <th>필수소비재</th>
+      <td>하이트진로</td>
+      <td>0.0153</td>
+      <td>0.3220</td>
+      <td>-0.0066</td>
+      <td>0.0439</td>
+      <td>1.3433</td>
+      <td>NaN</td>
+      <td>87.7682</td>
+      <td>0.6054</td>
+      <td>-0.1531</td>
+      <td>-28.7510</td>
     </tr>
     <tr>
       <th>000120</th>
       <th>산업재</th>
       <td>CJ대한통운</td>
-      <td>0.0108</td>
-      <td>0.1214</td>
-      <td>0.0261</td>
-      <td>NaN</td>
-      <td>0.6631</td>
-      <td>11.1268</td>
-      <td>15.3994</td>
-      <td>0.2290</td>
-      <td>-0.3743</td>
-      <td>-55.9473</td>
+      <td>0.0494</td>
+      <td>0.1313</td>
+      <td>0.0953</td>
+      <td>0.0041</td>
+      <td>0.6759</td>
+      <td>3.0182</td>
+      <td>13.6852</td>
+      <td>0.2382</td>
+      <td>0.4878</td>
+      <td>0.4893</td>
     </tr>
     <tr>
-      <th>000180</th>
-      <th>소재</th>
-      <td>성창기업지주</td>
-      <td>-0.0005</td>
-      <td>0.0438</td>
-      <td>0.0133</td>
+      <th>000300</th>
+      <th>기타</th>
+      <td>대유플러스</td>
+      <td>-1.2708</td>
+      <td>0.1012</td>
+      <td>0.0400</td>
       <td>NaN</td>
-      <td>0.2710</td>
-      <td>15.4922</td>
+      <td>0.2546</td>
+      <td>1.0483</td>
       <td>NaN</td>
-      <td>0.7151</td>
-      <td>-0.2564</td>
-      <td>-31.4239</td>
+      <td>0.0345</td>
+      <td>-0.7882</td>
+      <td>-12.6803</td>
+    </tr>
+    <tr>
+      <th>000370</th>
+      <th>금융</th>
+      <td>한화손해보험</td>
+      <td>0.0580</td>
+      <td>NaN</td>
+      <td>0.0296</td>
+      <td>NaN</td>
+      <td>0.1776</td>
+      <td>0.8624</td>
+      <td>3.0631</td>
+      <td>NaN</td>
+      <td>-0.1167</td>
+      <td>-21.7910</td>
     </tr>
     <tr>
       <th>000440</th>
       <th>에너지</th>
       <td>중앙에너비스</td>
-      <td>0.0021</td>
-      <td>0.1665</td>
-      <td>-0.0264</td>
-      <td>0.0155</td>
-      <td>2.1630</td>
+      <td>0.0000</td>
+      <td>0.1717</td>
+      <td>0.0273</td>
+      <td>0.0174</td>
+      <td>1.9868</td>
+      <td>67.2894</td>
       <td>NaN</td>
-      <td>257.1800</td>
-      <td>2.0124</td>
-      <td>0.2661</td>
-      <td>23.6275</td>
+      <td>1.9388</td>
+      <td>-0.1920</td>
+      <td>-23.3419</td>
     </tr>
     <tr>
       <th>000660</th>
       <th>IT</th>
       <td>SK하이닉스</td>
-      <td>0.0443</td>
-      <td>0.2425</td>
-      <td>0.2436</td>
-      <td>0.0158</td>
-      <td>1.1870</td>
-      <td>3.2661</td>
-      <td>6.6921</td>
-      <td>1.5212</td>
-      <td>-0.1792</td>
-      <td>-12.5019</td>
+      <td>-0.1940</td>
+      <td>-0.0265</td>
+      <td>0.0146</td>
+      <td>0.0085</td>
+      <td>1.7387</td>
+      <td>68.2199</td>
+      <td>NaN</td>
+      <td>3.5360</td>
+      <td>0.4919</td>
+      <td>48.7177</td>
     </tr>
     <tr>
       <th>003480</th>
       <th>유틸리티</th>
       <td>한진중공업홀딩스</td>
-      <td>-0.0088</td>
-      <td>0.0645</td>
-      <td>0.0640</td>
-      <td>0.0250</td>
-      <td>0.3339</td>
-      <td>1.0334</td>
-      <td>NaN</td>
-      <td>0.1102</td>
-      <td>-0.3069</td>
-      <td>-26.2107</td>
+      <td>0.0115</td>
+      <td>0.0621</td>
+      <td>0.0373</td>
+      <td>0.0321</td>
+      <td>0.2511</td>
+      <td>1.3468</td>
+      <td>21.9013</td>
+      <td>0.0672</td>
+      <td>-0.1969</td>
+      <td>-54.0709</td>
     </tr>
     <tr>
-      <th>003560</th>
+      <th>006490</th>
       <th>커뮤니케이션서비스</th>
-      <td>IHQ</td>
-      <td>-0.0127</td>
-      <td>0.2403</td>
-      <td>0.0383</td>
+      <td>인스코비</td>
+      <td>-0.0787</td>
+      <td>0.4580</td>
+      <td>0.0105</td>
       <td>NaN</td>
-      <td>0.9275</td>
-      <td>12.5575</td>
+      <td>2.4803</td>
+      <td>146.1127</td>
       <td>NaN</td>
-      <td>1.9992</td>
-      <td>-0.5912</td>
-      <td>-67.9837</td>
-    </tr>
-    <tr>
-      <th>003620</th>
-      <th>기타</th>
-      <td>쌍용차</td>
-      <td>0.8676</td>
-      <td>0.0586</td>
-      <td>0.0522</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>4.2138</td>
-      <td>NaN</td>
-      <td>0.1592</td>
-      <td>0.0000</td>
-      <td>NaN</td>
+      <td>1.7978</td>
+      <td>-0.0492</td>
+      <td>-30.3367</td>
     </tr>
   </tbody>
 </table>
@@ -5233,85 +5352,85 @@ dtype: int64
       <td>000020</td>
       <td>동화약품</td>
       <td>건강관리</td>
-      <td>0.0139</td>
-      <td>0.3510</td>
-      <td>0.0972</td>
-      <td>0.0170</td>
-      <td>0.8314</td>
-      <td>6.7597</td>
-      <td>14.9532</td>
-      <td>0.9660</td>
-      <td>-0.2848</td>
-      <td>-28.4226</td>
-      <td>-2.4348</td>
+      <td>0.0748</td>
+      <td>0.3973</td>
+      <td>0.0766</td>
+      <td>0.0182</td>
+      <td>0.7071</td>
+      <td>7.5400</td>
+      <td>9.4508</td>
+      <td>0.7636</td>
+      <td>0.0583</td>
+      <td>12.0261</td>
+      <td>-3.5230</td>
     </tr>
     <tr>
       <th>1</th>
       <td>000040</td>
       <td>KR모터스</td>
       <td>경기관련소비재</td>
-      <td>-0.0646</td>
-      <td>0.1048</td>
-      <td>-0.0498</td>
+      <td>-0.9137</td>
+      <td>0.0595</td>
+      <td>-0.0403</td>
       <td>NaN</td>
-      <td>1.3430</td>
+      <td>1.0807</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>0.4828</td>
-      <td>-0.4251</td>
-      <td>-64.8486</td>
-      <td>3.5057</td>
+      <td>0.3749</td>
+      <td>-0.3717</td>
+      <td>-3.0588</td>
+      <td>4.5649</td>
     </tr>
     <tr>
       <th>2</th>
       <td>000050</td>
       <td>경방</td>
       <td>경기관련소비재</td>
-      <td>0.0101</td>
-      <td>0.1126</td>
-      <td>0.0281</td>
-      <td>0.0097</td>
-      <td>0.4666</td>
-      <td>9.8130</td>
-      <td>11.5126</td>
-      <td>0.8860</td>
-      <td>-0.0469</td>
-      <td>2.5016</td>
-      <td>0.4161</td>
+      <td>-0.0134</td>
+      <td>0.0792</td>
+      <td>0.0333</td>
+      <td>0.0143</td>
+      <td>0.3200</td>
+      <td>5.8166</td>
+      <td>NaN</td>
+      <td>0.6278</td>
+      <td>-0.2214</td>
+      <td>-44.6451</td>
+      <td>2.3508</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>000060</td>
-      <td>메리츠화재</td>
-      <td>금융</td>
-      <td>0.0839</td>
-      <td>NaN</td>
-      <td>0.0408</td>
-      <td>0.0172</td>
-      <td>1.9039</td>
-      <td>3.8105</td>
-      <td>5.6745</td>
-      <td>NaN</td>
-      <td>0.3996</td>
-      <td>28.5851</td>
-      <td>NaN</td>
+      <td>000070</td>
+      <td>삼양홀딩스</td>
+      <td>소재</td>
+      <td>0.0867</td>
+      <td>0.1102</td>
+      <td>0.0595</td>
+      <td>0.0548</td>
+      <td>0.2106</td>
+      <td>1.9929</td>
+      <td>2.4301</td>
+      <td>0.1700</td>
+      <td>-0.0986</td>
+      <td>-4.2898</td>
+      <td>-0.9854</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>000070</td>
-      <td>삼양홀딩스</td>
+      <td>000080</td>
+      <td>하이트진로</td>
       <td>필수소비재</td>
-      <td>0.0246</td>
-      <td>0.1599</td>
-      <td>0.0459</td>
-      <td>0.0414</td>
-      <td>0.2568</td>
-      <td>3.0723</td>
-      <td>2.6045</td>
-      <td>0.1923</td>
-      <td>-0.3411</td>
-      <td>-72.7210</td>
-      <td>-0.7954</td>
+      <td>0.0153</td>
+      <td>0.3220</td>
+      <td>-0.0066</td>
+      <td>0.0439</td>
+      <td>1.3433</td>
+      <td>NaN</td>
+      <td>87.7682</td>
+      <td>0.6054</td>
+      <td>-0.1531</td>
+      <td>-28.7510</td>
+      <td>0.5599</td>
     </tr>
   </tbody>
 </table>
@@ -5380,35 +5499,35 @@ dtype: int64
       <td>000020</td>
       <td>동화약품</td>
       <td>건강관리</td>
-      <td>0.0139</td>
-      <td>0.3510</td>
-      <td>0.0972</td>
-      <td>0.0170</td>
-      <td>0.8314</td>
-      <td>6.7597</td>
-      <td>14.9532</td>
-      <td>0.9660</td>
-      <td>-0.2848</td>
-      <td>-28.4226</td>
-      <td>-2.4348</td>
-      <td>-4.8296</td>
+      <td>0.0748</td>
+      <td>0.3973</td>
+      <td>0.0766</td>
+      <td>0.0182</td>
+      <td>0.7071</td>
+      <td>7.5400</td>
+      <td>9.4508</td>
+      <td>0.7636</td>
+      <td>0.0583</td>
+      <td>12.0261</td>
+      <td>-3.5230</td>
+      <td>-5.8384</td>
     </tr>
     <tr>
       <th>1</th>
       <td>000040</td>
       <td>KR모터스</td>
       <td>경기관련소비재</td>
-      <td>-0.0646</td>
-      <td>0.1048</td>
-      <td>-0.0498</td>
+      <td>-0.9137</td>
+      <td>0.0595</td>
+      <td>-0.0403</td>
       <td>NaN</td>
-      <td>1.3430</td>
+      <td>1.0807</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>0.4828</td>
-      <td>-0.4251</td>
-      <td>-64.8486</td>
-      <td>3.5057</td>
+      <td>0.3749</td>
+      <td>-0.3717</td>
+      <td>-3.0588</td>
+      <td>4.5649</td>
       <td>NaN</td>
     </tr>
     <tr>
@@ -5416,54 +5535,54 @@ dtype: int64
       <td>000050</td>
       <td>경방</td>
       <td>경기관련소비재</td>
-      <td>0.0101</td>
-      <td>0.1126</td>
-      <td>0.0281</td>
-      <td>0.0097</td>
-      <td>0.4666</td>
-      <td>9.8130</td>
-      <td>11.5126</td>
-      <td>0.8860</td>
-      <td>-0.0469</td>
-      <td>2.5016</td>
-      <td>0.4161</td>
-      <td>0.5420</td>
+      <td>-0.0134</td>
+      <td>0.0792</td>
+      <td>0.0333</td>
+      <td>0.0143</td>
+      <td>0.3200</td>
+      <td>5.8166</td>
+      <td>NaN</td>
+      <td>0.6278</td>
+      <td>-0.2214</td>
+      <td>-44.6451</td>
+      <td>2.3508</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>000060</td>
-      <td>메리츠화재</td>
-      <td>금융</td>
-      <td>0.0839</td>
-      <td>NaN</td>
-      <td>0.0408</td>
-      <td>0.0172</td>
-      <td>1.9039</td>
-      <td>3.8105</td>
-      <td>5.6745</td>
-      <td>NaN</td>
-      <td>0.3996</td>
-      <td>28.5851</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>000070</td>
+      <td>삼양홀딩스</td>
+      <td>소재</td>
+      <td>0.0867</td>
+      <td>0.1102</td>
+      <td>0.0595</td>
+      <td>0.0548</td>
+      <td>0.2106</td>
+      <td>1.9929</td>
+      <td>2.4301</td>
+      <td>0.1700</td>
+      <td>-0.0986</td>
+      <td>-4.2898</td>
+      <td>-0.9854</td>
+      <td>-7.3671</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>000070</td>
-      <td>삼양홀딩스</td>
+      <td>000080</td>
+      <td>하이트진로</td>
       <td>필수소비재</td>
-      <td>0.0246</td>
-      <td>0.1599</td>
-      <td>0.0459</td>
-      <td>0.0414</td>
-      <td>0.2568</td>
-      <td>3.0723</td>
-      <td>2.6045</td>
-      <td>0.1923</td>
-      <td>-0.3411</td>
-      <td>-72.7210</td>
-      <td>-0.7954</td>
-      <td>-7.1297</td>
+      <td>0.0153</td>
+      <td>0.3220</td>
+      <td>-0.0066</td>
+      <td>0.0439</td>
+      <td>1.3433</td>
+      <td>NaN</td>
+      <td>87.7682</td>
+      <td>0.6054</td>
+      <td>-0.1531</td>
+      <td>-28.7510</td>
+      <td>0.5599</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
@@ -5531,95 +5650,95 @@ dtype: int64
       <td>000020</td>
       <td>동화약품</td>
       <td>건강관리</td>
-      <td>0.0139</td>
-      <td>0.3510</td>
-      <td>0.0972</td>
-      <td>0.0170</td>
-      <td>0.8314</td>
-      <td>6.7597</td>
-      <td>14.9532</td>
-      <td>0.9660</td>
-      <td>-0.2848</td>
-      <td>-28.4226</td>
-      <td>-2.4348</td>
-      <td>-4.8296</td>
-      <td>-0.8383</td>
+      <td>0.0748</td>
+      <td>0.3973</td>
+      <td>0.0766</td>
+      <td>0.0182</td>
+      <td>0.7071</td>
+      <td>7.5400</td>
+      <td>9.4508</td>
+      <td>0.7636</td>
+      <td>0.0583</td>
+      <td>12.0261</td>
+      <td>-3.5230</td>
+      <td>-5.8384</td>
+      <td>-1.6976</td>
     </tr>
     <tr>
       <th>1</th>
       <td>000040</td>
       <td>KR모터스</td>
       <td>경기관련소비재</td>
-      <td>-0.0646</td>
-      <td>0.1048</td>
-      <td>-0.0498</td>
+      <td>-0.9137</td>
+      <td>0.0595</td>
+      <td>-0.0403</td>
       <td>NaN</td>
-      <td>1.3430</td>
+      <td>1.0807</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>0.4828</td>
-      <td>-0.4251</td>
-      <td>-64.8486</td>
-      <td>3.5057</td>
+      <td>0.3749</td>
+      <td>-0.3717</td>
+      <td>-3.0588</td>
+      <td>4.5649</td>
       <td>NaN</td>
-      <td>2.5239</td>
+      <td>1.0986</td>
     </tr>
     <tr>
       <th>2</th>
       <td>000050</td>
       <td>경방</td>
       <td>경기관련소비재</td>
-      <td>0.0101</td>
-      <td>0.1126</td>
-      <td>0.0281</td>
-      <td>0.0097</td>
-      <td>0.4666</td>
-      <td>9.8130</td>
-      <td>11.5126</td>
-      <td>0.8860</td>
-      <td>-0.0469</td>
-      <td>2.5016</td>
-      <td>0.4161</td>
-      <td>0.5420</td>
-      <td>-2.6062</td>
+      <td>-0.0134</td>
+      <td>0.0792</td>
+      <td>0.0333</td>
+      <td>0.0143</td>
+      <td>0.3200</td>
+      <td>5.8166</td>
+      <td>NaN</td>
+      <td>0.6278</td>
+      <td>-0.2214</td>
+      <td>-44.6451</td>
+      <td>2.3508</td>
+      <td>NaN</td>
+      <td>1.6232</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>000060</td>
-      <td>메리츠화재</td>
-      <td>금융</td>
-      <td>0.0839</td>
-      <td>NaN</td>
-      <td>0.0408</td>
-      <td>0.0172</td>
-      <td>1.9039</td>
-      <td>3.8105</td>
-      <td>5.6745</td>
-      <td>NaN</td>
-      <td>0.3996</td>
-      <td>28.5851</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>000070</td>
+      <td>삼양홀딩스</td>
+      <td>소재</td>
+      <td>0.0867</td>
+      <td>0.1102</td>
+      <td>0.0595</td>
+      <td>0.0548</td>
+      <td>0.2106</td>
+      <td>1.9929</td>
+      <td>2.4301</td>
+      <td>0.1700</td>
+      <td>-0.0986</td>
+      <td>-4.2898</td>
+      <td>-0.9854</td>
+      <td>-7.3671</td>
+      <td>-0.3631</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>000070</td>
-      <td>삼양홀딩스</td>
+      <td>000080</td>
+      <td>하이트진로</td>
       <td>필수소비재</td>
-      <td>0.0246</td>
-      <td>0.1599</td>
-      <td>0.0459</td>
-      <td>0.0414</td>
-      <td>0.2568</td>
-      <td>3.0723</td>
-      <td>2.6045</td>
-      <td>0.1923</td>
-      <td>-0.3411</td>
-      <td>-72.7210</td>
-      <td>-0.7954</td>
-      <td>-7.1297</td>
-      <td>2.9044</td>
+      <td>0.0153</td>
+      <td>0.3220</td>
+      <td>-0.0066</td>
+      <td>0.0439</td>
+      <td>1.3433</td>
+      <td>NaN</td>
+      <td>87.7682</td>
+      <td>0.6054</td>
+      <td>-0.1531</td>
+      <td>-28.7510</td>
+      <td>0.5599</td>
+      <td>NaN</td>
+      <td>0.6299</td>
     </tr>
   </tbody>
 </table>
@@ -5645,7 +5764,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/014373a55531d9cb563f4987cc647d18a6d8dad33717e0f6ab84ff3d5a330f9a.png" src="_images/014373a55531d9cb563f4987cc647d18a6d8dad33717e0f6ab84ff3d5a330f9a.png" />
+<img alt="_images/b8457a493e5409f75375129c9ac475b6bc21ed7477736234675472a8a676e88c.png" src="_images/b8457a493e5409f75375129c9ac475b6bc21ed7477736234675472a8a676e88c.png" />
 </div>
 </div>
 <p>각각 퀄리티 지표는 3개, 밸류 지표는 5개, 모멘텀 지표는 2개 기준을 이용해 계산했다. 그림에서 알 수 있듯이 기준을 많이 사용할 수록 Z-Score가 넓게 퍼져있는 모습을 보이며, 각 팩터별 분포가 동일하지 않다. 따라서 다시 Z-Score를 계산해 분포의 넓이를 비슷하게 맞춰주도록 한다.</p>
@@ -5667,7 +5786,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a2ea593bdff2b8f6274226e4ef86cdccfba4de716ecd0ac9e8cbc451afa918e4.png" src="_images/a2ea593bdff2b8f6274226e4ef86cdccfba4de716ecd0ac9e8cbc451afa918e4.png" />
+<img alt="_images/7f478db9b07fe860e86aed97a9946f2440a59f9fe9b6a1d8c18420d7b7b89f25.png" src="_images/7f478db9b07fe860e86aed97a9946f2440a59f9fe9b6a1d8c18420d7b7b89f25.png" />
 </div>
 </div>
 <ol class="arabic simple">
@@ -5697,7 +5816,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a9037aa213a102252a3ce3945972373da1cdfb5f1e06d85aa8ee003f0a2fcac7.png" src="_images/a9037aa213a102252a3ce3945972373da1cdfb5f1e06d85aa8ee003f0a2fcac7.png" />
+<img alt="_images/eb03458883546fc02745c71264b1d2ca4d9f609e7a6116abce394213e674ef27.png" src="_images/eb03458883546fc02745c71264b1d2ca4d9f609e7a6116abce394213e674ef27.png" />
 </div>
 </div>
 <p>각 팩터간 상관관계가 매우 낮으며, 여러 팩터를 동시에 고려함으로서 분산효과를 기대할 수 있다. 이제 계산된 팩터들을 토대로 최종 포트폴리오를 구성해보자.</p>
@@ -5755,423 +5874,423 @@ dtype: int64
   </thead>
   <tbody>
     <tr>
-      <th>53</th>
-      <td>001120</td>
-      <td>LX인터내셔널</td>
+      <th>0</th>
+      <td>000020</td>
+      <td>동화약품</td>
+      <td>건강관리</td>
+      <td>0.0748</td>
+      <td>0.3973</td>
+      <td>0.0766</td>
+      <td>0.0182</td>
+      <td>0.7071</td>
+      <td>7.5400</td>
+      <td>9.4508</td>
+      <td>0.7636</td>
+      <td>0.0583</td>
+      <td>12.0261</td>
+      <td>-3.5230</td>
+      <td>-5.8384</td>
+      <td>-1.6976</td>
+      <td>-1.1595</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>000270</td>
+      <td>기아</td>
+      <td>경기관련소비재</td>
+      <td>0.2194</td>
+      <td>0.2885</td>
+      <td>0.1502</td>
+      <td>0.0398</td>
+      <td>0.8431</td>
+      <td>3.0224</td>
+      <td>3.8437</td>
+      <td>0.3583</td>
+      <td>0.3506</td>
+      <td>32.6261</td>
+      <td>-3.9978</td>
+      <td>-3.3702</td>
+      <td>-2.8109</td>
+      <td>-1.1775</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>000320</td>
+      <td>노루홀딩스</td>
       <td>산업재</td>
-      <td>0.0731</td>
-      <td>0.2199</td>
-      <td>0.0259</td>
-      <td>0.0693</td>
-      <td>0.5649</td>
-      <td>7.2011</td>
-      <td>1.9333</td>
-      <td>0.0718</td>
-      <td>0.0958</td>
-      <td>6.6767</td>
-      <td>-3.1798</td>
-      <td>-6.2262</td>
-      <td>-2.6703</td>
-      <td>-1.3436</td>
+      <td>0.0816</td>
+      <td>0.2364</td>
+      <td>0.0733</td>
+      <td>0.0469</td>
+      <td>0.2110</td>
+      <td>1.6196</td>
+      <td>2.5878</td>
+      <td>0.1177</td>
+      <td>0.0381</td>
+      <td>24.6506</td>
+      <td>-2.5101</td>
+      <td>-7.0655</td>
+      <td>-2.2828</td>
+      <td>-1.2309</td>
       <td>Y</td>
     </tr>
     <tr>
-      <th>173</th>
-      <td>003650</td>
-      <td>미창석유</td>
-      <td>에너지</td>
-      <td>0.0289</td>
-      <td>0.1596</td>
-      <td>0.0883</td>
-      <td>0.0312</td>
-      <td>0.4679</td>
-      <td>4.5631</td>
-      <td>4.0458</td>
-      <td>0.3330</td>
-      <td>-0.0110</td>
-      <td>-5.7317</td>
-      <td>-3.0456</td>
-      <td>-4.8518</td>
-      <td>-2.3105</td>
-      <td>-1.1444</td>
+      <th>141</th>
+      <td>003030</td>
+      <td>세아제강지주</td>
+      <td>소재</td>
+      <td>0.1960</td>
+      <td>0.2360</td>
+      <td>0.1282</td>
+      <td>0.0114</td>
+      <td>0.3703</td>
+      <td>1.6257</td>
+      <td>1.8892</td>
+      <td>0.2047</td>
+      <td>0.3117</td>
+      <td>25.3318</td>
+      <td>-4.6188</td>
+      <td>-4.3915</td>
+      <td>-2.8439</td>
+      <td>-1.3520</td>
       <td>Y</td>
     </tr>
     <tr>
-      <th>348</th>
-      <td>009160</td>
-      <td>SIMPAC</td>
-      <td>산업재</td>
-      <td>0.0563</td>
-      <td>0.2345</td>
-      <td>0.1310</td>
-      <td>0.0313</td>
-      <td>0.7893</td>
-      <td>3.5643</td>
-      <td>3.5075</td>
-      <td>0.5871</td>
-      <td>-0.0761</td>
-      <td>2.8338</td>
-      <td>-4.4539</td>
-      <td>-3.6875</td>
-      <td>-2.1445</td>
-      <td>-1.1898</td>
-      <td>Y</td>
-    </tr>
-    <tr>
-      <th>375</th>
+      <th>373</th>
       <td>009970</td>
       <td>영원무역홀딩스</td>
       <td>경기관련소비재</td>
-      <td>0.0413</td>
-      <td>0.3200</td>
-      <td>0.0763</td>
-      <td>0.0418</td>
-      <td>0.2135</td>
-      <td>2.0210</td>
-      <td>1.2914</td>
-      <td>0.1869</td>
-      <td>0.0116</td>
-      <td>11.3452</td>
-      <td>-3.3705</td>
-      <td>-7.5194</td>
-      <td>-2.9475</td>
-      <td>-1.5293</td>
+      <td>0.1913</td>
+      <td>0.3178</td>
+      <td>0.1071</td>
+      <td>0.0417</td>
+      <td>0.2337</td>
+      <td>1.5662</td>
+      <td>1.2215</td>
+      <td>0.2193</td>
+      <td>0.2043</td>
+      <td>48.6636</td>
+      <td>-3.5515</td>
+      <td>-6.7181</td>
+      <td>-2.7713</td>
+      <td>-1.4099</td>
       <td>Y</td>
     </tr>
     <tr>
-      <th>418</th>
+      <th>415</th>
       <td>011560</td>
       <td>세보엠이씨</td>
       <td>산업재</td>
-      <td>0.0257</td>
-      <td>0.0929</td>
-      <td>0.1443</td>
-      <td>0.0299</td>
-      <td>0.5543</td>
-      <td>2.0762</td>
-      <td>5.4007</td>
-      <td>0.1619</td>
-      <td>0.1597</td>
-      <td>3.6865</td>
-      <td>-2.0427</td>
-      <td>-5.3830</td>
-      <td>-2.6599</td>
-      <td>-1.1219</td>
+      <td>0.1416</td>
+      <td>0.1479</td>
+      <td>0.1877</td>
+      <td>0.0602</td>
+      <td>0.4584</td>
+      <td>1.1455</td>
+      <td>3.2370</td>
+      <td>0.0930</td>
+      <td>0.0583</td>
+      <td>19.1493</td>
+      <td>-3.3860</td>
+      <td>-6.8597</td>
+      <td>-2.1758</td>
+      <td>-1.3075</td>
       <td>Y</td>
     </tr>
     <tr>
-      <th>492</th>
-      <td>016090</td>
-      <td>대현</td>
+      <th>515</th>
+      <td>017670</td>
+      <td>SK텔레콤</td>
+      <td>커뮤니케이션서비스</td>
+      <td>0.0960</td>
+      <td>0.5728</td>
+      <td>0.1673</td>
+      <td>0.0675</td>
+      <td>0.8747</td>
+      <td>2.1098</td>
+      <td>9.1073</td>
+      <td>0.6161</td>
+      <td>0.0690</td>
+      <td>23.4537</td>
+      <td>-3.7778</td>
+      <td>-5.8372</td>
+      <td>-3.0532</td>
+      <td>-1.4054</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>530</th>
+      <td>018500</td>
+      <td>동원금속</td>
       <td>경기관련소비재</td>
-      <td>0.0242</td>
-      <td>0.6271</td>
-      <td>0.1227</td>
-      <td>0.0403</td>
-      <td>0.4583</td>
-      <td>2.9991</td>
-      <td>4.7355</td>
-      <td>0.3339</td>
-      <td>-0.2060</td>
-      <td>-18.8925</td>
-      <td>-3.8282</td>
-      <td>-5.4449</td>
-      <td>-1.3758</td>
-      <td>-1.1479</td>
+      <td>0.2525</td>
+      <td>0.2414</td>
+      <td>0.1423</td>
+      <td>0.0116</td>
+      <td>0.8871</td>
+      <td>1.1795</td>
+      <td>3.5127</td>
+      <td>0.1425</td>
+      <td>0.7030</td>
+      <td>23.4678</td>
+      <td>-3.7391</td>
+      <td>-3.2958</td>
+      <td>-2.9297</td>
+      <td>-1.1566</td>
       <td>Y</td>
     </tr>
     <tr>
-      <th>654</th>
+      <th>651</th>
       <td>030200</td>
       <td>KT</td>
       <td>커뮤니케이션서비스</td>
-      <td>0.0245</td>
-      <td>0.6964</td>
-      <td>0.1450</td>
-      <td>0.0510</td>
-      <td>0.6025</td>
-      <td>1.8681</td>
-      <td>6.1567</td>
-      <td>0.3889</td>
-      <td>0.1362</td>
-      <td>7.6727</td>
-      <td>-3.1111</td>
-      <td>-7.4692</td>
-      <td>-2.6944</td>
-      <td>-1.4517</td>
+      <td>0.0691</td>
+      <td>0.6372</td>
+      <td>0.1177</td>
+      <td>0.0582</td>
+      <td>0.4714</td>
+      <td>1.7911</td>
+      <td>6.8258</td>
+      <td>0.3308</td>
+      <td>-0.0155</td>
+      <td>-13.0310</td>
+      <td>-3.2701</td>
+      <td>-6.7936</td>
+      <td>-1.7908</td>
+      <td>-1.2263</td>
       <td>Y</td>
     </tr>
     <tr>
-      <th>920</th>
-      <td>049070</td>
-      <td>인탑스</td>
+      <th>700</th>
+      <td>033270</td>
+      <td>유나이티드제약</td>
+      <td>건강관리</td>
+      <td>0.1157</td>
+      <td>0.3539</td>
+      <td>0.1363</td>
+      <td>0.0157</td>
+      <td>1.1690</td>
+      <td>6.8244</td>
+      <td>10.1035</td>
+      <td>1.4965</td>
+      <td>0.1056</td>
+      <td>14.1559</td>
+      <td>-4.1664</td>
+      <td>-4.1102</td>
+      <td>-1.9729</td>
+      <td>-1.1323</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>988</th>
+      <td>054040</td>
+      <td>한국컴퓨터</td>
       <td>IT</td>
-      <td>0.0453</td>
-      <td>0.2402</td>
-      <td>0.1069</td>
-      <td>0.0139</td>
-      <td>0.9154</td>
-      <td>6.4500</td>
-      <td>5.0483</td>
-      <td>0.4915</td>
-      <td>0.0485</td>
-      <td>2.8074</td>
-      <td>-2.9180</td>
-      <td>-4.3659</td>
-      <td>-2.5420</td>
-      <td>-1.1210</td>
+      <td>0.1401</td>
+      <td>0.2001</td>
+      <td>0.2315</td>
+      <td>0.0436</td>
+      <td>0.7103</td>
+      <td>2.5068</td>
+      <td>5.0686</td>
+      <td>0.2288</td>
+      <td>0.1987</td>
+      <td>13.5194</td>
+      <td>-3.6331</td>
+      <td>-7.3269</td>
+      <td>-1.4701</td>
+      <td>-1.2691</td>
       <td>Y</td>
     </tr>
     <tr>
-      <th>991</th>
-      <td>053690</td>
-      <td>한미글로벌</td>
-      <td>산업재</td>
-      <td>0.0293</td>
-      <td>0.3556</td>
-      <td>0.1123</td>
-      <td>0.0398</td>
-      <td>0.8796</td>
-      <td>4.1690</td>
-      <td>7.5042</td>
-      <td>0.4262</td>
-      <td>0.0131</td>
-      <td>8.7991</td>
-      <td>-4.0432</td>
-      <td>-3.5614</td>
-      <td>-2.5981</td>
-      <td>-1.1989</td>
-      <td>Y</td>
-    </tr>
-    <tr>
-      <th>1008</th>
-      <td>054670</td>
-      <td>대한뉴팜</td>
-      <td>건강관리</td>
-      <td>0.0740</td>
-      <td>0.5644</td>
-      <td>0.1065</td>
-      <td>0.0074</td>
-      <td>1.9790</td>
-      <td>9.5553</td>
-      <td>6.6846</td>
-      <td>0.9013</td>
-      <td>-0.0439</td>
-      <td>-2.0056</td>
-      <td>-4.3248</td>
-      <td>-2.3941</td>
-      <td>-2.7861</td>
-      <td>-1.1583</td>
-      <td>Y</td>
-    </tr>
-    <tr>
-      <th>1012</th>
-      <td>054930</td>
-      <td>유신</td>
-      <td>산업재</td>
-      <td>0.0397</td>
-      <td>0.1765</td>
-      <td>0.1208</td>
-      <td>0.0297</td>
-      <td>0.8234</td>
-      <td>2.9360</td>
-      <td>5.1884</td>
-      <td>0.2864</td>
-      <td>0.0183</td>
-      <td>-12.8661</td>
-      <td>-3.8958</td>
-      <td>-4.0741</td>
-      <td>-1.8661</td>
-      <td>-1.1101</td>
-      <td>Y</td>
-    </tr>
-    <tr>
-      <th>1104</th>
-      <td>065510</td>
-      <td>휴비츠</td>
-      <td>건강관리</td>
-      <td>0.0332</td>
-      <td>0.2584</td>
-      <td>0.1424</td>
-      <td>0.0193</td>
-      <td>1.2960</td>
-      <td>5.4180</td>
-      <td>9.7610</td>
-      <td>1.2537</td>
-      <td>0.0913</td>
-      <td>6.0157</td>
-      <td>-3.0928</td>
-      <td>-4.7633</td>
-      <td>-3.0820</td>
-      <td>-1.2653</td>
+      <th>1152</th>
+      <td>069510</td>
+      <td>에스텍</td>
+      <td>IT</td>
+      <td>0.1532</td>
+      <td>0.2437</td>
+      <td>0.1881</td>
+      <td>0.0348</td>
+      <td>0.6381</td>
+      <td>1.9864</td>
+      <td>4.1661</td>
+      <td>0.2269</td>
+      <td>0.0192</td>
+      <td>6.7474</td>
+      <td>-3.9879</td>
+      <td>-7.4958</td>
+      <td>-0.5532</td>
+      <td>-1.1848</td>
       <td>Y</td>
     </tr>
     <tr>
       <th>1230</th>
-      <td>078930</td>
-      <td>GS</td>
-      <td>에너지</td>
-      <td>0.0334</td>
-      <td>0.1916</td>
-      <td>0.0530</td>
-      <td>0.0490</td>
-      <td>0.2853</td>
-      <td>2.3694</td>
-      <td>2.1344</td>
-      <td>0.1654</td>
-      <td>-0.0657</td>
-      <td>-6.5697</td>
-      <td>-3.6757</td>
-      <td>-7.1367</td>
-      <td>-1.9954</td>
-      <td>-1.3812</td>
-      <td>Y</td>
-    </tr>
-    <tr>
-      <th>1355</th>
-      <td>091700</td>
-      <td>파트론</td>
+      <td>079960</td>
+      <td>동양이엔피</td>
       <td>IT</td>
-      <td>0.0413</td>
-      <td>0.2419</td>
-      <td>0.1983</td>
-      <td>0.0399</td>
-      <td>1.1223</td>
-      <td>3.8319</td>
-      <td>6.7887</td>
-      <td>0.3861</td>
-      <td>-0.1678</td>
-      <td>-1.3931</td>
-      <td>-3.4350</td>
-      <td>-5.6186</td>
-      <td>-1.8823</td>
-      <td>-1.1949</td>
+      <td>0.1222</td>
+      <td>0.1570</td>
+      <td>0.1510</td>
+      <td>0.0165</td>
+      <td>0.4838</td>
+      <td>2.3490</td>
+      <td>3.9582</td>
+      <td>0.2681</td>
+      <td>0.1932</td>
+      <td>35.4899</td>
+      <td>-2.8051</td>
+      <td>-6.7427</td>
+      <td>-2.1493</td>
+      <td>-1.2190</td>
       <td>Y</td>
     </tr>
     <tr>
-      <th>1373</th>
-      <td>093050</td>
-      <td>LF</td>
-      <td>경기관련소비재</td>
-      <td>0.0296</td>
-      <td>0.4546</td>
-      <td>0.1277</td>
-      <td>0.0359</td>
-      <td>0.3278</td>
-      <td>1.5438</td>
-      <td>2.7666</td>
-      <td>0.2646</td>
-      <td>-0.0813</td>
-      <td>-10.5897</td>
-      <td>-3.7762</td>
-      <td>-6.6659</td>
-      <td>-2.2025</td>
-      <td>-1.3841</td>
+      <th>1266</th>
+      <td>084010</td>
+      <td>대한제강</td>
+      <td>소재</td>
+      <td>0.1206</td>
+      <td>0.1873</td>
+      <td>0.1151</td>
+      <td>0.0633</td>
+      <td>0.3591</td>
+      <td>2.1738</td>
+      <td>2.9769</td>
+      <td>0.1800</td>
+      <td>0.1126</td>
+      <td>22.5297</td>
+      <td>-3.7721</td>
+      <td>-6.6397</td>
+      <td>-2.5111</td>
+      <td>-1.3901</td>
       <td>Y</td>
     </tr>
     <tr>
-      <th>1380</th>
-      <td>093520</td>
-      <td>매커스</td>
+      <th>1379</th>
+      <td>094970</td>
+      <td>제이엠티</td>
       <td>IT</td>
-      <td>0.0890</td>
-      <td>0.2390</td>
-      <td>0.1519</td>
-      <td>0.0131</td>
-      <td>1.9477</td>
-      <td>5.4313</td>
-      <td>5.4715</td>
-      <td>0.9855</td>
-      <td>0.3328</td>
-      <td>27.5779</td>
-      <td>-3.7840</td>
-      <td>-2.1529</td>
-      <td>-3.2462</td>
-      <td>-1.1416</td>
+      <td>0.2704</td>
+      <td>0.1660</td>
+      <td>0.2511</td>
+      <td>0.0319</td>
+      <td>0.7198</td>
+      <td>2.3041</td>
+      <td>2.6622</td>
+      <td>1.0000</td>
+      <td>0.4059</td>
+      <td>23.0072</td>
+      <td>-3.6838</td>
+      <td>-6.2031</td>
+      <td>-2.2393</td>
+      <td>-1.2975</td>
       <td>Y</td>
     </tr>
     <tr>
-      <th>1550</th>
-      <td>122310</td>
-      <td>제노레이</td>
-      <td>건강관리</td>
-      <td>0.0490</td>
-      <td>0.3431</td>
-      <td>0.1679</td>
-      <td>0.0189</td>
-      <td>1.7335</td>
-      <td>8.0765</td>
-      <td>8.8405</td>
-      <td>1.6646</td>
-      <td>-0.1252</td>
-      <td>-12.8514</td>
-      <td>-4.0421</td>
-      <td>-3.7297</td>
-      <td>-2.3546</td>
-      <td>-1.1752</td>
+      <th>1445</th>
+      <td>102260</td>
+      <td>동성케미컬</td>
+      <td>소재</td>
+      <td>0.1362</td>
+      <td>0.1726</td>
+      <td>0.1652</td>
+      <td>0.0457</td>
+      <td>0.4353</td>
+      <td>1.4032</td>
+      <td>3.1959</td>
+      <td>0.1908</td>
+      <td>-0.0231</td>
+      <td>-5.7039</td>
+      <td>-4.2493</td>
+      <td>-6.1920</td>
+      <td>-0.9228</td>
+      <td>-1.1613</td>
       <td>Y</td>
     </tr>
     <tr>
-      <th>1617</th>
-      <td>137310</td>
-      <td>에스디바이오센서</td>
-      <td>건강관리</td>
-      <td>0.1312</td>
-      <td>0.5600</td>
-      <td>0.3779</td>
-      <td>0.0321</td>
-      <td>1.9437</td>
-      <td>3.6953</td>
-      <td>3.7047</td>
-      <td>1.2961</td>
-      <td>-0.3155</td>
-      <td>-20.3552</td>
-      <td>-5.0043</td>
-      <td>-5.2194</td>
-      <td>-0.9246</td>
-      <td>-1.2038</td>
-      <td>Y</td>
-    </tr>
-    <tr>
-      <th>1781</th>
-      <td>200880</td>
-      <td>서연이화</td>
+      <th>1548</th>
+      <td>123040</td>
+      <td>엠에스오토텍</td>
       <td>경기관련소비재</td>
-      <td>0.0180</td>
-      <td>0.1719</td>
-      <td>0.0961</td>
-      <td>0.0162</td>
-      <td>0.3572</td>
-      <td>1.4140</td>
-      <td>4.9659</td>
-      <td>0.1108</td>
-      <td>0.1669</td>
-      <td>-5.7124</td>
-      <td>-2.1014</td>
-      <td>-5.4161</td>
-      <td>-2.8012</td>
-      <td>-1.1548</td>
+      <td>0.2425</td>
+      <td>0.2092</td>
+      <td>0.1762</td>
+      <td>0.0102</td>
+      <td>0.4211</td>
+      <td>0.7777</td>
+      <td>1.7366</td>
+      <td>0.0984</td>
+      <td>0.1007</td>
+      <td>19.1775</td>
+      <td>-3.7683</td>
+      <td>-4.8180</td>
+      <td>-2.0983</td>
+      <td>-1.1638</td>
       <td>Y</td>
     </tr>
     <tr>
-      <th>1875</th>
-      <td>225220</td>
-      <td>제놀루션</td>
+      <th>1720</th>
+      <td>185750</td>
+      <td>종근당</td>
       <td>건강관리</td>
-      <td>0.1050</td>
-      <td>0.5523</td>
-      <td>0.2622</td>
-      <td>0.0296</td>
-      <td>1.5446</td>
-      <td>4.9044</td>
-      <td>3.6783</td>
-      <td>1.6903</td>
-      <td>-0.2297</td>
-      <td>-39.7945</td>
-      <td>-4.8996</td>
-      <td>-5.1147</td>
-      <td>-0.6287</td>
-      <td>-1.1339</td>
+      <td>0.2049</td>
+      <td>0.4817</td>
+      <td>0.1743</td>
+      <td>0.0089</td>
+      <td>2.2150</td>
+      <td>7.1698</td>
+      <td>10.8122</td>
+      <td>0.9498</td>
+      <td>0.4964</td>
+      <td>22.1178</td>
+      <td>-4.8830</td>
+      <td>-2.3581</td>
+      <td>-2.6841</td>
+      <td>-1.1810</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>1867</th>
+      <td>224110</td>
+      <td>에이텍모빌리티</td>
+      <td>IT</td>
+      <td>0.1173</td>
+      <td>0.3024</td>
+      <td>0.2092</td>
+      <td>0.0067</td>
+      <td>0.8736</td>
+      <td>2.4820</td>
+      <td>7.4461</td>
+      <td>0.4392</td>
+      <td>0.3670</td>
+      <td>38.2423</td>
+      <td>-4.1513</td>
+      <td>-4.2178</td>
+      <td>-2.5305</td>
+      <td>-1.2277</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>1929</th>
+      <td>243070</td>
+      <td>휴온스</td>
+      <td>건강관리</td>
+      <td>0.1463</td>
+      <td>0.5939</td>
+      <td>0.0644</td>
+      <td>0.0161</td>
+      <td>1.4688</td>
+      <td>14.4690</td>
+      <td>10.0370</td>
+      <td>0.8313</td>
+      <td>0.1776</td>
+      <td>30.5186</td>
+      <td>-4.1566</td>
+      <td>-3.4076</td>
+      <td>-2.6497</td>
+      <td>-1.1756</td>
       <td>Y</td>
     </tr>
   </tbody>
@@ -6191,21 +6310,19 @@ dtype: int64
 
 <span class="k">def</span> <span class="nf">plot_rank</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
 
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">hist_quality</span><span class="p">,</span>
                      <span class="n">x</span><span class="o">=</span><span class="s1">&#39;rank&#39;</span><span class="p">,</span>
                      <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                      <span class="n">col</span><span class="o">=</span><span class="s1">&#39;variable&#39;</span><span class="p">,</span>
                      <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;invest&#39;</span><span class="p">,</span>
+                     <span class="n">size</span><span class="o">=</span><span class="s1">&#39;size&#39;</span><span class="p">,</span>
+                     <span class="n">sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
                      <span class="n">style</span><span class="o">=</span><span class="s1">&#39;invest&#39;</span><span class="p">,</span>
-                     <span class="n">palette</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">],</span>
-                     <span class="n">size</span><span class="o">=</span><span class="s1">&#39;invest&#39;</span><span class="p">,</span>
-                     <span class="n">sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
-                     <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;scatter&quot;</span><span class="p">,</span>
-                     <span class="n">col_wrap</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+                     <span class="n">markers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Y&#39;</span><span class="p">:</span> <span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="s1">&#39;o&#39;</span><span class="p">},</span>
+                     <span class="n">palette</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Y&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="s1">&#39;grey&#39;</span><span class="p">},</span>
+                     <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-
-    <span class="n">sns</span><span class="o">.</span><span class="n">move_legend</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="s2">&quot;lower center&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.1</span><span class="p">),</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -6221,6 +6338,7 @@ dtype: int64
                               <span class="s1">&#39;DY&#39;</span><span class="p">,</span> <span class="s1">&#39;12M&#39;</span><span class="p">,</span> <span class="s1">&#39;K_ratio&#39;</span>
                           <span class="p">])</span>
 
+<span class="n">data_melt</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_melt</span><span class="p">[</span><span class="s1">&#39;invest&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s1">&#39;Y&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">})</span>
 <span class="n">data_melt</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -6247,38 +6365,44 @@ dtype: int64
       <th>invest</th>
       <th>variable</th>
       <th>value</th>
+      <th>size</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>N</td>
+      <td>Y</td>
       <td>ROE</td>
-      <td>0.013900</td>
+      <td>0.074824</td>
+      <td>100</td>
     </tr>
     <tr>
       <th>1</th>
       <td>N</td>
       <td>ROE</td>
-      <td>-0.064580</td>
+      <td>-0.913722</td>
+      <td>10</td>
     </tr>
     <tr>
       <th>2</th>
       <td>N</td>
       <td>ROE</td>
-      <td>0.010131</td>
+      <td>-0.013385</td>
+      <td>10</td>
     </tr>
     <tr>
       <th>3</th>
       <td>N</td>
       <td>ROE</td>
-      <td>0.083880</td>
+      <td>0.086654</td>
+      <td>10</td>
     </tr>
     <tr>
       <th>4</th>
       <td>N</td>
       <td>ROE</td>
-      <td>0.024646</td>
+      <td>0.015305</td>
+      <td>10</td>
     </tr>
   </tbody>
 </table>
@@ -6296,7 +6420,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2ca46ba92b5b583d524e67c1597dfd75e143cc66f673eb316eb9cf49e20988a9.png" src="_images/2ca46ba92b5b583d524e67c1597dfd75e143cc66f673eb316eb9cf49e20988a9.png" />
+<img alt="_images/57c2bc07125a73f55b186f9dc267131c0dba12a39d4b52da48246cc35ee19fc8.png" src="_images/57c2bc07125a73f55b186f9dc267131c0dba12a39d4b52da48246cc35ee19fc8.png" />
 </div>
 </div>
 <ol class="arabic simple">
@@ -6318,7 +6442,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/83f5954de7a182e3643b9cd87e98dbf5dea3b2e7a5369de3aa899faf21f95cae.png" src="_images/83f5954de7a182e3643b9cd87e98dbf5dea3b2e7a5369de3aa899faf21f95cae.png" />
+<img alt="_images/57c2bc07125a73f55b186f9dc267131c0dba12a39d4b52da48246cc35ee19fc8.png" src="_images/57c2bc07125a73f55b186f9dc267131c0dba12a39d4b52da48246cc35ee19fc8.png" />
 </div>
 </div>
 <p>밸류 지표 역시 멀티팩터 기준으로 선정된 종목들의 순위가 높다. 그러나 사용되는 지표가 많은 만큼 일부 지표에서는 순위가 낮은 종목들이 선정되기도 한다.</p>
@@ -6332,7 +6456,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/38165a1c7693e741b4e33cfb41bd430e746797ce82265d0012271f834f2f38b2.png" src="_images/38165a1c7693e741b4e33cfb41bd430e746797ce82265d0012271f834f2f38b2.png" />
+<img alt="_images/57c2bc07125a73f55b186f9dc267131c0dba12a39d4b52da48246cc35ee19fc8.png" src="_images/57c2bc07125a73f55b186f9dc267131c0dba12a39d4b52da48246cc35ee19fc8.png" />
 </div>
 </div>
 <p>모멘텀 지표 역시 멀티팩터 기준으로 선정된 종목들의 순위가 높다.</p>
@@ -6373,11 +6497,10 @@ dtype: int64
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="data_ref.html"
@@ -6397,10 +6520,7 @@ dtype: int64
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -6408,6 +6528,7 @@ dtype: int64
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -6473,9 +6594,10 @@ By 이현열
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -6499,8 +6621,8 @@ By 이현열
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>
