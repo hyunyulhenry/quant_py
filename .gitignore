@@ -4,6 +4,7 @@ docs_cache/
 code/
 api_key.txt
 bookbuild.*
+book_upload.*
 stock_db.sql
 목차.xlsx
 git.*
